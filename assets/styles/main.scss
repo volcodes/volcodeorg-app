@@ -1,0 +1,219 @@
+@use "variables";
+@use "colors";
+@use "fonts";
+
+*:not(.non-antialiased) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background:  colors.$navyBlue;
+    padding: 0;
+    margin: 0;
+    font-family: 'GT Walsheim Trial';
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.btn {
+    font-family: inherit;
+    border: 2px solid colors.$cloudWhite;
+    color: colors.$cloudWhite;
+    line-height: 44px;
+    font-size: 18px;
+    padding: 0 24px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: .2s cubic-bezier(.38,.98,.6,.9);
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 0px 0px colors.$lightBlue;
+    border-radius: variables.$borderRadius;
+
+    svg {
+        width: 28px;
+        height: 28px;
+        margin-right: 8px;
+    }
+
+    &:hover {
+        color: white;
+        border-color: white;
+        transform: translateX(-2px) translateY(-2px);
+        box-shadow: 4px 4px 0px 0px colors.$lightBlue;
+    }
+
+    &:active {
+        position: relative;
+        top: 1px;
+    }
+
+    &--filled {
+        background-color: colors.$lightBlue;
+        box-shadow: 0px 0px 0px 0px colors.$cloudWhite;
+        border: none;
+
+        &:hover {
+            box-shadow: 4px 4px 0px 0px colors.$cloudWhite;
+        }
+    }
+}
+
+h1 {
+    font-size: 64px;
+    line-height: 72px;
+    letter-spacing: -3px;
+    text-align: center;
+    margin: 0;
+}
+
+h2 {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -3px;
+    text-align: center;
+    margin: 0;
+
+    em {
+        font-style: normal;
+        color: colors.$cloudWhite;
+        display: block;
+    }
+}
+
+p {
+    font-size: 18px;
+    color: colors.$textGray;
+    line-height: 24px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 32px;
+}
+
+.card {
+    background-color: colors.$darkBlue;
+    border-radius: variables.$cardBorderRadius;
+    padding: 36px;
+
+    h3 {
+        font-size: 28px;
+        line-height: 40px;
+        margin: 0;
+    }
+
+    p {
+        margin-top: 8px;
+        font-size: 16px;
+        line-height: 24px;
+        color: colors.$textGray;
+    }
+}
+
+.card-sm {
+    background: colors.$navyBlue;
+    padding: 24px;
+    min-height: 100px;
+    width: 100%;
+    border: 1px solid #1A1F3C;
+    border-radius: calc(variables.$cardBorderRadius / 2);
+    box-sizing: border-box;
+    line-height: 40px;
+    font-size: 18px;
+    margin-bottom: 12px;
+    pointer-events: none;
+
+    &__title {
+        display: flex;
+        border-bottom: 1px solid #1A1F3C;
+        padding-bottom: 16px;
+
+        strong {
+            font-weight: 500;
+        }
+    
+        svg {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(to bottom, colors.$lightBlue, #0039AF 100%);
+            border-radius: 100px;
+            box-sizing: border-box;
+            padding: 8px;
+            margin-right: 12px;
+        }
+
+        &--schoolPlatform {
+            svg {
+                background: linear-gradient(to bottom, #e37294, #a53254 100%);
+            }
+        }
+        &--realEstatePlatform {
+            svg {
+                background: linear-gradient(to bottom, #a80d0d, #760909 100%);
+            }
+        }
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        padding: 14px 0 0px 0;
+
+        img {
+            width: 32px;
+            height: 32px;
+            border-radius: 100px;
+            margin-right: -7px;
+            box-sizing: border-box;
+            border: 2px solid colors.$darkBlue;
+        }
+
+        span {
+            margin-left: 18px;
+            font-size: 14px;
+            color: colors.$textGray
+        }
+    }
+}
+
+.cta {
+    font-size: 18px;
+    color: colors.$lightBlue;
+    text-decoration: none;
+    line-height: 32px;
+    display: flex;
+    font-weight: 600;
+    align-items: flex-end;
+    border-bottom: 2px solid colors.$lightBlue;
+    width: fit-content;
+    padding-bottom: 2px;
+    transition: all .2s;
+
+    svg {
+        transition: all .2s;
+        height: 32px;
+        margin-right: -4px;
+        margin-left: 8px;
+    }
+
+    &:hover {
+        color: colors.$cloudWhite;
+        border-color: colors.$cloudWhite;
+
+        svg {
+            color: colors.$cloudWhite;
+            margin-left: 12px;
+            transform: rotate(45deg)
+        }
+    }
+}
