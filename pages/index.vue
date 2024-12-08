@@ -285,8 +285,8 @@ onMounted(() => {
     transform: scale(.9);
     transition: all .3s cubic-bezier(.25,1.07,.6,.9);
     background: url(~/assets/imgs/Frame-2.svg) no-repeat center 100%;
-    padding-bottom: 250px;
-    margin-bottom: 250px;
+    padding-bottom: 124px;
+    margin-bottom: 270px;
 
     &.visible {
         opacity: 1;
@@ -366,6 +366,7 @@ onMounted(() => {
     z-index: 2;
     pointer-events: none;
     padding: 0 125px;
+    margin-bottom: 64px;
 
     div {
         font-size: 18px;
