@@ -78,7 +78,7 @@
     border: 4px solid white;
     font-size: 46px;
     color: white;
-    font-family: 'GT Walsheim Trial';
+    font-family: "GT Walsheim Trial Bd";
     display: flex;
     align-items: center;
     justify-content: center;
