@@ -63,7 +63,7 @@
                 <i class="button"></i>
                 <i class="button"></i>
               </div>
-              <div class="wrapper__overlay">
+              <div class="wrapper__overlay" style="max-height: 450px">
                 <img
                   src="~/assets/imgs/art-screenshot.png"
                   alt="Art Screenshot"
@@ -83,7 +83,7 @@
           </article>
           <article class="card">
             <figure class="wrapper">
-              <div class="wrapper__overlay" style="max-height: 450px">
+              <div class="wrapper__overlay">
                 <div class="card-sm">
                   <div class="card-sm__title">
                     <MdiIcon icon="mdiChatProcessing" />
