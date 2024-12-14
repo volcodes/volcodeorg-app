@@ -3,7 +3,7 @@
     <NuxtRouteAnnouncer />
     <AppHeader />
     <NuxtLoadingIndicator />
-    <div style="color: white; min-height: 500px;">
+    <div style="color: white; min-height: 500px">
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
@@ -12,9 +12,8 @@
   </div>
 </template>
 
-<script>
-</script>
+<script></script>
 
 <style lang="scss">
-@use "~/assets/styles/main.scss";
+@use '~/assets/styles/main.scss';
 </style>

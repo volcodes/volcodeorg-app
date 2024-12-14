@@ -6,6 +6,15 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       // Inter: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-    },
+    }
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          //   additionalData: '@use "@/assets/styles/_vars.scss" as vars;'
+        }
+      }
+    }
+  }
 })
