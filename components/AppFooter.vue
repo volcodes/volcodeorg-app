@@ -1,5 +1,11 @@
 <!-- how to kick start a new component in nuxt 3 -->
 <template>
+  <div id="technologies" class="container">
+    <div v-for="technology in technologiesRef" :key="technology.id">
+      <MdiIcon :icon="technology.icon" />
+      <span>{{ technology.text }}</span>
+    </div>
+  </div>
   <footer class="footer">
     <div class="container">
       <div class="footer__nav">
@@ -20,6 +26,38 @@
     </div>
   </footer>
 </template>
+
+<script setup lang="ts">
+const technologies = [
+  { id: 1, icon: 'mdiLanguageHtml5', text: 'HTML' },
+  { id: 2, icon: 'mdiLanguageCss3', text: 'CSS' },
+  { id: 3, icon: 'mdiSass', text: 'SASS' },
+  { id: 4, icon: 'mdiLanguageJavascript', text: 'JavaScript' },
+  { id: 5, icon: 'mdiVuejs', text: 'Vue.js' },
+  { id: 6, icon: 'mdiLanguageTypescript', text: 'Typescript' },
+  { id: 7, icon: 'mdiTestTube', text: 'Jest & Cypress' },
+  { id: 8, icon: 'mdiNuxt', text: 'Nuxt' },
+  { id: 9, icon: 'mdiNodejs', text: 'Node.js' },
+  { id: 10, icon: 'mdiAbTesting', text: 'A/B Testing' },
+  { id: 11, icon: 'mdiReact', text: 'React' },
+  { id: 12, icon: 'mdiLanguagePhp', text: 'PHP' },
+  { id: 13, icon: 'mdiDatabaseSearch', text: 'MySQL' },
+  { id: 14, icon: 'mdiAws', text: 'AWS' },
+  { id: 15, icon: 'mdiVuetify', text: 'Vuetify' },
+  { id: 16, icon: 'mdiBootstrap', text: 'Bootstrap' },
+  { id: 17, icon: 'mdiTailwind', text: 'Tailwind' },
+  { id: 18, icon: 'mdiWebpack', text: 'Webpack' },
+  { id: 19, icon: 'mdiElectronFramework', text: 'Electron' },
+  { id: 20, icon: 'mdiEslint', text: 'Eslint' },
+  { id: 21, icon: 'mdiDocker', text: 'Docker' },
+  { id: 22, icon: 'mdiFirebase', text: 'Firebase' },
+  { id: 23, icon: 'mdiJquery', text: 'jQuery' },
+  { id: 24, icon: 'mdiKubernetes', text: 'Kubernetes' },
+  { id: 25, icon: 'mdiBitbucket', text: 'Bitbucket' },
+  { id: 26, icon: 'mdiNpm', text: 'NPM' }
+]
+const technologiesRef = ref(technologies)
+</script>
 
 <style lang="scss">
 @use '@/assets/styles/colors' as colors;
@@ -63,6 +101,40 @@
       a {
         color: colors.$textGray;
       }
+    }
+  }
+}
+
+#technologies {
+  margin-top: -316px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  padding: 0 125px;
+  margin-bottom: 64px;
+
+  div {
+    font-size: 18px;
+    font-weight: 500;
+    color: colors.$textGray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    opacity: 1;
+    margin: 4px 8px;
+    // background: colors.$navyBlue;
+    // padding: 2px;
+
+    svg {
+      width: 32px;
+      height: 32px;
+      margin-right: 4px;
+      font-size: 24px;
     }
   }
 }

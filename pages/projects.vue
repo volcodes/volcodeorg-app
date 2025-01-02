@@ -13,7 +13,7 @@
       technology to make a positive impact, whether it's empowering employees,
       simplifying workflows, or enhancing professional presence.
     </p>
-    <div class="project">
+    <!-- <div class="project">
       <div class="container">
         <figure class="no-margin">
           <img
@@ -76,8 +76,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="project">
+    </div> -->
+    <!-- <div class="project">
       <div class="container">
         <figure class="no-margin">
           <img
@@ -138,7 +138,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="project">
       <div class="container">
         <figure class="no-margin">

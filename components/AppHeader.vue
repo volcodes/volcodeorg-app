@@ -22,7 +22,6 @@
 @use '@/assets/styles/vars';
 
 #header {
-  border-bottom: 1px solid rgba(46, 55, 90, 0.3);
   display: grid;
   grid-template-columns: 10% auto;
   align-items: center;
@@ -96,5 +95,18 @@
     position: relative;
     top: 1px;
   }
+}
+
+.page-transition#header {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.2s cubic-bezier(0.38, 0.98, 0.6, 0.9);
+  border-bottom: 1px solid rgba(46, 55, 90, 0.3);
+}
+
+.page-transition--on#header {
+  opacity: 0;
+  transform: translateY(-12px);
+  border-bottom: 1px solid rgba(46, 55, 90, 0);
 }
 </style>

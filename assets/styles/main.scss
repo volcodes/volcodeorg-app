@@ -37,6 +37,7 @@ body {
     align-items: center;
     box-shadow: 0px 0px 0px 0px colors.$lightBlue;
     border-radius: vars.$borderRadius;
+    cursor: pointer;
 
     svg {
         width: 28px;
@@ -222,6 +223,7 @@ p {
     width: fit-content;
     padding-bottom: 2px;
     transition: all .2s;
+    font-family: vars.$fontFamilyBold;
 
     svg {
         transition: all .2s;
