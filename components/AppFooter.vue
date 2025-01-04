@@ -106,7 +106,6 @@ const technologiesRef = ref(technologies)
 }
 
 #technologies {
-  margin-top: -316px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -116,6 +115,7 @@ const technologiesRef = ref(technologies)
   pointer-events: none;
   padding: 0 125px;
   margin-bottom: 64px;
+  margin-top: 3rem;
 
   div {
     font-size: 18px;
@@ -142,9 +142,8 @@ const technologiesRef = ref(technologies)
 @media (max-width: 1024px) {
   #technologies {
     padding: 0 1rem;
-    margin-bottom: 1rem;
-    margin-top: -200px;
-    margin-bottom: 64px;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
   }
 
   .footer {

@@ -232,7 +232,7 @@
     display: flex;
     flex-direction: column;
     padding: 0 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
 
     .hero-bg {
       width: 100%;

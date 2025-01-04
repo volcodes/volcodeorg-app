@@ -1,12 +1,6 @@
 <template>
   <div id="experience">
-    <header class="container">
-      <h1>Experience</h1>
-      <div class="breadcrumb">
-        <NuxtLink to="/">Overview</NuxtLink>
-        <span>Experience</span>
-      </div>
-    </header>
+    <AppPageHeader :title="'Experience'" :pages="pages" />
     <div id="timeline" class="container">
       <article>
         <span class="date">2023</span>
@@ -295,47 +289,22 @@
   </div>
 </template>
 
+<script setup lang="ts">
+const pages = [
+  { name: 'Overview', link: '/' },
+  { name: 'Experience', link: '/experience' },
+];
+</script>
+
 <style lang="scss" scoped>
 @use '~/assets/styles/main.scss';
 @use '~/assets/styles/colors';
-
-#experience {
-  min-height: 500px;
-
-  > header {
-    display: flex;
-    margin: 44px auto;
-    justify-content: space-between;
-    align-items: center;
-
-    .breadcrumb {
-      display: flex;
-      gap: 12px;
-
-      a,
-      span {
-        text-decoration: none;
-        font-size: 18px;
-        color: colors.$cloudWhite;
-        display: flex;
-        align-items: center;
-      }
-
-      a:not(:last-child) {
-        color: colors.$lightBlue;
-        &:after {
-          content: '/';
-          margin-left: 12px;
-        }
-      }
-    }
-  }
-}
+@use '~/assets/styles/vars';
 
 #timeline {
   position: relative;
-  padding-top: 8px;
-  padding-bottom: 64px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
   &:after {
     content: '';
@@ -376,9 +345,11 @@
       transform: translateY(-50%);
       display: flex;
       align-items: center;
-      font-size: 32px;
+      font-size: 2rem;
       font-weight: 600;
       color: colors.$textGray;
+      font-family: vars.$fontFamilyBold;
+      letter-spacing: -0.02em;
 
       &:before {
         content: '';
@@ -395,8 +366,7 @@
 
     .date-extended {
       display: block;
-      // padding: 0 36px;
-      font-size: 16px;
+      font-size: 1.15rem;
       font-weight: 500;
       color: colors.$textGray;
     }
@@ -413,6 +383,39 @@
         text-indent: -144px;
       }
     }
+  }
+}
+
+@media (max-width: 1024px) {
+  #timeline article .date {
+      left: calc(100% + 1rem) !important;
+      transform: translateY(0) !important;
+      font-size: 14px !important;
+      padding-left: 1rem !important;
+      text-indent: 0 !important;
+      width: 60px !important;;
+      box-sizing: border-box;
+  }
+
+  #timeline article {
+      width: 100% !important;
+      max-width: calc(85% - 1rem) !important;
+      padding-left: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+  }
+
+  #timeline:after {
+      transform: translate(0px, 0px) !important;
+      left: 85%;
+  }
+
+  #timeline article.right {
+      margin-left: 0 !important;
+  }
+
+  #timeline article .date:before {
+      left: -7px;
   }
 }
 </style>

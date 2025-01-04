@@ -113,14 +113,14 @@ const achievementsRef = ref(achievements)
 
 @media (max-width: 1024px) {
   #achievements {
-      margin: 0;
-      width: 100%;
-      display: flex;
-      padding: 0 1rem;
-      box-sizing: border-box;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      justify-content: flex-start;
+    margin: 3rem 0;
+    width: 100%;
+    display: flex;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
   }
 
   .achievement {
