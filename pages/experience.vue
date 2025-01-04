@@ -60,7 +60,7 @@
             </span>
           </div>
           <NuxtLink to="/experience" class="cta"
-            >Explore my key accomplishments <MdiIcon icon="mdiArrowTopRight"
+            >Explore my highlights <MdiIcon icon="mdiArrowTopRight"
           /></NuxtLink>
         </div>
       </article>
@@ -130,7 +130,7 @@
             </span>
           </div>
           <NuxtLink to="/projects" class="cta"
-            >Explore my key accomplishments <MdiIcon icon="mdiArrowTopRight"
+            >Explore my highlights <MdiIcon icon="mdiArrowTopRight"
           /></NuxtLink>
         </div>
       </article>
@@ -179,7 +179,7 @@
             </span>
           </div>
           <NuxtLink to="/projects" class="cta"
-            >Explore my key accomplishments <MdiIcon icon="mdiArrowTopRight"
+            >Explore my highlights <MdiIcon icon="mdiArrowTopRight"
           /></NuxtLink>
         </div>
       </article>
