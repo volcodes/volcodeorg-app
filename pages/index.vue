@@ -185,4 +185,27 @@
     }
   }
 }
+
+@media (max-width: 1024px) {
+  #secondary {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    p {
+      padding-left: 1rem;
+      text-align: left;
+
+      br {
+        display: none;
+      }
+    }
+  }
+
+  h2 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    text-align: left;
+    padding: 0 1rem;
+  }
+}
 </style>

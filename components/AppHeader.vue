@@ -4,6 +4,9 @@
     <NuxtLink id="logo" to="/">
       <span>M</span>
     </NuxtLink>
+    <button class="mobile-menu-btn">
+      <MdiIcon icon="mdiMenu" />
+    </button>
     <nav id="nav">
       <NuxtLink to="/">Overview</NuxtLink>
       <NuxtLink to="/experience">Experience</NuxtLink>
@@ -109,4 +112,40 @@
   transform: translateY(-12px);
   border-bottom: 1px solid rgba(46, 55, 90, 0);
 }
+
+.mobile-menu-btn {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+  #nav {
+    display: none;
+  }
+  .mobile-menu-btn {
+    width: auto;
+    height: 52px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 52px;
+  }
+
+  #header {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  #logo {
+    width: 40px;
+    height: 38px;
+    font-size: 33px;
+    border: 3px solid white;
+  }
+}
+
 </style>

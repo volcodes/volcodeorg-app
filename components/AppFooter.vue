@@ -138,4 +138,30 @@ const technologiesRef = ref(technologies)
     }
   }
 }
+
+@media (max-width: 1024px) {
+  #technologies {
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+    margin-top: -200px;
+    margin-bottom: 64px;
+  }
+
+  .footer {
+      padding: 1rem 1.6rem;
+  }
+
+  .container {
+      width: 100%;
+      box-sizing: border-box;
+  }
+
+  .footer__nav {
+      width: auto;
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+  }
+}
 </style>
