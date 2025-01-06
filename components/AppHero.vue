@@ -1,32 +1,30 @@
 <template>
-    <div id="hero" class="container">
-      <img
-        src="~/assets/imgs/Frame.svg"
-        alt="Hero Background"
-        class="hero-bg"
-      />
-      <span>Hi, I’m Mehmet</span>
-      <h1>
-        I transform ideas into <br />
-        digital solutions.
-      </h1>
-      <p>
-        I specialise in turning concepts into user-centric applications that are
-        <em>modern</em>, <em>scalable</em>, and <em>impactful</em>.
-      </p>
-      <p>
-        With over a decade of experience - I pursue my passion by optimizing workflows, modernizing systems, and mentoring people to craft high-quality digital solutions that drive results.
-      </p>
-      <section id="ctaButtons">
-        <!-- TODO: add a modal with Teleport -->
-        <button class="btn btn--filled">Explore My Key Accomplishments</button>
-        <button class="btn">Watch My Introduction</button>
-      </section>
-      <div class="scroll-indicator">
-        <div class="scroll-indicator__icon"></div>
-        <em>Scroll down to see more</em>
-      </div>
+  <div id="hero" class="container">
+    <img src="~/assets/imgs/Frame.svg" alt="Hero Background" class="hero-bg" />
+    <span>Hi, I’m Mehmet</span>
+    <h1>
+      I transform ideas into <br />
+      digital solutions.
+    </h1>
+    <p>
+      I specialise in turning concepts into user-centric applications that are
+      <em>modern</em>, <em>scalable</em>, and <em>impactful</em>.
+    </p>
+    <p>
+      With over a decade of experience - I pursue my passion by optimizing
+      workflows, modernizing systems, and mentoring people to craft high-quality
+      digital solutions that drive results.
+    </p>
+    <section id="ctaButtons">
+      <!-- TODO: add a modal with Teleport -->
+      <button class="btn btn--filled">Explore My Key Accomplishments</button>
+      <button class="btn">Watch My Introduction</button>
+    </section>
+    <div class="scroll-indicator">
+      <div class="scroll-indicator__icon"></div>
+      <em>Scroll down to see more</em>
     </div>
+  </div>
 </template>
 
 <style lang="scss">
@@ -73,7 +71,7 @@
     line-height: 28px;
     font-weight: 400;
     color: colors.$blueSky;
-    font-family: "Inter";
+    font-family: 'Inter';
     text-align: center;
     margin: 18px 0 -12px 0;
     padding: 0 100px;
@@ -82,7 +80,7 @@
     transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.38, 0.98, 0.6, 0.9);
     transition-delay: 0.55s;
-  
+
     em {
       text-decoration: underline;
       font-size: normal;
@@ -138,14 +136,14 @@
   margin: 32px 0;
   color: colors.$textGray;
   font-size: 16px;
-  
+
   &__icon {
     width: 24px;
     height: 40px;
     border: 2px solid colors.$textGray;
     border-radius: 14px;
     position: relative;
-    
+
     &::before {
       content: '';
       width: 4px;
@@ -162,7 +160,7 @@
   }
 
   em {
-    font-family: "Inter";
+    font-family: 'Inter';
     font-size: 16px;
     font-weight: 400;
     color: colors.$textGray;
@@ -177,7 +175,7 @@
   }
   50% {
     opacity: 1;
-    transform: translate(-50%, 10px); 
+    transform: translate(-50%, 10px);
   }
   100% {
     opacity: 0;
@@ -226,13 +224,12 @@
 //     }
 // }
 
-
 @media (max-width: 1024px) {
   #hero {
     display: flex;
     flex-direction: column;
     padding: 0 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
 
     .hero-bg {
       width: 100%;
@@ -252,8 +249,8 @@
   }
   #hero p {
     font-size: 1.15rem;
-    line-height: 1.70rem;
-    margin-top: .3rem;
+    line-height: 1.7rem;
+    margin-top: 0.3rem;
     margin-bottom: 1rem;
     text-align: left;
     padding: 0;
@@ -272,7 +269,7 @@
     margin-top: 1rem;
   }
   #hero p:nth-child(5) {
-    font-size: .9rem;
+    font-size: 0.9rem;
     line-height: 1.2rem;
     padding: 0 0;
     text-align: left;

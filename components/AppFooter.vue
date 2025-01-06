@@ -54,7 +54,12 @@ const technologies = [
   { id: 23, icon: 'mdiJquery', text: 'jQuery' },
   { id: 24, icon: 'mdiKubernetes', text: 'Kubernetes' },
   { id: 25, icon: 'mdiBitbucket', text: 'Bitbucket' },
-  { id: 26, icon: 'mdiNpm', text: 'NPM' }
+  { id: 26, icon: 'mdiNpm', text: 'NPM' },
+  { id: 27, icon: 'mdiWordpress', text: 'WordPress' },
+  { id: 30, icon: 'mdiLanguageC', text: '' },
+  { id: 28, icon: 'mdiLanguageJava', text: 'Java' },
+  { id: 29, icon: 'mdiLanguageCsharp', text: '' },
+  { id: 31, icon: 'mdiLanguageCpp', text: '' },
 ]
 const technologiesRef = ref(technologies)
 </script>
@@ -106,7 +111,6 @@ const technologiesRef = ref(technologies)
 }
 
 #technologies {
-  margin-top: -316px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -116,6 +120,7 @@ const technologiesRef = ref(technologies)
   pointer-events: none;
   padding: 0 125px;
   margin-bottom: 64px;
+  margin-top: 3rem;
 
   div {
     font-size: 18px;
@@ -142,26 +147,25 @@ const technologiesRef = ref(technologies)
 @media (max-width: 1024px) {
   #technologies {
     padding: 0 1rem;
-    margin-bottom: 1rem;
-    margin-top: -200px;
-    margin-bottom: 64px;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
   }
 
   .footer {
-      padding: 1rem 1.6rem;
+    padding: 1rem 1.6rem;
   }
 
   .container {
-      width: 100%;
-      box-sizing: border-box;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .footer__nav {
-      width: auto;
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
+    width: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
 }
 </style>

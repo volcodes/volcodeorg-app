@@ -1,15 +1,21 @@
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <AppHeader class="page-transition" :class="{
-      'page-transition--on': isPageTransitionOff
-    }" />
+    <AppHeader
+      class="page-transition"
+      :class="{
+        'page-transition--on': isPageTransitionOff
+      }"
+    />
     <NuxtLoadingIndicator />
-    <div style="color: white; min-height: 500px;">
+    <div style="color: white; min-height: 500px">
       <NuxtLayout>
-        <NuxtPage class="page-transition" :class="{
-          'page-transition--on': isPageTransitionOff
-        }"/>
+        <NuxtPage
+          class="page-transition"
+          :class="{
+            'page-transition--on': isPageTransitionOff
+          }"
+        />
       </NuxtLayout>
     </div>
     <AppFooter />
@@ -17,17 +23,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const isPageTransitionOff = ref(true);
+const isPageTransitionOff = ref(true)
 
 onMounted(() => {
   setTimeout(() => {
-    isPageTransitionOff.value = false;
-  }, 200);
+    isPageTransitionOff.value = false
+  }, 200)
 })
 
 router.beforeEach((to, from, next) => {
@@ -38,7 +44,7 @@ router.afterEach((to, from, next) => {
   setTimeout(() => {
     isPageTransitionOff.value = false
     next()
-  }, 200);
+  }, 200)
 })
 </script>
 

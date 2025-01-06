@@ -3,9 +3,7 @@
     <AppHero />
     <AppAchievements />
 
-    <div
-      id="secondary"
-    >
+    <div id="secondary">
       <div class="container">
         <h2><em>Empowering Teams</em> with Technology and Collaboration</h2>
         <p class="text-center">
@@ -98,8 +96,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss">
 @use '~/assets/styles/colors' as colors;
@@ -109,13 +106,8 @@
   padding-top: 144px;
   background: url(~/assets/imgs/Frame-2.svg) repeat-x center 100%;
   padding-bottom: 124px;
-  margin-bottom: 270px;
   transition: all 0.3s cubic-bezier(0.25, 1.07, 0.6, 0.9);
   transition-delay: 0.8s;
-
-  .grid {
-    margin-top: 64px;
-  }
 }
 
 .page-transition--on {

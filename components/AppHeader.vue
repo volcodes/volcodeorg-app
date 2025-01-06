@@ -127,6 +127,7 @@
   .mobile-menu-btn {
     width: auto;
     height: 52px;
+    padding: 0;
     background: transparent;
     border: none;
     color: white;
@@ -137,7 +138,7 @@
     height: 70px;
     display: flex;
     justify-content: space-between;
-    padding: 0 1rem;
+    padding: 0px 0.5rem 0px 1rem;
   }
 
   #logo {
@@ -147,5 +148,4 @@
     border: 3px solid white;
   }
 }
-
 </style>
