@@ -3,9 +3,7 @@
     <AppHero />
     <AppAchievements />
 
-    <div
-      id="secondary"
-    >
+    <div id="secondary">
       <div class="container">
         <h2><em>Empowering Teams</em> with Technology and Collaboration</h2>
         <p class="text-center">
@@ -98,8 +96,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss">
 @use '~/assets/styles/colors' as colors;

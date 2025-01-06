@@ -1,18 +1,11 @@
 <template>
   <div id="projects">
-    <header class="container">
-      <h1>Projects</h1>
-      <div class="breadcrumb">
-        <NuxtLink to="/">Overview</NuxtLink>
-        <span>Projects</span>
-      </div>
-    </header>
+    <AppPageHeader :title="'Projects'" :pages="pages" />
     <p class="container explanation">
       I believe in creating accessible, open-source tools that solve real-world
-      problems. Each project here represents my commitment to leveraging
-      technology to make a positive impact, whether it's empowering employees,
-      simplifying workflows, or enhancing professional presence.
+      problems. Each project here represents my commitment to leveraging technology to make a positive impact, whether it's empowering employees, simplifying workflows, or crafting applications that address genuine needs of users.
     </p>
+    <!-- sound effects on https://www.youtube.com/watch?v=Eq9R1_JQDCA&ab_channel=NoraEnPure 14:00 -->
     <!-- <div class="project">
       <div class="container">
         <figure class="no-margin">
@@ -275,48 +268,24 @@
   </div>
 </template>
 
+<script setup lang="ts">
+const pages = [
+  { name: 'Overview', link: '/' },
+  { name: 'Projects', link: '/projects' }
+]
+</script>
+
 <style lang="scss" scoped>
 @use '~/assets/styles/main.scss';
 @use '~/assets/styles/colors';
 @use '~/assets/styles/vars';
 
 #projects {
-  min-height: 500px;
-
-  > header {
-    display: flex;
-    margin: 44px auto;
-    justify-content: space-between;
-    align-items: center;
-
-    .breadcrumb {
-      display: flex;
-      gap: 12px;
-
-      a,
-      span {
-        text-decoration: none;
-        font-size: 18px;
-        color: colors.$cloudWhite;
-        display: flex;
-        align-items: center;
-      }
-
-      a:not(:last-child) {
-        color: colors.$lightBlue;
-        &:after {
-          content: '/';
-          margin-left: 12px;
-        }
-      }
-    }
-  }
-
   .explanation {
-    font-size: 26px;
-    line-height: 34px;
-    font-family: vars.$fontFamilyThick;
-    color: colors.$textGray;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    font-family: vars.$fontFamilyRegular;
+    color: colors.$blueSky;
   }
 
   .project {
@@ -333,6 +302,18 @@
       max-width: 45%;
       max-height: 650px;
       overflow: hidden;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(2, 6, 23, 0.65);
+        box-shadow: inset 0 0 50px rgba(2, 6, 23, .3);
+      }
 
       img {
         width: 100%;
@@ -405,6 +386,60 @@
 
   .cta {
     margin-right: 14px;
+  }
+}
+
+@media (max-width: 1024px) {
+  #projects .explanation {
+    padding: 0 1rem;
+    color: colors.$textGray;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-family: vars.$fontFamilyRegular;
+  }
+  .project {
+    margin: 1rem 0;
+    padding: 0 !important;
+  }
+
+  #projects .project .container {
+    flex-direction: column !important;
+  }
+
+  #projects .project figure {
+    max-width: 100% !important;
+    max-height: 280px !important;
+  }
+
+  #projects .project .project-info {
+    max-width: 100% !important;
+    padding: 1rem;
+  }
+
+  #projects .project .project-info > strong {
+    font-size: 1.1rem;
+    font-size: 'GT Walsheim Trial Bl' !important;
+  }
+
+  #projects .project .project-info > span {
+    font-size: 2rem !important;
+    line-height: 2.15rem !important;
+    margin: 1rem 0 !important;
+  }
+
+  #projects .project .project-info > p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .project-links .cta {
+    margin-top: 0;
+    font-size: 1.15rem;
+    line-height: 1.55rem;
+  }
+
+  .cta svg {
+    height: 28px !important;
   }
 }
 </style>

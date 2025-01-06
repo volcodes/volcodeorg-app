@@ -1,63 +1,73 @@
 <template>
-    <div id="page-header" class="container">
-      <h1>{{ title }}</h1>
-      <div class="breadcrumb">
-        <NuxtLink to="/">Overview</NuxtLink>
-        <span>Experience</span>
-      </div>
+  <div id="page-header" class="container">
+    <h1>{{ title }}</h1>
+    <div class="breadcrumb">
+      <NuxtLink to="/">Overview</NuxtLink>
+      <span>Experience</span>
     </div>
+  </div>
 </template>
 
 <script setup lang="ts">
 defineProps<{
-  title: string;
+  title: string
   pages: {
-    name: string;
-    link: string;
-  }[];
-}>();
+    name: string
+    link: string
+  }[]
+}>()
 </script>
 
 <style lang="scss" scoped>
 @use '~/assets/styles/colors';
 
 #page-header {
+  display: flex;
+  margin: 3rem auto 1rem auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0 .2rem 0;
+
+  h1 {
+    font-size: 3.5rem;
+    line-height: 4.5rem;
+    color: colors.$cloudWhite;
+  }
+
+  .breadcrumb {
     display: flex;
-    margin: 3rem auto;
-    justify-content: space-between;
-    align-items: center;
+    gap: 12px;
 
-    .breadcrumb {
+    a,
+    span {
+      text-decoration: none;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      color: colors.$cloudWhite;
       display: flex;
-      gap: 12px;
+      align-items: center;
+    }
 
-      a,
-      span {
-        text-decoration: none;
-        font-size: 18px;
-        color: colors.$cloudWhite;
-        display: flex;
-        align-items: center;
-      }
-
-      a:not(:last-child) {
-        color: colors.$lightBlue;
-        &:after {
-          content: '/';
-          margin-left: 12px;
-        }
+    a:not(:last-child) {
+      color: colors.$lightBlue;
+      &:after {
+        content: '/';
+        margin-left: 12px;
       }
     }
+  }
 }
 
 @media (max-width: 1024px) {
-    #page-header {
-        margin: 1rem auto;
-        flex-direction: column;
+  #page-header {
+    margin: 1rem auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 1rem;
+  }
 
-        h1 {
-            margin-bottom: 1rem;
-        }
-    }
+  .breadcrumb {
+    padding-bottom: 2rem;
+  }
 }
 </style>

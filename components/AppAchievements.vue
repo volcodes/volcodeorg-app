@@ -1,10 +1,14 @@
 <template>
-    <div id="achievements" class="container">
-        <div v-for="achievement in achievementsRef" :key="achievement.id" class="achievement">
-            <i><MdiIcon :icon="achievement.icon" /></i>
-            <span>{{ achievement.text }}</span>
-        </div>
+  <div id="achievements" class="container">
+    <div
+      v-for="achievement in achievementsRef"
+      :key="achievement.id"
+      class="achievement"
+    >
+      <i><MdiIcon :icon="achievement.icon" /></i>
+      <span>{{ achievement.text }}</span>
     </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -68,7 +72,6 @@ const achievementsRef = ref(achievements)
 @use '@/assets/styles/colors' as colors;
 @use '@/assets/styles/vars';
 
-
 #achievements {
   display: flex;
   flex-direction: row;
@@ -124,28 +127,28 @@ const achievementsRef = ref(achievements)
   }
 
   .achievement {
-      flex-direction: column;
-      background: #ffffff;
-      border-radius: 3px;
-      box-sizing: border-box;
-      padding: .6rem .6rem;
-      width: auto;
-      max-width: 50%;
-      text-align: center;
-      min-width: 200px;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 0.6rem 0.6rem;
+    width: auto;
+    max-width: 50%;
+    text-align: center;
+    min-width: 200px;
 
-      &:nth-child(3n) {
-        width: 150px;
-      }
+    &:nth-child(3n) {
+      width: 150px;
+    }
   }
 
   #achievements .achievement i {
-      margin-bottom: 12px;
+    margin-bottom: 12px;
   }
 
   #achievements .achievement span {
-      color: #0c0c0c;
-      line-height: 25px;
+    color: #0c0c0c;
+    line-height: 25px;
   }
 }
 </style>

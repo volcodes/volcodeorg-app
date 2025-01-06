@@ -1,432 +1,439 @@
-@use "vars";
-@use "colors";
-@use "fonts";
+@use 'vars';
+@use 'colors';
+@use 'fonts';
 
 *:not(.non-antialiased) {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-    background:  colors.$navyBlue;
-    padding: 0;
-    margin: 0;
-    font-family: vars.$fontFamily;
+  background: colors.$navyBlue;
+  padding: 0;
+  margin: 0;
+  font-family: vars.$fontFamily;
 }
 
 .no-margin {
-    margin: 0;
+  margin: 0;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 1200px;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 100%;
+  }
 }
 
 .btn {
-    font-family: vars.$fontFamilyRegular;
-    border: 1px solid colors.$cloudWhite;
-    color: colors.$cloudWhite;
-    line-height: 44px;
-    font-size: 18px;
-    padding: 0 24px;
-    cursor: pointer;
-    background-color: transparent;
-    transition: .2s cubic-bezier(.38,.98,.6,.9);
-    display: flex;
-    align-items: center;
-    box-shadow: 0px 0px 0px 0px colors.$lightBlue;
-    border-radius: vars.$borderRadius;
-    cursor: pointer;
+  font-family: vars.$fontFamilyRegular;
+  border: 1px solid colors.$cloudWhite;
+  color: colors.$cloudWhite;
+  line-height: 44px;
+  font-size: 18px;
+  padding: 0 24px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.2s cubic-bezier(0.38, 0.98, 0.6, 0.9);
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 0px 0px colors.$lightBlue;
+  border-radius: vars.$borderRadius;
+  cursor: pointer;
 
-    svg {
-        width: 28px;
-        height: 28px;
-        margin-right: 8px;
-    }
+  svg {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+  }
+
+  &:hover {
+    color: white;
+    border-color: white;
+    transform: translateX(-2px) translateY(-2px);
+    box-shadow: 4px 4px 0px 0px colors.$lightBlue;
+  }
+
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+
+  &--filled {
+    background-color: colors.$lightBlue;
+    box-shadow: 0px 0px 0px 0px colors.$cloudWhite;
+    border: none;
 
     &:hover {
-        color: white;
-        border-color: white;
-        transform: translateX(-2px) translateY(-2px);
-        box-shadow: 4px 4px 0px 0px colors.$lightBlue;
+      box-shadow: 4px 4px 0px 0px colors.$cloudWhite;
     }
-
-    &:active {
-        position: relative;
-        top: 1px;
-    }
-
-    &--filled {
-        background-color: colors.$lightBlue;
-        box-shadow: 0px 0px 0px 0px colors.$cloudWhite;
-        border: none;
-
-        &:hover {
-            box-shadow: 4px 4px 0px 0px colors.$cloudWhite;
-        }
-    }
+  }
 }
 
 h1 {
-    font-size: 64px;
-    line-height: 72px;
-    letter-spacing: -3px;
-    text-align: center;
-    margin: 0;
-    font-family: vars.$fontFamilyBold;
+  font-size: 64px;
+  line-height: 72px;
+  letter-spacing: -3px;
+  text-align: center;
+  margin: 0;
+  font-family: vars.$fontFamilyBold;
 }
 
 h2 {
-    font-family: vars.$fontFamilyBold;
-    font-size: 48px;
-    line-height: 56px;
-    letter-spacing: -3px;
-    text-align: center;
-    margin: 0;
+  font-family: vars.$fontFamilyBold;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -3px;
+  text-align: center;
+  margin: 0;
 
-    em {
-        font-style: normal;
-        color: colors.$cloudWhite;
-        display: block;
-    }
+  em {
+    font-style: normal;
+    color: colors.$cloudWhite;
+    display: block;
+  }
 }
 
 p {
-    font-size: 18px;
-    color: colors.$textGray;
-    line-height: 24px;
+  font-size: 18px;
+  color: colors.$textGray;
+  line-height: 24px;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    grid-gap: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 32px;
 }
 
 .card {
-    background-color: colors.$darkBlue;
-    border-radius: vars.$cardBorderRadius;
-    padding: 36px;
+  background-color: colors.$darkBlue;
+  border-radius: vars.$cardBorderRadius;
+  padding: 36px;
 
-    h3 {
-        font-size: 28px;
-        line-height: 40px;
-        margin: 0;
-        font-family: vars.$fontFamilyBold;
-    }
+  h3 {
+    font-size: 28px;
+    line-height: 40px;
+    margin: 0;
+    font-family: vars.$fontFamilyBold;
+  }
 
-    strong {
-        font-family: vars.$fontFamilyBold;
-        font-size: 1.5rem;
-        line-height: 2rem;
-        margin: 0;
-    }
+  strong {
+    font-family: vars.$fontFamilyBold;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin: 0;
+  }
 
-    span {
-        font-size: 1.1rem;
-        line-height: 1.5rem;
-        display: block;
-        margin: 0;
-        color: #4a4c64;
-        font-weight: 500;
-    }
+  span {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    display: block;
+    margin: 0;
+    color: #4a4c64;
+    font-weight: 500;
+  }
 
-    ul {
-        margin-top: 8px;
-        font-size: 1.2rem;
-        line-height: 1.65rem;
-        color: colors.$textGray;
-        padding-left: 12px;
-    }
+  ul {
+    margin-top: 8px;
+    font-size: 1.2rem;
+    line-height: 1.65rem;
+    color: colors.$textGray;
+    padding-left: 12px;
+  }
 }
 
 .card-sm {
-    background: colors.$navyBlue;
-    padding: 24px;
-    min-height: 100px;
-    width: 100%;
-    border: 1px solid #1A1F3C;
-    border-radius: calc(vars.$cardBorderRadius / 2);
-    box-sizing: border-box;
-    line-height: 40px;
-    font-size: 18px;
-    margin-bottom: 12px;
-    pointer-events: none;
+  background: colors.$navyBlue;
+  padding: 24px;
+  min-height: 100px;
+  width: 100%;
+  border: 1px solid #1a1f3c;
+  border-radius: calc(vars.$cardBorderRadius / 2);
+  box-sizing: border-box;
+  line-height: 40px;
+  font-size: 18px;
+  margin-bottom: 12px;
+  pointer-events: none;
 
-    &__title {
-        display: flex;
-        border-bottom: 1px solid #1A1F3C;
-        padding-bottom: 16px;
-
-        strong {
-            font-weight: 500;
-        }
-    
-        svg {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(to bottom, colors.$lightBlue, #0039AF 100%);
-            border-radius: 100px;
-            box-sizing: border-box;
-            padding: 8px;
-            margin-right: 12px;
-        }
-
-        &--schoolPlatform {
-            svg {
-                background: linear-gradient(to bottom, #e37294, #a53254 100%);
-            }
-        }
-        &--realEstatePlatform {
-            svg {
-                background: linear-gradient(to bottom, #a80d0d, #760909 100%);
-            }
-        }
-    }
-
-    &__content {
-        display: flex;
-        align-items: center;
-        padding: 14px 0 0px 0;
-
-        img {
-            width: 32px;
-            height: 32px;
-            border-radius: 100px;
-            margin-right: -7px;
-            box-sizing: border-box;
-            border: 2px solid colors.$darkBlue;
-        }
-
-        span {
-            margin-left: 18px;
-            font-size: 14px;
-            color: colors.$textGray
-        }
-    }
-}
-
-@media (max-width: 1024px) {
-    .grid {
-        grid-template-columns: repeat(1, 1fr);
-        gap: 1rem;
-        padding: 0 1rem;
-        margin-top: .2rem;
-
-        .wrapper {
-            max-height: 200px;
-
-            .wrapper__header {
-                padding: 0 1rem;
-                height: 40px;
-
-                i {
-                    width: 8px;
-                    height: 8px;
-                }
-            }
-        }
-    }
-    .card {
-        padding: 1.3rem 1.2rem;
-        border-radius: 8px;
-
-        h3 {
-            font-size: 1.25rem;
-            line-height: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        p {
-            font-size: 1rem;
-            line-height: 1.5rem;
-            margin-top: 0.5rem;
-            margin-left: 0rem;
-            padding-left: 0rem !important;
-        }
-
-        strong {
-            font-size: 1.25rem;
-            line-height: 1.5rem;
-        }
-
-        span {
-            font-size: 1.15rem;
-            line-height: 1.5rem;
-        }
-
-        ul {
-            font-size: .85rem;
-            line-height: 1.25rem;
-            padding-left: .5rem;
-            margin-left: .5rem;
-        }
-
-        &:nth-child(2) {
-            .wrapper__overlay {
-                max-height: 360px;
-            }
-            .wrapper {
-                max-height: 360px;
-            }
-        }
-    }
-    .card-sm {
-        padding: 1rem;
-        border-radius: 4px;
-
-        .card-sm__title {
-            align-items: center;
-            padding-bottom: .5rem;
-
-            svg {
-                width: 32px;
-                height: 32px;
-            }
-        }
-
-        .card-sm__title strong {
-            font-size: 1rem;
-            line-height: 1.5rem;
-        }
-
-        .card-sm__content {
-            padding-top: .4rem;
-
-            img {
-                width: 22px;
-                height: 22px;
-            }
-
-            span {
-                font-size: 12px;
-                color: colors.$textGray;
-            }
-        }
-    }
-}
-
-.cta {
-    font-size: 18px;
-    color: colors.$lightBlue;
-    text-decoration: none;
-    line-height: 32px;
+  &__title {
     display: flex;
-    font-weight: 600;
-    align-items: flex-end;
-    border-bottom: 2px solid colors.$lightBlue;
-    width: fit-content;
-    padding-bottom: 2px;
-    transition: all .2s;
-    font-family: vars.$fontFamilyBold;
+    border-bottom: 1px solid #1a1f3c;
+    padding-bottom: 16px;
+
+    strong {
+      font-weight: 500;
+    }
 
     svg {
-        transition: all .2s;
-        height: 32px;
-        margin-right: -4px;
-        margin-left: 8px;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(to bottom, colors.$lightBlue, #0039af 100%);
+      border-radius: 100px;
+      box-sizing: border-box;
+      padding: 8px;
+      margin-right: 12px;
     }
 
-    &:hover {
-        color: colors.$cloudWhite;
-        border-color: colors.$cloudWhite;
-
-        svg {
-            color: colors.$cloudWhite;
-            margin-left: 12px;
-            transform: rotate(45deg)
-        }
-    }
-}
-
-@media (max-width: 1024px) {
-    .cta {
-        font-size: 1.25rem;
-        line-height: 1.5rem;
-        margin-top: 1rem;
-    }
-    .card .cta {
-        font-size: 1rem;
-        line-height: 1.25rem;
-        
-        svg {
-            height: 24px;
-            margin-right: -2px;
-            margin-left: 4px;
-        }
-    }
-}
-
-.technologies {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 16px 0;
-    position: relative;
-
-    img {
-        width: 40px;
-        height: 40px;
-    }
-  
-    span {
-      width: 24px;
-      height: 24px;
-      position: relative;
-      margin-right: 4px;
-  
+    &--schoolPlatform {
       svg {
-        transition: all 0.3s;
-        width: 24px;
-        height: 24px;
+        background: linear-gradient(to bottom, #e37294, #a53254 100%);
       }
-  
-      span {
-        opacity: 0;
-        text-wrap: nowrap;
-        pointer-events: none;
-        position: absolute;
-        left: 50%;
-        top: -32px;
-        transform: translateX(-50%);
-        font-size: 12px;
-        color: colors.$cloudWhite;
-        background-color: colors.$darkBlue;
-        width: fit-content;
-        padding: 0 8px;
-        border: 1px solid colors.$lightBlue;
-        transition: all 0.3s;
-        height: 24px;
-        line-height: 24px;
-      }
-  
-      &:hover {
-        svg {
-          color: white;
-        }
-        span {
-          opacity: 1;
-        }
+    }
+    &--realEstatePlatform {
+      svg {
+        background: linear-gradient(to bottom, #a80d0d, #760909 100%);
       }
     }
   }
 
-@media (max-width: 1024px) {
-    .technologies {
-        span {
-            width: 28px;
-            height: 28px;
-            margin-right: .5rem;
-            margin-bottom: .5rem;
+  &__content {
+    display: flex;
+    align-items: center;
+    padding: 14px 0 0px 0;
 
-            svg {
-                width: 28px;
-                height: 28px;
-            }
-        }
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 100px;
+      margin-right: -7px;
+      box-sizing: border-box;
+      border: 2px solid colors.$darkBlue;
     }
+
+    span {
+      margin-left: 18px;
+      font-size: 14px;
+      color: colors.$textGray;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    padding: 0 1rem;
+    margin-top: 0.2rem;
+
+    .wrapper {
+      max-height: 200px;
+
+      .wrapper__header {
+        padding: 0 1rem;
+        height: 40px;
+
+        i {
+          width: 8px;
+          height: 8px;
+        }
+      }
+    }
+  }
+  .card {
+    padding: 1.3rem 1.2rem;
+    border-radius: 8px;
+
+    h3 {
+      font-size: 1.25rem;
+      line-height: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      margin-top: 0.5rem;
+      margin-left: 0rem;
+      padding-left: 0rem !important;
+    }
+
+    strong {
+      font-size: 1.25rem;
+      line-height: 1.5rem;
+    }
+
+    span {
+      font-size: 1.15rem;
+      line-height: 1.5rem;
+    }
+
+    ul {
+      font-size: 0.85rem;
+      line-height: 1.25rem;
+      padding-left: 0.5rem;
+      margin-left: 0.5rem;
+    }
+
+    &:nth-child(2) {
+      .wrapper__overlay {
+        max-height: 360px;
+      }
+      .wrapper {
+        max-height: 360px;
+      }
+    }
+  }
+  .card-sm {
+    padding: 1rem;
+    border-radius: 4px;
+
+    .card-sm__title {
+      align-items: center;
+      padding-bottom: 0.5rem;
+
+      svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    .card-sm__title strong {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+
+    .card-sm__content {
+      padding-top: 0.4rem;
+
+      img {
+        width: 22px;
+        height: 22px;
+      }
+
+      span {
+        font-size: 12px;
+        color: colors.$textGray;
+      }
+    }
+  }
+}
+
+.cta {
+  font-size: 18px;
+  color: colors.$lightBlue;
+  text-decoration: none;
+  line-height: 32px;
+  display: flex;
+  font-weight: 600;
+  align-items: flex-end;
+  border-bottom: 2px solid colors.$lightBlue;
+  width: fit-content;
+  padding-bottom: 2px;
+  transition: all 0.2s;
+  font-family: vars.$fontFamilyBold;
+
+  svg {
+    transition: all 0.2s;
+    height: 32px;
+    margin-right: -4px;
+    margin-left: 8px;
+  }
+
+  &:hover {
+    color: colors.$cloudWhite;
+    border-color: colors.$cloudWhite;
+
+    svg {
+      color: colors.$cloudWhite;
+      margin-left: 12px;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .cta {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    margin-top: 1rem;
+  }
+  .card .cta {
+    font-size: 1rem;
+    line-height: 1.25rem;
+
+    svg {
+      height: 24px;
+      margin-right: -2px;
+      margin-left: 4px;
+    }
+  }
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 16px 0;
+  position: relative;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+
+  span {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    margin-right: 4px;
+
+    svg {
+      transition: all 0.3s;
+      width: 24px;
+      height: 24px;
+    }
+
+    span {
+      opacity: 0;
+      text-wrap: nowrap;
+      pointer-events: none;
+      position: absolute;
+      left: 50%;
+      top: -32px;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: colors.$cloudWhite;
+      background-color: colors.$darkBlue;
+      width: fit-content;
+      padding: 0 8px;
+      border: 1px solid colors.$lightBlue;
+      transition: all 0.3s;
+      height: 24px;
+      line-height: 24px;
+    }
+
+    &:hover {
+      svg {
+        color: white;
+      }
+      span {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .technologies {
+    span {
+      width: 28px;
+      height: 28px;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+
+      svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
 }

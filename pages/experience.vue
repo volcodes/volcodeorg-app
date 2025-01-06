@@ -1,6 +1,9 @@
 <template>
   <div id="experience">
     <AppPageHeader :title="'Experience'" :pages="pages" />
+    <p class="container explanation">
+      With a solid foundation in computer programming and web technologies, I have been building my expertise in developing scalable and user-friendly applications, mentored developers, and improved operational efficiency in agile teams.
+    </p>
     <div id="timeline" class="container">
       <article>
         <span class="date">2023</span>
@@ -286,14 +289,114 @@
         </div>
       </article>
     </div>
+    <div class="education">
+      <div class="container">
+        <h2>Education</h2>
+      </div>
+    </div>
+    <p class="container explanation">
+      Combining education and self-learning since 2010, I’ve developed skills in programming, web tech, and agile workflows.
+    </p>
+
+    <div id="timeline" class="container">
+      <article>
+        <span class="date">2017</span>
+        <span class="date-extended">2014 - 2017, Turkey</span>
+        <div class="card">
+          <strong>Computer Programming</strong>
+          <span>Istanbul Arel University</span>
+          <ul>
+            <li>Computer Technologies</li>
+            <li>Algorithm and Programming with Java</li>
+            <li>Web Design</li>
+            <li>Critical Thinking, Creativity, and Entrepreneurship</li>
+            <li>Professional Liability and Ethics</li>
+            <li>Internet Programming with C#, CSS and HTML5</li>
+            <li>Visual Programming with Javascript</li>
+            <li>Object-based Programming with Java</li>
+            <li>Database Management Systems with SQL & PL/SQL</li>
+            <li>Computer Network Systems</li>
+            <li>Making two final projects one for producing a car with Arduino and two for building a web app with HTML, CSS and C#</li>
+          </ul>
+          <div class="technologies">
+            <span>
+              <MdiIcon icon="mdiLanguageJava" />
+              <span>Java</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageCsharp" />
+              <span>C#</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiDatabaseSearch" />
+              <span>SQL & PL/SQL</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageJavascript" />
+              <span>JavaScript</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageHtml5" />
+              <span>HTML5</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageCss3" />
+              <span>CSS</span>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="right">
+        <span class="date">2013</span>
+        <span class="date-extended">2009 - 2013, Turkey</span>
+        <div class="card">
+          <strong>Web Programming</strong>
+          <span>Inonu Technical High School</span>
+          <ul>
+            <li>Hardware Maintenance</li>
+            <li>Programming with C and C++</li>
+            <li>Web Programming with HTML, CSS, PHP, JavaScript and jQuery</li>
+            <li>Database Management Systems with MySQL</li>
+            <li>Computer Network Systems</li>
+          </ul>
+          <div class="technologies">
+            <span>
+              <MdiIcon icon="mdiLanguagePhp" />
+              <span>PHP</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiDatabaseSearch" />
+              <span>MySQL</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageJavascript" />
+              <span>JavaScript</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiWordpress" />
+              <span>WordPress</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageHtml5" />
+              <span>HTML5</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageCss3" />
+              <span>CSS</span>
+            </span>
+          </div>
+        </div>
+      </article>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const pages = [
   { name: 'Overview', link: '/' },
-  { name: 'Experience', link: '/experience' },
-];
+  { name: 'Experience', link: '/experience' }
+]
 </script>
 
 <style lang="scss" scoped>
@@ -303,7 +406,6 @@ const pages = [
 
 #timeline {
   position: relative;
-  padding-top: 1rem;
   padding-bottom: 1rem;
 
   &:after {
@@ -384,38 +486,121 @@ const pages = [
       }
     }
   }
+  
+  .technologies:last-child {
+    margin-bottom: 0;
+  }
 }
+
+.explanation {
+  color: colors.$blueSky;
+}
+
+.education {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 300px;
+  background: url('~/assets/imgs/education.png') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  box-sizing: border-box;
+  padding: 1rem;
+  box-sizing: border-box;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 6, 23, 0.30);
+    box-shadow: inset 0 0 50px rgba(2, 6, 23, .3);
+    z-index: 1;
+  }
+  
+  h2 {
+    background-size: cover;
+    position: relative;
+    z-index: 2;
+    padding: 0;
+    font-size: 4.5rem;
+    line-height: 5rem;
+    color: colors.$cloudWhite;
+    text-shadow: 2px 2px 0px colors.$navyBlue;
+  }
+}
+
+
+p {
+    color: colors.$textGray;
+    font-weight: 500;
+    margin-top: 0rem;
+    position: relative;
+    z-index: 2;
+    padding: 1rem;
+    font-family: vars.$fontFamilyRegular;
+    font-size: 2.05rem;
+    line-height: 2.55rem;
+  }
 
 @media (max-width: 1024px) {
   #timeline article .date {
-      left: calc(100% + 1rem) !important;
-      transform: translateY(0) !important;
-      font-size: 14px !important;
-      padding-left: 1rem !important;
-      text-indent: 0 !important;
-      width: 60px !important;;
-      box-sizing: border-box;
+    left: calc(100% + 1rem) !important;
+    transform: translateY(0) !important;
+    font-size: 14px !important;
+    padding-left: 1rem !important;
+    text-indent: 0 !important;
+    width: 60px !important;
+    box-sizing: border-box;
   }
 
   #timeline article {
-      width: 100% !important;
-      max-width: calc(85% - 1rem) !important;
-      padding-left: 1rem;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
+    width: 100% !important;
+    max-width: calc(85% - 1rem) !important;
+    padding-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   #timeline:after {
-      transform: translate(0px, 0px) !important;
-      left: 85%;
+    transform: translate(0px, 0px) !important;
+    left: 85%;
   }
 
   #timeline article.right {
-      margin-left: 0 !important;
+    margin-left: 0 !important;
   }
 
   #timeline article .date:before {
-      left: -7px;
+    left: -7px;
+  }
+
+  p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .education {
+    height: 100px;
+
+    h2 {
+      font-size: 2.5rem;
+      line-height: 3rem;
+      letter-spacing: -0.02em;
+    }
   }
 }
 </style>

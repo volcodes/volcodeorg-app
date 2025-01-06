@@ -54,7 +54,12 @@ const technologies = [
   { id: 23, icon: 'mdiJquery', text: 'jQuery' },
   { id: 24, icon: 'mdiKubernetes', text: 'Kubernetes' },
   { id: 25, icon: 'mdiBitbucket', text: 'Bitbucket' },
-  { id: 26, icon: 'mdiNpm', text: 'NPM' }
+  { id: 26, icon: 'mdiNpm', text: 'NPM' },
+  { id: 27, icon: 'mdiWordpress', text: 'WordPress' },
+  { id: 30, icon: 'mdiLanguageC', text: '' },
+  { id: 28, icon: 'mdiLanguageJava', text: 'Java' },
+  { id: 29, icon: 'mdiLanguageCsharp', text: '' },
+  { id: 31, icon: 'mdiLanguageCpp', text: '' },
 ]
 const technologiesRef = ref(technologies)
 </script>
@@ -147,20 +152,20 @@ const technologiesRef = ref(technologies)
   }
 
   .footer {
-      padding: 1rem 1.6rem;
+    padding: 1rem 1.6rem;
   }
 
   .container {
-      width: 100%;
-      box-sizing: border-box;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .footer__nav {
-      width: auto;
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
+    width: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
 }
 </style>
