@@ -4,6 +4,7 @@
     <div class="breadcrumb">
       <NuxtLink to="/">Overview</NuxtLink>
       <span>Experience</span>
+      <!-- TODO: add page instance here -->
     </div>
   </div>
 </template>
@@ -29,9 +30,7 @@ defineProps<{
   padding: 2rem 0 .2rem 0;
 
   h1 {
-    font-size: 3.5rem;
-    line-height: 4.5rem;
-    color: colors.$cloudWhite;
+    color: colors.$white;
   }
 
   .breadcrumb {

@@ -1,13 +1,48 @@
-<!-- how to kick start a new component in nuxt 3 -->
+<script setup>
+import { useRoute } from 'vue-router'
+
+const isMobileMenuActive = ref(false)
+const route = useRoute()
+
+// Watch for route changes to close the mobile menu
+watch(() => route.path, () => {
+  isMobileMenuActive.value = false
+})
+
+// Close mobile menu on scroll
+onMounted(() => {
+  window.addEventListener('scroll', () => {
+    if (isMobileMenuActive.value) {
+      isMobileMenuActive.value = false
+    }
+  }, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', () => {
+    if (isMobileMenuActive.value) {
+      isMobileMenuActive.value = false
+    }
+  })
+})
+
+const toggleMenu = () => {
+  isMobileMenuActive.value = !isMobileMenuActive.value
+}
+</script>
+
 <template>
   <header id="header" class="container">
     <NuxtLink id="logo" to="/">
       <span>M</span>
     </NuxtLink>
     <button class="mobile-menu-btn">
-      <MdiIcon icon="mdiMenu" />
+      <MdiIcon v-if="!isMobileMenuActive" icon="mdiMenu" @click="toggleMenu" />
+      <MdiIcon v-else icon="mdiCloseThick" @click="toggleMenu" />
     </button>
-    <nav id="nav">
+    <nav id="nav" :class="{
+      'active': isMobileMenuActive
+    }">
       <NuxtLink to="/">Overview</NuxtLink>
       <NuxtLink to="/experience">Experience</NuxtLink>
       <NuxtLink to="/projects">Projects</NuxtLink>
@@ -119,10 +154,56 @@
 
 @media (max-width: 1024px) {
   .mobile-menu-btn {
+    cursor: pointer;
     display: block;
   }
   #nav {
+    display: none !important;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #020617;
+    top: 70px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    &.active {
+      display: block !important;
+    }
+
+    .btn {
+      margin: 2rem;
+    }
+  }
+
+  #header {
+    position: relative;
+    z-index: 9;
+  }
+
+  #nav a {
+    font-size: 3rem;
+    width: 100%;
+    height: calc((100vh - 70px) / 5);
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(46, 55, 90, 0.3);
+  }
+
+  #nav a:after {
     display: none;
+  }
+
+  a.router-link-active.router-link-exact-active {
+    border-left: 10px solid white;
+    padding-left: 1rem;
   }
   .mobile-menu-btn {
     width: auto;

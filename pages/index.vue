@@ -1,90 +1,27 @@
 <template>
   <div>
     <AppHero />
-    <AppAchievements />
+    {{ repos }}
+    <!-- <AppAchievements /> -->
 
-    <div id="secondary">
+    <div id="secondary" :class="{ 'isActive': isActive }">
       <div class="container">
-        <h2><em>Empowering Teams</em> with Technology and Collaboration</h2>
-        <p class="text-center">
-          I am passionate about technology, teamwork, helping others, and using
-          cutting-edge technologies <br />
-          to create meaningful digital experiences
-        </p>
+        <!-- 10+ years of experience | 6+ industries | 300+ collaborators worldwide. -->
+        <h2><em>10+ years of experience in <span class="tooltip" data-tooltip="IT, e-commerce, SaaS, media, real estate, education tech">6 industries</span></em> with 150+ collaborators worldwide</h2>
         <section class="grid">
           <article class="card">
-            <figure class="wrapper">
-              <div class="wrapper__header">
-                <i class="button"></i>
-                <i class="button"></i>
-                <i class="button"></i>
-              </div>
-              <div class="wrapper__overlay" style="max-height: 450px">
-                <img
-                  src="~/assets/imgs/art-screenshot.png"
-                  alt="Art Screenshot"
-                />
-              </div>
-            </figure>
-            <h3>Apps That Solve Real Problems</h3>
+            <h3>Real Solutions, Open Source</h3>
             <p>
-              Contributing to open source is my way of sharing knowledge,
-              offering free tools like anonymous reporting system, portfolio
-              builders and playlist organizers that demonstrate my ability to
-              deliver value.
+              Explore practical tools and apps that solve real-world challenges, showcasing my commitment to innovation and value creation.
             </p>
             <NuxtLink to="/projects" class="cta">
               Explore my projects <MdiIcon icon="mdiArrowTopRight" />
             </NuxtLink>
           </article>
           <article class="card">
-            <figure class="wrapper">
-              <div class="wrapper__overlay">
-                <div class="card-sm">
-                  <div class="card-sm__title">
-                    <MdiIcon icon="mdiChatProcessing" />
-                    <strong>Encrypted Chat App with React</strong>
-                  </div>
-                  <div class="card-sm__content">
-                    <img src="~/assets/imgs/pp-1.jpg" alt="Profile Picture" />
-                    <img src="~/assets/imgs/pp-2.jpg" alt="Profile Picture" />
-                    <img src="~/assets/imgs/pp-3.jpg" alt="Profile Picture" />
-                    <span>~20 people were in this product</span>
-                  </div>
-                </div>
-                <div class="card-sm">
-                  <div class="card-sm__title card-sm__title--schoolPlatform">
-                    <MdiIcon icon="mdiSchool" />
-                    <strong>School Platform with Vue</strong>
-                  </div>
-                  <div class="card-sm__content">
-                    <img src="~/assets/imgs/pp-4.jpg" alt="Profile Picture" />
-                    <img src="~/assets/imgs/pp-5.jpg" alt="Profile Picture" />
-                    <img src="~/assets/imgs/pp-6.jpg" alt="Profile Picture" />
-                    <span>~30 people were in this product</span>
-                  </div>
-                </div>
-                <div class="card-sm">
-                  <div
-                    class="card-sm__title card-sm__title--realEstatePlatform"
-                  >
-                    <MdiIcon icon="mdiHomeAccount" />
-                    <strong>Real Estate Platform with Nuxt</strong>
-                  </div>
-                  <div class="card-sm__content">
-                    <img src="~/assets/imgs/pp-7.jpeg" alt="Profile Picture" />
-                    <img src="~/assets/imgs/pp-8.jpeg" alt="Profile Picture" />
-                    <img src="~/assets/imgs/pp-9.jpeg" alt="Profile Picture" />
-                    <span>~50 people were in this product</span>
-                  </div>
-                </div>
-              </div>
-            </figure>
-            <h3>Crafting Solutions, Enhancing Experiences</h3>
+            <h3>Proven Expertise in Action</h3>
             <p>
-              I successufuly delivered scalable, innovative solutions by
-              collaborating with cross-functional, agile teams to enhance user
-              experiences.
+              Dive into my journey of delivering impactful, scalable solutions and driving results across diverse projects and teams.
             </p>
             <NuxtLink to="/experience" class="cta"
               >Explore my experience <MdiIcon icon="mdiArrowTopRight"
@@ -96,7 +33,27 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// const { data: repos } = await useAsyncData('repos', () => 
+//   $fetch('https://api.github.com/users/volcodes/repos')
+// )
+
+// const { data: repos } = await useFetch('https://api.github.com/users/volcodes/repos')
+const isActive = ref(false);
+
+onMounted(() => {
+  const handleScroll = () => {
+    isActive.value = window.scrollY > 1;
+  };
+  
+  window.addEventListener('scroll', handleScroll);
+  
+  // Cleanup
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
+  });
+});
+</script>
 
 <style lang="scss">
 @use '~/assets/styles/colors' as colors;
@@ -104,10 +61,22 @@
 
 #secondary {
   padding-top: 144px;
-  background: url(~/assets/imgs/Frame-2.svg) repeat-x center 100%;
+  background: url(~/assets/imgs/Frame-2.svg) repeat-x center 291px;
   padding-bottom: 124px;
-  transition: all 0.3s cubic-bezier(0.25, 1.07, 0.6, 0.9);
-  transition-delay: 0.8s;
+  transition: all 0.7s cubic-bezier(0.25, 1.07, 0.6, 0.9);
+  // transition-delay: 0.8s;
+  margin-bottom: -5rem;
+  opacity: 0.03;
+
+  &.isActive {
+    opacity: 1;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    margin-bottom: 4rem;
+  }
 }
 
 .page-transition--on {
@@ -121,6 +90,8 @@
   border-radius: 12px;
   margin: 0;
   overflow: hidden;
+  max-height: 480px;
+  margin-bottom: 1rem;
 
   &__header {
     border: 1px solid #1a1f3c;
@@ -178,10 +149,16 @@
   }
 }
 
+h2 {
+  margin-bottom: 3rem;
+  margin-top: -4rem;
+}
+
 @media (max-width: 1024px) {
   #secondary {
     padding-top: 2rem;
     padding-bottom: 2rem;
+    margin-bottom: 0;
 
     p {
       padding-left: 1rem;
@@ -197,7 +174,8 @@
     font-size: 2.25rem;
     line-height: 2.5rem;
     text-align: left;
-    padding: 0 1rem;
+    padding: 1rem;
   }
 }
 </style>
+

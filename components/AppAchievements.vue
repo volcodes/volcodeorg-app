@@ -84,14 +84,15 @@ const achievementsRef = ref(achievements)
   padding: 0 144px;
   transition: all 0.3s cubic-bezier(0.25, 1.07, 0.6, 0.9);
   transition-delay: 0.7s;
+  font-family: "Inter";
 
   .achievement {
     display: flex;
     justify-content: center;
     align-items: center;
-    // padding: 12px 24px;
-    line-height: 32px;
-    font-size: 18px;
+    font-size: 1.15rem;
+    line-height: 1.45rem;
+    gap: 0.5rem;
 
     i {
       align-items: center;
@@ -136,6 +137,7 @@ const achievementsRef = ref(achievements)
     max-width: 50%;
     text-align: center;
     min-width: 200px;
+    min-height: 150px;
 
     &:nth-child(3n) {
       width: 150px;

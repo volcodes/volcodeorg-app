@@ -2,11 +2,10 @@
   <div id="projects">
     <AppPageHeader :title="'Projects'" :pages="pages" />
     <p class="container explanation">
-      I believe in creating accessible, open-source tools that solve real-world
-      problems. Each project here represents my commitment to leveraging technology to make a positive impact, whether it's empowering employees, simplifying workflows, or crafting applications that address genuine needs of users.
+      Each project here represents my commitment to leveraging technology to make a positive impact, whether it's empowering employees, or crafting applications that address genuine needs of others.
     </p>
     <!-- sound effects on https://www.youtube.com/watch?v=Eq9R1_JQDCA&ab_channel=NoraEnPure 14:00 -->
-    <!-- <div class="project">
+    <div class="project">
       <div class="container">
         <figure class="no-margin">
           <img
@@ -69,8 +68,8 @@
           </div>
         </div>
       </div>
-    </div> -->
-    <!-- <div class="project">
+    </div>
+    <div class="project">
       <div class="container">
         <figure class="no-margin">
           <img
@@ -131,7 +130,7 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <div class="project">
       <div class="container">
         <figure class="no-margin">
@@ -303,6 +302,16 @@ const pages = [
       max-height: 650px;
       overflow: hidden;
       position: relative;
+      transition: all 0.3s cubic-bezier(0.25, 1.07, 0.6, 0.9);
+
+      &:hover {
+        box-shadow: 4px 4px 0px colors.$lightBlue;
+        transform: translateY(-4px) translateX(-4px);
+        &::after {
+          background: rgba(2, 6, 23, 0);
+          box-shadow: inset 0 0 50px rgba(2, 6, 23, .3);
+        }
+      }
 
       &::after {
         content: '';
@@ -313,6 +322,7 @@ const pages = [
         height: 100%;
         background: rgba(2, 6, 23, 0.65);
         box-shadow: inset 0 0 50px rgba(2, 6, 23, .3);
+        transition: all 0.3s cubic-bezier(0.25, 1.07, 0.6, 0.9);
       }
 
       img {

@@ -2,7 +2,7 @@
   <div id="experience">
     <AppPageHeader :title="'Experience'" :pages="pages" />
     <p class="container explanation">
-      With a solid foundation in computer programming and web technologies, I have been building my expertise in developing scalable and user-friendly applications, mentored developers, and improved operational efficiency in agile teams.
+      I specialize in transforming concepts into modern, scalable, and impactful applications. My journey in programming and web technologies showcases a commitment to creating scalable, user-focused solutions while fostering growth in agile environments.
     </p>
     <div id="timeline" class="container">
       <article>
@@ -552,8 +552,8 @@ p {
     z-index: 2;
     padding: 1rem;
     font-family: vars.$fontFamilyRegular;
-    font-size: 2.05rem;
-    line-height: 2.55rem;
+    font-size: 1.75rem;
+    line-height: 2.5rem;
   }
 
 @media (max-width: 1024px) {

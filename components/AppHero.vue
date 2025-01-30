@@ -1,19 +1,29 @@
 <template>
   <div id="hero" class="container">
     <img src="~/assets/imgs/Frame.svg" alt="Hero Background" class="hero-bg" />
-    <span>Hi, I’m Mehmet</span>
+    <span>Hi, I'm Mehmet</span>
     <h1>
-      I transform ideas into <br />
-      digital solutions.
+      <!-- Welcome to my portfolio -->
+      Software Development Specialist
+      <!-- I transform ideas into <br> digital solutions. -->
     </h1>
     <p>
-      I specialise in turning concepts into user-centric applications that are
-      <em>modern</em>, <em>scalable</em>, and <em>impactful</em>.
+      Frontend-focused, 10+ years in web, experienced in <u class="tooltip" data-tooltip="PHP, Node.js, Go, Python">backend and full stack work</u>.
+      <!-- With over a decade of experience across diverse sectors, I craft scalable digital solutions that drive business growth and innovation -->
+      <!-- I have a decade of experience in web development, specializing in crafting scalable digital solutions that drive business growth and innovation. -->
+      <!-- I bring a decade of expertise in frontend development, working across diverse industries and tech stacks. -->
+      <!-- 
+        I specialise in turning concepts into user-centric applications that are modern, scalable, and impactful.
+        With over a decade of experience - I pursue my passion by optimizing workflows, modernizing systems, and mentoring people to craft high-quality digital solutions that drive results.
+      -->
+
     </p>
     <p>
-      With over a decade of experience - I pursue my passion by optimizing
-      workflows, modernizing systems, and mentoring people to craft high-quality
-      digital solutions that drive results.
+      <!-- My strongest skills are in frontend frameworks like Vue.js and React, backend technologies such as PHP and Node.js, and cloud infrastructure tools like AWS to deliver seamless user experiences.  -->
+      <!-- frontend frameworks like Vue.js and React, backend technologies such as PHP and Node.js, and cloud infrastructure tools like AWS to deliver seamless user experiences.  -->
+      <!-- From modernizing legacy systems to mentoring developers and optimizing workflows, I thrive at the intersection of technology and innovation, delivering scalable applications that solve real-world challenges. -->
+      I design, build, and optimize digital interfaces, apps, and infrastructures.
+      <!-- I can design and optimize experiences, applications, and infrastructures.  -->
     </p>
     <section id="ctaButtons">
       <!-- TODO: add a modal with Teleport -->
@@ -44,11 +54,11 @@
 
   span {
     color: colors.$lightBlue;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 400;
-    line-height: 44px;
+    line-height: 2.5rem;
     text-align: center;
-    margin: 32px auto 0 auto;
+    margin: 3rem auto 0 auto;
     display: block;
     position: relative;
     width: fit-content;
@@ -67,19 +77,23 @@
   }
 
   p {
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 1.35rem;
+    line-height: 2rem;
     font-weight: 400;
     color: colors.$blueSky;
     font-family: 'Inter';
+    font-weight: 500;
     text-align: center;
-    margin: 18px 0 -12px 0;
-    padding: 0 100px;
+    margin: 1rem 0;
 
     opacity: 1;
     transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.38, 0.98, 0.6, 0.9);
     transition-delay: 0.55s;
+
+    u {
+      text-decoration: none;
+    }
 
     em {
       text-decoration: underline;
@@ -115,7 +129,8 @@
   grid-auto-flow: column;
   justify-content: center;
   gap: 16px;
-  margin-top: 48px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 
   opacity: 1;
   transform: translateY(0px);
@@ -132,10 +147,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  margin: 32px 0;
+  gap: 1rem;
   color: colors.$textGray;
-  font-size: 16px;
+  margin-bottom: 3rem;
 
   &__icon {
     width: 24px;
@@ -236,8 +250,8 @@
     }
   }
   #hero h1 {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
+    font-size: 3.5rem;
+    line-height: 4rem;
     letter-spacing: -0.03em;
     margin-bottom: 0.6rem;
     box-sizing: border-box;
@@ -251,7 +265,7 @@
     font-size: 1.15rem;
     line-height: 1.7rem;
     margin-top: 0.3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
     text-align: left;
     padding: 0;
   }
@@ -268,16 +282,17 @@
     box-sizing: border-box;
     margin-top: 1rem;
   }
-  #hero p:nth-child(5) {
-    font-size: 0.9rem;
-    line-height: 1.2rem;
-    padding: 0 0;
-    text-align: left;
+  #hero p {
+    margin-left: 0;
   }
+  // #hero p:nth-child(3) {
+  //   font-size: 0.9rem;
+  //   line-height: 1.2rem;
+  //   padding: 0 0;
+  //   text-align: left;
+  // }
   .scroll-indicator {
-    margin: 2rem 0;
-    box-sizing: border-box;
-    align-items: flex-start;
+    display: none;
   }
 }
 </style>
