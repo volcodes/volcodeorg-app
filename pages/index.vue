@@ -7,24 +7,24 @@
     <div id="secondary" :class="{ 'isActive': isActive }">
       <div class="container">
         <!-- 10+ years of experience | 6+ industries | 300+ collaborators worldwide. -->
-        <h2><em>10+ years of experience in <span class="tooltip" data-tooltip="IT, e-commerce, SaaS, media, real estate, education tech">6 industries</span></em> with 150+ collaborators worldwide</h2>
+        <h2><em>10+ years of experience in <span class="tooltip bottom" data-tooltip="IT, e-commerce, SaaS, media, real estate, education tech">6 industries</span></em> with 150+ collaborators worldwide</h2>
         <section class="grid">
           <article class="card">
-            <h3>Real Solutions, Open Source</h3>
+            <h3>Open Source Projects</h3>
             <p>
-              Explore practical tools and apps that solve real-world challenges, showcasing my commitment to innovation and value creation.
+              Discover practical tools and apps that tackle real-world challenges, showcasing my tech expertise, innovation, and commitment to creating real value.
             </p>
             <NuxtLink to="/projects" class="cta">
-              Explore my projects <MdiIcon icon="mdiArrowTopRight" />
+              Explore My Projects <MdiIcon icon="mdiArrowTopRight" />
             </NuxtLink>
           </article>
           <article class="card">
-            <h3>Proven Expertise in Action</h3>
+            <h3>Demonstrated Professional Expertise</h3>
             <p>
-              Dive into my journey of delivering impactful, scalable solutions and driving results across diverse projects and teams.
+              Explore my journey in programming and web technologies, spanning six industries over 10 years, where I’ve delivered impactful, scalable solutions in agile teams.
             </p>
             <NuxtLink to="/experience" class="cta"
-              >Explore my experience <MdiIcon icon="mdiArrowTopRight"
+              >Review My Career Path <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
           </article>
         </section>
@@ -60,13 +60,12 @@ onMounted(() => {
 @use '~/assets/styles/vars';
 
 #secondary {
-  padding-top: 144px;
-  background: url(~/assets/imgs/Frame-2.svg) repeat-x center 291px;
-  padding-bottom: 124px;
+  padding-top: 10rem;
+  background: url(~/assets/imgs/Frame-2.svg) repeat-x center 350px;
+  padding-bottom: 8rem;
   transition: all 0.7s cubic-bezier(0.25, 1.07, 0.6, 0.9);
-  // transition-delay: 0.8s;
-  margin-bottom: -5rem;
-  opacity: 0.03;
+  margin-bottom: -6rem;
+  // opacity: 0.03;
 
   &.isActive {
     opacity: 1;
@@ -174,7 +173,8 @@ h2 {
     font-size: 2.25rem;
     line-height: 2.5rem;
     text-align: left;
-    padding: 1rem;
+    padding: 1rem 0;
+    margin-bottom: 0;
   }
 }
 </style>

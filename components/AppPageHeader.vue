@@ -19,7 +19,7 @@ defineProps<{
 }>()
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use '~/assets/styles/colors';
 
 #page-header {
@@ -48,7 +48,7 @@ defineProps<{
     }
 
     a:not(:last-child) {
-      color: colors.$lightBlue;
+      color: colors.$ctaBlue;
       &:after {
         content: '/';
         margin-left: 12px;
@@ -57,16 +57,36 @@ defineProps<{
   }
 }
 
-@media (max-width: 1024px) {
+@media only screen and (min-device-width: 1023px) and (max-device-width: 1200px) {
   #page-header {
     margin: 1rem auto;
     flex-direction: column;
     align-items: flex-start;
     padding-left: 1rem;
   }
+}
+@media (max-width: 1024px) {
+  #page-header {
+    margin: 1rem auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 1rem;
+    h1 {
+      font-size: 2.5rem;
+      line-height: 3rem;
+    }
+  }
 
   .breadcrumb {
-    padding-bottom: 2rem;
+    padding-bottom: 0rem;
+
+    a, span {
+      font-size: 1rem !important;
+    }
+  }
+
+  .explanation {
+    padding: 0rem 1rem 2rem 1rem !important
   }
 }
 </style>

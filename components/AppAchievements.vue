@@ -84,7 +84,7 @@ const achievementsRef = ref(achievements)
   padding: 0 144px;
   transition: all 0.3s cubic-bezier(0.25, 1.07, 0.6, 0.9);
   transition-delay: 0.7s;
-  font-family: "Inter";
+  font-family: $fontFamilyInter;
 
   .achievement {
     display: flex;

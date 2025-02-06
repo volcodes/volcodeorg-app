@@ -2,7 +2,7 @@
   <div id="experience">
     <AppPageHeader :title="'Experience'" :pages="pages" />
     <p class="container explanation">
-      I specialize in transforming concepts into modern, scalable, and impactful applications. My journey in programming and web technologies showcases a commitment to creating scalable, user-focused solutions while fostering growth in agile environments.
+      I specialize in transforming concepts into modern, scalable, and impactful applications. Here is my journey in programming and web technologies across 6 industries over 10 years.
     </p>
     <div id="timeline" class="container">
       <article>
@@ -74,9 +74,9 @@
           <strong>Senior Frontend Engineer</strong>
           <span>Homeday Gmbh</span>
           <ul>
-            <li>The main website as PHP with Laravel Twig Templates</li>
-            <li>Migrated the main website to webapp with Vue + Nuxt</li>
-            <li>One Realtor App with Vue</li>
+            <li>Two websites with PHP, Laravel, Vue, Nuxt and Headless CMS</li>
+            <li>One step by step form generator with Vue</li>
+            <li>One realtor app with Vue</li>
           </ul>
           <div class="technologies">
             <span>
@@ -175,6 +175,10 @@
             <span>
               <MdiIcon icon="mdiAbTesting" />
               <span>A/B Testing</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguagePhp" />
+              <span>PHP</span>
             </span>
             <span>
               <MdiIcon icon="mdiSass" />
@@ -494,6 +498,7 @@ const pages = [
 
 .explanation {
   color: colors.$blueSky;
+  padding: 0;
 }
 
 .education {
@@ -561,7 +566,7 @@ p {
     left: calc(100% + 1rem) !important;
     transform: translateY(0) !important;
     font-size: 14px !important;
-    padding-left: 1rem !important;
+    padding-left: 1.5rem !important;
     text-indent: 0 !important;
     width: 60px !important;
     box-sizing: border-box;
@@ -570,7 +575,6 @@ p {
   #timeline article {
     width: 100% !important;
     max-width: calc(85% - 1rem) !important;
-    padding-left: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
@@ -585,7 +589,7 @@ p {
   }
 
   #timeline article .date:before {
-    left: -7px;
+    left: 2px;
   }
 
   p {
@@ -602,5 +606,32 @@ p {
       letter-spacing: -0.02em;
     }
   }
+}
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 768px)  {
+  .date-extended {
+    font-size: .8rem !important;
+    line-height: 1rem;
+  }
+  .card {
+    strong {
+      font-size: 1rem;
+      line-height: 1.2rem;
+    }
+    span {
+      font-size: .8rem;
+      line-height: 1rem;
+    }
+    .technologies > span {
+      padding: 0;
+      width: 20px;
+      height: 22px;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
 }
 </style>
