@@ -12,6 +12,7 @@
         <NuxtLink to="/">Overview</NuxtLink>
         <NuxtLink to="/experience">Experience</NuxtLink>
         <NuxtLink to="/projects">Projects</NuxtLink>
+        <NuxtLink to="/blog">Blog</NuxtLink>
         <NuxtLink to="/contact">Contact</NuxtLink>
       </div>
       <div class="footer__nav">
@@ -118,8 +119,8 @@ const technologiesRef = ref(technologies)
   position: relative;
   z-index: 2;
   pointer-events: none;
-  padding: 0 125px;
-  margin-bottom: 64px;
+  padding: 0 2rem;
+  margin-bottom: 1rem;
   margin-top: 3rem;
 
   div {
@@ -149,6 +150,14 @@ const technologiesRef = ref(technologies)
     padding: 0 1rem;
     margin-top: 2rem;
     margin-bottom: 3rem;
+
+    div {
+      font-size: 1rem;
+      svg {
+        width: 26px;
+        height: 26px;
+      }
+    }
   }
 
   .footer {

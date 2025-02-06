@@ -2,8 +2,7 @@
   <div id="projects">
     <AppPageHeader :title="'Projects'" :pages="pages" />
     <p class="container explanation">
-      I believe in creating accessible, open-source tools that solve real-world
-      problems. Each project here represents my commitment to leveraging technology to make a positive impact, whether it's empowering employees, simplifying workflows, or crafting applications that address genuine needs of users.
+      Each project here represents my commitment to leveraging technology to make a positive impact, whether it's empowering employees, or crafting applications that address genuine needs of others.
     </p>
     <!-- sound effects on https://www.youtube.com/watch?v=Eq9R1_JQDCA&ab_channel=NoraEnPure 14:00 -->
     <!-- <div class="project">
@@ -69,8 +68,8 @@
           </div>
         </div>
       </div>
-    </div> -->
-    <!-- <div class="project">
+    </div>
+    <div class="project">
       <div class="container">
         <figure class="no-margin">
           <img
@@ -132,6 +131,61 @@
         </div>
       </div>
     </div> -->
+    <div class="project">
+      <div class="container">
+        <figure class="no-margin">
+          <img
+            src="~/assets/imgs/volcodeorg-app.png"
+            alt="Mehmet Deveci Portfolio Webapp"
+          />
+        </figure>
+        <div class="project-info">
+          <strong>Devfolio: The Open-Source Portfolio App</strong>
+          <span>Your portfolio, your rules—accessible, responsive, and open to all</span>
+          <p>            
+            Creating a personal portfolio should be effortless, adaptable, and accessible to everyone. Devfolio is a high-performance, open-source portfolio template designed for developers who value modern design, responsiveness, and flexibility. Built with best practices in accessibility and performance, it provides a seamless experience across all devices. Fork it, personalize it, and make it truly yours!
+          </p>
+          <div class="technologies">
+            <span>
+              <MdiIcon icon="mdiVuejs" />
+              <span>Vue</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiNuxt" />
+              <span>Nuxt</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageTypescript" />
+              <span>TypeScript</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageJavascript" />
+              <span>Javascript</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiGithub" />
+              <span>Github Actions</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiEslint" />
+              <span>Eslint</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiCodeGreaterThanOrEqual" />
+              <span>Prettier</span>
+            </span>
+          </div>
+          <div class="project-links">
+            <NuxtLink to="/projects" class="cta"
+              >Github <MdiIcon icon="mdiArrowTopRight"
+            /></NuxtLink>
+            <NuxtLink to="/projects" class="cta"
+              >Demo <MdiIcon icon="mdiArrowTopRight"
+            /></NuxtLink>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="project">
       <div class="container">
         <figure class="no-margin">
@@ -303,6 +357,16 @@ const pages = [
       max-height: 650px;
       overflow: hidden;
       position: relative;
+      transition: all 0.3s cubic-bezier(0.25, 1.07, 0.6, 0.9);
+
+      &:hover {
+        box-shadow: 4px 4px 0px colors.$ctaBlue;
+        transform: translateY(-4px) translateX(-4px);
+        &::after {
+          background: rgba(2, 6, 23, 0);
+          box-shadow: inset 0 0 50px rgba(2, 6, 23, .3);
+        }
+      }
 
       &::after {
         content: '';
@@ -313,6 +377,7 @@ const pages = [
         height: 100%;
         background: rgba(2, 6, 23, 0.65);
         box-shadow: inset 0 0 50px rgba(2, 6, 23, .3);
+        transition: all 0.3s cubic-bezier(0.25, 1.07, 0.6, 0.9);
       }
 
       img {
@@ -327,31 +392,31 @@ const pages = [
       flex-direction: column;
 
       > strong {
-        font-size: 20px;
-        line-height: 24px;
-        font-family: vars.$fontFamilyRegular;
-        color: colors.$lightBlue;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-family: vars.$fontFamilyBold;
+        color: colors.$ctaBlue;
       }
 
       > span {
-        font-size: 48px;
-        line-height: 52px;
+        font-size: 3.2rem;
+        line-height: 3.5rem;
         font-family: vars.$fontFamilyThick;
         margin: 8px 0;
         color: colors.$cloudWhite;
       }
 
       > p {
-        font-size: 20px;
-        line-height: 26px;
-        font-family: vars.$fontFamilyRegular;
-        margin: 0 0 16px 0;
-        color: colors.$textGray;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        font-family: vars.$fontFamilyInter;
+        margin: 0rem 0 1rem 0;
+        color: colors.$blueSky;
       }
 
       .technologies {
         color: #3d4877;
-        font-size: 14px;
+        font-size: 1rem;
         margin-top: 0;
 
         strong,
@@ -389,47 +454,78 @@ const pages = [
   }
 }
 
-@media (max-width: 1024px) {
+
+@media only screen and (min-device-width: 900px) and (max-device-width: 1100px) {
+  #projects {
+    .project {
+      figure {
+        max-width: 35%;
+        max-height: 550px;
+      }
+
+      .project-info {
+        max-width: 60%;
+
+        > strong {
+          font-size: 1.25rem;
+          line-height: 1.5rem;
+        }
+
+        > span {
+          font-size: 2rem;
+          line-height: 2.5rem;
+        }
+
+        > p {
+          font-size: 1rem;
+          line-height: 1.5rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 900px) {
   #projects .explanation {
     padding: 0 1rem;
-    color: colors.$textGray;
     font-size: 1.25rem;
     line-height: 1.75rem;
     font-family: vars.$fontFamilyRegular;
   }
   .project {
     margin: 1rem 0;
-    padding: 0 !important;
-  }
+    border-radius: 2px;
+    padding: 1rem 0 !important;
+    background-color: colors.$darkBlue;
+    .container {
+      flex-direction: column !important;
+    }
+    figure {
+      max-width: 100% !important;
+      width: 100% !important;
+      max-height: 280px !important;
+    }
+    .project-info {
+      max-width: 100% !important;
+      padding: 1rem 0;
+      > strong {
+        font-size: 1.1rem !important;
+      }
+      > span {
+        font-size: 1.65rem !important;
+        line-height: 1.85rem !important;
+        margin: .5rem 0 !important;
+      }
+      > p {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+      }
+    }
 
-  #projects .project .container {
-    flex-direction: column !important;
-  }
-
-  #projects .project figure {
-    max-width: 100% !important;
-    max-height: 280px !important;
-  }
-
-  #projects .project .project-info {
-    max-width: 100% !important;
-    padding: 1rem;
-  }
-
-  #projects .project .project-info > strong {
-    font-size: 1.1rem;
-    font-size: 'GT Walsheim Trial Bl' !important;
-  }
-
-  #projects .project .project-info > span {
-    font-size: 2rem !important;
-    line-height: 2.15rem !important;
-    margin: 1rem 0 !important;
-  }
-
-  #projects .project .project-info > p {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+    .technologies svg,
+    .technologies > span {
+      width: 32px !important;
+      height: 32px !important;
+    }
   }
 
   .project-links .cta {
