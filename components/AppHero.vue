@@ -456,6 +456,8 @@ onMounted(() => {
 .modal-sidebar {
   width: 30%;
   padding: 2rem 0rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes modalFadeIn {
