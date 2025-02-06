@@ -1,11 +1,16 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import performanceIcon from '~/assets/icons/performance.svg'
+import realTimeIcon from '~/assets/icons/realtime.svg'
+import engagementIcon from '~/assets/icons/engagement.svg'
+import mentorshipIcon from '~/assets/icons/mentorship.svg'
+import designIcon from '~/assets/icons/design.svg'
 
 const achievements = ref([
   {
     label: "Performance & Optimization",
     hero: "I built and optimized products to millions worldwide across diverse industries.",
-    icon: "mdiSpeedometer",
+    icon: performanceIcon,
     accomplishments: [{
       "entity": "<b>Built a custom video player</b> for <a href=\"#tabbiii\">a VOD Platform</a> at <a href=\"#TRT\">TRT</a>, enabling accessible streaming on all devices with <u><b>seamless playback for over 1M+ daily users.</b></u>"
     },{
@@ -19,7 +24,7 @@ const achievements = ref([
   {
     label: "Real-Time Data Visualization",
     hero: "I built apps that transform complex information into interactive real-time interfaces.",
-    icon: "mdiDeveloperBoard",
+    icon: realTimeIcon,
     accomplishments: [{
       "entity": "<b>Built an SVG-based map</b> for Turkey’s 2019 elections, <u><b>handling 18K+ concurrent users</u></b> with dynamic updates."
     },{
@@ -29,8 +34,8 @@ const achievements = ref([
   {
     label: "User Engagement",
     hero: "I crafted empathetic digital experiences that bridge user needs with technology",
-    icon: "mdiDevices",
-    "accomplishments": [{
+    icon: engagementIcon,
+    accomplishments: [{
       "entity": "<b>Enhanced Sdui’s event module</b>, <u><b>increasing user interaction by 20%</b></u> via better calendar & scheduling features."
     },{
       "entity": "<b>Integrated video conference support</b> in Sdui’s chat app, <u><b>allowing users to have video calls.</b></u>"
@@ -39,7 +44,7 @@ const achievements = ref([
   {
     label: "Mentorship",
     hero: "I developed technical guidance programs that accelerated developer growth across organizations.",
-    icon: "mdiHumanMaleBoard",
+    icon: mentorshipIcon,
     accomplishments: [{
       "entity": "<b>Created step-by-step migration guide for Vue 2 → Vue 3</b>, streamlining the process & <u><b>boosting developer productivity at Sdui</b></u>."
     },{
@@ -49,7 +54,7 @@ const achievements = ref([
   {
     label: "UI/UX & Design Systems",
     hero: "I enhanced design systems, improved developer experience and boosted collabration in cross functional teams.",
-    icon: "mdiPencilRuler",
+    icon: designIcon,
     accomplishments: [{
       "entity": "<b>Optimized test cases, reduced redundancies</b> of core components at Homeday, <u><b>reduced development build times by 20%.</b></u>"
     },{
@@ -60,18 +65,19 @@ const achievements = ref([
 const selectedAchievementIndex = ref(0)
 const selectedAchievement = ref(achievements.value[selectedAchievementIndex.value])
 const isModalOpen = ref(false)
-
-
+const isModalAnimationVisible = ref(false);
 
 const closeModal = () => {
   isModalOpen.value = false
 }
 
 const changeSelected = (index) => {
-  // alert(index)
-  selectedAchievementIndex.value = index
-  selectedAchievement.value = achievements.value[selectedAchievementIndex.value]
-  console.log('selectedAchievementIndex.value', selectedAchievementIndex.value, selectedAchievement.value)
+  isModalAnimationVisible.value = true;
+  setTimeout(() => {
+    selectedAchievementIndex.value = index
+    selectedAchievement.value = achievements.value[selectedAchievementIndex.value]
+    isModalAnimationVisible.value = false
+  }, 200);
 }
 
 // Close modal on escape key
@@ -128,25 +134,26 @@ onMounted(() => {
           <MdiIcon icon="mdiClose" />
         </button>
         <div class="modal" @click.stop>
-          <div class="modal-inner" ref="modal-inner">
+          <div class="modal-inner">
             <aside class="modal-sidebar">
               <button v-for="(item, index) in achievements" v-key="key" @click="changeSelected(index)" :class="{'active': selectedAchievementIndex === index}">{{ item.label }}</button>
             </aside>
-            <div class="modal-wrapper">
+            <div class="modal-wrapper" :class="{'animation': isModalAnimationVisible}">
               <div class="hero-sentence">
-              <MdiIcon class="bg-icon" :icon="selectedAchievement.icon" />
-              <p>{{ selectedAchievement.hero }}</p>
-            </div>
-            <ol>
-              <li v-for="ach in selectedAchievement.accomplishments" v-html="ach.entity"></li>
-              <!-- <li>
-                <b>Built a custom video player</b> for <a href="#tabbiii">a VOD</a> at <a href="#TRT">TRT</a>, enabling HLS streaming with <u><b>seamless playback for 1M+ users</b></u>
-              </li>
-              <li><b>Migrated components and pages</b> for the main website at <a href="#Homeday">Homeday</a>, <u><b>improved page speeds by 40%</b>.</u></li>
-              <li><b>Implemented integration tests</b> and reduced legacy unit and E2E tests at <a href="#Homeday">Homeday</a>, <u><b>accelerated build times by 25%</b></u></li>
-              <!-- a PHP/Symfony website to Vue.js/Nuxt for -->
-              <!-- <li><b>Implemented a new flow</b> for the existing process on the <a href="#Homeday's realtor platform">Homeday's realtor platform</a>: <u>ensuring qualified buyers</u>, and <u><b>reducing costs for all parties</b></u>.</li> --> 
-            </ol>
+                <!-- <MdiIcon class="bg-icon" :icon="selectedAchievement.icon" /> -->
+                <p>{{ selectedAchievement.hero }}</p>
+                <img :src="selectedAchievement.icon" alt="Performance Icon" class="hero-bg" />
+              </div>
+              <ol>
+                <li v-for="ach in selectedAchievement.accomplishments" v-html="ach.entity"></li>
+                <!-- <li>
+                  <b>Built a custom video player</b> for <a href="#tabbiii">a VOD</a> at <a href="#TRT">TRT</a>, enabling HLS streaming with <u><b>seamless playback for 1M+ users</b></u>
+                </li>
+                <li><b>Migrated components and pages</b> for the main website at <a href="#Homeday">Homeday</a>, <u><b>improved page speeds by 40%</b>.</u></li>
+                <li><b>Implemented integration tests</b> and reduced legacy unit and E2E tests at <a href="#Homeday">Homeday</a>, <u><b>accelerated build times by 25%</b></u></li>
+                <!-- a PHP/Symfony website to Vue.js/Nuxt for -->
+                <!-- <li><b>Implemented a new flow</b> for the existing process on the <a href="#Homeday's realtor platform">Homeday's realtor platform</a>: <u>ensuring qualified buyers</u>, and <u><b>reducing costs for all parties</b></u>.</li> --> 
+              </ol>
             </div>
           </div>
         </div>
@@ -425,6 +432,7 @@ onMounted(() => {
     margin: 0rem .5rem .5rem 0;
     background-color: transparent;
     text-align: left;
+    transition: all .3s;
 
     &.active {
       background-color: rgba(255, 255, 255, 0.05);
@@ -443,8 +451,16 @@ onMounted(() => {
 
     .modal-wrapper {
       overflow: scroll;
-      max-width: 70%;
+      max-width: 75%;
+      transition: all .3s;
+      opacity: 1;
       padding: 2rem 0rem 2rem 2rem;
+
+      &.animation {
+        opacity: 0;
+        transform: translateY(3px)
+        // animation: modalFadeIn 0.3s ease-out;
+      }
     }
 
     p {
@@ -454,7 +470,7 @@ onMounted(() => {
 }
 
 .modal-sidebar {
-  width: 30%;
+  width: 20%;
   padding: 2rem 0rem 2rem 2rem;
   display: flex;
   flex-direction: column;
@@ -505,8 +521,8 @@ onMounted(() => {
   padding: 0rem 0rem .5rem 3rem;
 
   li {
-    font-size: 1.35rem;
-    line-height: 1.95rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
     padding-right: 2rem;
@@ -539,12 +555,23 @@ onMounted(() => {
   }
 }
 .hero-sentence {
-  padding: 0rem 2rem 2rem 0rem;
+  padding: 0rem 3rem 2rem 0rem;
   position: relative;
+  display: flex;
+  align-items: flex-start;
+
+  img {
+    max-width: 20%;
+    height: auto;
+    display: block;
+    margin-top: 1rem;
+  }
   p {
+    width: 80%;
+    box-sizing: border-box;
     font-size: 2.5rem;
-    line-height: 3rem;
-    margin: 1rem 0 0rem 0;
+    line-height: 3.5rem;
+    margin: 1rem 0rem 0rem 0;
     font-family: vars.$fontFamilyBold;
     letter-spacing: -.6px;
     font-weight: 300;
