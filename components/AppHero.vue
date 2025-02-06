@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const achievements = ref([
   {
@@ -17,17 +17,17 @@ const achievements = ref([
     }]
   },
   {
-    label: "Data Visualization & Real-Time Platforms",
-    hero: "I built and optimized complex information into interactive real-time interfaces.",
+    label: "Real-Time Data Visualization",
+    hero: "I built apps that transform complex information into interactive real-time interfaces.",
     icon: "mdiDeveloperBoard",
     accomplishments: [{
-      "entity": "<b>Built an SVG-based map</b> for Turkey’s 2019 elections, <u><b>handling 18K+ concurrent users with dynamic updates</u></b>"
+      "entity": "<b>Built an SVG-based map</b> for Turkey’s 2019 elections, <u><b>handling 18K+ concurrent users</u></b> with dynamic updates."
     },{
-      "entity": "<b>Designed an advanced search feature</b> for tabii, <u><b>boosting discoverability & engagement</b></u>."
+      "entity": "<b>Designed an advanced search feature</b> for a VOD platform at TRT, <u><b>boosting discoverability & engagement</b></u>."
     }]
   },
   {
-    label: "Usability & User Engagement",
+    label: "User Engagement",
     hero: "I crafted empathetic digital experiences that bridge user needs with technology",
     icon: "mdiDevices",
     "accomplishments": [{
@@ -37,7 +37,7 @@ const achievements = ref([
     }]
   },
   {
-    label: "Mentorship & Technical Guidance",
+    label: "Mentorship",
     hero: "I developed technical guidance programs that accelerated developer growth across organizations.",
     icon: "mdiHumanMaleBoard",
     accomplishments: [{
@@ -57,14 +57,11 @@ const achievements = ref([
     }]
   }
 ])
-const animationForIndex = ref(false)
 const selectedAchievementIndex = ref(0)
 const selectedAchievement = ref(achievements.value[selectedAchievementIndex.value])
 const isModalOpen = ref(false)
 
-watch(selectedAchievementIndex, () => {
-  animationForIndex.value = !animationForIndex.value
-})
+
 
 const closeModal = () => {
   isModalOpen.value = false
@@ -132,8 +129,11 @@ onMounted(() => {
         </button>
         <div class="modal" @click.stop>
           <div class="modal-inner" ref="modal-inner">
-            <button v-for="(item, index) in achievements" @click="changeSelected(index)" :class="{'active': selectedAchievementIndex === index}">{{ item.label }}</button>
-            <div class="hero-sentence">
+            <aside class="modal-sidebar">
+              <button v-for="(item, index) in achievements" v-key="key" @click="changeSelected(index)" :class="{'active': selectedAchievementIndex === index}">{{ item.label }}</button>
+            </aside>
+            <div class="modal-wrapper">
+              <div class="hero-sentence">
               <MdiIcon class="bg-icon" :icon="selectedAchievement.icon" />
               <p>{{ selectedAchievement.hero }}</p>
             </div>
@@ -147,6 +147,7 @@ onMounted(() => {
               <!-- a PHP/Symfony website to Vue.js/Nuxt for -->
               <!-- <li><b>Implemented a new flow</b> for the existing process on the <a href="#Homeday's realtor platform">Homeday's realtor platform</a>: <u>ensuring qualified buyers</u>, and <u><b>reducing costs for all parties</b></u>.</li> --> 
             </ol>
+            </div>
           </div>
         </div>
       </div>
@@ -406,7 +407,7 @@ onMounted(() => {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: colors.$modalBg;
   overflow: hidden;
   z-index: 999;
   animation: modalExpand .7s cubic-bezier(.15,.74,1,1) forwards;
@@ -414,31 +415,47 @@ onMounted(() => {
   display: flex;
 
   button {
-    background: rgba(0, 0, 0, 0.1);
     padding: .5rem 1rem;
     font-size: 1rem;
     font-family: "Inter";
     border: 0;
     cursor: pointer;
     border-radius: 2px;
+    color: #fff;
     margin: 0rem .5rem .5rem 0;
+    background-color: transparent;
+    text-align: left;
 
     &.active {
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.05);
     }
   }
 
   .modal-inner {
     opacity: 0;
+    display: flex;
     animation: modalFadeIn 0.3s ease-out forwards;
     animation-delay: .9s;
-    overflow: scroll;
-    padding: 2rem 0rem 2rem 2rem;
     // display: flex;
     // align-items: center;
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+    // background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
     // background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+
+    .modal-wrapper {
+      overflow: scroll;
+      max-width: 70%;
+      padding: 2rem 0rem 2rem 2rem;
+    }
+
+    p {
+      color: white;
+    }
   }
+}
+
+.modal-sidebar {
+  width: 30%;
+  padding: 2rem 0rem 2rem 2rem;
 }
 
 @keyframes modalFadeIn {
@@ -483,17 +500,17 @@ onMounted(() => {
 
 .modal ul,
 .modal ol {
-  padding: 0rem 0rem 2rem 5rem;
+  padding: 0rem 0rem .5rem 3rem;
 
   li {
-    font-size: 1.75rem;
-    line-height: 2.25rem;
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
+    font-size: 1.35rem;
+    line-height: 1.95rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
     padding-right: 2rem;
-    border-bottom: 2px solid rgba(0,0,0,.1);
+    border-bottom: 4px solid rgba(255,255,255,.1);
     font-family: vars.$fontFamily;
-    color: colors.$navyBlue;
+    color: white;
 
     &:last-child {
       border: none;
@@ -503,27 +520,29 @@ onMounted(() => {
 
     a {
       font-family: vars.$fontFamily;
-      color: colors.$navyBlue;
+      color: white;
       text-decoration: none;
     }
 
     u {
-      color: colors.$navyBlue;
       text-decoration: none;
+      .dotted {
+        border-bottom: 1px dashed colors.$cloudWhite;
+      }
 
       b {
-        color: colors.$lightBlue;
+        color: colors.$blueSky;
       }
     }
   }
 }
 .hero-sentence {
-  padding: 0rem 4rem 2rem 0rem;
+  padding: 0rem 2rem 2rem 0rem;
   position: relative;
   p {
-    font-size: 3rem;
-    line-height: 4rem;
-    margin: 1rem 0 2rem 0;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    margin: 1rem 0 0rem 0;
     font-family: vars.$fontFamilyBold;
     letter-spacing: -.6px;
     font-weight: 300;

@@ -122,7 +122,7 @@ const downloadFile = async () => {
       position: absolute;
       left: 0px;
       width: 0;
-      height: 1.25rem;
+      height: 5px;
       background: colors.$lightBlue;
       display: block;
       z-index: -1;
@@ -132,8 +132,8 @@ const downloadFile = async () => {
     &:hover,
     &.router-link-active {
       &:after {
-        width: calc(100% + 6px);
-        left: -3px;
+        width: 100%;
+        top: 37px;
       }
     }
   }
