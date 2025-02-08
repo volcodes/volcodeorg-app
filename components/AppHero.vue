@@ -12,13 +12,13 @@ const achievements = ref([
     hero: "I built and optimized products to millions worldwide across diverse industries.",
     icon: performanceIcon,
     accomplishments: [{
-      "entity": "<b>Built a custom video player</b> for <a href=\"#tabbiii\">a VOD Platform</a> at <a href=\"#TRT\">TRT</a>, enabling accessible streaming on all devices with <u><b>seamless playback for over 1M+ daily users.</b></u>"
-    },{
       "entity": "<b>Migrated components and pages</b> for the main website at <a href=\"#Homeday\">Homeday</a>, <u><b>improved page speeds by 40%.</b></u>"
     },{
-      "entity": "<b>Implemented integration tests</b> and reduced legacy unit and E2E tests at <a href=\"#Homeday\">Homeday</a>, <u><b>accelerated build times by 25%.</b></u>"
+      "entity": "<b>Implemented integration tests</b> and reduced legacy unit tests at <a href=\"#Homeday\">Homeday</a>, <u><b>accelerated build times by 25%.</b></u>"
     },{
-      "entity": "<b>Implemented new flows</b> in the <a href=\"#Homeday's internal CMS\">Homeday's CMS</a>: <u>ensuring qualified buyers</u>, and <u><b>reducing costs for all parties</b>.</u>"
+      "entity": "<b>Built a custom video player</b> for <a href=\"#tabbiii\">a VOD Platform</a> at <a href=\"#TRT\">TRT</a>, enabling accessible streaming on all devices with <u><b>seamless playback for over 1M+ daily users.</b></u>"
+    },{
+      "entity": "<b>Implemented new flows</b> in the <a href=\"#Homeday's internal CMS\">Homeday's CMS</a>: <u>ensuring qualify buyers earlier in the process</u>, and <u><b>reducing costs for all parties</b>.</u>"
     }]
   },
   {
@@ -72,6 +72,7 @@ const closeModal = () => {
 }
 
 const changeSelected = (index) => {
+  if (index >= achievements.length - 1) index = 0
   isModalAnimationVisible.value = true;
   setTimeout(() => {
     selectedAchievementIndex.value = index
@@ -95,27 +96,13 @@ onMounted(() => {
     <img src="~/assets/imgs/Frame.svg" alt="Hero Background" class="hero-bg" />
     <span>I'm Mehmet;</span>
     <h1>
-      <!-- Welcome to my portfolio -->
       Software Development Specialist
-      <!-- I transform ideas into <br> digital solutions. -->
     </h1>
     <p>
-      Frontend-focused, 10+ years in web, experienced in backend and full stack work
-      <!-- With over a decade of experience across diverse sectors, I craft scalable digital solutions that drive business growth and innovation -->
-      <!-- I have a decade of experience in web development, specializing in crafting scalable digital solutions that drive business growth and innovation. -->
-      <!-- I bring a decade of expertise in frontend development, working across diverse industries and tech stacks. -->
-      <!-- 
-        I specialise in turning concepts into user-centric applications that are modern, scalable, and impactful.
-        With over a decade of experience - I pursue my passion by optimizing workflows, modernizing systems, and mentoring people to craft high-quality digital solutions that drive results.
-      -->
-
+      Frontend-focused, 10+ years in web, experienced in backend and full stack work.
     </p>
     <p>
-      <!-- My strongest skills are in frontend frameworks like Vue.js and React, backend technologies such as PHP and Node.js, and cloud infrastructure tools like AWS to deliver seamless user experiences.  -->
-      <!-- frontend frameworks like Vue.js and React, backend technologies such as PHP and Node.js, and cloud infrastructure tools like AWS to deliver seamless user experiences.  -->
-      <!-- From modernizing legacy systems to mentoring developers and optimizing workflows, I thrive at the intersection of technology and innovation, delivering scalable applications that solve real-world challenges. -->
-      I design, build, and optimize digital interfaces, apps, and infrastructures
-      <!-- I can design and optimize experiences, applications, and infrastructures.  -->
+      I design, build, and optimize digital interfaces, apps, and infrastructures.
     </p>
     <section id="ctaButtons">
       <button class="btn btn--filled" @click="isModalOpen = true">
@@ -136,13 +123,20 @@ onMounted(() => {
         <div class="modal" @click.stop>
           <div class="modal-inner">
             <aside class="modal-sidebar">
-              <button v-for="(item, index) in achievements" v-key="key" @click="changeSelected(index)" :class="{'active': selectedAchievementIndex === index}">{{ item.label }}</button>
+              <strong>Key Achievements</strong>
+              <button 
+                v-for="(item, index) in achievements" 
+                class="modal-button"
+                v-key="key" 
+                @click="changeSelected(index)" 
+                :class="{'active': selectedAchievementIndex === index}">
+                  {{ item.label }}
+                </button>
             </aside>
             <div class="modal-wrapper" :class="{'animation': isModalAnimationVisible}">
               <div class="hero-sentence">
-                <!-- <MdiIcon class="bg-icon" :icon="selectedAchievement.icon" /> -->
                 <p>{{ selectedAchievement.hero }}</p>
-                <img :src="selectedAchievement.icon" alt="Performance Icon" class="hero-bg" />
+                <img :src="selectedAchievement.icon" :alt="selectedAchievement.label" class="hero-bg" />
               </div>
               <ol>
                 <li v-for="ach in selectedAchievement.accomplishments" v-html="ach.entity"></li>
@@ -154,6 +148,10 @@ onMounted(() => {
                 <!-- a PHP/Symfony website to Vue.js/Nuxt for -->
                 <!-- <li><b>Implemented a new flow</b> for the existing process on the <a href="#Homeday's realtor platform">Homeday's realtor platform</a>: <u>ensuring qualified buyers</u>, and <u><b>reducing costs for all parties</b></u>.</li> --> 
               </ol>
+              <a v-if="selectedAchievementIndex + 1 < achievements.length" rel="nofollow" class="cta" @click="changeSelected(selectedAchievementIndex+1)">See my accomplishments in {{ achievements[selectedAchievementIndex + 1].label }} <MdiIcon icon="mdiArrowTopRight"
+                /></a>
+              <a v-else rel="nofollow" class="cta" @click="changeSelected(0)">See my accomplishments in {{ achievements[0].label }} <MdiIcon icon="mdiArrowTopRight"
+                /></a>
             </div>
           </div>
         </div>
@@ -421,21 +419,34 @@ onMounted(() => {
   transform-origin: center;
   display: flex;
 
-  button {
-    padding: .5rem 1rem;
+  .modal-button {
+    padding: .75rem 1rem;
     font-size: 1rem;
     font-family: "Inter";
+    font-weight: 600;
     border: 0;
     cursor: pointer;
-    border-radius: 2px;
     color: #fff;
-    margin: 0rem .5rem .5rem 0;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0);
     text-align: left;
-    transition: all .3s;
+    transition: all .4s;
+    box-sizing: border-box;
+    // border: 1px dashed  rgba(255, 255, 255, 0.08);
+    border-bottom: 1px dashed  rgba(255, 255, 255, 0.08); 
+    border-left: 4px solid rgba(255, 255, 255, 0);
 
+    &:first-child {
+      border-top: 1px dashed  rgba(255, 255, 255, 0.08); 
+    }
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.04);
+      padding-left: 1.2rem;
+    }
     &.active {
-      background-color: rgba(255, 255, 255, 0.05);
+      background-color: rgb(15 23 59);
+      border-left: 4px solid rgba(255, 255, 255, 0.1);
+      padding: 1.5rem 1rem;
+      border-right: none;
     }
   }
 
@@ -455,6 +466,12 @@ onMounted(() => {
       transition: all .3s;
       opacity: 1;
       padding: 2rem 0rem 2rem 2rem;
+      background-color: #0f173c;
+
+      .cta {
+        margin: 1rem 0;
+        cursor: pointer;
+      }
 
       &.animation {
         opacity: 0;
@@ -470,10 +487,17 @@ onMounted(() => {
 }
 
 .modal-sidebar {
-  width: 20%;
-  padding: 2rem 0rem 2rem 2rem;
+  width: 25%;
+  padding: 1rem 0rem 0rem 0rem;
   display: flex;
   flex-direction: column;
+
+  strong {
+    font-size: 1.25rem;
+    padding: 1.25rem;
+    color: colors.$cloudWhite;
+    font-family: vars.$fontFamilyBold;
+  }
 }
 
 @keyframes modalFadeIn {
@@ -542,52 +566,43 @@ onMounted(() => {
       text-decoration: none;
     }
 
+    > b {
+      font-weight: 900;
+      font-family: vars.$fontFamilyBold;
+    }
     u {
       text-decoration: none;
-      .dotted {
-        border-bottom: 1px dashed colors.$cloudWhite;
-      }
 
       b {
-        color: colors.$blueSky;
+        font-weight: normal;
+        border-bottom: 1px dotted colors.$cloudWhite;
       }
     }
   }
 }
 .hero-sentence {
-  padding: 0rem 3rem 2rem 0rem;
+  padding: 0rem 2rem 1rem 0rem;
   position: relative;
   display: flex;
   align-items: flex-start;
 
   img {
-    max-width: 20%;
+    max-width: 15%;
     height: auto;
     display: block;
     margin-top: 1rem;
   }
   p {
-    width: 80%;
+    width: 85%;
     box-sizing: border-box;
     font-size: 2.5rem;
     line-height: 3.5rem;
-    margin: 1rem 0rem 0rem 0;
+    margin: 1rem 2rem 0rem 0;
     font-family: vars.$fontFamilyBold;
     letter-spacing: -.6px;
     font-weight: 300;
     color: colors.$navyBlue;
     box-sizing: border-box;
-  }
-
-  .bg-icon {
-    font-size: 450px;
-    margin: 0rem 0 1rem -2rem;
-    opacity: .07;
-    color: colors.$navyBlue;
-    position: absolute;
-    right: 0;
-    pointer-events: none;
-    bottom: -10rem;
   }
 
   b {
