@@ -100,7 +100,7 @@ const achievementsRef = ref(achievements)
       font-size: 32px;
       line-height: 32px;
       padding: 0 8px;
-      color: colors.$lightBlue;
+      color: colors.$cta;
     }
     span {
       color: colors.$cloudWhite;

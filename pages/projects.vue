@@ -360,7 +360,7 @@ const pages = [
       transition: all 0.3s cubic-bezier(0.25, 1.07, 0.6, 0.9);
 
       &:hover {
-        box-shadow: 4px 4px 0px colors.$ctaBlue;
+        box-shadow: 4px 4px 0px colors.$cta;
         transform: translateY(-4px) translateX(-4px);
         &::after {
           background: rgba(2, 6, 23, 0);
@@ -395,7 +395,7 @@ const pages = [
         font-size: 1.5rem;
         line-height: 2rem;
         font-family: vars.$fontFamilyBold;
-        color: colors.$ctaBlue;
+        color: colors.$cta;
       }
 
       > span {

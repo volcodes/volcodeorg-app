@@ -278,7 +278,7 @@ onMounted(() => {
       content: '';
       width: 4px;
       height: 8px;
-      background: colors.$lightBlue;
+      background: colors.$cta;
       position: absolute;
       left: 50%;
       top: 6px;

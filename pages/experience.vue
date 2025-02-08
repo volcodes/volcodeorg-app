@@ -462,7 +462,7 @@ const pages = [
         width: 10px;
         height: 10px;
         border-radius: 100px;
-        background: colors.$lightBlue;
+        background: colors.$cta;
         position: absolute;
         left: -9px;
         margin-right: 10px;

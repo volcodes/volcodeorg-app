@@ -1,3 +1,6 @@
+
+  // !! TODO: change light blue colors to white with low opacity
+  // !! Change icons and make it simple
 @use 'vars';
 @use 'colors';
 @use 'fonts';
@@ -45,7 +48,7 @@ body {
   transition: 0.2s cubic-bezier(0.38, 0.98, 0.6, 0.9);
   display: flex;
   align-items: center;
-  box-shadow: 0px 0px 0px 0px colors.$ctaBlue;
+  box-shadow: 0px 0px 0px 0px colors.$cta;
   border-radius: vars.$borderRadius;
   cursor: pointer;
 
@@ -59,7 +62,7 @@ body {
     color: white;
     border-color: white;
     transform: translateX(-2px) translateY(-2px);
-    box-shadow: 4px 4px 0px 0px colors.$ctaBlue;
+    box-shadow: 4px 4px 0px 0px colors.$greenShadow;
   }
 
   &:active {
@@ -68,13 +71,15 @@ body {
   }
 
   &--filled {
-    background-color: colors.$lightBlue;
-    box-shadow: 0px 0px 0px 0px colors.$cloudWhite;
+    background-color: colors.$cta;
+    box-shadow: 0px 0px 0px 0px white;
     border: none;
     color: colors.$navyBlue;
 
     &:hover {
-      box-shadow: 4px 4px 0px 0px colors.$cloudWhite;
+      background-color: colors.$ctaHover;
+      color: colors.$navyBlue;
+      box-shadow: 4px 4px 0px 0px colors.$greenShadow;
     }
   }
 }
@@ -189,7 +194,7 @@ p {
     svg {
       width: 40px;
       height: 40px;
-      background: linear-gradient(to bottom, colors.$lightBlue, #0039af 100%);
+      background: linear-gradient(to bottom, colors.$cta, #0039af 100%);
       border-radius: 100px;
       box-sizing: border-box;
       padding: 8px;
@@ -232,13 +237,13 @@ p {
 
 .cta {
   font-size: 18px;
-  color: colors.$ctaBlue;
+  color: colors.$cta;
   text-decoration: none;
   line-height: 32px;
   display: flex;
   font-weight: 600;
   align-items: flex-end;
-  border-bottom: 2px solid colors.$ctaBlue;
+  border-bottom: 2px solid colors.$cta;
   width: fit-content;
   padding-bottom: 2px;
   transition: all 0.2s;
@@ -320,7 +325,7 @@ p {
       background-color: colors.$darkBlue;
       width: fit-content;
       padding: 0 8px;
-      border: 1px solid colors.$lightBlue;
+      border: 1px solid colors.$cta;
       transition: all 0.3s;
       height: 24px;
       line-height: 24px;

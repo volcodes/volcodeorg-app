@@ -123,7 +123,7 @@ const downloadFile = async () => {
       left: 0px;
       width: 0;
       height: 5px;
-      background: colors.$lightBlue;
+      background: colors.$cta;
       display: block;
       z-index: -1;
       transition: 0.2s cubic-bezier(0.38, 0.98, 0.6, 0.9);
@@ -156,11 +156,11 @@ const downloadFile = async () => {
   border-radius: vars.$borderRadius;
   transition: 0.2s cubic-bezier(0.38, 0.98, 0.6, 0.9);
   transform: translateX(-2px) translateY(-2px);
-  box-shadow: 4px 4px 0px 0px colors.$ctaBlue;
+  box-shadow: 4px 4px 0px 0px colors.$greenShadow;
 
   &:hover {
     transform: translateX(-5px) translateY(-5px);
-    box-shadow: 6px 6px 0px 0px colors.$ctaBlue;
+    box-shadow: 6px 6px 0px 0px colors.$cta;
   }
 
   &:active {

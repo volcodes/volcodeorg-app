@@ -48,7 +48,7 @@ defineProps<{
     }
 
     a:not(:last-child) {
-      color: colors.$ctaBlue;
+      color: colors.$cta;
       &:after {
         content: '/';
         margin-left: 12px;
