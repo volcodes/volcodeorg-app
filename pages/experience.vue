@@ -543,7 +543,7 @@ const pages = [
     padding: 0;
     font-size: 4.5rem;
     line-height: 5rem;
-    color: colors.$cloudWhite;
+    color: white;
     text-shadow: 2px 2px 0px colors.$navyBlue;
   }
 }

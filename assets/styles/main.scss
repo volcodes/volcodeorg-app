@@ -37,7 +37,7 @@ body {
 }
 
 .btn {
-  font-family: vars.$fontFamilyRegular;
+  font-family: vars.$fontFamilyBold;
   border: 4px solid colors.$cloudWhite;
   color: colors.$cloudWhite;
   font-size: 1.25rem;
@@ -78,7 +78,7 @@ body {
 
     &:hover {
       background-color: colors.$ctaHover;
-      color: colors.$navyBlue;
+      color: colors.$darkBlue;
       box-shadow: 4px 4px 0px 0px colors.$greenShadow;
     }
   }
@@ -149,7 +149,7 @@ p {
     line-height: 1.5rem;
     display: block;
     margin: 0;
-    color: #4a4c64;
+    color: colors.$grayShade;
     font-weight: 500;
   }
 
@@ -157,7 +157,7 @@ p {
     margin-top: 8px;
     font-size: 1.15rem;
     line-height: 1.65rem;
-    color: colors.$textGray;
+    color: colors.$grayShade;
     padding-left: 12px;
     font-family: vars.$fontFamilyRegular;
   }
@@ -166,6 +166,7 @@ p {
     margin: 0.5rem 0;
     font-size: 1.10rem;
     line-height: 1.75rem;
+    color: colors.$cloudWhite
   }
 }
 
@@ -236,34 +237,56 @@ p {
 }
 
 .cta {
-  font-size: 18px;
+  font-size: 1.25rem;
+  line-height: 2rem;
   color: colors.$cta;
   text-decoration: none;
-  line-height: 32px;
   display: flex;
   font-weight: 600;
   align-items: flex-end;
   border-bottom: 2px solid colors.$cta;
   width: fit-content;
-  padding-bottom: 2px;
   transition: all 0.2s;
   font-family: vars.$fontFamilyBold;
+  position: relative;
+  z-index: 1;
+  padding: .2rem 0rem;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    background-color: colors.$ctaHover;
+    display: block;
+    width: 100%;
+    z-index: -1;
+    transition: all .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
 
   svg {
     transition: all 0.2s;
-    height: 32px;
-    margin-right: -4px;
-    margin-left: 8px;
+    margin-bottom: .2rem;
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   &:hover {
-    color: colors.$cloudWhite;
-    border-color: colors.$cloudWhite;
+    color: colors.$navyBlue;
+    border-color: colors.$navyBlue;
+    padding: 0.2rem 1.4rem 0.2rem .8rem;
 
     svg {
-      color: colors.$cloudWhite;
-      margin-left: 12px;
-      transform: rotate(45deg);
+      color: colors.$navyBlue;
+      font-size: 1.75rem;
+      transform: translate(1.5rem, -0.35rem);
+      transition-delay: .1s;
+    }
+
+    &::after {
+      height: 100%;
     }
   }
 }

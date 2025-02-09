@@ -196,7 +196,7 @@ onMounted(() => {
     font-size: 1.5rem;
     line-height: 2.5rem;
     font-weight: 500;
-    color: colors.$blueSky;
+    color: colors.$cloudWhite;
     font-family: 'Inter';
     text-align: center;
     margin: 0;

@@ -84,7 +84,7 @@ const achievementsRef = ref(achievements)
   padding: 0 144px;
   transition: all 0.3s cubic-bezier(0.25, 1.07, 0.6, 0.9);
   transition-delay: 0.7s;
-  font-family: $fontFamilyInter;
+  font-family: vars.$fontFamilyInter;
 
   .achievement {
     display: flex;
@@ -100,7 +100,7 @@ const achievementsRef = ref(achievements)
       font-size: 32px;
       line-height: 32px;
       padding: 0 8px;
-      color: colors.$cta;
+      color: colors.$grayShade;
     }
     span {
       color: colors.$cloudWhite;

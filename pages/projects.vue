@@ -14,15 +14,12 @@
           />
         </figure>
         <div class="project-info">
-          <strong>Realtor Portfolio Generator</strong>
+          <strong>Realtor Portfolio Creator</strong>
           <span
             >Empowering realtors to showcase their properties with a click</span
           >
           <p>
-            Realtors often lack technical expertise or resources to create
-            professional online portfolios. With this generator, realtors can
-            launch a portfolio in under 5 minutes. All templates tailored for
-            property showcases and lead generation.
+            Realtors can launch a portfolio in under 5 minutes. All templates tailored for property showcases and lead generation. Realtors often waste resources to create professional online portfolios. 
           </p>
           <div class="technologies">
             <span>
@@ -84,8 +81,7 @@
             collections</span
           >
           <p>
-            Managing large Spotify playlists can become chaotic without advanced
-            filtering and organization tools. Playlist Maestro enables users to
+            Playlist Maestro enables users to
             sort, filter, and fine-tune playlists to match their preferences
             seamlessly. Advanced filtering saves users hours in playlist
             management.
@@ -94,10 +90,6 @@
             <span>
               <MdiIcon icon="mdiReact" />
               <span>React</span>
-            </span>
-            <span>
-              <img src="@/assets/imgs/icons/nextjs.svg" alt="Next.js" />
-              <span>Next.js</span>
             </span>
             <span>
               <MdiIcon icon="mdiGithub" />
@@ -140,10 +132,11 @@
           />
         </figure>
         <div class="project-info">
-          <strong>Devfolio: The Open-Source Portfolio App</strong>
-          <span>Your portfolio, your rules—accessible, responsive, and open to all</span>
-          <p>            
-            Creating a personal portfolio should be effortless, adaptable, and accessible to everyone. Devfolio is a high-performance, open-source portfolio template designed for developers who value modern design, responsiveness, and flexibility. Built with best practices in accessibility and performance, it provides a seamless experience across all devices. Fork it, personalize it, and make it truly yours!
+          <!-- <strong>Open-Source Customizable Portfolio App</strong> -->
+          <!-- <span>Allow people to generate a custom portfolio app in just minutes.</span> -->
+          <span>Developed a high-performance, modular portfolio template for devs.</span>
+          <p>           
+            I built a customizable portfolio app that improves setup efficiency and simplifies maintenance, helping developers showcase their work with minimal effort.
           </p>
           <div class="technologies">
             <span>
@@ -174,6 +167,10 @@
               <MdiIcon icon="mdiCodeGreaterThanOrEqual" />
               <span>Prettier</span>
             </span>
+            <span>
+              <MdiIcon icon="mdiLanguageMarkdown" />
+              <span>Markdown</span>
+            </span>
           </div>
           <div class="project-links">
             <NuxtLink to="/projects" class="cta"
@@ -192,15 +189,10 @@
           <img src="~/assets/imgs/art-screenshot.png" alt="Art Screenshot" />
         </figure>
         <div class="project-info">
-          <strong>Anonymous Reporting Tool</strong>
-          <span>Speak up securely—your voice, your impact, your privacy</span>
+          <!-- <strong>Anonymous Reporting Tool</strong> -->
+          <span>Engineered a secure, anonymous reporting tool for workplaces.</span>
           <p>
-            Workplace harassment, bias, and discrimination often go unreported
-            due to fear of retaliation. SafeVoice provides a fully anonymous and
-            secure platform for employees to report issues, fostering safer and
-            more inclusive work environments. It's 100% anonymous reporting,
-            protecting users’ identities and enables companies to address
-            critical issues transparently.
+            I led a team of 6 people to build an anonymous reporting platform that ensures privacy and encourages safer work environments, helping organizations build trust with employees.
           </p>
           <div class="technologies">
             <span>
@@ -244,13 +236,9 @@
           />
         </figure>
         <div class="project-info">
-          <strong>Local Website Finder</strong>
-          <span>Discover the local services that make life easier</span>
+          <span>Developed a localized service finder for easy relocations.</span>
           <p>
-            Relocating to a new city or country can be overwhelming, especially
-            when trying to find essential online services. Local Website Finder
-            simplifies this process by curating trusted, country-specific
-            resources for services like food delivery, utilities, and more.
+            I designed an open source service finder that curates trusted local resources, reducing time spent searching and simplifying access to essential services for new residents.
           </p>
           <div class="technologies">
             <span>
@@ -290,13 +278,11 @@
           />
         </figure>
         <div class="project-info">
-          <strong>Human Body Input Binder</strong>
-          <span>Connecting human data to innovative digital solutions</span>
+          <!-- <strong>Human Body Input Binder</strong> -->
+          <span>Created a scalable data-binding tool for digital applications.</span>
           <p>
-            Integrating human input, such as body metrics, into digital
-            platforms can be complex and error-prone. Human Body Input Binder
-            bridges the gap with a robust, scalable input-binding solution for
-            applications in healthcare, fitness, and more.
+            Human Body Input Binder integrates human input, such as body metrics, into digital
+            platforms.
           </p>
           <div class="technologies">
             <span>
@@ -340,10 +326,18 @@ const pages = [
     line-height: 2.25rem;
     font-family: vars.$fontFamilyRegular;
     color: colors.$blueSky;
+    margin-bottom: 2rem;
   }
 
   .project {
-    padding: 64px 0;
+    padding: 3rem 0;
+    border-bottom: 1px solid colors.$modalBg;
+    transition: padding .6s;
+
+    &:nth-child(2n - 1) {
+      background-color: colors.$darkBlue;
+      padding: 5rem 0;
+    }
 
     .container {
       display: flex;
@@ -353,8 +347,8 @@ const pages = [
     }
 
     figure {
-      max-width: 45%;
-      max-height: 650px;
+      max-width: 40%;
+      max-height: 600px;
       overflow: hidden;
       position: relative;
       transition: all 0.3s cubic-bezier(0.25, 1.07, 0.6, 0.9);
@@ -383,39 +377,43 @@ const pages = [
       img {
         width: 100%;
         height: auto;
+        display: block;
       }
     }
 
     .project-info {
-      max-width: 50%;
+      max-width: 56%;
       display: flex;
       flex-direction: column;
 
       > strong {
-        font-size: 1.5rem;
+        font-size: 1.15rem;
         line-height: 2rem;
         font-family: vars.$fontFamilyBold;
-        color: colors.$cta;
+        color: colors.$greenShadow;
+        text-transform: uppercase;
+        letter-spacing: .1rem;
       }
 
       > span {
-        font-size: 3.2rem;
-        line-height: 3.5rem;
+        font-size: 2.5rem;
+        line-height: 3rem;
         font-family: vars.$fontFamilyThick;
         margin: 8px 0;
-        color: colors.$cloudWhite;
+        color: white;
       }
 
       > p {
-        font-size: 1rem;
-        line-height: 1.5rem;
+        font-size: 1.25rem;
+        line-height: 2rem;
         font-family: vars.$fontFamilyInter;
         margin: 0rem 0 1rem 0;
-        color: colors.$blueSky;
+        color: colors.$grayShade;
+        width: 80%;
       }
 
       .technologies {
-        color: #3d4877;
+        color: colors.$grayShade;
         font-size: 1rem;
         margin-top: 0;
 
@@ -438,8 +436,12 @@ const pages = [
       }
 
       figure {
-        max-height: 450px;
+        max-height: 500px;
         overflow: hidden;
+
+        img {
+          display: block;
+        }
       }
     }
   }

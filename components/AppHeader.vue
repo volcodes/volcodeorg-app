@@ -127,13 +127,13 @@ const downloadFile = async () => {
       display: block;
       z-index: -1;
       transition: 0.2s cubic-bezier(0.38, 0.98, 0.6, 0.9);
+      top: 37px;
     }
 
     &:hover,
     &.router-link-active {
       &:after {
         width: 100%;
-        top: 37px;
       }
     }
   }
@@ -160,7 +160,7 @@ const downloadFile = async () => {
 
   &:hover {
     transform: translateX(-5px) translateY(-5px);
-    box-shadow: 6px 6px 0px 0px colors.$cta;
+    box-shadow: 6px 6px 0px 0px colors.$greenShadow;
   }
 
   &:active {

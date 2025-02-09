@@ -1,7 +1,6 @@
 <template>
   <div>
     <AppHero />
-    {{ repos }}
     <!-- <AppAchievements /> -->
 
     <div id="secondary" :class="{ 'isActive': isActive }">
@@ -65,7 +64,25 @@ onMounted(() => {
   padding-bottom: 8rem;
   transition: all 0.7s cubic-bezier(0.25, 1.07, 0.6, 0.9);
   margin-bottom: -6rem;
-  // opacity: 0.03;
+  position: relative;
+  opacity: 0.03;
+
+  &:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: colors.$navyBlue;
+    background: radial-gradient(circle, colors.$navyBlue 0%, rgba(255,0,0,0) 50%, colors.$navyBlue 100%);
+    z-index: 1;
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
 
   &.isActive {
     opacity: 1;
