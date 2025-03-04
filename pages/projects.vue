@@ -340,7 +340,7 @@
             <NuxtLink
               rel="noopener noreferrer"
               target="_blank"
-              to="https://github.com/volcanioo/human-body-input-binder"
+              to="https://github.com/volcanioo/Human-Body-Rendering-HTML"
               class="cta"
               >Github <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
