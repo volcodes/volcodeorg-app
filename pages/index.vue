@@ -3,15 +3,27 @@
     <AppHero />
     <!-- <AppAchievements /> -->
 
-    <div id="secondary" :class="{ 'isActive': isActive }">
+    <div id="secondary" :class="{ isActive: isActive }">
       <div class="container">
         <!-- 10+ years of experience | 6+ industries | 300+ collaborators worldwide. -->
-        <h2><em>10+ years of experience in <span class="tooltip bottom" data-tooltip="IT, e-commerce, SaaS, media, real estate, education tech">6 industries</span></em> with 150+ collaborators worldwide</h2>
+        <h2>
+          <em
+            >10+ years of experience in
+            <span
+              class="tooltip bottom"
+              data-tooltip="IT, e-commerce, SaaS, media, real estate, education tech"
+              >6 industries</span
+            ></em
+          >
+          with 150+ collaborators worldwide
+        </h2>
         <section class="grid">
           <article class="card">
             <h3>Open Source Projects</h3>
             <p>
-              Discover practical tools and apps that tackle real-world challenges, showcasing my tech expertise, innovation, and commitment to creating real value.
+              Discover practical tools and apps that tackle real-world
+              challenges, showcasing my tech expertise, innovation, and
+              commitment to creating real value.
             </p>
             <NuxtLink to="/projects" class="cta">
               Explore My Projects <MdiIcon icon="mdiArrowTopRight" />
@@ -20,7 +32,9 @@
           <article class="card">
             <h3>Demonstrated Professional Expertise</h3>
             <p>
-              Explore my journey in programming and web technologies, spanning six industries over 10 years, where I’ve delivered impactful, scalable solutions in agile teams.
+              Explore my journey in programming and web technologies, spanning
+              six industries over 10 years, where I’ve delivered impactful,
+              scalable solutions in agile teams.
             </p>
             <NuxtLink to="/experience" class="cta"
               >Review My Career Path <MdiIcon icon="mdiArrowTopRight"
@@ -33,25 +47,25 @@
 </template>
 
 <script setup lang="ts">
-// const { data: repos } = await useAsyncData('repos', () => 
+// const { data: repos } = await useAsyncData('repos', () =>
 //   $fetch('https://api.github.com/users/volcodes/repos')
 // )
 
 // const { data: repos } = await useFetch('https://api.github.com/users/volcodes/repos')
-const isActive = ref(false);
+const isActive = ref(false)
 
 onMounted(() => {
   const handleScroll = () => {
-    isActive.value = window.scrollY > 1;
-  };
-  
-  window.addEventListener('scroll', handleScroll);
-  
+    isActive.value = window.scrollY > 1
+  }
+
+  window.addEventListener('scroll', handleScroll)
+
   // Cleanup
   onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll);
-  });
-});
+    window.removeEventListener('scroll', handleScroll)
+  })
+})
 </script>
 
 <style lang="scss">
@@ -68,14 +82,19 @@ onMounted(() => {
   opacity: 0.03;
 
   &:after {
-    content: "";
+    content: '';
     width: 100%;
     height: 100%;
     position: absolute;
     left: 0;
     top: 0;
     background: colors.$navyBlue;
-    background: radial-gradient(circle, colors.$navyBlue 0%, rgba(255,0,0,0) 50%, colors.$navyBlue 100%);
+    background: radial-gradient(
+      circle,
+      colors.$navyBlue 0%,
+      rgba(255, 0, 0, 0) 50%,
+      colors.$navyBlue 100%
+    );
     z-index: 1;
   }
 
@@ -192,7 +211,9 @@ h2 {
     text-align: left;
     padding: 1rem 0;
     margin-bottom: 0;
+    display: block;
+    width: 70%;
+    margin-top: -2rem;
   }
 }
 </style>
-

@@ -2,7 +2,9 @@
   <div id="projects">
     <AppPageHeader :title="'Projects'" :pages="pages" />
     <p class="container explanation">
-      Each project here represents my commitment to leveraging technology to make a positive impact, whether it's empowering employees, or crafting applications that address genuine needs of others.
+      Each project here represents my commitment to leveraging technology to
+      make a positive impact, whether it's empowering employees, or crafting
+      applications that address genuine needs of others.
     </p>
     <!-- sound effects on https://www.youtube.com/watch?v=Eq9R1_JQDCA&ab_channel=NoraEnPure 14:00 -->
     <!-- <div class="project">
@@ -134,9 +136,14 @@
         <div class="project-info">
           <!-- <strong>Open-Source Customizable Portfolio App</strong> -->
           <!-- <span>Allow people to generate a custom portfolio app in just minutes.</span> -->
-          <span>Developed a high-performance, modular portfolio template for devs.</span>
-          <p>           
-            I built a customizable portfolio app that improves setup efficiency and simplifies maintenance, helping developers showcase their work with minimal effort.
+          <span
+            >Developed a high-performance, modular portfolio template for
+            devs.</span
+          >
+          <p>
+            I built a customizable portfolio app that improves setup efficiency
+            and simplifies maintenance, helping developers showcase their work
+            with minimal effort.
           </p>
           <div class="technologies">
             <span>
@@ -173,10 +180,18 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://github.com/volcodes/volcodeorg-app"
+              class="cta"
               >Github <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://volcode.org"
+              class="cta"
               >Demo <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
           </div>
@@ -190,9 +205,13 @@
         </figure>
         <div class="project-info">
           <!-- <strong>Anonymous Reporting Tool</strong> -->
-          <span>Engineered a secure, anonymous reporting tool for workplaces.</span>
+          <span
+            >Engineered a secure, anonymous reporting tool for workplaces.</span
+          >
           <p>
-            I led a team of 6 people to build an anonymous reporting platform that ensures privacy and encourages safer work environments, helping organizations build trust with employees.
+            I led a team of 6 people to build an anonymous reporting platform
+            that ensures privacy and encourages safer work environments, helping
+            organizations build trust with employees.
           </p>
           <div class="technologies">
             <span>
@@ -217,10 +236,18 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://github.com/volcanioo/anonymous-reporting-tool"
+              class="cta"
               >Github <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://affectionate-williams-df6f76.netlify.app/"
+              class="cta"
               >Demo <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
           </div>
@@ -236,9 +263,13 @@
           />
         </figure>
         <div class="project-info">
-          <span>Developed a localized service finder for easy relocations.</span>
+          <span
+            >Developed a localized service finder for easy relocations.</span
+          >
           <p>
-            I designed an open source service finder that curates trusted local resources, reducing time spent searching and simplifying access to essential services for new residents.
+            I designed an open source service finder that curates trusted local
+            resources, reducing time spent searching and simplifying access to
+            essential services for new residents.
           </p>
           <div class="technologies">
             <span>
@@ -259,10 +290,18 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://github.com/volcanioo/local-websites"
+              class="cta"
               >Github <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://volcanioo.github.io/local-websites/dist/index.html"
+              class="cta"
               >Demo <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
           </div>
@@ -279,10 +318,13 @@
         </figure>
         <div class="project-info">
           <!-- <strong>Human Body Input Binder</strong> -->
-          <span>Created a scalable data-binding tool for digital applications.</span>
+          <span
+            >Created a scalable data-binding tool for digital
+            applications.</span
+          >
           <p>
-            Human Body Input Binder integrates human input, such as body metrics, into digital
-            platforms.
+            Human Body Input Binder integrates human input, such as body
+            metrics, into digital platforms.
           </p>
           <div class="technologies">
             <span>
@@ -295,10 +337,18 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://github.com/volcanioo/human-body-input-binder"
+              class="cta"
               >Github <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://maya-gans.shinyapps.io/human_body_app/"
+              class="cta"
               >Demo <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
           </div>
@@ -332,7 +382,7 @@ const pages = [
   .project {
     padding: 3rem 0;
     border-bottom: 1px solid colors.$modalBg;
-    transition: padding .6s;
+    transition: padding 0.6s;
 
     &:nth-child(2n - 1) {
       background-color: colors.$darkBlue;
@@ -358,7 +408,7 @@ const pages = [
         transform: translateY(-4px) translateX(-4px);
         &::after {
           background: rgba(2, 6, 23, 0);
-          box-shadow: inset 0 0 50px rgba(2, 6, 23, .3);
+          box-shadow: inset 0 0 50px rgba(2, 6, 23, 0.3);
         }
       }
 
@@ -370,7 +420,7 @@ const pages = [
         width: 100%;
         height: 100%;
         background: rgba(2, 6, 23, 0.65);
-        box-shadow: inset 0 0 50px rgba(2, 6, 23, .3);
+        box-shadow: inset 0 0 50px rgba(2, 6, 23, 0.3);
         transition: all 0.3s cubic-bezier(0.25, 1.07, 0.6, 0.9);
       }
 
@@ -392,7 +442,7 @@ const pages = [
         font-family: vars.$fontFamilyBold;
         color: colors.$greenShadow;
         text-transform: uppercase;
-        letter-spacing: .1rem;
+        letter-spacing: 0.1rem;
       }
 
       > span {
@@ -456,7 +506,6 @@ const pages = [
   }
 }
 
-
 @media only screen and (min-device-width: 900px) and (max-device-width: 1100px) {
   #projects {
     .project {
@@ -515,7 +564,7 @@ const pages = [
       > span {
         font-size: 1.65rem !important;
         line-height: 1.85rem !important;
-        margin: .5rem 0 !important;
+        margin: 0.5rem 0 !important;
       }
       > p {
         font-size: 1.25rem;

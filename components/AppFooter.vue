@@ -12,7 +12,7 @@
         <NuxtLink to="/">Overview</NuxtLink>
         <NuxtLink to="/experience">Experience</NuxtLink>
         <NuxtLink to="/projects">Projects</NuxtLink>
-        <NuxtLink to="/blog">Blog</NuxtLink>
+        <!-- <NuxtLink to="/blog">Blog</NuxtLink> -->
         <NuxtLink to="/contact">Contact</NuxtLink>
       </div>
       <div class="footer__nav">
