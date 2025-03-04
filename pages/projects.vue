@@ -180,10 +180,18 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://github.com/volcodes/volcodeorg-app"
+              class="cta"
               >Github <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://volcode.org"
+              class="cta"
               >Demo <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
           </div>
@@ -228,10 +236,18 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://github.com/volcanioo/anonymous-reporting-tool"
+              class="cta"
               >Github <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://affectionate-williams-df6f76.netlify.app/"
+              class="cta"
               >Demo <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
           </div>
@@ -274,10 +290,18 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://github.com/volcanioo/local-websites"
+              class="cta"
               >Github <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://volcanioo.github.io/local-websites/dist/index.html"
+              class="cta"
               >Demo <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
           </div>
@@ -313,10 +337,18 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://github.com/volcanioo/human-body-input-binder"
+              class="cta"
               >Github <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
-            <NuxtLink to="/projects" class="cta"
+            <NuxtLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to="https://maya-gans.shinyapps.io/human_body_app/"
+              class="cta"
               >Demo <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
           </div>
