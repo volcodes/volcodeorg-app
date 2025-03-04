@@ -66,7 +66,7 @@ const downloadFile = async () => {
         <NuxtLink to="/">Overview</NuxtLink>
         <NuxtLink to="/experience">Experience</NuxtLink>
         <NuxtLink to="/projects">Projects</NuxtLink>
-        <NuxtLink to="/blog">Blog</NuxtLink>
+        <!-- <NuxtLink to="/blog">Blog</NuxtLink> -->
         <NuxtLink to="/contact">Contact</NuxtLink>
         <button @click="downloadFile" class="btn">
           Download Resume

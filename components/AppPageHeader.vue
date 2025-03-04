@@ -2,14 +2,17 @@
   <div id="page-header" class="container">
     <h1>{{ title }}</h1>
     <div class="breadcrumb">
-      <NuxtLink to="/">Overview</NuxtLink>
-      <span>Experience</span>
-      <!-- TODO: add page instance here -->
+      <template v-for="(page, index) in breadcrumbs" :key="index">
+        <NuxtLink v-if="page.link" :to="page.link">{{ page.name }}</NuxtLink>
+        <span v-else>{{ page.name }}</span>
+      </template>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
+
 defineProps<{
   title: string
   pages: {
@@ -17,6 +20,23 @@ defineProps<{
     link: string
   }[]
 }>()
+
+const route = useRoute()
+const breadcrumbs = computed(() => {
+  const paths = route.path.split('/').filter(Boolean)
+  const crumbs = [{ name: 'Overview', link: '/' }]
+
+  if (paths.length) {
+    paths.forEach((path) => {
+      crumbs.push({
+        name: path.charAt(0).toUpperCase() + path.slice(1),
+        link: path === paths[paths.length - 1] ? '' : `/${path}`
+      })
+    })
+  }
+
+  return crumbs
+})
 </script>
 
 <style lang="scss">
@@ -27,7 +47,7 @@ defineProps<{
   margin: 3rem auto 1rem auto;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0 .2rem 0;
+  padding: 2rem 0 0.2rem 0;
 
   h1 {
     color: colors.$white;
@@ -80,13 +100,14 @@ defineProps<{
   .breadcrumb {
     padding-bottom: 0rem;
 
-    a, span {
+    a,
+    span {
       font-size: 1rem !important;
     }
   }
 
   .explanation {
-    padding: 0rem 1rem 2rem 1rem !important
+    padding: 0rem 1rem 2rem 1rem !important;
   }
 }
 </style>

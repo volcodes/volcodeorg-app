@@ -2,7 +2,9 @@
   <div id="experience">
     <AppPageHeader :title="'Experience'" :pages="pages" />
     <p class="container explanation">
-      I specialize in transforming concepts into modern, scalable, and impactful applications. Here is my journey in programming and web technologies across 6 industries over 10 years.
+      I specialize in transforming concepts into modern, scalable, and impactful
+      applications. Here is my journey in programming and web technologies
+      across 6 industries over 10 years.
     </p>
     <div id="timeline" class="container">
       <article>
@@ -62,7 +64,7 @@
               <span>Jest</span>
             </span>
           </div>
-          <NuxtLink to="/experience" class="cta"
+          <NuxtLink class="cta" rel="nofollow" to="/experience/sdui"
             >Explore my highlights <MdiIcon icon="mdiArrowTopRight"
           /></NuxtLink>
         </div>
@@ -132,7 +134,7 @@
               <span>Jest</span>
             </span>
           </div>
-          <NuxtLink to="/projects" class="cta"
+          <NuxtLink class="cta" rel="nofollow" to="/experience/homeday"
             >Explore my highlights <MdiIcon icon="mdiArrowTopRight"
           /></NuxtLink>
         </div>
@@ -185,7 +187,7 @@
               <span>Sass</span>
             </span>
           </div>
-          <NuxtLink to="/projects" class="cta"
+          <NuxtLink class="cta" rel="nofollow" to="/experience/trt"
             >Explore my highlights <MdiIcon icon="mdiArrowTopRight"
           /></NuxtLink>
         </div>
@@ -299,7 +301,8 @@
       </div>
     </div>
     <p class="container explanation">
-      Combining education and self-learning since 2010, I’ve developed skills in programming, web tech, and agile workflows.
+      Combining education and self-learning since 2010, I've developed skills in
+      programming, web tech, and agile workflows.
     </p>
 
     <div id="timeline" class="container">
@@ -320,7 +323,10 @@
             <li>Object-based Programming with Java</li>
             <li>Database Management Systems with SQL & PL/SQL</li>
             <li>Computer Network Systems</li>
-            <li>Making two final projects one for producing a car with Arduino and two for building a web app with HTML, CSS and C#</li>
+            <li>
+              Making two final projects one for producing a car with Arduino and
+              two for building a web app with HTML, CSS and C#
+            </li>
           </ul>
           <div class="technologies">
             <span>
@@ -401,9 +407,20 @@ const pages = [
   { name: 'Overview', link: '/' },
   { name: 'Experience', link: '/experience' }
 ]
+onUpdated(() => {
+  const cI = useRoute().query.cI
+  if (cI) {
+    const lastArticle = document.querySelector(
+      `#timeline article:nth-child(${parseInt(cI as string) + 2})`
+    )
+    if (lastArticle) {
+      lastArticle.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }
+})
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use '~/assets/styles/main.scss';
 @use '~/assets/styles/colors';
 @use '~/assets/styles/vars';
@@ -490,7 +507,7 @@ const pages = [
       }
     }
   }
-  
+
   .technologies:last-child {
     margin-bottom: 0;
   }
@@ -515,7 +532,7 @@ const pages = [
   box-sizing: border-box;
   margin-top: 4rem;
   margin-bottom: 1rem;
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
 
   .container {
     display: flex;
@@ -531,11 +548,11 @@ const pages = [
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(2, 6, 23, 0.30);
-    box-shadow: inset 0 0 50px rgba(2, 6, 23, .3);
+    background: rgba(2, 6, 23, 0.3);
+    box-shadow: inset 0 0 50px rgba(2, 6, 23, 0.3);
     z-index: 1;
   }
-  
+
   h2 {
     background-size: cover;
     position: relative;
@@ -548,90 +565,88 @@ const pages = [
   }
 }
 
-
-p {
-    color: colors.$textGray;
-    font-weight: 500;
-    margin-top: 0rem;
-    position: relative;
-    z-index: 2;
-    padding: 1rem;
-    font-family: vars.$fontFamilyRegular;
-    font-size: 1.75rem;
-    line-height: 2.5rem;
-  }
-
-@media (max-width: 1024px) {
-  #timeline article .date {
-    left: calc(100% + 1rem) !important;
-    transform: translateY(0) !important;
-    font-size: 14px !important;
-    padding-left: 1.5rem !important;
-    text-indent: 0 !important;
-    width: 60px !important;
-    box-sizing: border-box;
-  }
-
-  #timeline article {
-    width: 100% !important;
-    max-width: calc(85% - 1rem) !important;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  #timeline:after {
-    transform: translate(0px, 0px) !important;
-    left: 85%;
-  }
-
-  #timeline article.right {
-    margin-left: 0 !important;
-  }
-
-  #timeline article .date:before {
-    left: 2px;
-  }
-
-  p {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
-  .education {
-    height: 100px;
-
-    h2 {
-      font-size: 2.5rem;
-      line-height: 3rem;
-      letter-spacing: -0.02em;
-    }
-  }
+.explanation {
+  color: colors.$textGray;
+  font-weight: 500;
+  margin-top: 0rem;
+  position: relative;
+  z-index: 2;
+  // padding: 1rem;
+  font-family: vars.$fontFamilyRegular;
+  font-size: 1.75rem;
+  line-height: 2.5rem;
 }
 
-@media only screen and (min-device-width: 300px) and (max-device-width: 768px)  {
-  .date-extended {
-    font-size: .8rem !important;
-    line-height: 1rem;
-  }
-  .card {
-    strong {
-      font-size: 1rem;
-      line-height: 1.2rem;
-    }
-    span {
-      font-size: .8rem;
-      line-height: 1rem;
-    }
-    .technologies > span {
-      padding: 0;
-      width: 20px;
-      height: 22px;
-      svg {
-        width: 20px;
-        height: 20px;
-      }
-    }
-  }
+// @media (max-width: 1024px) {
+//   #timeline article .date {
+//     left: calc(100% + 1rem) !important;
+//     transform: translateY(0) !important;
+//     font-size: 14px !important;
+//     padding-left: 1.5rem !important;
+//     text-indent: 0 !important;
+//     width: 60px !important;
+//     box-sizing: border-box;
+//   }
 
-}
+//   #timeline article {
+//     width: 100% !important;
+//     max-width: calc(85% - 1rem) !important;
+//     margin-top: 1rem;
+//     margin-bottom: 1rem;
+//   }
+
+//   #timeline:after {
+//     transform: translate(0px, 0px) !important;
+//     left: 85%;
+//   }
+
+//   #timeline article.right {
+//     margin-left: 0 !important;
+//   }
+
+//   #timeline article .date:before {
+//     left: 2px;
+//   }
+
+//   p {
+//     font-size: 1.25rem;
+//     line-height: 1.75rem;
+//   }
+
+//   .education {
+//     height: 100px;
+
+//     h2 {
+//       font-size: 2.5rem;
+//       line-height: 3rem;
+//       letter-spacing: -0.02em;
+//     }
+//   }
+// }
+
+// @media only screen and (min-device-width: 300px) and (max-device-width: 768px) {
+//   .date-extended {
+//     font-size: 0.8rem !important;
+//     line-height: 1rem;
+//   }
+//   .card {
+//     strong {
+//       font-size: 1rem;
+//       line-height: 1.2rem;
+//     }
+//     span {
+//       font-size: 0.8rem;
+//       line-height: 1rem;
+//     }
+//     .technologies > span {
+//       padding: 0;
+//       width: 20px;
+//       height: 22px;
+//       svg {
+//         width: 20px;
+//         height: 20px;
+//       }
+//     }
+//   }
+// }
 </style>

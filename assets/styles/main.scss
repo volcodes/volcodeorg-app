@@ -237,6 +237,7 @@ p {
 }
 
 .cta {
+  cursor: pointer;
   font-size: 1.25rem;
   line-height: 2rem;
   color: colors.$cta;
@@ -558,4 +559,14 @@ p {
       margin: 0;
     }
   }
+}
+
+.tech-stack {
+  display: block;
+  font-size: 18px;
+  text-transform: uppercase;
+  opacity: .3;
+  font-family: vars.$fontFamilyRegular;
+  letter-spacing: 2px;
+  pointer-events: none;
 }
