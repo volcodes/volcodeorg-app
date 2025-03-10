@@ -1,11 +1,5 @@
 <template>
   <div id="experience">
-    <div v-if="currentCompanyIndex >= 0" class="go-back">
-      <NuxtLink
-        :to="`/experience?cI=${currentCompanyIndex ?? currentCompanyIndex + 1}`"
-        ><MdiIcon icon="mdiArrowLeft" /> Go Back</NuxtLink
-      >
-    </div>
     <AppPageHeader
       v-if="currentCompany"
       :title="currentCompany.label"
@@ -14,6 +8,12 @@
     <p v-if="currentCompany" class="container explanation">
       {{ currentCompany.hero }}
     </p>
+    <div v-if="currentCompanyIndex >= 0" class="go-back">
+      <NuxtLink
+        :to="`/experience?cI=${currentCompanyIndex ?? currentCompanyIndex + 1}`"
+        ><MdiIcon icon="mdiArrowLeft" /> Go Back</NuxtLink
+      >
+    </div>
     <div v-if="currentCompany" id="timeline" class="container">
       <article
         v-for="(accomplishment, index) in currentCompany.accomplishments"
@@ -625,8 +625,8 @@ const currentCompanyIndex = computed(() => {
 .go-back {
   position: sticky;
   top: 8rem;
-  margin-top: 0rem;
-  margin-bottom: -2rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
   background: transparent;
   z-index: 9;
 }
@@ -719,81 +719,27 @@ const currentCompanyIndex = computed(() => {
   font-size: 1.75rem;
   line-height: 2.5rem;
 }
-
-@media (max-width: 1024px) {
-  #timeline article .date {
-    left: calc(100% + 1rem) !important;
-    transform: translateY(0) !important;
-    font-size: 14px !important;
-    padding-left: 1.5rem !important;
-    text-indent: 0 !important;
-    width: 60px !important;
-    box-sizing: border-box;
-  }
-
-  #timeline article {
-    width: 100% !important;
-    max-width: calc(85% - 1rem) !important;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  #timeline:after {
-    transform: translate(0px, 0px) !important;
-    left: 85%;
-  }
-
-  #timeline article.right {
-    margin-left: 0 !important;
-  }
-
-  #timeline article .date:before {
-    left: 2px;
-  }
-
-  p {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
-  .education {
-    height: 100px;
-
-    h2 {
-      font-size: 2.5rem;
-      line-height: 3rem;
-      letter-spacing: -0.02em;
-    }
-  }
-}
-
-@media only screen and (min-device-width: 300px) and (max-device-width: 768px) {
-  .date-extended {
-    font-size: 0.8rem !important;
-    line-height: 1rem;
-  }
-  .card {
-    strong {
-      font-size: 1rem;
-      line-height: 1.2rem;
-    }
-    span {
-      font-size: 0.8rem;
-      line-height: 1rem;
-    }
-    .technologies > span {
-      padding: 0;
-      width: 20px;
-      height: 22px;
-      svg {
-        width: 20px;
-        height: 20px;
-      }
-    }
-  }
-}
 .hero-sentence.hero-sentence--sm p {
   font-size: 2rem !important;
   line-height: 2.5rem !important;
+}
+
+@media (max-width: 1024px) {
+  .go-back a {
+    top: 0;
+  }
+
+  .go-back {
+    // position: fixed !important;
+    top: 0.5rem !important;
+    left: -2rem !important;
+  }
+
+  .go-back a {
+    font-size: 1.5rem !important;
+    border-radius: 0px !important;
+    border: 4px solid white;
+    margin-left: 1rem !important;
+  }
 }
 </style>

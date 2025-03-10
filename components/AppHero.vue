@@ -6,72 +6,112 @@ import collaborationBg from '~/assets/imgs/collaboration-bg.jpg'
 import engagementBg from '~/assets/imgs/engagement-bg.png'
 import mentorshipBg from '~/assets/imgs/mentorship-bg.png'
 
+const isMobile = ref(false)
+isMobile.value = window ? window.innerWidth < 1024 : false
+
 const closeVideoModal = () => {
   isVideoModalOpen.value = false
 }
 const achievements = ref([
   {
-    label: "Performance & Optimization",
-    hero: "I built and optimized products to millions worldwide across diverse industries.",
+    label: 'Performance & Optimization',
+    hero: 'I built and optimized products to millions worldwide across diverse industries.',
     image: performanceBg,
-    accomplishments: [{
-      "entity": "<b>Built a custom video player</b> for <a href=\"#tabbiii\">a VOD Platform</a> at <a href=\"#TRT\">TRT</a>, enabling accessible streaming on all devices with <u><b>seamless playback for over 1M+ daily users.</b></u>"
-    },{
-      "entity": "<b>Migrated components and pages</b> for the main website at <a href=\"#Homeday\">Homeday</a>, <u><b>improved page speeds by 40%.</b></u>"
-    },{
-      "entity": "<b>Implemented integration tests</b> and reduced legacy unit and E2E tests at <a href=\"#Homeday\">Homeday</a>, <u><b>accelerated build times by 25%.</b></u>"
-    },{
-      "entity": "<b>Implemented new flows</b> in the <a href=\"#Homeday's internal CMS\">Homeday's CMS</a>: <u>ensuring qualified buyers</u>, and <u><b>reducing costs for all parties</b>.</u>"
-    }]
+    accomplishments: [
+      {
+        entity:
+          '<b>Built a custom video player</b> for <a href="#tabbiii">a VOD Platform</a> at <a href="#TRT">TRT</a>, enabling accessible streaming on all devices with <u><b>seamless playback for over 1M+ daily users.</b></u>'
+      },
+      {
+        entity:
+          '<b>Migrated components and pages</b> for the main website at <a href="#Homeday">Homeday</a>, <u><b>improved page speeds by 40%.</b></u>'
+      },
+      {
+        entity:
+          '<b>Implemented integration tests</b> and reduced legacy unit and E2E tests at <a href="#Homeday">Homeday</a>, <u><b>accelerated build times by 25%.</b></u>'
+      },
+      {
+        entity:
+          '<b>Implemented new flows</b> in the <a href="#Homeday\'s internal CMS">Homeday\'s CMS</a>: <u>ensuring qualified buyers</u>, and <u><b>reducing costs for all parties</b>.</u>'
+      }
+    ]
   },
   {
-    label: "Real-Time Data Visualization",
-    hero: "I built apps that transform complex information into interactive real-time interfaces.",
+    label: 'Real-Time Data Visualization',
+    hero: 'I built apps that transform complex information into interactive real-time interfaces.',
     image: dataBg,
-    accomplishments: [{
-      "entity": "<b>Built an SVG-based map</b> for Turkey’s 2019 elections, <u><b>handling 18K+ concurrent users</u></b> with dynamic updates."
-    },{
-      "entity": "<b>Designed an advanced search feature</b> for a VOD platform at TRT, <u><b>boosting discoverability & engagement</b></u>."
-    }]
+    accomplishments: [
+      {
+        entity:
+          "<b>Built an SVG-based map</b> for Turkey's 2019 elections, <u><b>handling 18K+ concurrent users</u></b> with dynamic updates."
+      },
+      {
+        entity:
+          '<b>Designed an advanced search feature</b> for a VOD platform at TRT, <u><b>boosting discoverability & engagement</b></u>.'
+      }
+    ]
   },
   {
-    label: "User Engagement",
-    hero: "I crafted empathetic digital experiences that bridge user needs with technology.",
+    label: 'User Engagement',
+    hero: 'I crafted empathetic digital experiences that bridge user needs with technology.',
     image: engagementBg,
-    accomplishments: [{
-      "entity": "<b>Enhanced Sdui’s event module</b>, <u><b>increasing user interaction by 20%</b></u> via better calendar & scheduling features."
-    },{
-      "entity": "<b>Built video conference functionality</b> for an encrypted chat app at Sdui, <u><b>allowing users to have video calls.</b></u>"
-    }]
+    accomplishments: [
+      {
+        entity:
+          "<b>Enhanced Sdui's event module</b>, <u><b>increasing user interaction by 20%</b></u> via better calendar & scheduling features."
+      },
+      {
+        entity:
+          '<b>Built video conference functionality</b> for an encrypted chat app at Sdui, <u><b>allowing users to have video calls.</b></u>'
+      }
+    ]
   },
   {
-    label: "Mentorship",
-    hero: "I wrote educational programs that accelerated developer growth across organizations.",
+    label: 'Mentorship',
+    hero: 'I wrote educational programs that accelerated developer growth across organizations.',
     image: mentorshipBg,
-    accomplishments: [{
-      "entity": "<b>Created step-by-step migration guide for Vue 2 → Vue 3</b>, streamlining the process & <u><b>boosting developer productivity at Sdui</b></u>."
-    },{
-      "entity": "<b>Guided junior devs at Homeday & Sdui</b>, leading to <u><b>two promotions in rapid time</b></u> through mentorship, pair programming sessions & code reviews."
-    }]
+    accomplishments: [
+      {
+        entity:
+          '<b>Created step-by-step migration guide for Vue 2 → Vue 3</b>, streamlining the process & <u><b>boosting developer productivity at Sdui</b></u>.'
+      },
+      {
+        entity:
+          '<b>Guided junior devs at Homeday & Sdui</b>, leading to <u><b>two promotions in rapid time</b></u> through mentorship, pair programming sessions & code reviews.'
+      }
+    ]
   },
   {
-    label: "Cross-Functional Collaboration",
-    hero: "I enhanced design systems, improved developer experience and boosted collabration in teams.",
+    label: 'Cross-Functional Collaboration',
+    hero: 'I enhanced design systems, improved developer experience and boosted collabration in teams.',
     image: collaborationBg,
-    accomplishments: [{
-      "entity": "<b>Optimized test cases, reduced redundancies</b> of core components at Homeday, <u><b>reduced development build times by 20%.</b></u>"
-    },{
-      "entity": "<b>Modernized interfaces of TRT’s CMS</b>, <u><b>reduced times for search and creation user flows by 30%.</b></u>"
-    }]
+    accomplishments: [
+      {
+        entity:
+          '<b>Optimized test cases, reduced redundancies</b> of core components at Homeday, <u><b>reduced development build times by 20%.</b></u>'
+      },
+      {
+        entity:
+          "<b>Modernized interfaces of TRT's CMS</b>, <u><b>reduced times for search and creation user flows by 30%.</b></u>"
+      }
+    ]
   }
 ])
 const selectedAchievementIndex = ref(0)
-const hasNextAchievement = computed(() => selectedAchievementIndex.value + 1 < achievements.value.length)
-const nextAchievementLabel = computed(() => hasNextAchievement.value ? achievements.value[selectedAchievementIndex.value + 1].label : '')
+const hasNextAchievement = computed(
+  () => selectedAchievementIndex.value + 1 < achievements.value.length
+)
+const nextAchievementLabel = computed(() =>
+  hasNextAchievement.value
+    ? achievements.value[selectedAchievementIndex.value + 1].label
+    : ''
+)
 const isVideoModalOpen = ref(false)
-const selectedAchievement = ref(achievements.value[selectedAchievementIndex.value])
+const selectedAchievement = ref(
+  achievements.value[selectedAchievementIndex.value]
+)
 const isModalOpen = ref(false)
-const isModalAnimationVisible = ref(false);
+const isModalAnimationVisible = ref(false)
 
 const closeModal = () => {
   isModalOpen.value = false
@@ -82,7 +122,8 @@ const handleAchievementChange = (index) => {
   isModalAnimationVisible.value = true
   setTimeout(() => {
     selectedAchievementIndex.value = index
-    selectedAchievement.value = achievements.value[selectedAchievementIndex.value]
+    selectedAchievement.value =
+      achievements.value[selectedAchievementIndex.value]
     isModalAnimationVisible.value = false
   }, 200)
 }
@@ -101,20 +142,25 @@ onMounted(() => {
   <div id="hero" class="container">
     <img src="~/assets/imgs/Frame.svg" alt="Hero Background" class="hero-bg" />
     <span>I'm Mehmet;</span>
-    <h1>
-      Software Development Specialist
-    </h1>
+    <h1>Software Development Specialist</h1>
     <p>
-      Frontend-focused, 10+ years in web, experienced in backend and full stack work.
+      Frontend-focused, 10+ years in web, experienced in backend and full stack
+      work.
     </p>
     <p>
-      I design, build, and optimize digital interfaces, apps, and infrastructures.
+      I design, build, and optimize digital interfaces, apps, and
+      infrastructures.
     </p>
     <section id="ctaButtons">
-      <button class="btn btn--filled" @click="isModalOpen = true">
+      <button
+        class="btn btn--filled sliding-text--button"
+        @click="isModalOpen = true"
+      >
         Discover My Achievements
       </button>
-      <button class="btn" @click="isVideoModalOpen = true">Watch My Introduction</button>
+      <button class="btn" @click="isVideoModalOpen = true">
+        Watch My Introduction
+      </button>
     </section>
     <div class="scroll-indicator">
       <div class="scroll-indicator__icon"></div>
@@ -130,35 +176,59 @@ onMounted(() => {
         @close="closeModal"
       >
         <template #sidebar>
-          <button 
-            v-for="(item, index) in achievements" 
-            class="modal-button"
-            :key="index" 
-            @click="handleAchievementChange(index)" 
-            :class="{'active': selectedAchievementIndex === index}">
+          <div v-if="isMobile" class="select-wrapper">
+            <select
+              v-model="selectedAchievementIndex"
+              @change="handleAchievementChange(selectedAchievementIndex)"
+            >
+              <option
+                v-for="(item, index) in achievements"
+                :key="index"
+                :value="index"
+              >
+                {{ item.label }}
+              </option>
+            </select>
+            <div class="select-arrow"></div>
+          </div>
+          <div v-else class="flex-column">
+            <button
+              v-for="(item, index) in achievements"
+              :key="index"
+              class="modal-button"
+              :class="{ active: selectedAchievementIndex === index }"
+              @click="handleAchievementChange(index)"
+            >
               {{ item.label }}
-          </button>
+            </button>
+          </div>
         </template>
-        
+
         <template #content>
-          <div class="hero-sentence" :style="{ backgroundImage: `url(${selectedAchievement.image})` }">
+          <div
+            class="hero-sentence"
+            :style="{ backgroundImage: `url(${selectedAchievement.image})` }"
+          >
             <p>{{ selectedAchievement.hero }}</p>
           </div>
           <ol>
-            <li v-for="ach in selectedAchievement.accomplishments" v-html="ach.entity"></li>
+            <li
+              v-for="ach in selectedAchievement.accomplishments"
+              v-html="ach.entity"
+            ></li>
           </ol>
-          <a 
-            v-if="hasNextAchievement" 
-            rel="nofollow" 
-            class="cta cta-custom" 
+          <a
+            v-if="hasNextAchievement"
+            rel="nofollow"
+            class="cta cta-custom"
             @click="handleAchievementChange(selectedAchievementIndex + 1)"
           >
-            Explore {{ nextAchievementLabel }} Accomplishments 
-            <MdiIcon icon="mdiArrowTopRight"/>
+            Explore {{ nextAchievementLabel }} Accomplishments
+            <MdiIcon icon="mdiArrowTopRight" />
           </a>
           <nuxt-link v-else to="/experience" class="cta cta-custom">
-            Explore my full experience (tech stack, tools, etc.) 
-            <MdiIcon icon="mdiArrowTopRight"/>
+            Explore my full experience (tech stack, tools, etc.)
+            <MdiIcon icon="mdiArrowTopRight" />
           </nuxt-link>
         </template>
       </Modal>
@@ -171,13 +241,13 @@ onMounted(() => {
       >
         <template #content>
           <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
-              frameborder="0"
-              width="100%"
-              height="100%"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
+            frameborder="0"
+            width="100%"
+            height="100%"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
         </template>
       </Modal>
     </Teleport>
@@ -326,21 +396,6 @@ onMounted(() => {
   }
 }
 
-@keyframes scrollDown {
-  0% {
-    opacity: 0.8;
-    transform: translate(-50%, 0);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, 10px);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, 20px);
-  }
-}
-
 @media only screen and (min-device-width: 1023px) and (max-device-width: 1200px) {
   #hero h1 {
     font-size: 3.5rem;
@@ -350,7 +405,6 @@ onMounted(() => {
     font-size: 1.15rem;
     line-height: 1.7rem;
   }
-
 }
 
 @media (max-width: 1023px) {
@@ -385,9 +439,9 @@ onMounted(() => {
     padding: 0;
   }
   #hero span {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    margin-top: 1.5rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
+    margin-top: 2.5rem;
     margin-left: 0;
   }
   #ctaButtons {

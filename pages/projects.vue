@@ -535,7 +535,7 @@ const pages = [
     }
   }
 }
-@media (max-width: 900px) {
+@media (max-width: 868px) {
   #projects .explanation {
     padding: 0 1rem;
     font-size: 1.25rem;
@@ -562,13 +562,14 @@ const pages = [
         font-size: 1.1rem !important;
       }
       > span {
-        font-size: 1.65rem !important;
-        line-height: 1.85rem !important;
+        font-size: 2rem !important;
+        line-height: 2.5rem !important;
         margin: 0.5rem 0 !important;
       }
       > p {
-        font-size: 1.25rem;
-        line-height: 1.75rem;
+        font-size: 1.15rem !important;
+        line-height: 1.5rem !important;
+        width: 100% !important;
       }
     }
 

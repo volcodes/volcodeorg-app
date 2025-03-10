@@ -87,7 +87,7 @@ const breadcrumbs = computed(() => {
 }
 @media (max-width: 1024px) {
   #page-header {
-    margin: 1rem auto;
+    margin: 2rem auto 1rem auto;
     flex-direction: column;
     align-items: flex-start;
     padding-left: 1rem;
@@ -104,10 +104,6 @@ const breadcrumbs = computed(() => {
     span {
       font-size: 1rem !important;
     }
-  }
-
-  .explanation {
-    padding: 0rem 1rem 2rem 1rem !important;
   }
 }
 </style>

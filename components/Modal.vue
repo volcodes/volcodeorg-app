@@ -9,7 +9,13 @@
           <strong>{{ sidebarTitle }}</strong>
           <slot name="sidebar" />
         </aside>
-        <div class="modal-wrapper" :class="{'animation': isAnimating, 'modal-wrapper--full': !hasSidebar}">
+        <div
+          class="modal-wrapper"
+          :class="{
+            animation: isAnimating,
+            'modal-wrapper--full': !hasSidebar
+          }"
+        >
           <slot name="content" />
         </div>
       </div>
@@ -40,8 +46,9 @@ const lockScroll = () => {
   }
 
   // Calculate scroll bar width to prevent content shift
-  const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth
-  
+  const scrollBarWidth =
+    window.innerWidth - document.documentElement.clientWidth
+
   // Lock scroll and compensate for scrollbar removal
   document.body.style.overflow = 'hidden'
   document.body.style.paddingRight = `${scrollBarWidth}px`
@@ -54,13 +61,16 @@ const unlockScroll = () => {
 }
 
 // Watch for changes in isOpen prop
-watch(() => props.isOpen, (newValue) => {
-  if (newValue) {
-    lockScroll()
-  } else {
-    unlockScroll()
+watch(
+  () => props.isOpen,
+  (newValue) => {
+    if (newValue) {
+      lockScroll()
+    } else {
+      unlockScroll()
+    }
   }
-})
+)
 
 // Cleanup on component unmount
 onUnmounted(() => {
@@ -110,28 +120,28 @@ onUnmounted(() => {
   background-color: colors.$modalBg;
   overflow: hidden;
   z-index: 999;
-  animation: modalExpand .7s cubic-bezier(.15,.74,1,1) forwards;
+  animation: modalExpand 0.7s cubic-bezier(0.15, 0.74, 1, 1) forwards;
   transform-origin: center;
   display: flex;
 
   .modal-button {
-    padding: .75rem 1rem;
+    padding: 0.75rem 1rem;
     font-size: 1rem;
-    font-family: "Inter";
+    font-family: 'Inter';
     font-weight: 600;
     border: 0;
     cursor: pointer;
     color: #fff;
     background-color: rgba(255, 255, 255, 0);
     text-align: left;
-    transition: all .4s;
+    transition: all 0.4s;
     box-sizing: border-box;
     // border: 1px dashed  rgba(255, 255, 255, 0.08);
-    border-bottom: 1px dashed  rgba(255, 255, 255, 0.08); 
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
     border-left: 4px solid rgba(255, 255, 255, 0);
 
     &:first-child {
-      border-top: 1px dashed  rgba(255, 255, 255, 0.08); 
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
     }
     &:hover {
       background-color: rgba(255, 255, 255, 0.04);
@@ -149,19 +159,21 @@ onUnmounted(() => {
     opacity: 0;
     display: flex;
     animation: modalFadeIn 0.3s ease-out forwards;
-    animation-delay: .9s;
+    animation-delay: 0.9s;
     width: 100%;
-    
+
     .modal-wrapper {
       overflow: scroll;
       width: 75%;
-      transition: all .3s;
+      transition: all 0.3s;
+      height: 100%;
       opacity: 1;
-      // padding: 2rem 0rem 2rem 2rem;
-      background-color: #0f173c;
+      background-color: colors.$modalBg;
+      padding-bottom: 8rem;
 
       &.modal-wrapper--full {
         width: 100%;
+        padding-bottom: 0;
       }
 
       .cta {
@@ -171,14 +183,12 @@ onUnmounted(() => {
 
       &.animation {
         opacity: 0;
-        transform: translateY(3px)
-        // animation: modalFadeIn 0.3s ease-out;
+        transform: translateY(3px);
       }
     }
 
     p {
       color: white;
-      text-shadow: 2px 1px 0px colors.$navyBlue;
     }
   }
 }
@@ -231,9 +241,13 @@ onUnmounted(() => {
   position: absolute;
   right: 0px;
   top: 0;
+  z-index: 1000;
+  background: white;
+  color: black;
 
   &:hover {
     background-color: colors.$navyBlue;
+    color: white;
   }
 }
 
@@ -247,7 +261,7 @@ onUnmounted(() => {
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
     padding-right: 3rem;
-    border-bottom: 4px solid rgba(255,255,255,.1);
+    border-bottom: 4px solid rgba(255, 255, 255, 0.1);
     font-family: vars.$fontFamily;
     color: white;
 
@@ -292,11 +306,11 @@ onUnmounted(() => {
     line-height: 3.5rem !important;
     margin: 0 0;
     font-family: vars.$fontFamilyBold;
-    letter-spacing: -.6px;
+    letter-spacing: -0.6px;
     font-weight: 300 !important;
     color: colors.$navyBlue;
     box-sizing: border-box;
-    background-color: rgba(16, 24, 60, .8);
+    background-color: rgba(16, 24, 60, 0.8);
     padding: 6rem 6rem 6rem 4rem;
   }
 
@@ -309,44 +323,79 @@ onUnmounted(() => {
 }
 
 @media (max-width: 1024px) {
-    .modal__close {
-        width: 50px;
-        height: 50px;
-        top: 0;
-        margin: 0;
-        padding: 0;
-    }
-    .modal-sidebar {
-        display: none;
-    }
-    .modal-wrapper {
-        width: 100% !important;
-    }
-    .modal .modal-inner p {
-        padding: 1rem 2rem;
-        font-size: 1.25rem !important;
-        line-height: 2rem !important;
-        letter-spacing: 0;
-    }
+  .modal__close {
+    width: 50px;
+    height: 50px;
+    top: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .modal-wrapper {
+    min-width: 100%;
+  }
 
-    .modal .modal-inner ol {
-        padding: 0 0 0 3rem;
-    }
+  .modal-sidebar {
+    width: 100% !important;
+  }
 
-    .modal .modal-inner ol li {
-        font-size: 1.15rem;
-        line-height: 1.5rem;
+  .modal-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .modal__close {
+    right: 2rem;
+    top: 0.75rem;
+  }
+  .modal-sidebar {
+    padding: 0;
+  }
+  .modal-inner {
+    flex-direction: column !important;
+  }
+  .modal .modal-inner p {
+    padding: 2rem;
+    font-size: 1.5rem !important;
+    line-height: 1.85rem !important;
+    letter-spacing: 0;
+  }
+
+  .modal .modal-inner ol {
+    padding: 0 0 0 3rem;
+  }
+
+  .modal .modal-inner ol li {
+    font-size: 1.15rem;
+    line-height: 1.5rem;
+  }
+  .modal .modal-inner .modal-wrapper .cta {
+    margin: 0 !important;
+    position: fixed;
+    bottom: 0px;
+    width: 90%;
+    font-size: 1rem !important;
+    background: #020617;
+    padding: 1rem;
+    border-radius: 0 0 0 0;
+    box-sizing: border-box;
+    padding: 1rem 2rem 1rem 1em;
+    border-bottom: 0;
+    background: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 18px;
+    box-shadow: 0px 0px 0px 20px colors.$modalBg;
+    .cta svg {
+      transform: rotate(45deg) !important;
     }
-    .modal .modal-inner .modal-wrapper .cta {
-        margin: 0 !important;
-        position: fixed;
-        bottom: 0px;
-        width: 100%;
-        font-size: 1rem !important;
-        background: colors.$navyBlue;
-        padding: 1rem;
-        border-radius: 0 0 0 0;
-        box-sizing: border-box;
-    }
+  }
+
+  .modal-sidebar strong {
+    font-size: 1.25rem;
+  }
 }
-</style> 
+</style>

@@ -1,12 +1,18 @@
 <!-- how to kick start a new component in nuxt 3 -->
 <template>
-  <div id="technologies" class="container">
+  <div
+    id="technologies"
+    class="container page-transition"
+    :class="{
+      'page-transition--on': isScrollingUp
+    }"
+  >
     <div v-for="technology in technologiesRef" :key="technology.id">
       <MdiIcon :icon="technology.icon" />
       <span>{{ technology.text }}</span>
     </div>
   </div>
-  <footer class="footer">
+  <footer>
     <div class="container">
       <div class="footer__nav">
         <NuxtLink to="/">Overview</NuxtLink>
@@ -29,6 +35,9 @@
 </template>
 
 <script setup lang="ts">
+import { useScroll } from '~/composables/useScroll'
+
+const isPageTransitionOff = ref(true)
 const technologies = [
   { id: 1, icon: 'mdiLanguageHtml5', text: 'HTML' },
   { id: 2, icon: 'mdiLanguageCss3', text: 'CSS' },
@@ -60,9 +69,11 @@ const technologies = [
   { id: 30, icon: 'mdiLanguageC', text: '' },
   { id: 28, icon: 'mdiLanguageJava', text: 'Java' },
   { id: 29, icon: 'mdiLanguageCsharp', text: '' },
-  { id: 31, icon: 'mdiLanguageCpp', text: '' },
+  { id: 31, icon: 'mdiLanguageCpp', text: '' }
 ]
 const technologiesRef = ref(technologies)
+
+const { isScrollingUp } = useScroll(100)
 </script>
 
 <style lang="scss">
@@ -78,6 +89,12 @@ const technologiesRef = ref(technologies)
     colors.$navyBlue,
     colors.$darkBlue 100%
   );
+  transition: transform 0.3s ease;
+  transform: translateY(100%);
+
+  &.is-visible {
+    transform: translateY(0);
+  }
 
   span {
     color: colors.$textGray;

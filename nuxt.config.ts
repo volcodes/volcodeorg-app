@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Inter: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-      Poppins: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      Poppins: [100, 200, 300, 400, 500, 600, 700, 800, 900]
     }
   },
   vite: {
@@ -17,5 +17,9 @@ export default defineNuxtConfig({
         }
       }
     }
+  },
+  devServer: {
+    host: '0.0.0.0',
+    port: 3000 // or your preferred port
   }
 })

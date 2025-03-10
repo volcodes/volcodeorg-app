@@ -1,36 +1,19 @@
 <script setup>
 import { useRoute } from 'vue-router'
+import { useScroll } from '~/composables/useScroll'
 import Resume from '~/assets/files/resume.pdf'
 
-const isMobileMenuActive = ref(false)
-const isHeaderFixed = ref(false)
 const route = useRoute()
-
-let lastScrollTop = 0
-
-const handleScroll = () => {
-  const currentScrollTop = window.scrollY
-  const isScrollingDown = currentScrollTop > lastScrollTop;
-  if (!isScrollingDown) {
-    isHeaderFixed.value = !isScrollingDown && currentScrollTop > 100
-  }
-
-  lastScrollTop = currentScrollTop
-}
+const isMobileMenuActive = ref(false)
+const { isFixed: isHeaderFixed } = useScroll(100)
 
 // Watch for route changes to close the mobile menu
-watch(() => route.path, () => {
-  isMobileMenuActive.value = false
-})
-
-// Close mobile menu on scroll
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll, { passive: true })
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+watch(
+  () => route.path,
+  () => {
+    isMobileMenuActive.value = false
+  }
+)
 
 const toggleMenu = () => {
   isMobileMenuActive.value = !isMobileMenuActive.value
@@ -51,26 +34,31 @@ const downloadFile = async () => {
 </script>
 
 <template>
-  <header id="header" :class="{'header--fixed': isHeaderFixed}">
+  <header id="header" :class="{ 'header--fixed': isHeaderFixed }">
     <div class="container">
       <NuxtLink id="logo" to="/">
         <span>M</span>
       </NuxtLink>
       <button class="mobile-menu-btn">
-        <MdiIcon v-if="!isMobileMenuActive" icon="mdiMenu" @click="toggleMenu" />
+        <MdiIcon
+          v-if="!isMobileMenuActive"
+          icon="mdiMenu"
+          @click="toggleMenu"
+        />
         <MdiIcon v-else icon="mdiCloseThick" @click="toggleMenu" />
       </button>
-      <nav id="nav" :class="{
-        'active': isMobileMenuActive
-      }">
+      <nav
+        id="nav"
+        :class="{
+          active: isMobileMenuActive
+        }"
+      >
         <NuxtLink to="/">Overview</NuxtLink>
         <NuxtLink to="/experience">Experience</NuxtLink>
         <NuxtLink to="/projects">Projects</NuxtLink>
         <!-- <NuxtLink to="/blog">Blog</NuxtLink> -->
         <NuxtLink to="/contact">Contact</NuxtLink>
-        <button @click="downloadFile" class="btn">
-          Download Resume
-        </button>
+        <button class="btn" @click="downloadFile">Download Resume</button>
       </nav>
     </div>
   </header>
@@ -234,7 +222,7 @@ const downloadFile = async () => {
   }
 
   #header #nav .btn {
-    margin: 1rem 2rem
+    margin: 1rem 2rem;
   }
 
   #header #nav a:after {
@@ -259,7 +247,6 @@ const downloadFile = async () => {
     height: 70px;
     display: flex;
     justify-content: space-between;
-    padding: 0px 0.5rem 0px 1rem;
   }
 
   #logo {

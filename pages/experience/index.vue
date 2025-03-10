@@ -424,94 +424,7 @@ onUpdated(() => {
 @use '~/assets/styles/main.scss';
 @use '~/assets/styles/colors';
 @use '~/assets/styles/vars';
-
-#timeline {
-  position: relative;
-  padding-bottom: 1rem;
-
-  &:after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    height: 100%;
-    width: 1px;
-    background: colors.$textGray;
-    opacity: 0.5;
-    transform: translateX(-50%);
-    z-index: -1;
-  }
-
-  article {
-    max-width: calc(50% - 64px);
-    position: relative;
-    box-sizing: border-box;
-    margin-top: 64px;
-    margin-bottom: 64px;
-
-    .card {
-      border-radius: 4px;
-      margin-top: 12px;
-
-      p {
-        margin-bottom: 0;
-        color: colors.$cloudWhite;
-      }
-    }
-
-    .date {
-      position: absolute;
-      left: calc(100% + 64px);
-      width: 300px;
-      padding-left: 32px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      align-items: center;
-      font-size: 2rem;
-      font-weight: 600;
-      color: colors.$textGray;
-      font-family: vars.$fontFamilyBold;
-      letter-spacing: -0.02em;
-
-      &:before {
-        content: '';
-        width: 10px;
-        height: 10px;
-        border-radius: 100px;
-        background: colors.$cta;
-        position: absolute;
-        left: -9px;
-        margin-right: 10px;
-        border: 4px solid #020617;
-      }
-    }
-
-    .date-extended {
-      display: block;
-      font-size: 1.15rem;
-      font-weight: 500;
-      color: colors.$textGray;
-    }
-
-    &.right {
-      margin-left: calc(50% + 64px);
-
-      .date-extended {
-        text-align: left;
-      }
-
-      .date {
-        left: -64px;
-        text-indent: -144px;
-      }
-    }
-  }
-
-  .technologies:last-child {
-    margin-bottom: 0;
-  }
-}
+@use '~/assets/styles/components/timeline';
 
 .explanation {
   color: colors.$blueSky;
@@ -562,6 +475,18 @@ onUpdated(() => {
     line-height: 5rem;
     color: white;
     text-shadow: 2px 2px 0px colors.$navyBlue;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .education {
+    height: 130px;
+
+    h2 {
+      font-size: 2.5rem;
+      line-height: 3rem;
+      letter-spacing: -0.02em;
+    }
   }
 }
 
