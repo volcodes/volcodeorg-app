@@ -73,10 +73,10 @@
 
     &.right {
       margin-left: calc(50% + 64px);
-        .date {
-            left: -6rem;
-            text-indent: -7.8rem;
-        }
+      .date {
+        left: -6rem;
+        text-indent: -7.8rem;
+      }
     }
   }
 
@@ -96,79 +96,77 @@
   line-height: 2.5rem;
 }
 
-
 @media (max-width: 1024px) {
-    #timeline article .date {
-      left: calc(100% + 1rem) !important;
-      transform: translateY(0) rotate(90deg) !important;
-      font-size: 14px !important;
-      padding-left: 1.5rem !important;
-      text-indent: 0 !important;
-      width: 60px !important;
-      box-sizing: border-box;
-     margin-left: 0;
+  #timeline article .date {
+    left: calc(100% + 1rem) !important;
+    transform: translateY(0) rotate(90deg) !important;
+    font-size: 14px !important;
+    padding-left: 1.5rem !important;
+    text-indent: 0 !important;
+    width: 60px !important;
+    box-sizing: border-box;
+    margin-left: 0;
+  }
 
-    }
-  
-    #timeline article {
-      width: 100% !important;
-      max-width: calc(90% - 1rem) !important;
-      margin-top: 1rem;
-      margin-bottom: 3rem;
-    }
-  
-    #timeline:after {
-      transform: translate(0px, 0px) !important;
-      left: 90%;
-    }
-  
-    #timeline article.right {
-      margin-left: 0 !important;
-    }
-  
-    #timeline article .date:before {
-        left: 31px;
-        top: 16px;
-    }
-  
-    p {
-      font-size: 1.25rem;
-      line-height: 1.75rem;
-    }
-  
-    .education {
-      height: 100px;
-  
-      h2 {
-        font-size: 2.5rem;
-        line-height: 3rem;
-        letter-spacing: -0.02em;
-      }
+  #timeline article {
+    width: 100% !important;
+    max-width: calc(90% - 1rem) !important;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  #timeline:after {
+    transform: translate(0px, 0px) !important;
+    left: 90%;
+  }
+
+  #timeline article.right {
+    margin-left: 0 !important;
+  }
+
+  #timeline article .date:before {
+    left: 31px;
+    top: 16px;
+  }
+
+  p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .education {
+    height: 100px;
+
+    h2 {
+      font-size: 2.5rem;
+      line-height: 3rem;
+      letter-spacing: -0.02em;
     }
   }
-  
-  @media only screen and (min-device-width: 300px) and (max-device-width: 768px) {
-    .date-extended {
-      font-size: 0.8rem !important;
+}
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 768px) {
+  .date-extended {
+    font-size: 0.8rem !important;
+    line-height: 1rem;
+  }
+  .card {
+    strong {
+      font-size: 1rem;
+      line-height: 1.2rem;
+    }
+    span {
+      font-size: 0.8rem;
       line-height: 1rem;
     }
-    .card {
-      strong {
-        font-size: 1rem;
-        line-height: 1.2rem;
-      }
-      span {
-        font-size: 0.8rem;
-        line-height: 1rem;
-      }
-      .technologies > span {
-        padding: 0;
+    .technologies > span {
+      padding: 0;
+      width: 20px;
+      height: 22px;
+      svg {
         width: 20px;
-        height: 22px;
-        svg {
-          width: 20px;
-          height: 20px;
-        }
+        height: 20px;
       }
     }
   }
+}

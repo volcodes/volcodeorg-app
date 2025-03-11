@@ -68,7 +68,6 @@ const pages = [
 
 const handleSubmit = (e: Event) => {
   e.preventDefault()
-  console.log('submit', e.target)
 }
 </script>
 

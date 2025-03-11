@@ -36,7 +36,7 @@
               six industries over 10 years, where I’ve delivered impactful,
               scalable solutions in agile teams.
             </p>
-            <NuxtLink to="/experience" class="cta"
+            <NuxtLink to="/experience/" class="cta"
               >Review My Career Path <MdiIcon icon="mdiArrowTopRight"
             /></NuxtLink>
           </article>

@@ -226,7 +226,7 @@ onMounted(() => {
             Explore {{ nextAchievementLabel }} Accomplishments
             <MdiIcon icon="mdiArrowTopRight" />
           </a>
-          <nuxt-link v-else to="/experience" class="cta cta-custom">
+          <nuxt-link v-else to="/experience/" class="cta cta-custom">
             Explore my full experience (tech stack, tools, etc.)
             <MdiIcon icon="mdiArrowTopRight" />
           </nuxt-link>

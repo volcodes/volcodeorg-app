@@ -5,4 +5,4 @@ module.exports = {
     // Add any custom rules here
     'prettier/prettier': 'error'
   }
-}
+};

@@ -1,11 +1,10 @@
 <template>
   <div id="projects">
-    <AppPageHeader :title="'Projects'" :pages="pages" />
-    <p class="container explanation">
-      Each project here represents my commitment to leveraging technology to
-      make a positive impact, whether it's empowering employees, or crafting
-      applications that address genuine needs of others.
-    </p>
+    <AppPageHeader
+      :title="'Projects'"
+      :pages="pages"
+    />
+    <p class="container explanation">Each project here represents my commitment to leveraging technology to make a positive impact, whether it's empowering employees, or crafting applications that address genuine needs of others.</p>
     <!-- sound effects on https://www.youtube.com/watch?v=Eq9R1_JQDCA&ab_channel=NoraEnPure 14:00 -->
     <!-- <div class="project">
       <div class="container">
@@ -136,15 +135,8 @@
         <div class="project-info">
           <!-- <strong>Open-Source Customizable Portfolio App</strong> -->
           <!-- <span>Allow people to generate a custom portfolio app in just minutes.</span> -->
-          <span
-            >Developed a high-performance, modular portfolio template for
-            devs.</span
-          >
-          <p>
-            I built a customizable portfolio app that improves setup efficiency
-            and simplifies maintenance, helping developers showcase their work
-            with minimal effort.
-          </p>
+          <span>Developed a high-performance, modular portfolio template for devs.</span>
+          <p>I built a customizable portfolio app that improves setup efficiency and simplifies maintenance, helping developers showcase their work with minimal effort.</p>
           <div class="technologies">
             <span>
               <MdiIcon icon="mdiVuejs" />
@@ -201,18 +193,15 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img src="~/assets/imgs/art-screenshot.png" alt="Art Screenshot" />
+          <img
+            src="~/assets/imgs/art-screenshot.png"
+            alt="Art Screenshot"
+          />
         </figure>
         <div class="project-info">
           <!-- <strong>Anonymous Reporting Tool</strong> -->
-          <span
-            >Engineered a secure, anonymous reporting tool for workplaces.</span
-          >
-          <p>
-            I led a team of 6 people to build an anonymous reporting platform
-            that ensures privacy and encourages safer work environments, helping
-            organizations build trust with employees.
-          </p>
+          <span>Engineered a secure, anonymous reporting tool for workplaces.</span>
+          <p>I led a team of 6 people to build an anonymous reporting platform that ensures privacy and encourages safer work environments, helping organizations build trust with employees.</p>
           <div class="technologies">
             <span>
               <MdiIcon icon="mdiVuejs" />
@@ -263,14 +252,8 @@
           />
         </figure>
         <div class="project-info">
-          <span
-            >Developed a localized service finder for easy relocations.</span
-          >
-          <p>
-            I designed an open source service finder that curates trusted local
-            resources, reducing time spent searching and simplifying access to
-            essential services for new residents.
-          </p>
+          <span>Developed a localized service finder for easy relocations.</span>
+          <p>I designed an open source service finder that curates trusted local resources, reducing time spent searching and simplifying access to essential services for new residents.</p>
           <div class="technologies">
             <span>
               <MdiIcon icon="mdiWebpack" />
@@ -318,14 +301,8 @@
         </figure>
         <div class="project-info">
           <!-- <strong>Human Body Input Binder</strong> -->
-          <span
-            >Created a scalable data-binding tool for digital
-            applications.</span
-          >
-          <p>
-            Human Body Input Binder integrates human input, such as body
-            metrics, into digital platforms.
-          </p>
+          <span>Created a scalable data-binding tool for digital applications.</span>
+          <p>Human Body Input Binder integrates human input, such as body metrics, into digital platforms.</p>
           <div class="technologies">
             <span>
               <MdiIcon icon="mdiLanguageJavascript" />
@@ -362,7 +339,7 @@
 const pages = [
   { name: 'Overview', link: '/' },
   { name: 'Projects', link: '/projects' }
-]
+];
 </script>
 
 <style lang="scss" scoped>

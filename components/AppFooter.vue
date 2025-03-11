@@ -16,7 +16,7 @@
     <div class="container">
       <div class="footer__nav">
         <NuxtLink to="/">Overview</NuxtLink>
-        <NuxtLink to="/experience">Experience</NuxtLink>
+        <NuxtLink to="/experience/">Experience</NuxtLink>
         <NuxtLink to="/projects">Projects</NuxtLink>
         <!-- <NuxtLink to="/blog">Blog</NuxtLink> -->
         <NuxtLink to="/contact">Contact</NuxtLink>
@@ -30,8 +30,6 @@
 </template>
 
 <script setup lang="ts">
-import { useScroll } from '~/composables/useScroll'
-
 const technologies = [
   { id: 1, icon: 'mdiLanguageHtml5', text: 'HTML' },
   { id: 2, icon: 'mdiLanguageCss3', text: 'CSS' },
@@ -66,7 +64,6 @@ const technologies = [
   { id: 31, icon: 'mdiLanguageCpp', text: '' }
 ]
 const technologiesRef = ref(technologies)
-
 const isActive = ref(false)
 
 onMounted(() => {

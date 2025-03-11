@@ -1,11 +1,24 @@
 <template>
-  <div v-if="isOpen" class="modal-overlay" @click="$emit('close')">
-    <button class="modal__close" @click="$emit('close')">
+  <div
+    v-if="isOpen"
+    class="modal-overlay"
+    @click="$emit('close')"
+  >
+    <button
+      class="modal__close"
+      @click="$emit('close')"
+    >
       <MdiIcon icon="mdiClose" />
     </button>
-    <div class="modal" @click.stop>
+    <div
+      class="modal"
+      @click.stop
+    >
       <div class="modal-inner">
-        <aside v-if="hasSidebar" class="modal-sidebar">
+        <aside
+          v-if="hasSidebar"
+          class="modal-sidebar"
+        >
           <strong>{{ sidebarTitle }}</strong>
           <slot name="sidebar" />
         </aside>
@@ -24,60 +37,59 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, watch } from 'vue'
+import { onMounted, onUnmounted, watch } from 'vue';
 
 const props = defineProps({
   isOpen: Boolean,
   isAnimating: Boolean,
   hasSidebar: Boolean,
   sidebarTitle: String
-})
+});
 
-defineEmits(['close'])
+defineEmits(['close']);
 
 // Store original body styles
-let originalStyles = {}
+let originalStyles = {};
 
 const lockScroll = () => {
   // Store original styles before modifying
   originalStyles = {
     overflow: document.body.style.overflow,
     paddingRight: document.body.style.paddingRight
-  }
+  };
 
   // Calculate scroll bar width to prevent content shift
-  const scrollBarWidth =
-    window.innerWidth - document.documentElement.clientWidth
+  const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
 
   // Lock scroll and compensate for scrollbar removal
-  document.body.style.overflow = 'hidden'
-  document.body.style.paddingRight = `${scrollBarWidth}px`
-}
+  document.body.style.overflow = 'hidden';
+  document.body.style.paddingRight = `${scrollBarWidth}px`;
+};
 
 const unlockScroll = () => {
   // Restore original styles
-  document.body.style.overflow = originalStyles.overflow || ''
-  document.body.style.paddingRight = originalStyles.paddingRight || ''
-}
+  document.body.style.overflow = originalStyles.overflow || '';
+  document.body.style.paddingRight = originalStyles.paddingRight || '';
+};
 
 // Watch for changes in isOpen prop
 watch(
   () => props.isOpen,
   (newValue) => {
     if (newValue) {
-      lockScroll()
+      lockScroll();
     } else {
-      unlockScroll()
+      unlockScroll();
     }
   }
-)
+);
 
 // Cleanup on component unmount
 onUnmounted(() => {
   if (props.isOpen) {
-    unlockScroll()
+    unlockScroll();
   }
-})
+});
 </script>
 
 <style lang="scss">

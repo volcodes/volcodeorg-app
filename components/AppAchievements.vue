@@ -1,5 +1,8 @@
 <template>
-  <div id="achievements" class="container">
+  <div
+    id="achievements"
+    class="container"
+  >
     <div
       v-for="achievement in achievementsRef"
       :key="achievement.id"
@@ -35,7 +38,7 @@ const achievements = [
   { id: 8, icon: 'mdiAccountGroup', text: 'Aligned with Stakeholders' },
   { id: 9, icon: 'mdiPipe', text: 'Improved CI/CD Pipelines' },
   { id: 10, icon: 'mdiHandHeart', text: 'Promoted Diversity and Inclusion' }
-]
+];
 
 const technologies = [
   { id: 1, icon: 'mdiLanguageHtml5', text: 'HTML' },
@@ -64,8 +67,8 @@ const technologies = [
   { id: 24, icon: 'mdiKubernetes', text: 'Kubernetes' },
   { id: 25, icon: 'mdiBitbucket', text: 'Bitbucket' },
   { id: 26, icon: 'mdiNpm', text: 'NPM' }
-]
-const achievementsRef = ref(achievements)
+];
+const achievementsRef = ref(achievements);
 </script>
 
 <style lang="scss">
