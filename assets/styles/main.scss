@@ -300,14 +300,14 @@ p {
     margin-top: 1rem;
   }
   .card .cta {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     line-height: 1.75rem;
 
     svg {
       height: 32px;
       margin-right: -2px;
       margin-left: 4px;
-      transform: translate(0, 0.2rem);
+      transform: translate(0, 0.4rem);
     }
 
     &:hover {
@@ -373,6 +373,7 @@ p {
 
 @media (max-width: 1024px) {
   .technologies {
+    margin-bottom: 0rem;
     span {
       width: 28px;
       height: 28px;

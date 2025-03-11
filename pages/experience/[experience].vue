@@ -8,13 +8,13 @@
     <p v-if="currentCompany" class="container explanation">
       {{ currentCompany.hero }}
     </p>
-    <div v-if="currentCompanyIndex >= 0" class="go-back">
-      <NuxtLink
-        :to="`/experience?cI=${currentCompanyIndex ?? currentCompanyIndex + 1}`"
-        ><MdiIcon icon="mdiArrowLeft" /> Go Back</NuxtLink
-      >
-    </div>
     <div v-if="currentCompany" id="timeline" class="container">
+      <div v-if="currentCompanyIndex >= 0" class="go-back">
+        <NuxtLink
+          :to="`/experience?cI=${currentCompanyIndex ?? currentCompanyIndex + 1}`"
+          ><MdiIcon icon="mdiArrowLeft" /> Go Back</NuxtLink
+        >
+      </div>
       <article
         v-for="(accomplishment, index) in currentCompany.accomplishments"
         :key="accomplishment.date"
@@ -645,7 +645,6 @@ const currentCompanyIndex = computed(() => {
   width: fit-content;
   background: colors.$navyBlue;
   padding: 0.5rem 1rem;
-  margin-left: 4rem;
 
   &:hover {
     color: colors.$ctaHover;
@@ -738,8 +737,8 @@ const currentCompanyIndex = computed(() => {
   .go-back a {
     font-size: 1.5rem !important;
     border-radius: 0px !important;
-    border: 4px solid white;
-    margin-left: 1rem !important;
+    border: 4px solid colors.$white;
+    color: colors.$white;
   }
 }
 </style>

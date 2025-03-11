@@ -11,19 +11,19 @@
     left: 50%;
     top: 0;
     height: 100%;
-    width: 1px;
-    background: colors.$textGray;
+    width: 0px;
     opacity: 0.5;
     transform: translateX(-50%);
     z-index: -1;
+    border: 1px dashed #3c3e49;
   }
 
   article {
-    max-width: calc(50% - 64px);
+    max-width: calc(50% - 6rem);
     position: relative;
     box-sizing: border-box;
-    margin-top: 64px;
-    margin-bottom: 64px;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
 
     .card {
       border-radius: 4px;
@@ -39,7 +39,7 @@
       position: absolute;
       left: calc(100% + 64px);
       width: 300px;
-      padding-left: 32px;
+      padding-left: 1.5rem;
       top: 50%;
       transform: translateY(-50%);
       display: flex;
@@ -49,6 +49,7 @@
       color: colors.$textGray;
       font-family: vars.$fontFamilyBold;
       letter-spacing: -0.02em;
+      margin-left: 2rem;
 
       &:before {
         content: '';
@@ -72,6 +73,10 @@
 
     &.right {
       margin-left: calc(50% + 64px);
+        .date {
+            left: -6rem;
+            text-indent: -7.8rem;
+        }
     }
   }
 
@@ -95,24 +100,26 @@
 @media (max-width: 1024px) {
     #timeline article .date {
       left: calc(100% + 1rem) !important;
-      transform: translateY(0) !important;
+      transform: translateY(0) rotate(90deg) !important;
       font-size: 14px !important;
       padding-left: 1.5rem !important;
       text-indent: 0 !important;
       width: 60px !important;
       box-sizing: border-box;
+     margin-left: 0;
+
     }
   
     #timeline article {
       width: 100% !important;
-      max-width: calc(85% - 1rem) !important;
+      max-width: calc(90% - 1rem) !important;
       margin-top: 1rem;
-      margin-bottom: 1rem;
+      margin-bottom: 3rem;
     }
   
     #timeline:after {
       transform: translate(0px, 0px) !important;
-      left: 85%;
+      left: 90%;
     }
   
     #timeline article.right {
@@ -120,7 +127,8 @@
     }
   
     #timeline article .date:before {
-      left: 2px;
+        left: 31px;
+        top: 16px;
     }
   
     p {

@@ -4,7 +4,7 @@
     id="technologies"
     class="container page-transition"
     :class="{
-      'page-transition--on': isScrollingUp
+      'page-transition--on': !isActive
     }"
   >
     <div v-for="technology in technologiesRef" :key="technology.id">
@@ -12,7 +12,7 @@
       <span>{{ technology.text }}</span>
     </div>
   </div>
-  <footer>
+  <footer class="footer">
     <div class="container">
       <div class="footer__nav">
         <NuxtLink to="/">Overview</NuxtLink>
@@ -21,14 +21,9 @@
         <!-- <NuxtLink to="/blog">Blog</NuxtLink> -->
         <NuxtLink to="/contact">Contact</NuxtLink>
       </div>
-      <div class="footer__nav">
-        <NuxtLink to="mailto:deveci2024@gmail.com"
-          >deveci2024@gmail.com</NuxtLink
-        >
-      </div>
       <span
-        >Developed & Designed with <MdiIcon icon="mdiHeart" /> by Mehmet
-        Deveci</span
+        >Designed & Built with <MdiIcon icon="mdiHeart" /> by
+        <a href="https://linkedin.com/in/deveci96">Mehmet Deveci</a></span
       >
     </div>
   </footer>
@@ -37,7 +32,6 @@
 <script setup lang="ts">
 import { useScroll } from '~/composables/useScroll'
 
-const isPageTransitionOff = ref(true)
 const technologies = [
   { id: 1, icon: 'mdiLanguageHtml5', text: 'HTML' },
   { id: 2, icon: 'mdiLanguageCss3', text: 'CSS' },
@@ -73,7 +67,20 @@ const technologies = [
 ]
 const technologiesRef = ref(technologies)
 
-const { isScrollingUp } = useScroll(100)
+const isActive = ref(false)
+
+onMounted(() => {
+  const handleScroll = () => {
+    isActive.value = window.scrollY > 1
+  }
+
+  window.addEventListener('scroll', handleScroll)
+
+  // Cleanup
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+  })
+})
 </script>
 
 <style lang="scss">
@@ -81,7 +88,7 @@ const { isScrollingUp } = useScroll(100)
 @use '@/assets/styles/vars';
 
 .footer {
-  padding: 64px 32px 64px 32px;
+  padding: 2rem 3rem;
   text-align: center;
   background-color: colors.$darkBlue;
   background: linear-gradient(
@@ -89,8 +96,14 @@ const { isScrollingUp } = useScroll(100)
     colors.$navyBlue,
     colors.$darkBlue 100%
   );
-  transition: transform 0.3s ease;
-  transform: translateY(100%);
+
+  a {
+    color: colors.$cloudWhite;
+
+    &:hover {
+      color: colors.$cta;
+    }
+  }
 
   &.is-visible {
     transform: translateY(0);
@@ -98,20 +111,19 @@ const { isScrollingUp } = useScroll(100)
 
   span {
     color: colors.$textGray;
-    margin-top: 44px;
+    margin-top: 1rem;
     display: block;
   }
 
   &__nav {
     width: 580px;
     margin: 0 auto;
-    margin-bottom: 12px;
 
     a {
       text-decoration: none;
-      padding: 4px 6px;
-      font-size: 16px;
-      line-height: 20px;
+      padding: 0.5rem 1rem;
+      font-size: 1.15rem;
+      line-height: 1.5rem;
       color: colors.$cloudWhite;
 
       &:hover,
@@ -185,13 +197,13 @@ const { isScrollingUp } = useScroll(100)
     width: 100%;
     box-sizing: border-box;
   }
+}
 
-  .footer__nav {
-    width: auto;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
+.footer__nav {
+  width: auto;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 </style>
