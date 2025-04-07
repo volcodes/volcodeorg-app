@@ -2,10 +2,7 @@
   <div>
     <AppPageHeader :title="'Let\'s connect!'" :pages="pages" />
     <div class="container">
-      <p class="explanation">
-        I'm always looking for new opportunities to collaborate and build
-        meaningful projects.
-      </p>
+      <p class="explanation">I'm always looking for new opportunities to collaborate and build meaningful projects.</p>
       <div class="grid">
         <div class="card">
           <strong>e-Mail</strong>
@@ -14,61 +11,124 @@
         <div class="card">
           <strong>Social</strong>
           <div class="grid socials">
-            <a
-              rel="noopener noreferrer"
-              target="_blank"
-              href="https://www.linkedin.com/in/deveci96/"
-              ><MdiIcon icon="mdiLinkedin"
-            /></a>
-            <a
-              rel="noopener noreferrer"
-              target="_blank"
-              href="https://x.com/volcanioo"
-              ><MdiIcon icon="mdiTwitter"
-            /></a>
-            <a
-              rel="noopener noreferrer"
-              target="_blank"
-              href="https://github.com/volcanioo"
-              ><MdiIcon icon="mdiGithub"
-            /></a>
-            <a
-              rel="noopener noreferrer"
-              target="_blank"
-              href="https://www.linkedin.com/in/deveci2024/"
-              ><MdiIcon icon="mdiXing"
-            /></a>
+            <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/deveci96/"><MdiIcon icon="mdiLinkedin" /></a>
+            <a rel="noopener noreferrer" target="_blank" href="https://x.com/volcanioo"><MdiIcon icon="mdiTwitter" /></a>
+            <a rel="noopener noreferrer" target="_blank" href="https://github.com/volcanioo"><MdiIcon icon="mdiGithub" /></a>
+            <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/deveci2024/"><MdiIcon icon="mdiXing" /></a>
           </div>
         </div>
       </div>
-      <form @submit.prevent="handleSubmit">
-        <div class="form-group">
+      <form @submit.prevent="submitForm">
+        <div class="form-group" :class="{ 'has-error': errors.name }">
           <label for="name">Name</label>
-          <input id="name" type="text" name="name" />
+          <input id="name" v-model="formData.name" type="text" name="name" :class="{ error: errors.name }" />
+          <span v-if="errors.name" class="error-message">{{ errors.name }}</span>
         </div>
-        <div class="form-group">
+        <div class="form-group" :class="{ 'has-error': errors.email }">
           <label for="email">Email</label>
-          <input id="email" type="email" name="email" />
+          <input id="email" v-model="formData.email" type="email" name="email" :class="{ error: errors.email }" />
+          <span v-if="errors.email" class="error-message">{{ errors.email }}</span>
         </div>
-        <div class="form-group form-group--textarea">
+        <div class="form-group form-group--textarea" :class="{ 'has-error': errors.message }">
           <label for="message">Message</label>
-          <textarea id="message" name="message"></textarea>
+          <textarea id="message" v-model="formData.message" name="message" :class="{ error: errors.message }"></textarea>
+          <span v-if="errors.message" class="error-message">{{ errors.message }}</span>
         </div>
-        <button class="btn btn--filled" type="submit">Send Message</button>
+        <div v-if="submitStatus" :class="['status-message', submitStatus.type]">
+          {{ submitStatus.message }}
+        </div>
+        <button class="btn btn--filled" type="submit" :disabled="isSubmitting">
+          {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+        </button>
       </form>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref, reactive } from 'vue';
+import axios from 'axios';
+
 const pages = [
   { name: 'Overview', link: '/' },
   { name: 'Contact', link: '/contact' }
-]
+];
 
-const handleSubmit = (e: Event) => {
-  e.preventDefault()
-}
+const formData = reactive({
+  name: '',
+  email: '',
+  message: ''
+});
+
+const errors = reactive({
+  name: '',
+  email: '',
+  message: ''
+});
+
+const isSubmitting = ref(false);
+const submitStatus = ref<{ type: 'success' | 'error'; message: string } | null>(null);
+
+const validateForm = () => {
+  let isValid = true;
+  errors.name = '';
+  errors.email = '';
+  errors.message = '';
+
+  if (!formData.name.trim()) {
+    errors.name = 'Name is required';
+    isValid = false;
+  }
+
+  if (!formData.email.trim()) {
+    errors.email = 'Email is required';
+    isValid = false;
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    errors.email = 'Please enter a valid email address';
+    isValid = false;
+  }
+
+  if (!formData.message.trim()) {
+    errors.message = 'Message is required';
+    isValid = false;
+  }
+
+  return isValid;
+};
+
+const submitForm = async () => {
+  if (!validateForm()) return;
+
+  isSubmitting.value = true;
+  submitStatus.value = null;
+
+  try {
+    await axios.get('http://betonsa.com.gh/utils/test.php', {
+      params: {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message
+      }
+    });
+
+    submitStatus.value = {
+      type: 'success',
+      message: 'Thank you for your message! I will get back to you soon.'
+    };
+
+    // Reset form
+    formData.name = '';
+    formData.email = '';
+    formData.message = '';
+  } catch (error) {
+    submitStatus.value = {
+      type: 'error',
+      message: 'Sorry, there was an error sending your message. Please try again later.'
+    };
+  } finally {
+    isSubmitting.value = false;
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -77,13 +137,6 @@ const handleSubmit = (e: Event) => {
 h2 {
   text-align: left;
   margin: 3rem 0 -0.5rem 0;
-}
-.explanation {
-  font-size: 1.75rem;
-  line-height: 2.25rem;
-  font-family: vars.$fontFamilyRegular;
-  color: colors.$blueSky;
-  margin-bottom: 2rem;
 }
 .card {
   padding: 1.5rem;
@@ -189,11 +242,47 @@ form {
       font-size: 1.25rem;
     }
 
-    // input:active,
-    // textarea:active,
-    // input:focus,
-    // textarea:focus {
-    // }
+    &.has-error {
+      border: 1px solid colors.$error;
+    }
+
+    .error-message {
+      background: colors.$error;
+      color: colors.$white;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+      position: absolute;
+      bottom: 0;
+      display: block;
+      padding: 4px 8px;
+    }
+
+    input.error,
+    textarea.error {
+      border-color: colors.$error;
+    }
   }
+}
+
+.status-message {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: vars.$borderRadius;
+  text-align: center;
+
+  &.success {
+    background-color: rgba(0, 255, 0, 0.1);
+    color: #00ff00;
+  }
+
+  &.error {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: colors.$error;
+  }
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 </style>

@@ -1,35 +1,21 @@
 <template>
   <div id="experience">
-    <AppPageHeader
-      v-if="currentCompany"
-      :title="currentCompany.label"
-      :pages="pages"
-    />
+    <AppPageHeader v-if="currentCompany" :title="currentCompany.label" :pages="pages" />
     <p v-if="currentCompany" class="container explanation">
       {{ currentCompany.hero }}
     </p>
     <div v-if="currentCompany" id="timeline" class="container">
       <div v-if="currentCompanyIndex >= 0" class="go-back">
-        <NuxtLink
-          :to="`/experience?cI=${currentCompanyIndex ?? currentCompanyIndex + 1}`"
-          ><MdiIcon icon="mdiArrowLeft" /> Go Back</NuxtLink
-        >
+        <NuxtLink :to="`/experience?cI=${currentCompanyIndex ?? currentCompanyIndex + 1}`"><MdiIcon icon="mdiArrowLeft" /> Go Back</NuxtLink>
       </div>
-      <article
-        v-for="(accomplishment, index) in currentCompany.accomplishments"
-        :key="accomplishment.date"
-        :class="{ right: index % 2 === 1 }"
-      >
+      <article v-for="(accomplishment, index) in currentCompany.accomplishments" :key="accomplishment.date" :class="{ right: index % 2 === 1 }">
         <span class="date-extended">{{ accomplishment.entity.team }}</span>
         <span class="date">{{ accomplishment.date }}</span>
         <div class="card">
           <strong>{{ accomplishment.entity.action }}</strong>
           <p>{{ accomplishment.entity.effect }}</p>
           <div class="technologies">
-            <span
-              v-for="technology in accomplishment.entity.technologies"
-              :key="technology.icon"
-            >
+            <span v-for="technology in accomplishment.entity.technologies" :key="technology.icon">
               <MdiIcon :icon="technology.icon" />
               <span>{{ technology.label }}</span>
             </span>
@@ -41,14 +27,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, computed } from 'vue';
+import { useRoute } from 'vue-router';
 const pages = [
   { name: 'Overview', link: '/' },
   { name: 'Experience', link: '/experience' }
-]
+];
 
-const slug = useRoute().params.experience
+const slug = useRoute().params.experience;
 const companies = ref([
   {
     slug: 'sdui',
@@ -59,10 +45,8 @@ const companies = ref([
         date: '2024',
         entity: {
           team: 'Messenger team of 12 people',
-          action:
-            'Built video conference functionality for an encrypted chat app.',
-          effect:
-            'Enabled all users to have video conferences, teachers to set up video calls with students.',
+          action: 'Built video conference functionality for an encrypted chat app.',
+          effect: 'Enabled users to set up video conferences, teachers to set up video calls with students.',
           technologies: [
             {
               icon: 'mdiReact',
@@ -111,10 +95,8 @@ const companies = ref([
         date: '',
         entity: {
           team: 'Education team of 10 people',
-          action:
-            'Led pair programming sessions, code reviews, and technical guidance.',
-          effect:
-            'Enabled junior developers to grow and become more confident in their skills.',
+          action: 'Led pair programming sessions, code reviews, and technical guidance.',
+          effect: 'Contributed to countless mob and pair sessions with developers all levels, provided guidance when appropriate.',
           technologies: [
             {
               icon: 'mdiVuejs',
@@ -155,8 +137,7 @@ const companies = ref([
         date: '',
         entity: {
           team: 'Education team of 10 people',
-          action:
-            'Authored documentation for notifications and WebSockets on iOS.',
+          action: 'Authored documentation for notifications and WebSockets on iOS.',
           effect: 'Accelerated onboarding and reduced debugging time.',
           technologies: [
             {
@@ -174,8 +155,7 @@ const companies = ref([
         date: '',
         entity: {
           team: 'Education team of 10 people',
-          action:
-            'Created a step-by-step migration guide for transitioning from Vue 2 to Vue 3.',
+          action: 'Created a step-by-step migration guide for transitioning from Vue 2 to Vue 3.',
           effect: 'Streamlined adoption across the engineering team.',
           technologies: [
             {
@@ -189,8 +169,7 @@ const companies = ref([
         date: '',
         entity: {
           team: 'Messenger team of 12 people',
-          action:
-            'Upgraded settings in the chat app, improving user control and experience.',
+          action: 'Upgraded settings in the chat app, improving user control and experience.',
           effect: 'Improved user control and experience.',
           technologies: [
             {
@@ -283,8 +262,7 @@ const companies = ref([
         entity: {
           team: 'Education team of 10 people',
           action: 'Enhanced functionalities of event creation and edit flows.',
-          effect:
-            'Made school event management seamless for school users across all devices.',
+          effect: 'Made school event management seamless for school users across all devices.',
           technologies: [
             {
               icon: 'mdiVuejs',
@@ -332,8 +310,7 @@ const companies = ref([
         date: '2023',
         entity: {
           team: 'Customer acquisition team of 12 people',
-          action:
-            'Migrated components and pages from a PHP Symfony app to Vue.js Nuxt app.',
+          action: 'Migrated components and pages from a PHP Symfony app to Vue.js Nuxt app.',
           effect: 'Improved page speeds by 40% and enhanced UX.',
           technologies: [
             { icon: 'mdiVuejs', label: 'Vue.js' },
@@ -353,8 +330,7 @@ const companies = ref([
         entity: {
           team: 'Product & Design team of 28 people',
           action: 'Enhanced and integrated design systems.',
-          effect:
-            'Reduced code redundancies and improved development efficiency.',
+          effect: 'Reduced code redundancies in the codebases and improved development efficiency.',
           technologies: [
             { icon: 'mdiVuejs', label: 'Vue.js' },
             { icon: 'mdiStorybook', label: 'Storybook' },
@@ -371,8 +347,7 @@ const companies = ref([
         entity: {
           team: 'Internal CMS team of 10 people',
           action: 'Implemented integration tests.',
-          effect:
-            'Cut pipeline rendering time by 25% and reduced reliance on unit tests.',
+          effect: 'Cut pipeline rendering time by 25% and reduced reliance on unit tests.',
           technologies: [
             { icon: 'mdiCheckAll', label: 'Cypress' },
             { icon: 'mdiCheckAll', label: 'Jest' },
@@ -409,8 +384,7 @@ const companies = ref([
         date: '',
         entity: {
           team: 'Frontend team of 24 people',
-          action:
-            'Upgraded frontend infrastructure with AWS and GitHub Actions.',
+          action: 'Upgraded frontend infrastructure with AWS and GitHub Actions.',
           effect: 'Reduced costs by 15% and streamlined deployments.',
           technologies: [
             { icon: 'mdiAws', label: 'AWS' },
@@ -451,8 +425,9 @@ const companies = ref([
     hero: 'Built and optimized high-traffic election pages and modernized internal tools for journalists at TRT World.',
     accomplishments: [
       {
-        date: 'February',
+        date: '',
         entity: {
+          team: 'Software Development team of 18 people',
           action: 'Optimized election landing pages at 2018 & 2019.',
           effect: 'Reduced load times by 25% for peak traffic.',
           technologies: [
@@ -466,10 +441,11 @@ const companies = ref([
         }
       },
       {
-        date: 'June',
+        date: '',
         entity: {
-          action: 'Built an SVG-based map for Turkey’s 2018 & 2019 elections.',
-          effect: 'Handled 18K+ concurrent users with dynamic updates.',
+          team: 'Software Development team of 18 people',
+          action: "Built an SVG-based map for Turkey's 2018 & 2019 elections.",
+          effect: 'Handled 75+ concurrent users with dynamic updates.',
           technologies: [
             { icon: 'mdiVuejs', label: 'Vue.js' },
             { icon: 'mdiAws', label: 'AWS' },
@@ -479,11 +455,11 @@ const companies = ref([
         }
       },
       {
-        date: 'June',
+        date: '',
         entity: {
+          team: 'Newsroom team of 9 people',
           action: 'Redesigned the internal image database.',
-          effect:
-            'Reduced search times by 50% and improved newsroom efficiency.',
+          effect: 'Reduced search times by 50% and improved newsroom efficiency.',
           technologies: [
             { icon: 'mdiLanguagePhp', label: 'PHP' },
             { icon: 'mdiVuejs', label: 'Vue.js' },
@@ -493,8 +469,9 @@ const companies = ref([
         }
       },
       {
-        date: 'June',
+        date: '',
         entity: {
+          team: 'Newsroom team of 9 people',
           action: 'Developed and optimized a CMS editor.',
           effect: 'Streamlined content creation for journalists.',
           technologies: [
@@ -507,115 +484,13 @@ const companies = ref([
       }
     ]
   }
-  // {
-  //   label: 'Homeday Gmbh',
-  //   hero: 'Modernized real estate technology by migrating systems, optimizing processes, and mentoring developers at Homeday GmbH.',
-  //   image: companyTwoBg,
-  //   accomplishments: [
-  //     {
-  //       date: 'February',
-  //       entity:
-  //         "<b>Migrated components and pages</b> from a PHP Symfony app to Vue.js Nuxt app, <u><b>improved page speeds by 40% and enhancing UX.</b></u> <span class='tech-stack'><b>Vue.js</b>, <b>Nuxt.js</b>, <b>Jest</b>, <b>Cypress</b>, <b>PHP/Symfony</b>, <b>Contentful</b>, <b>HTML/CSS/JS</b>, <b>Docker</b>, <b>AWS</b></span>"
-  //     },
-  //     {
-  //       date: 'May',
-  //       entity:
-  //         "<b>Enhanced and integrated design systems</b>, <u><b>reducing code redundancies and improving development efficiency.</b></u> <span class='tech-stack'><b>Vue.js</b>, <b>Storybook</b>, <b>Jest</b>, <b>Testing Library</b>, <b>SCSS</b>, <b>HTML/CSS/JS</b>, <b>Figma</b></span>"
-  //     },
-  //     {
-  //       date: 'June',
-  //       entity:
-  //         "<b>Implemented integration tests</b>, <u><b>cutting pipeline rendering time by 25% and reducing reliance on unit tests.</b></u> <span class='tech-stack'><b>Cypress</b>, <b>Jest</b>, <b>GitHub Actions</b>, <b>Vue.js</b></span>"
-  //     },
-  //     {
-  //       date: 'June',
-  //       entity:
-  //         "<b>Implemented new flows</b> in the Homeday's CMS: <u><b>ensuring qualified buyers</b></u> and <u><b>reducing costs for all parties.</b></u> <span class='tech-stack'><b>Vue.js</b>, <b>Vue Test Utils</b>, <b>Jest</b>, <b>Testing Library</b>, <b>Cypress</b>, <b>HTML/CSS/JS</b>, <b>Travis CI</b>, <b>AWS</b></span>"
-  //     },
-  //     {
-  //       date: 'June',
-  //       entity:
-  //         "<b>Upgraded frontend infrastructure</b> with AWS and GitHub Actions, <u><b>reducing costs by 15% and streamlining deployments.</b></u> <span class='tech-stack'><b>AWS</b>, <b>GitHub Actions</b>, <b>Docker</b>, <b>Vue.js</b></span>"
-  //     },
-  //     {
-  //       date: 'June',
-  //       entity:
-  //         "<b>Mentored junior developers</b> through pair programming, <u><b>enabling one promotion within 8 months.</b></u> <span class='tech-stack'><b>Vue.js</b>, <b>Vue Test Utils</b>, <b>Jest</b>, <b>Testing Library</b>, <b>HTML/CSS/JS</b></span>"
-  //     }
-  //   ]
-  // },
-  // {
-  //   label: 'Turkish Radio and Television Corporation',
-  //   hero: 'Built and optimized high-traffic election pages and modernized internal tools for journalists at TRT World.',
-  //   image: companyThreeBg,
-  //   accomplishments: [
-  //     {
-  //       date: 'February',
-  //       entity: {
-  //         action: 'Optimized election landing pages at 2018 & 2019.',
-  //         effect: 'Reduced load times by 25% for peak traffic.',
-  //         technologies: [
-  //           {
-  //             icon: 'mdiVuejs',
-  //             label: 'Vue.js'
-  //           },
-  //           {
-  //             icon: 'mdiLanguageJavascript',
-  //             label: 'Javascript'
-  //           },
-  //           {
-  //             icon: 'mdiLanguageCss3',
-  //             label: 'CSS3'
-  //           },
-  //           {
-  //             icon: 'mdiLanguagePhp',
-  //             label: 'PHP'
-  //           },
-  //           {
-  //             icon: 'mdiWebpack',
-  //             label: 'Webpack'
-  //           },
-  //           {
-  //             icon: 'mdiApi',
-  //             label: 'REST API'
-  //           }
-  //         ]
-  //       }
-  //     },
-  //     {
-  //       date: 'June',
-  //       entity:
-  //         "<b>Built an SVG-based map</b> for Turkey’s 2018 & 2019 elections, <u><b>handling 18K+ concurrent users with dynamic updates.</b></u> <span class='tech-stack'><b>Vue.js</b>, <b>AWS</b>, <b>HTML/CSS/JS</b>, <b>Webpack</b>, <b>AWS</b></span>"
-  //     },
-  //     {
-  //       date: 'June',
-  //       entity:
-  //         "<b>Redesigned the internal image database</b>, <u><b>reducing search times by 50% and improving newsroom efficiency.</b></u> <span class='tech-stack'><b>PHP</b>, <b>Vue.js</b>, <b>MySQL</b>, <b>SCSS</b></span>"
-  //     },
-  //     {
-  //       date: 'June',
-  //       entity:
-  //         "<b>Developed and optimized a CMS editor</b>, <u><b>streamlining content creation for journalists.</b></u> <span class='tech-stack'><b>Vue.js</b>, <b>PHP</b>, <b>MySQL</b>, <b>REST API</b></span>"
-  //     },
-  //     {
-  //       date: 'June',
-  //       entity:
-  //         "<b>Created a custom video player</b> for TRT World, <u><b>enabling seamless playback for over 1M+ daily users.</b></u> <span class='tech-stack'><b>Vue.js</b>, <b>AWS</b>, <b>HTML/CSS/JS</b>, <b>Webpack</b>, <b>REST API</b></span>"
-  //     },
-  //     {
-  //       date: 'June',
-  //       entity:
-  //         "<b>Designed an advanced search feature</b> for a VOD platform at TRT, <u><b>boosting discoverability & engagement.</b></u> <span class='tech-stack'><b>PHP</b>, <b>HTML/CSS/JS</b>, <b>Vue.js</b>, <b>Laravel</b>, <b>Docker</b></span>"
-  //     }
-  //   ]
-  // }
-])
+]);
 const currentCompany = computed(() => {
-  return companies.value.find((company) => company.slug === slug)
-})
+  return companies.value.find((company) => company.slug === slug);
+});
 const currentCompanyIndex = computed(() => {
-  return companies.value.findIndex((company) => company.slug === slug)
-})
+  return companies.value.findIndex((company) => company.slug === slug);
+});
 </script>
 
 <style lang="scss" scoped>
@@ -645,6 +520,7 @@ const currentCompanyIndex = computed(() => {
   width: fit-content;
   background: colors.$navyBlue;
   padding: 0.5rem 1rem;
+  transform: translateX(-2px);
 
   &:hover {
     color: colors.$ctaHover;
@@ -653,11 +529,6 @@ const currentCompanyIndex = computed(() => {
   svg {
     margin-right: 0.5rem;
   }
-}
-
-.explanation {
-  color: colors.$blueSky;
-  padding: 0;
 }
 
 .education {
@@ -706,18 +577,6 @@ const currentCompanyIndex = computed(() => {
     text-shadow: 2px 2px 0px colors.$navyBlue;
   }
 }
-
-.explanation {
-  color: colors.$textGray;
-  font-weight: 500;
-  margin-top: 0rem;
-  position: relative;
-  z-index: 2;
-  // padding: 1rem;
-  font-family: vars.$fontFamilyRegular;
-  font-size: 1.75rem;
-  line-height: 2.5rem;
-}
 .hero-sentence.hero-sentence--sm p {
   font-size: 2rem !important;
   line-height: 2.5rem !important;
@@ -729,7 +588,7 @@ const currentCompanyIndex = computed(() => {
   }
 
   .go-back {
-    // position: fixed !important;
+    position: fixed !important;
     top: 0.5rem !important;
     left: -2rem !important;
   }

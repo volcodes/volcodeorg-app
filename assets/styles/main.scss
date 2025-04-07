@@ -658,3 +658,25 @@ p {
   top: 50%;
   transform: translateX(-50%);
 }
+
+
+
+.explanation {
+  color: #dedede;
+  font-weight: 500;
+  margin-top: 0rem;
+  position: relative;
+  z-index: 2;
+  // padding: 1rem;
+  font-family: vars.$fontFamilyRegular;
+  font-size: 1.75rem;
+  line-height: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .explanation {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}

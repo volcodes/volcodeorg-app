@@ -1,9 +1,6 @@
 <template>
   <div id="projects">
-    <AppPageHeader
-      :title="'Projects'"
-      :pages="pages"
-    />
+    <AppPageHeader :title="'Projects'" :pages="pages" />
     <p class="container explanation">Each project here represents my commitment to leveraging technology to make a positive impact, whether it's empowering employees, or crafting applications that address genuine needs of others.</p>
     <!-- sound effects on https://www.youtube.com/watch?v=Eq9R1_JQDCA&ab_channel=NoraEnPure 14:00 -->
     <!-- <div class="project">
@@ -127,10 +124,48 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img
-            src="~/assets/imgs/volcodeorg-app.png"
-            alt="Mehmet Deveci Portfolio Webapp"
-          />
+          <img src="~/assets/imgs/betonsa-screenshot.png" alt="Betonsa Screenshot" />
+        </figure>
+        <div class="project-info">
+          <!-- <strong>Anonymous Reporting Tool</strong> -->
+          <span>Designing and building modern websites for clients.</span>
+          <p>Aligned with stakeholders to gather requirements, prototyped, designed, and built a website that showcases Betonsa's mission, services, and products.</p>
+          <div class="technologies">
+            <span>
+              <MdiIcon icon="mdiVuejs" />
+              <span>Vue</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiNuxt" />
+              <span>Nuxt.js</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageJavascript" />
+              <span>Javascript</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiTailwind" />
+              <span>Tailwind</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiSass" />
+              <span>Sass</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiEslint" />
+              <span>Eslint</span>
+            </span>
+          </div>
+          <div class="project-links">
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://betonsa.com.gh" class="cta">Visit betonsa.com.gh <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="project">
+      <div class="container">
+        <figure class="no-margin">
+          <img src="~/assets/imgs/volcodeorg-app.png" alt="Mehmet Deveci Portfolio Webapp" />
         </figure>
         <div class="project-info">
           <!-- <strong>Open-Source Customizable Portfolio App</strong> -->
@@ -172,20 +207,8 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink
-              rel="noopener noreferrer"
-              target="_blank"
-              to="https://github.com/volcodes/volcodeorg-app"
-              class="cta"
-              >Github <MdiIcon icon="mdiArrowTopRight"
-            /></NuxtLink>
-            <NuxtLink
-              rel="noopener noreferrer"
-              target="_blank"
-              to="https://volcode.org"
-              class="cta"
-              >Demo <MdiIcon icon="mdiArrowTopRight"
-            /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcodes/volcodeorg-app" class="cta">Github <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://volcode.org" class="cta">Demo <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
           </div>
         </div>
       </div>
@@ -193,10 +216,7 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img
-            src="~/assets/imgs/art-screenshot.png"
-            alt="Art Screenshot"
-          />
+          <img src="~/assets/imgs/art-screenshot.png" alt="Art Screenshot" />
         </figure>
         <div class="project-info">
           <!-- <strong>Anonymous Reporting Tool</strong> -->
@@ -225,20 +245,8 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink
-              rel="noopener noreferrer"
-              target="_blank"
-              to="https://github.com/volcanioo/anonymous-reporting-tool"
-              class="cta"
-              >Github <MdiIcon icon="mdiArrowTopRight"
-            /></NuxtLink>
-            <NuxtLink
-              rel="noopener noreferrer"
-              target="_blank"
-              to="https://affectionate-williams-df6f76.netlify.app/"
-              class="cta"
-              >Demo <MdiIcon icon="mdiArrowTopRight"
-            /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcanioo/anonymous-reporting-tool" class="cta">Github <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://affectionate-williams-df6f76.netlify.app/" class="cta">Demo <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
           </div>
         </div>
       </div>
@@ -246,10 +254,7 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img
-            src="~/assets/imgs/localwebsites-app.png"
-            alt="Spotify App Screenshot"
-          />
+          <img src="~/assets/imgs/localwebsites-app.png" alt="Spotify App Screenshot" />
         </figure>
         <div class="project-info">
           <span>Developed a localized service finder for easy relocations.</span>
@@ -273,20 +278,8 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink
-              rel="noopener noreferrer"
-              target="_blank"
-              to="https://github.com/volcanioo/local-websites"
-              class="cta"
-              >Github <MdiIcon icon="mdiArrowTopRight"
-            /></NuxtLink>
-            <NuxtLink
-              rel="noopener noreferrer"
-              target="_blank"
-              to="https://volcanioo.github.io/local-websites/dist/index.html"
-              class="cta"
-              >Demo <MdiIcon icon="mdiArrowTopRight"
-            /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcanioo/local-websites" class="cta">Github <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://volcanioo.github.io/local-websites/dist/index.html" class="cta">Demo <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
           </div>
         </div>
       </div>
@@ -294,10 +287,7 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img
-            src="~/assets/imgs/humanbody-app.png"
-            alt="Spotify App Screenshot"
-          />
+          <img src="~/assets/imgs/humanbody-app.png" alt="Spotify App Screenshot" />
         </figure>
         <div class="project-info">
           <!-- <strong>Human Body Input Binder</strong> -->
@@ -314,20 +304,8 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink
-              rel="noopener noreferrer"
-              target="_blank"
-              to="https://github.com/volcanioo/Human-Body-Rendering-HTML"
-              class="cta"
-              >Github <MdiIcon icon="mdiArrowTopRight"
-            /></NuxtLink>
-            <NuxtLink
-              rel="noopener noreferrer"
-              target="_blank"
-              to="https://maya-gans.shinyapps.io/human_body_app/"
-              class="cta"
-              >Demo <MdiIcon icon="mdiArrowTopRight"
-            /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcanioo/Human-Body-Rendering-HTML" class="cta">Github <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://maya-gans.shinyapps.io/human_body_app/" class="cta">Demo <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
           </div>
         </div>
       </div>
@@ -348,14 +326,6 @@ const pages = [
 @use '~/assets/styles/vars';
 
 #projects {
-  .explanation {
-    font-size: 1.75rem;
-    line-height: 2.25rem;
-    font-family: vars.$fontFamilyRegular;
-    color: colors.$blueSky;
-    margin-bottom: 2rem;
-  }
-
   .project {
     padding: 3rem 0;
     border-bottom: 1px solid colors.$modalBg;
@@ -513,12 +483,6 @@ const pages = [
   }
 }
 @media (max-width: 868px) {
-  #projects .explanation {
-    padding: 0 1rem;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    font-family: vars.$fontFamilyRegular;
-  }
   .project {
     margin: 1rem 0;
     border-radius: 2px;

@@ -43,7 +43,7 @@ const achievements = ref([
     accomplishments: [
       {
         entity:
-          "<b>Built an SVG-based map</b> for Turkey's 2019 elections, <u><b>handling 18K+ concurrent users</u></b> with dynamic updates."
+          "<b>Built an SVG-based map</b> for Turkey's 2019 elections, <u><b>handling 75+ concurrent users</u></b> with dynamic updates."
       },
       {
         entity:

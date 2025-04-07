@@ -1,11 +1,7 @@
 <template>
   <div id="experience">
     <AppPageHeader :title="'Experience'" :pages="pages" />
-    <p class="container explanation">
-      I specialize in transforming concepts into modern, scalable, and impactful
-      applications. Here is my journey in programming and web technologies
-      across 6 industries over 10 years.
-    </p>
+    <p class="container explanation">I specialize in transforming concepts into modern, scalable, and impactful applications. Here is my journey in programming and web technologies across 6 industries over 10 years.</p>
     <div id="timeline" class="container">
       <article>
         <span class="date">2023</span>
@@ -64,9 +60,7 @@
               <span>Jest</span>
             </span>
           </div>
-          <NuxtLink class="cta" rel="nofollow" to="/experience/sdui"
-            >Explore my highlights <MdiIcon icon="mdiArrowTopRight"
-          /></NuxtLink>
+          <NuxtLink class="cta" rel="nofollow" to="/experience/sdui">Explore my highlights <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
         </div>
       </article>
       <article class="right">
@@ -134,9 +128,7 @@
               <span>Jest</span>
             </span>
           </div>
-          <NuxtLink class="cta" rel="nofollow" to="/experience/homeday"
-            >Explore my highlights <MdiIcon icon="mdiArrowTopRight"
-          /></NuxtLink>
+          <NuxtLink class="cta" rel="nofollow" to="/experience/homeday">Explore my highlights <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
         </div>
       </article>
       <article>
@@ -146,11 +138,12 @@
           <strong>Frontend Developer</strong>
           <span>Turkish Radio Television Corporation</span>
           <ul>
-            <li>One CMS & One Asset Management Platform with Vue</li>
-            <li>One VOD Platform with Vue (TABII)</li>
+            <li>A CMS with Vue</li>
+            <li>An Asset Management Platform</li>
+            <li>A VOD Platform with Vue</li>
             <li>Two landing pages with Vue</li>
             <li>Two webapps with Vue</li>
-            <li>One website with PHP with Laravel Blade Templates</li>
+            <li>A website with PHP with Laravel Blade Templates</li>
             <li>A webapp with Nodejs & Vue</li>
           </ul>
           <div class="technologies">
@@ -187,9 +180,7 @@
               <span>Sass</span>
             </span>
           </div>
-          <NuxtLink class="cta" rel="nofollow" to="/experience/trt"
-            >Explore my highlights <MdiIcon icon="mdiArrowTopRight"
-          /></NuxtLink>
+          <NuxtLink class="cta" rel="nofollow" to="/experience/trt">Explore my highlights <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
         </div>
       </article>
       <article class="right">
@@ -199,14 +190,8 @@
           <strong>Full Stack Developer</strong>
           <span>Digital Marketing Agency: Crabs Media</span>
           <ul>
-            <li>
-              Built 50+ interfaces and implemented WordPress for clients in
-              diverse industries
-            </li>
-            <li>
-              Develoeped a custom WordPress plugin with PHP that integrates with
-              customer's database
-            </li>
+            <li>Built 50+ interfaces and implemented WordPress for clients in diverse industries</li>
+            <li>Develoeped a custom WordPress plugin with PHP that integrates with customer's database</li>
           </ul>
           <div class="technologies">
             <span>
@@ -251,10 +236,7 @@
           <strong>UI Developer</strong>
           <span>Digital Marketing Agency: Elmalma</span>
           <ul>
-            <li>
-              Built ~10 websites with HTML, CSS and jQuery for digital
-              advitesement of movies
-            </li>
+            <li>Built ~10 websites with HTML, CSS and jQuery for digital advitesement of movies</li>
           </ul>
           <div class="technologies">
             <span>
@@ -283,27 +265,18 @@
           <strong>IT Support Internship</strong>
           <span>Istanbul Metropolitan Municipality</span>
           <ul>
-            <li>
-              Performed hardware and software troubleshooting on staff's
-              computers.
-            </li>
-            <li>
-              Provided remote demonstrations and troubleshooting on staff's
-              computers through TeamViewer.
-            </li>
+            <li>Performed hardware and software troubleshooting on staff's computers.</li>
+            <li>Provided remote demonstrations and troubleshooting on staff's computers through TeamViewer.</li>
           </ul>
         </div>
       </article>
     </div>
     <div class="education">
       <div class="container">
-        <h2>Education</h2>
+        <strong>Education</strong>
       </div>
     </div>
-    <p class="container explanation">
-      Combining education and self-learning since 2010, I've developed skills in
-      programming, web tech, and agile workflows.
-    </p>
+    <p class="container explanation">I've developed skills in programming, web tech, and agile workflows. Combining education and self-learning since 2010.</p>
 
     <div id="timeline" class="container">
       <article>
@@ -323,10 +296,7 @@
             <li>Object-based Programming with Java</li>
             <li>Database Management Systems with SQL & PL/SQL</li>
             <li>Computer Network Systems</li>
-            <li>
-              Making two final projects one for producing a car with Arduino and
-              two for building a web app with HTML, CSS and C#
-            </li>
+            <li>Making two final projects one for producing a car with Arduino and two for building a web app with HTML, CSS and C#</li>
           </ul>
           <div class="technologies">
             <span>
@@ -406,18 +376,16 @@
 const pages = [
   { name: 'Overview', link: '/' },
   { name: 'Experience', link: '/experience' }
-]
+];
 onUpdated(() => {
-  const cI = useRoute().query.cI
+  const cI = useRoute().query.cI;
   if (cI) {
-    const lastArticle = document.querySelector(
-      `#timeline article:nth-child(${parseInt(cI as string) + 2})`
-    )
+    const lastArticle = document.querySelector(`#timeline article:nth-child(${parseInt(cI as string) + 2})`);
     if (lastArticle) {
-      lastArticle.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      lastArticle.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }
-})
+});
 </script>
 
 <style lang="scss">
@@ -466,7 +434,7 @@ onUpdated(() => {
     z-index: 1;
   }
 
-  h2 {
+  strong {
     background-size: cover;
     position: relative;
     z-index: 2;
@@ -475,6 +443,8 @@ onUpdated(() => {
     line-height: 5rem;
     color: white;
     text-shadow: 2px 2px 0px colors.$navyBlue;
+    margin-bottom: 0;
+    font-family: vars.$fontFamilyBold;
   }
 }
 
@@ -482,23 +452,11 @@ onUpdated(() => {
   .education {
     height: 130px;
 
-    h2 {
+    strong {
       font-size: 2.5rem;
       line-height: 3rem;
       letter-spacing: -0.02em;
     }
   }
-}
-
-.explanation {
-  color: colors.$textGray;
-  font-weight: 500;
-  margin-top: 0rem;
-  position: relative;
-  z-index: 2;
-  // padding: 1rem;
-  font-family: vars.$fontFamilyRegular;
-  font-size: 1.75rem;
-  line-height: 2.5rem;
 }
 </style>
