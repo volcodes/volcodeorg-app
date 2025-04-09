@@ -1,13 +1,16 @@
 <template>
   <div id="experience">
+    <div v-if="currentCompanyIndex >= 0" class="go-back">
+      <NuxtLink :to="`/experience?cI=${currentCompanyIndex ?? currentCompanyIndex + 1}`"
+        ><figure><MdiIcon icon="mdiArrowLeft" /></figure>
+        <span>Go Back</span></NuxtLink
+      >
+    </div>
     <AppPageHeader v-if="currentCompany" :title="currentCompany.label" :pages="pages" />
     <p v-if="currentCompany" class="container explanation">
       {{ currentCompany.hero }}
     </p>
     <div v-if="currentCompany" id="timeline" class="container">
-      <div v-if="currentCompanyIndex >= 0" class="go-back">
-        <NuxtLink :to="`/experience?cI=${currentCompanyIndex ?? currentCompanyIndex + 1}`"><MdiIcon icon="mdiArrowLeft" /> Go Back</NuxtLink>
-      </div>
       <article v-for="(accomplishment, index) in currentCompany.accomplishments" :key="accomplishment.date" :class="{ right: index % 2 === 1 }">
         <span class="date-extended">{{ accomplishment.entity.team }}</span>
         <span class="date">{{ accomplishment.date }}</span>
@@ -498,36 +501,45 @@ const currentCompanyIndex = computed(() => {
 @use '~/assets/styles/colors';
 @use '~/assets/styles/vars';
 .go-back {
-  position: sticky;
-  top: 8rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  background: transparent;
-  z-index: 9;
-}
-
-.go-back a {
-  font-size: 2rem;
-  font-family: vars.$fontFamilyRegular;
-  color: colors.$cta;
-  line-height: 2rem;
-  display: block;
-  display: flex;
+  position: fixed;
+  background: #2bcc69;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  height: 2rem;
+  font-size: 1.74rem;
+  z-index: 999;
+  padding: 2px 4px;
+  font-size: 1.25rem;
   align-items: center;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  border-radius: 10px;
-  width: fit-content;
-  background: colors.$navyBlue;
-  padding: 0.5rem 1rem;
-  transform: translateX(-2px);
-
-  &:hover {
-    color: colors.$ctaHover;
+  display: flex;
+  flex-direction: row;
+  padding: 0 1rem;
+  a {
+    font-family: vars.$fontFamilyRegular;
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    color: colors.$navyBlue;
+  }
+  svg {
+    width: 1.25rem;
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 1.25rem;
   }
 
-  svg {
-    margin-right: 0.5rem;
+  figure {
+    margin: 0;
+  }
+
+  span {
+    font-size: 1rem;
+    padding-left: 0.2rem;
   }
 }
 
