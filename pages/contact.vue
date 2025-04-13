@@ -14,7 +14,6 @@
             <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/deveci96/"><MdiIcon icon="mdiLinkedin" /></a>
             <a rel="noopener noreferrer" target="_blank" href="https://x.com/volcanioo"><MdiIcon icon="mdiTwitter" /></a>
             <a rel="noopener noreferrer" target="_blank" href="https://github.com/volcanioo"><MdiIcon icon="mdiGithub" /></a>
-            <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/deveci2024/"><MdiIcon icon="mdiXing" /></a>
           </div>
         </div>
       </div>
@@ -48,6 +47,40 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import axios from 'axios';
+
+useHead({
+  title: 'Contact - Mehmet Deveci',
+  meta: [
+    {
+      name: 'description',
+      content: 'Get in touch with me, a Software Development Specialist, for collaboration opportunities, project inquiries, or professional networking.'
+    },
+    {
+      name: 'keywords',
+      content: 'Contact Software Development Specialist, Frontend Developer, Collaboration, Project Inquiries'
+    },
+    {
+      property: 'og:title',
+      content: 'Contact - Mehmet Deveci'
+    },
+    {
+      property: 'og:description',
+      content: 'Get in touch with me, a Software Development Specialist, for collaboration opportunities, project inquiries, or professional networking.'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      property: 'og:url',
+      content: 'https://volcode.org/contact'
+    },
+    {
+      property: 'og:image',
+      content: 'https://volcode.org/assets/imgs/og_image.png'
+    }
+  ]
+});
 
 const pages = [
   { name: 'Overview', link: '/' },

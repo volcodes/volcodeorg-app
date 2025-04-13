@@ -29,12 +29,25 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
+
 const pages = [
   { name: 'Overview', link: '/' },
   { name: 'Experience', link: '/experience' }
 ];
 
-const slug = useRoute().params.experience;
+const route = useRoute();
+const slug = route.params.experience;
+
+// Add meta robots tag for specific pages
+useHead({
+  meta: [
+    {
+      name: 'robots',
+      content: route.params.experience === 'sdui' || route.params.experience === 'trt-world' || route.params.experience === 'homeday' ? 'noindex, nofollow' : 'index, follow'
+    }
+  ]
+});
+
 const companies = ref([
   {
     slug: 'sdui',
@@ -48,46 +61,16 @@ const companies = ref([
           action: 'Built video conference functionality for an encrypted chat app.',
           effect: 'Enabled users to set up video conferences, teachers to set up video calls with students.',
           technologies: [
-            {
-              icon: 'mdiReact',
-              label: 'React.js'
-            },
-            {
-              icon: 'mdiMatrix',
-              label: 'Matrix'
-            },
-            {
-              icon: 'mdiLanguageJavascript',
-              label: 'Javascript'
-            },
-            {
-              icon: 'mdiLanguageTypescript',
-              label: 'Typescript'
-            },
-            {
-              icon: 'mdiLanguageCss3',
-              label: 'CSS3'
-            },
-            {
-              icon: 'mdiLanguageHtml5',
-              label: 'HTML5'
-            },
-            {
-              icon: 'mdiElectronFramework',
-              label: 'Electron'
-            },
-            {
-              icon: 'mdiCheckAll',
-              label: 'Jest'
-            },
-            {
-              icon: 'mdiKubernetes',
-              label: 'Kubernetes'
-            },
-            {
-              icon: 'mdiGitlab',
-              label: 'Gitlab'
-            }
+            { icon: 'mdiReact' as const, label: 'React.js' },
+            { icon: 'mdiMatrix' as const, label: 'Matrix' },
+            { icon: 'mdiLanguageJavascript' as const, label: 'Javascript' },
+            { icon: 'mdiLanguageTypescript' as const, label: 'Typescript' },
+            { icon: 'mdiLanguageCss3' as const, label: 'CSS3' },
+            { icon: 'mdiLanguageHtml5' as const, label: 'HTML5' },
+            { icon: 'mdiElectronFramework' as const, label: 'Electron' },
+            { icon: 'mdiCheckAll' as const, label: 'Jest' },
+            { icon: 'mdiKubernetes' as const, label: 'Kubernetes' },
+            { icon: 'mdiGitlab' as const, label: 'Gitlab' }
           ]
         }
       },
@@ -311,17 +294,17 @@ const companies = ref([
         entity: {
           team: 'Customer acquisition team of 12 people',
           action: 'Migrated components and pages from a PHP Symfony app to Vue.js Nuxt app.',
-          effect: 'Improved page speeds by 40% and enhanced UX.',
+          effect: 'Improved page speeds by %~30 and enhanced UX.',
           technologies: [
-            { icon: 'mdiVuejs', label: 'Vue.js' },
-            { icon: 'mdiNuxt', label: 'Nuxt.js' },
-            { icon: 'mdiCheckAll', label: 'Jest' },
-            { icon: 'mdiCheckAll', label: 'Cypress' },
-            { icon: 'mdiLanguagePhp', label: 'PHP/Symfony' },
-            { icon: 'mdiContentful', label: 'Contentful' },
-            { icon: 'mdiLanguageHtml5', label: 'HTML/CSS/JS' },
-            { icon: 'mdiDocker', label: 'Docker' },
-            { icon: 'mdiAws', label: 'AWS' }
+            { icon: 'mdiVuejs' as const, label: 'Vue.js' },
+            { icon: 'mdiNuxt' as const, label: 'Nuxt.js' },
+            { icon: 'mdiCheckAll' as const, label: 'Jest' },
+            { icon: 'mdiCheckAll' as const, label: 'Cypress' },
+            { icon: 'mdiLanguagePhp' as const, label: 'PHP/Symfony' },
+            { icon: 'mdiContentful' as const, label: 'Contentful' },
+            { icon: 'mdiLanguageHtml5' as const, label: 'HTML/CSS/JS' },
+            { icon: 'mdiDocker' as const, label: 'Docker' },
+            { icon: 'mdiAws' as const, label: 'AWS' }
           ]
         }
       },
@@ -431,12 +414,12 @@ const companies = ref([
           action: 'Optimized election landing pages at 2018 & 2019.',
           effect: 'Reduced load times by 25% for peak traffic.',
           technologies: [
-            { icon: 'mdiVuejs', label: 'Vue.js' },
-            { icon: 'mdiLanguageJavascript', label: 'Javascript' },
-            { icon: 'mdiLanguageCss3', label: 'CSS3' },
-            { icon: 'mdiLanguagePhp', label: 'PHP' },
-            { icon: 'mdiWebpack', label: 'Webpack' },
-            { icon: 'mdiApi', label: 'REST API' }
+            { icon: 'mdiVuejs' as const, label: 'Vue.js' },
+            { icon: 'mdiLanguageJavascript' as const, label: 'Javascript' },
+            { icon: 'mdiLanguageCss3' as const, label: 'CSS3' },
+            { icon: 'mdiLanguagePhp' as const, label: 'PHP' },
+            { icon: 'mdiWebpack' as const, label: 'Webpack' },
+            { icon: 'mdiApi' as const, label: 'REST API' }
           ]
         }
       },
@@ -447,10 +430,10 @@ const companies = ref([
           action: "Built an SVG-based map for Turkey's 2018 & 2019 elections.",
           effect: 'Handled 75+ concurrent users with dynamic updates.',
           technologies: [
-            { icon: 'mdiVuejs', label: 'Vue.js' },
-            { icon: 'mdiAws', label: 'AWS' },
-            { icon: 'mdiLanguageHtml5', label: 'HTML/CSS/JS' },
-            { icon: 'mdiWebpack', label: 'Webpack' }
+            { icon: 'mdiVuejs' as const, label: 'Vue.js' },
+            { icon: 'mdiAws' as const, label: 'AWS' },
+            { icon: 'mdiLanguageHtml5' as const, label: 'HTML/CSS/JS' },
+            { icon: 'mdiWebpack' as const, label: 'Webpack' }
           ]
         }
       },
@@ -485,9 +468,11 @@ const companies = ref([
     ]
   }
 ]);
+
 const currentCompany = computed(() => {
   return companies.value.find((company) => company.slug === slug);
 });
+
 const currentCompanyIndex = computed(() => {
   return companies.value.findIndex((company) => company.slug === slug);
 });

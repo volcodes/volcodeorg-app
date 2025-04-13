@@ -23,29 +23,28 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
-const router = useRouter()
+const router = useRouter();
 
-const isPageTransitionOff = ref(true)
+const isPageTransitionOff = ref(true);
 
 onMounted(() => {
   setTimeout(() => {
-    isPageTransitionOff.value = false
-  }, 200)
-})
+    isPageTransitionOff.value = false;
+  }, 200);
+});
 
-router.beforeEach((to, from, next) => {
-  isPageTransitionOff.value = true
-  next()
-})
-router.afterEach((to, from, next) => {
+router.beforeEach((_to, _from, next) => {
+  isPageTransitionOff.value = true;
+  next();
+});
+router.afterEach(() => {
   setTimeout(() => {
-    isPageTransitionOff.value = false
-    next()
-  }, 200)
-})
+    isPageTransitionOff.value = false;
+  }, 200);
+});
 </script>
 
 <style lang="scss">

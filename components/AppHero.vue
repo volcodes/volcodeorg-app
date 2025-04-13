@@ -1,17 +1,17 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import performanceBg from '~/assets/imgs/performance-bg.png'
-import dataBg from '~/assets/imgs/data-bg.png'
-import collaborationBg from '~/assets/imgs/collaboration-bg.jpg'
-import engagementBg from '~/assets/imgs/engagement-bg.png'
-import mentorshipBg from '~/assets/imgs/mentorship-bg.png'
+import { ref, onMounted } from 'vue';
+import performanceBg from '~/assets/imgs/performance-bg.png';
+import dataBg from '~/assets/imgs/data-bg.png';
+import collaborationBg from '~/assets/imgs/collaboration-bg.jpg';
+import engagementBg from '~/assets/imgs/engagement-bg.png';
+import mentorshipBg from '~/assets/imgs/mentorship-bg.png';
 
-const isMobile = ref(false)
-isMobile.value = window ? window.innerWidth < 1024 : false
+const isMobile = ref(false);
+isMobile.value = window ? window.innerWidth < 1024 : false;
 
 const closeVideoModal = () => {
-  isVideoModalOpen.value = false
-}
+  isVideoModalOpen.value = false;
+};
 const achievements = ref([
   {
     label: 'Performance & Optimization',
@@ -19,20 +19,16 @@ const achievements = ref([
     image: performanceBg,
     accomplishments: [
       {
-        entity:
-          '<b>Built a custom video player</b> for <a href="#tabbiii">a VOD Platform</a> at <a href="#TRT">TRT</a>, enabling accessible streaming on all devices with <u><b>seamless playback for over 1M+ daily users.</b></u>'
+        entity: '<b>Built a custom video player</b> for <a href="#tabbiii">a VOD Platform</a> at <a href="#TRT">TRT</a>, enabling accessible streaming on all devices with <u><b>seamless playback for millions of daily users.</b></u>'
       },
       {
-        entity:
-          '<b>Migrated components and pages</b> for the main website at <a href="#Homeday">Homeday</a>, <u><b>improved page speeds by 40%.</b></u>'
+        entity: '<b>Migrated components and pages</b> for the main website at <a href="#Homeday">Homeday</a>, <u><b>improved page speeds by %~30.</b></u>'
       },
       {
-        entity:
-          '<b>Implemented integration tests</b> and reduced legacy unit and E2E tests at <a href="#Homeday">Homeday</a>, <u><b>accelerated build times by 25%.</b></u>'
+        entity: '<b>Implemented integration tests</b> and reduced legacy unit and E2E tests at <a href="#Homeday">Homeday</a>, <u><b>accelerated build times by 25%.</b></u>'
       },
       {
-        entity:
-          '<b>Implemented new flows</b> in the <a href="#Homeday\'s internal CMS">Homeday\'s CMS</a>: <u>ensuring qualified buyers</u>, and <u><b>reducing costs for all parties</b>.</u>'
+        entity: '<b>Implemented new flows</b> in the <a href="#Homeday\'s internal CMS">Homeday\'s CMS</a>: <u>ensuring qualified buyers</u>, and <u><b>reducing costs for all parties</b>.</u>'
       }
     ]
   },
@@ -42,12 +38,10 @@ const achievements = ref([
     image: dataBg,
     accomplishments: [
       {
-        entity:
-          "<b>Built an SVG-based map</b> for Turkey's 2019 elections, <u><b>handling 75+ concurrent users</u></b> with dynamic updates."
+        entity: "<b>Built an SVG-based map</b> for Turkey's 2019 elections, <u><b>handling 75+ concurrent users</u></b> with dynamic updates."
       },
       {
-        entity:
-          '<b>Designed an advanced search feature</b> for a VOD platform at TRT, <u><b>boosting discoverability & engagement</b></u>.'
+        entity: '<b>Designed an advanced search feature</b> for a VOD platform at TRT, <u><b>boosting discoverability & engagement</b></u>.'
       }
     ]
   },
@@ -57,12 +51,10 @@ const achievements = ref([
     image: engagementBg,
     accomplishments: [
       {
-        entity:
-          "<b>Enhanced Sdui's event module</b>, <u><b>increasing user interaction by 20%</b></u> via better calendar & scheduling features."
+        entity: "<b>Enhanced Sdui's event module</b>, <u><b>increasing user interaction by 20%</b></u> via better calendar & scheduling features."
       },
       {
-        entity:
-          '<b>Built video conference functionality</b> for an encrypted chat app at Sdui, <u><b>allowing users to have video calls.</b></u>'
+        entity: '<b>Built video conference functionality</b> for an encrypted chat app at Sdui, <u><b>allowing users to have video calls.</b></u>'
       }
     ]
   },
@@ -72,12 +64,10 @@ const achievements = ref([
     image: mentorshipBg,
     accomplishments: [
       {
-        entity:
-          '<b>Created step-by-step migration guide for Vue 2 → Vue 3</b>, streamlining the process & <u><b>boosting developer productivity at Sdui</b></u>.'
+        entity: '<b>Created step-by-step migration guide for Vue 2 → Vue 3</b>, streamlining the process & <u><b>boosting developer productivity at Sdui</b></u>.'
       },
       {
-        entity:
-          '<b>Guided junior devs at Homeday & Sdui</b>, leading to <u><b>two promotions in rapid time</b></u> through mentorship, pair programming sessions & code reviews.'
+        entity: '<b>Guided junior devs at Homeday & Sdui</b>, leading to <u><b>two promotions in rapid time</b></u> through mentorship, pair programming sessions & code reviews.'
       }
     ]
   },
@@ -87,55 +77,44 @@ const achievements = ref([
     image: collaborationBg,
     accomplishments: [
       {
-        entity:
-          '<b>Optimized test cases, reduced redundancies</b> of core components at Homeday, <u><b>reduced development build times by 20%.</b></u>'
+        entity: '<b>Optimized test cases, reduced redundancies</b> of core components at Homeday, <u><b>reduced development build times by 20%.</b></u>'
       },
       {
-        entity:
-          "<b>Modernized interfaces of TRT's CMS</b>, <u><b>reduced times for search and creation user flows by 30%.</b></u>"
+        entity: '<b>Modernized an internal CMS at TRT World</b>, <u><b>improved search and creation user flows by 30%.</b></u>'
       }
     ]
   }
-])
-const selectedAchievementIndex = ref(0)
-const hasNextAchievement = computed(
-  () => selectedAchievementIndex.value + 1 < achievements.value.length
-)
-const nextAchievementLabel = computed(() =>
-  hasNextAchievement.value
-    ? achievements.value[selectedAchievementIndex.value + 1].label
-    : ''
-)
-const isVideoModalOpen = ref(false)
-const selectedAchievement = ref(
-  achievements.value[selectedAchievementIndex.value]
-)
-const isModalOpen = ref(false)
-const isModalAnimationVisible = ref(false)
+]);
+const selectedAchievementIndex = ref(0);
+const hasNextAchievement = computed(() => selectedAchievementIndex.value + 1 < achievements.value.length);
+const nextAchievementLabel = computed(() => (hasNextAchievement.value ? achievements.value[selectedAchievementIndex.value + 1].label : ''));
+const isVideoModalOpen = ref(false);
+const selectedAchievement = ref(achievements.value[selectedAchievementIndex.value]);
+const isModalOpen = ref(false);
+const isModalAnimationVisible = ref(false);
 
 const closeModal = () => {
-  isModalOpen.value = false
-}
+  isModalOpen.value = false;
+};
 
 const handleAchievementChange = (index) => {
-  if (index >= achievements.value.length) index = 0
-  isModalAnimationVisible.value = true
+  if (index >= achievements.value.length) index = 0;
+  isModalAnimationVisible.value = true;
   setTimeout(() => {
-    selectedAchievementIndex.value = index
-    selectedAchievement.value =
-      achievements.value[selectedAchievementIndex.value]
-    isModalAnimationVisible.value = false
-  }, 200)
-}
+    selectedAchievementIndex.value = index;
+    selectedAchievement.value = achievements.value[selectedAchievementIndex.value];
+    isModalAnimationVisible.value = false;
+  }, 200);
+};
 
 // Close modal on escape key
 onMounted(() => {
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && isModalOpen.value) {
-      closeModal()
+      closeModal();
     }
-  })
-})
+  });
+});
 </script>
 
 <template>
@@ -143,24 +122,11 @@ onMounted(() => {
     <img src="~/assets/imgs/Frame.svg" alt="Hero Background" class="hero-bg" />
     <span>I'm Mehmet;</span>
     <h1>Software Development Specialist</h1>
-    <p>
-      Frontend-focused, 10+ years in web, experienced in backend and full stack
-      work.
-    </p>
-    <p>
-      I design, build, and optimize digital interfaces, apps, and
-      infrastructures.
-    </p>
+    <p>Frontend-focused, 10+ years in web, experienced in backend and full stack work.</p>
+    <p>I design, build, and optimize digital interfaces, apps, and infrastructures.</p>
     <section id="ctaButtons">
-      <button
-        class="btn btn--filled sliding-text--button"
-        @click="isModalOpen = true"
-      >
-        Discover My Achievements
-      </button>
-      <button class="btn" @click="isVideoModalOpen = true">
-        Watch My Introduction
-      </button>
+      <button class="btn btn--filled sliding-text--button" @click="isModalOpen = true">Discover My Achievements</button>
+      <button class="btn" @click="isVideoModalOpen = true">Watch My Introduction</button>
     </section>
     <div class="scroll-indicator">
       <div class="scroll-indicator__icon"></div>
@@ -168,61 +134,31 @@ onMounted(() => {
     </div>
 
     <Teleport to="body">
-      <Modal
-        :is-open="isModalOpen"
-        :is-animating="isModalAnimationVisible"
-        :has-sidebar="true"
-        sidebar-title="Key Achievements"
-        @close="closeModal"
-      >
+      <Modal :is-open="isModalOpen" :is-animating="isModalAnimationVisible" :has-sidebar="true" sidebar-title="Key Achievements" @close="closeModal">
         <template #sidebar>
           <div v-if="isMobile" class="select-wrapper">
-            <select
-              v-model="selectedAchievementIndex"
-              @change="handleAchievementChange(selectedAchievementIndex)"
-            >
-              <option
-                v-for="(item, index) in achievements"
-                :key="index"
-                :value="index"
-              >
+            <select v-model="selectedAchievementIndex" @change="handleAchievementChange(selectedAchievementIndex)">
+              <option v-for="(item, index) in achievements" :key="index" :value="index">
                 {{ item.label }}
               </option>
             </select>
             <div class="select-arrow"></div>
           </div>
           <div v-else class="flex-column">
-            <button
-              v-for="(item, index) in achievements"
-              :key="index"
-              class="modal-button"
-              :class="{ active: selectedAchievementIndex === index }"
-              @click="handleAchievementChange(index)"
-            >
+            <button v-for="(item, index) in achievements" :key="index" class="modal-button" :class="{ active: selectedAchievementIndex === index }" @click="handleAchievementChange(index)">
               {{ item.label }}
             </button>
           </div>
         </template>
 
         <template #content>
-          <div
-            class="hero-sentence"
-            :style="{ backgroundImage: `url(${selectedAchievement.image})` }"
-          >
+          <div class="hero-sentence" :style="{ backgroundImage: `url(${selectedAchievement.image})` }">
             <p>{{ selectedAchievement.hero }}</p>
           </div>
           <ol>
-            <li
-              v-for="ach in selectedAchievement.accomplishments"
-              v-html="ach.entity"
-            ></li>
+            <li v-for="ach in selectedAchievement.accomplishments" v-html="ach.entity"></li>
           </ol>
-          <a
-            v-if="hasNextAchievement"
-            rel="nofollow"
-            class="cta cta-custom"
-            @click="handleAchievementChange(selectedAchievementIndex + 1)"
-          >
+          <a v-if="hasNextAchievement" rel="nofollow" class="cta cta-custom" @click="handleAchievementChange(selectedAchievementIndex + 1)">
             Explore {{ nextAchievementLabel }} Accomplishments
             <MdiIcon icon="mdiArrowTopRight" />
           </a>
@@ -233,21 +169,9 @@ onMounted(() => {
         </template>
       </Modal>
 
-      <Modal
-        :is-open="isVideoModalOpen"
-        :is-animating="false"
-        :has-sidebar="false"
-        @close="closeVideoModal"
-      >
+      <Modal :is-open="isVideoModalOpen" :is-animating="false" :has-sidebar="false" @close="closeVideoModal">
         <template #content>
-          <iframe
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
-            frameborder="0"
-            width="100%"
-            height="100%"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+          <iframe src="https://www.youtube.com/embed/39n8IZpbfgk?cc_load_policy=1" frameborder="0" width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </template>
       </Modal>
     </Teleport>

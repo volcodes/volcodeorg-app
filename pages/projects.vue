@@ -155,6 +155,14 @@
               <MdiIcon icon="mdiEslint" />
               <span>Eslint</span>
             </span>
+            <span>
+              <MdiIcon icon="mdiCodeGreaterThanOrEqual" />
+              <span>Prettier</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiGithub" />
+              <span>Github Actions</span>
+            </span>
           </div>
           <div class="project-links">
             <NuxtLink rel="noopener noreferrer" target="_blank" to="https://betonsa.com.gh" class="cta">Visit betonsa.com.gh <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
@@ -200,10 +208,6 @@
             <span>
               <MdiIcon icon="mdiCodeGreaterThanOrEqual" />
               <span>Prettier</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiLanguageMarkdown" />
-              <span>Markdown</span>
             </span>
           </div>
           <div class="project-links">
@@ -314,6 +318,40 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  title: 'Projects - Mehmet Deveci',
+  meta: [
+    {
+      name: 'description',
+      content: 'Explore my portfolio of frontend development projects as a Software Development Specialist, including open-source contributions and professional work.'
+    },
+    {
+      name: 'keywords',
+      content: 'Software Development Specialist, Frontend Projects, Portfolio, Open Source, Vue.js Projects'
+    },
+    {
+      property: 'og:title',
+      content: 'Projects - Mehmet Deveci'
+    },
+    {
+      property: 'og:description',
+      content: 'Explore my portfolio of frontend development projects as a Software Development Specialist, including open-source contributions and professional work.'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      property: 'og:url',
+      content: 'https://volcode.org/projects'
+    },
+    {
+      property: 'og:image',
+      content: 'https://volcode.org/assets/imgs/og_image.png'
+    }
+  ]
+});
+
 const pages = [
   { name: 'Overview', link: '/' },
   { name: 'Projects', link: '/projects' }

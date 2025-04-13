@@ -1,24 +1,11 @@
 <template>
-  <div
-    v-if="isOpen"
-    class="modal-overlay"
-    @click="$emit('close')"
-  >
-    <button
-      class="modal__close"
-      @click="$emit('close')"
-    >
+  <div v-if="isOpen" class="modal-overlay" @click="$emit('close')">
+    <button class="modal__close" @click="$emit('close')">
       <MdiIcon icon="mdiClose" />
     </button>
-    <div
-      class="modal"
-      @click.stop
-    >
+    <div class="modal" @click.stop>
       <div class="modal-inner">
-        <aside
-          v-if="hasSidebar"
-          class="modal-sidebar"
-        >
+        <aside v-if="hasSidebar" class="modal-sidebar">
           <strong>{{ sidebarTitle }}</strong>
           <slot name="sidebar" />
         </aside>
@@ -323,7 +310,7 @@ onUnmounted(() => {
     color: colors.$navyBlue;
     box-sizing: border-box;
     background-color: rgba(16, 24, 60, 0.8);
-    padding: 6rem 6rem 6rem 4rem;
+    padding: 3.75rem 3.75rem 3.75rem 3.75rem;
   }
 
   b {

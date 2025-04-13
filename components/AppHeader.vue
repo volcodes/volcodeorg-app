@@ -1,36 +1,36 @@
 <script setup>
-import { useRoute } from 'vue-router'
-import { useScroll } from '~/composables/useScroll'
-import Resume from '~/assets/files/resume.pdf'
+import { useRoute } from 'vue-router';
+import { useScroll } from '~/composables/useScroll';
+import Resume from '~/assets/files/resume.pdf';
 
-const route = useRoute()
-const isMobileMenuActive = ref(false)
-const { isFixed: isHeaderFixed } = useScroll(100)
+const route = useRoute();
+const isMobileMenuActive = ref(false);
+const { isFixed: isHeaderFixed } = useScroll(100);
 
 // Watch for route changes to close the mobile menu
 watch(
   () => route.path,
   () => {
-    isMobileMenuActive.value = false
+    isMobileMenuActive.value = false;
   }
-)
+);
 
 const toggleMenu = () => {
-  isMobileMenuActive.value = !isMobileMenuActive.value
-}
+  isMobileMenuActive.value = !isMobileMenuActive.value;
+};
 
-const downloadFile = async () => {
+const downloadFile = () => {
   try {
-    const link = document.createElement('a')
-    link.href = Resume
-    link.download = 'MehmetDeveciResume.pdf'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+    const link = document.createElement('a');
+    link.href = Resume;
+    link.download = 'MehmetDeveciResume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   } catch (error) {
-    console.error('Error downloading file:', error)
+    console.error('Error downloading file:', error);
   }
-}
+};
 </script>
 
 <template>
@@ -40,11 +40,7 @@ const downloadFile = async () => {
         <span>M</span>
       </NuxtLink>
       <button class="mobile-menu-btn">
-        <MdiIcon
-          v-if="!isMobileMenuActive"
-          icon="mdiMenu"
-          @click="toggleMenu"
-        />
+        <MdiIcon v-if="!isMobileMenuActive" icon="mdiMenu" @click="toggleMenu" />
         <MdiIcon v-else icon="mdiCloseThick" @click="toggleMenu" />
       </button>
       <nav
@@ -53,11 +49,11 @@ const downloadFile = async () => {
           active: isMobileMenuActive
         }"
       >
-        <NuxtLink to="/">Overview</NuxtLink>
-        <NuxtLink to="/experience">Experience</NuxtLink>
-        <NuxtLink to="/projects">Projects</NuxtLink>
+        <NuxtLink to="/" exact>Overview</NuxtLink>
+        <NuxtLink to="/experience" :class="{ 'router-link-active': route.path.startsWith('/experience') }">Experience</NuxtLink>
+        <NuxtLink to="/projects" :class="{ 'router-link-active': route.path.startsWith('/projects') }">Projects</NuxtLink>
         <!-- <NuxtLink to="/blog">Blog</NuxtLink> -->
-        <NuxtLink to="/contact">Contact</NuxtLink>
+        <NuxtLink to="/contact" exact>Contact</NuxtLink>
         <button class="btn" @click="downloadFile">Download Resume</button>
       </nav>
     </div>
@@ -119,7 +115,8 @@ const downloadFile = async () => {
     }
 
     &:hover,
-    &.router-link-active {
+    &.router-link-active,
+    &.router-link-exact-active {
       &:after {
         width: 100%;
       }

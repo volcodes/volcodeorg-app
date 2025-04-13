@@ -373,6 +373,40 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  title: 'Experience - Mehmet Deveci',
+  meta: [
+    {
+      name: 'description',
+      content: 'Explore my professional journey as a Software Development Specialist, including roles at leading tech companies and contributions to various industries.'
+    },
+    {
+      name: 'keywords',
+      content: 'Software Development Specialist, Frontend Developer Experience, Professional Journey, Tech Career'
+    },
+    {
+      property: 'og:title',
+      content: 'Experience - Mehmet Deveci'
+    },
+    {
+      property: 'og:description',
+      content: 'Explore my professional journey as a Software Development Specialist, including roles at leading tech companies and contributions to various industries.'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      property: 'og:url',
+      content: 'https://volcode.org/experience'
+    },
+    {
+      property: 'og:image',
+      content: 'https://volcode.org/assets/imgs/og_image.png'
+    }
+  ]
+});
+
 const pages = [
   { name: 'Overview', link: '/' },
   { name: 'Experience', link: '/experience' }

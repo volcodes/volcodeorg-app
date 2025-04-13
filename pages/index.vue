@@ -7,38 +7,19 @@
       <div class="container">
         <!-- 10+ years of experience | 6+ industries | 300+ collaborators worldwide. -->
         <h2>
-          <em
-            >10+ years of experience in
-            <span
-              class="tooltip bottom"
-              data-tooltip="IT, e-commerce, SaaS, media, real estate, education tech"
-              >6 industries</span
-            ></em
-          >
+          <em>10+ years of experience in <span class="tooltip bottom" data-tooltip="IT, e-commerce, SaaS, media, real estate, education tech">6 industries</span></em>
           with 150+ collaborators worldwide
         </h2>
         <section class="grid">
           <article class="card">
             <h3>Open Source Projects</h3>
-            <p>
-              Discover practical tools and apps that tackle real-world
-              challenges, showcasing my tech expertise, innovation, and
-              commitment to creating real value.
-            </p>
-            <NuxtLink to="/projects" class="cta">
-              Explore My Projects <MdiIcon icon="mdiArrowTopRight" />
-            </NuxtLink>
+            <p>Discover practical tools and apps that tackle real-world challenges, showcasing my tech expertise, innovation, and commitment to creating real value.</p>
+            <NuxtLink to="/projects" class="cta"> Explore My Projects <MdiIcon icon="mdiArrowTopRight" /> </NuxtLink>
           </article>
           <article class="card">
             <h3>Demonstrated Professional Expertise</h3>
-            <p>
-              Explore my journey in programming and web technologies, spanning
-              six industries over 10 years, where I’ve delivered impactful,
-              scalable solutions in agile teams.
-            </p>
-            <NuxtLink to="/experience/" class="cta"
-              >Review My Career Path <MdiIcon icon="mdiArrowTopRight"
-            /></NuxtLink>
+            <p>Explore my journey in programming and web technologies, spanning six industries over 10 years, where I've delivered impactful, scalable solutions in agile teams.</p>
+            <NuxtLink to="/experience/" class="cta">Review My Career Path <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
           </article>
         </section>
       </div>
@@ -47,25 +28,59 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  title: 'Mehmet Deveci - Software Development Specialist',
+  meta: [
+    {
+      name: 'description',
+      content: 'Software Development Specialist with 10+ years of experience in frontend development, specializing in Vue.js, Javascript, and modern web technologies.'
+    },
+    {
+      name: 'keywords',
+      content: 'Software Development Specialist, Frontend Developer, Vue.js, Web Development, JavaScript, TypeScript'
+    },
+    {
+      property: 'og:title',
+      content: 'Mehmet Deveci - Software Development Specialist'
+    },
+    {
+      property: 'og:description',
+      content: 'Software Development Specialist with 10+ years of experience in frontend development, specializing in Vue.js, Javascript, and modern web technologies.'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      property: 'og:url',
+      content: 'https://volcode.org'
+    },
+    {
+      property: 'og:image',
+      content: 'https://volcode.org/assets/imgs/og_image.png'
+    }
+  ]
+});
+
 // const { data: repos } = await useAsyncData('repos', () =>
 //   $fetch('https://api.github.com/users/volcodes/repos')
 // )
 
 // const { data: repos } = await useFetch('https://api.github.com/users/volcodes/repos')
-const isActive = ref(false)
+const isActive = ref(false);
 
 onMounted(() => {
   const handleScroll = () => {
-    isActive.value = window.scrollY > 1
-  }
+    isActive.value = window.scrollY > 1;
+  };
 
-  window.addEventListener('scroll', handleScroll)
+  window.addEventListener('scroll', handleScroll);
 
   // Cleanup
   onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll)
-  })
-})
+    window.removeEventListener('scroll', handleScroll);
+  });
+});
 </script>
 
 <style lang="scss">
@@ -89,12 +104,7 @@ onMounted(() => {
     left: 0;
     top: 0;
     background: colors.$navyBlue;
-    background: radial-gradient(
-      circle,
-      colors.$navyBlue 0%,
-      rgba(255, 0, 0, 0) 50%,
-      colors.$navyBlue 100%
-    );
+    background: radial-gradient(circle, colors.$navyBlue 0%, rgba(255, 0, 0, 0) 50%, colors.$navyBlue 100%);
     z-index: 1;
   }
 
@@ -168,11 +178,7 @@ onMounted(() => {
 
     &:after {
       content: '';
-      background: linear-gradient(
-        to bottom,
-        rgba(1, 5, 19, 0) 0%,
-        colors.$darkBlue 100%
-      );
+      background: linear-gradient(to bottom, rgba(1, 5, 19, 0) 0%, colors.$darkBlue 100%);
       position: absolute;
       bottom: 0;
       left: 0;
