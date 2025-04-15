@@ -402,7 +402,7 @@ useHead({
     },
     {
       property: 'og:image',
-      content: 'https://volcode.org/assets/imgs/og_image.png'
+      content: 'https://volcode.org/public/assets/imgs/og-image.jpg'
     }
   ]
 });

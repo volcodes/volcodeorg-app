@@ -58,10 +58,11 @@ const companies = ref([
         date: '2024',
         entity: {
           team: 'Messenger team of 12 people',
-          action: 'Built video conference functionality for an encrypted chat app.',
+          action: 'Integrated video conference functionality for an encrypted chat app.',
           effect: 'Enabled users to set up video conferences, teachers to set up video calls with students.',
           technologies: [
             { icon: 'mdiReact' as const, label: 'React.js' },
+            { icon: 'mdiApi' as const, label: 'API Integration' },
             { icon: 'mdiMatrix' as const, label: 'Matrix' },
             { icon: 'mdiLanguageJavascript' as const, label: 'Javascript' },
             { icon: 'mdiLanguageTypescript' as const, label: 'Typescript' },
@@ -78,7 +79,7 @@ const companies = ref([
         date: '',
         entity: {
           team: 'Education team of 10 people',
-          action: 'Led pair programming sessions, code reviews, and technical guidance.',
+          action: 'Countless pair programming sessions, code reviews, and technical guidance.',
           effect: 'Contributed to countless mob and pair sessions with developers all levels, provided guidance when appropriate.',
           technologies: [
             {
@@ -153,7 +154,7 @@ const companies = ref([
         entity: {
           team: 'Messenger team of 12 people',
           action: 'Upgraded settings in the chat app, improving user control and experience.',
-          effect: 'Improved user control and experience.',
+          effect: 'Users were able to control their privacy settings.',
           technologies: [
             {
               icon: 'mdiReact',
@@ -203,7 +204,7 @@ const companies = ref([
         entity: {
           team: 'Education team of 10 people',
           action: 'Optimized event listing screens for performance.',
-          effect: 'Improved UX for school users.',
+          effect: 'Loading times in the event listing page were reduced, and users were able to see the events in a better way.',
           technologies: [
             {
               icon: 'mdiVuejs',
@@ -294,34 +295,38 @@ const companies = ref([
         entity: {
           team: 'Customer acquisition team of 12 people',
           action: 'Migrated components and pages from a PHP Symfony app to Vue.js Nuxt app.',
-          effect: 'Improved page speeds by %~30 and enhanced UX.',
+          effect: 'Improved page speeds up to ~%30 and enabled design system to be used in the new app.',
           technologies: [
             { icon: 'mdiVuejs' as const, label: 'Vue.js' },
             { icon: 'mdiNuxt' as const, label: 'Nuxt.js' },
-            { icon: 'mdiCheckAll' as const, label: 'Jest' },
+            { icon: 'mdiTestTube' as const, label: 'Jest' },
             { icon: 'mdiCheckAll' as const, label: 'Cypress' },
             { icon: 'mdiLanguagePhp' as const, label: 'PHP/Symfony' },
-            { icon: 'mdiContentful' as const, label: 'Contentful' },
-            { icon: 'mdiLanguageHtml5' as const, label: 'HTML/CSS/JS' },
+            { icon: 'mdiDatabaseAlert' as const, label: 'Contentful' },
+            { icon: 'mdiLanguageHtml5', label: 'HTML/CSS' },
+            { icon: 'mdiLanguageJavascript', label: 'Javascript' },
             { icon: 'mdiDocker' as const, label: 'Docker' },
-            { icon: 'mdiAws' as const, label: 'AWS' }
+            { icon: 'mdiAws' as const, label: 'AWS' },
+            { icon: 'mdiAbTesting' as const, label: 'AWS' }
           ]
         }
       },
       {
         date: '',
         entity: {
-          team: 'Product & Design team of 28 people',
+          team: 'Design System Team of 28 people',
           action: 'Enhanced and integrated design systems.',
-          effect: 'Reduced code redundancies in the codebases and improved development efficiency.',
+          effect: 'Reduced code redundancies in the existing design system and improved development efficiency by cutting down the number of unused child components and tests.',
           technologies: [
             { icon: 'mdiVuejs', label: 'Vue.js' },
-            { icon: 'mdiStorybook', label: 'Storybook' },
-            { icon: 'mdiCheckAll', label: 'Jest' },
-            { icon: 'mdiCheckAll', label: 'Testing Library' },
-            { icon: 'mdiLanguageCss3', label: 'SCSS' },
-            { icon: 'mdiLanguageHtml5', label: 'HTML/CSS/JS' },
-            { icon: 'mdiFigma', label: 'Figma' }
+            { icon: 'mdiBookAccount', label: 'Storybook' },
+            { icon: 'mdiTestTube', label: 'Jest' },
+            { icon: 'mdiLanguageHtml5', label: 'HTML/CSS' },
+            { icon: 'mdiLanguageJavascript', label: 'Javascript' },
+            { icon: 'mdiTestTube', label: 'Testing Library' },
+            { icon: 'mdiPencilRuler', label: 'Figma' },
+            { icon: 'mdiNpm', label: 'NPM' },
+            { icon: 'mdiLanguageTypescript', label: 'Typescript' }
           ]
         }
       },
@@ -489,8 +494,19 @@ const currentCompanyIndex = computed(() => {
   margin-bottom: 2rem;
   background: transparent;
   z-index: 9;
+  opacity: 0;
+  animation: fadeIn 0.7s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation-delay: 0.7s;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .go-back a {
   font-size: 2rem;
   font-family: vars.$fontFamilyRegular;
@@ -574,8 +590,8 @@ const currentCompanyIndex = computed(() => {
 
   .go-back {
     position: fixed !important;
-    top: 0.5rem !important;
-    left: -2rem !important;
+    top: -6px !important;
+    left: 1rem !important;
   }
 
   .go-back a {

@@ -1,13 +1,6 @@
 <template>
-  <div
-    id="achievements"
-    class="container"
-  >
-    <div
-      v-for="achievement in achievementsRef"
-      :key="achievement.id"
-      class="achievement"
-    >
+  <div id="achievements" class="container">
+    <div v-for="achievement in achievementsRef" :key="achievement.id" class="achievement">
       <i><MdiIcon :icon="achievement.icon" /></i>
       <span>{{ achievement.text }}</span>
     </div>
@@ -79,7 +72,7 @@ const achievementsRef = ref(achievements);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   margin-top: 84px;
   gap: 16px;
@@ -103,10 +96,10 @@ const achievementsRef = ref(achievements);
       font-size: 32px;
       line-height: 32px;
       padding: 0 8px;
-      color: colors.$grayShade;
+      color: colors.$cta;
     }
     span {
-      color: colors.$cloudWhite;
+      color: colors.$white;
       font-weight: 400;
     }
   }

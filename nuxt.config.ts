@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/google-fonts', 'nuxt-mdi', '@nuxtjs/robots', '@nuxtjs/sitemap'],
+  modules: ['@nuxtjs/google-fonts', 'nuxt-mdi', '@nuxtjs/robots', '@nuxtjs/sitemap', '@nuxt/image'],
   googleFonts: {
     families: {
       Inter: [100, 200, 300, 400, 500, 600, 700, 800, 900],
@@ -34,7 +34,7 @@ export default defineNuxtConfig({
         },
         {
           property: 'og:image',
-          content: 'https://volcode.org/assets/imgs/og_image.png'
+          content: 'https://volcode.org/public/assets/imgs/og-image.jpg'
         },
         { name: 'msapplication-TileColor', content: '#ffffff' },
         { name: 'theme-color', content: '#ffffff' }
@@ -78,5 +78,44 @@ export default defineNuxtConfig({
         priority: 0.7
       }
     ]
+  },
+  image: {
+    quality: 80,
+    format: ['webp', 'jpg'],
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+      '2xl': 1536
+    },
+    presets: {
+      avatar: {
+        modifiers: {
+          format: 'webp',
+          quality: '80'
+        }
+      },
+      project: {
+        modifiers: {
+          format: 'webp',
+          quality: '80'
+        }
+      },
+      og: {
+        modifiers: {
+          format: 'webp',
+          quality: '80',
+          width: 1200,
+          height: 630
+        }
+      }
+    },
+    provider: 'ipx',
+    ipx: {
+      maxAge: 60 * 60 * 24 * 7 // 7 days
+    }
   }
 });

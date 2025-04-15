@@ -2,133 +2,14 @@
   <div id="projects">
     <AppPageHeader :title="'Projects'" :pages="pages" />
     <p class="container explanation">Each project here represents my commitment to leveraging technology to make a positive impact, whether it's empowering employees, or crafting applications that address genuine needs of others.</p>
-    <!-- sound effects on https://www.youtube.com/watch?v=Eq9R1_JQDCA&ab_channel=NoraEnPure 14:00 -->
-    <!-- <div class="project">
-      <div class="container">
-        <figure class="no-margin">
-          <img
-            src="~/assets/imgs/realtor-app.png"
-            alt="Realtor Portfolio App Screenshot"
-          />
-        </figure>
-        <div class="project-info">
-          <strong>Realtor Portfolio Creator</strong>
-          <span
-            >Empowering realtors to showcase their properties with a click</span
-          >
-          <p>
-            Realtors can launch a portfolio in under 5 minutes. All templates tailored for property showcases and lead generation. Realtors often waste resources to create professional online portfolios. 
-          </p>
-          <div class="technologies">
-            <span>
-              <MdiIcon icon="mdiVuejs" />
-              <span>Vue.js</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiNuxt" />
-              <span>Nuxt.js</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiGithub" />
-              <span>Github Actions</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiAws" />
-              <span>AWS</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiLanguageTypescript" />
-              <span>TypeScript</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiLanguageJavascript" />
-              <span>Javascript</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiEslint" />
-              <span>Eslint</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiLanguageGo" />
-              <span>Go</span>
-            </span>
-          </div>
-          <div class="project-links">
-            <NuxtLink to="/projects" class="cta"
-              >Github <MdiIcon icon="mdiArrowTopRight"
-            /></NuxtLink>
-            <NuxtLink to="/projects" class="cta"
-              >Demo <MdiIcon icon="mdiArrowTopRight"
-            /></NuxtLink>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img
-            src="~/assets/imgs/spotify-app.png"
-            alt="Spotify App Screenshot"
-          />
-        </figure>
-        <div class="project-info">
-          <strong>Spotify Playlist Organizer</strong>
-          <span
-            >Transform your Spotify playlists into perfectly curated
-            collections</span
-          >
-          <p>
-            Playlist Maestro enables users to
-            sort, filter, and fine-tune playlists to match their preferences
-            seamlessly. Advanced filtering saves users hours in playlist
-            management.
-          </p>
-          <div class="technologies">
-            <span>
-              <MdiIcon icon="mdiReact" />
-              <span>React</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiGithub" />
-              <span>Github Actions</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiLanguageTypescript" />
-              <span>TypeScript</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiApi" />
-              <span>Spotify API</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiLanguageJavascript" />
-              <span>Javascript</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiEslint" />
-              <span>Eslint</span>
-            </span>
-          </div>
-          <div class="project-links">
-            <NuxtLink to="/projects" class="cta"
-              >Github <MdiIcon icon="mdiArrowTopRight"
-            /></NuxtLink>
-            <NuxtLink to="/projects" class="cta"
-              >Demo <MdiIcon icon="mdiArrowTopRight"
-            /></NuxtLink>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <div class="project">
-      <div class="container">
-        <figure class="no-margin">
-          <img src="~/assets/imgs/betonsa-screenshot.png" alt="Betonsa Screenshot" />
+          <NuxtImg src="/assets/imgs/betonsa-screenshot.jpg" alt="Betonsa Screenshot" loading="lazy" preset="project" height="1000" width="485" class="project-image" fit="contain" />
         </figure>
         <div class="project-info">
           <!-- <strong>Anonymous Reporting Tool</strong> -->
-          <span>Designing and building modern websites for clients.</span>
+          <span>Designed and built a modern website for Betonsa Ltd.</span>
           <p>Aligned with stakeholders to gather requirements, prototyped, designed, and built a website that showcases Betonsa's mission, services, and products.</p>
           <div class="technologies">
             <span>
@@ -173,11 +54,9 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img src="~/assets/imgs/volcodeorg-app.png" alt="Mehmet Deveci Portfolio Webapp" />
+          <NuxtImg src="/assets/imgs/volcodeorg-app.jpg" alt="Mehmet Deveci Portfolio Webapp" loading="lazy" preset="project" height="780" width="700" class="project-image" fit="contain" />
         </figure>
         <div class="project-info">
-          <!-- <strong>Open-Source Customizable Portfolio App</strong> -->
-          <!-- <span>Allow people to generate a custom portfolio app in just minutes.</span> -->
           <span>Developed a high-performance, modular portfolio template for devs.</span>
           <p>I built a customizable portfolio app that improves setup efficiency and simplifies maintenance, helping developers showcase their work with minimal effort.</p>
           <div class="technologies">
@@ -220,10 +99,9 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img src="~/assets/imgs/art-screenshot.png" alt="Art Screenshot" />
+          <NuxtImg src="/assets/imgs/art-screenshot.jpg" alt="Anonymous Reporting Tool Screenshot" loading="lazy" preset="project" height="567" width="480" class="project-image" fit="contain" />
         </figure>
         <div class="project-info">
-          <!-- <strong>Anonymous Reporting Tool</strong> -->
           <span>Engineered a secure, anonymous reporting tool for workplaces.</span>
           <p>I led a team of 6 people to build an anonymous reporting platform that ensures privacy and encourages safer work environments, helping organizations build trust with employees.</p>
           <div class="technologies">
@@ -258,7 +136,7 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img src="~/assets/imgs/localwebsites-app.png" alt="Spotify App Screenshot" />
+          <NuxtImg src="/assets/imgs/localwebsites-app.jpg" alt="Local Websites App Screenshot" loading="lazy" preset="project" height="750" width="680" class="project-image" fit="contain" />
         </figure>
         <div class="project-info">
           <span>Developed a localized service finder for easy relocations.</span>
@@ -291,7 +169,7 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img src="~/assets/imgs/humanbody-app.png" alt="Spotify App Screenshot" />
+          <NuxtImg src="/assets/imgs/humanbody-app.jpg" alt="Human Body Input Binder Screenshot" loading="lazy" preset="project" height="750" width="515" class="project-image" fit="contain" />
         </figure>
         <div class="project-info">
           <!-- <strong>Human Body Input Binder</strong> -->
@@ -347,7 +225,7 @@ useHead({
     },
     {
       property: 'og:image',
-      content: 'https://volcode.org/assets/imgs/og_image.png'
+      content: 'https://volcode.org/public/assets/imgs/og-image.jpg'
     }
   ]
 });
@@ -568,5 +446,17 @@ const pages = [
   .cta svg {
     height: 28px !important;
   }
+}
+
+.project-image {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.explanation {
+  color: colors.$grayShade;
 }
 </style>

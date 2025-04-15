@@ -21,10 +21,7 @@
         <!-- <NuxtLink to="/blog">Blog</NuxtLink> -->
         <NuxtLink to="/contact">Contact</NuxtLink>
       </div>
-      <span
-        >Designed & Built with <MdiIcon icon="mdiHeart" /> by
-        <a href="https://linkedin.com/in/deveci96">Mehmet Deveci</a></span
-      >
+      <span>Designed & Built with <MdiIcon icon="mdiHeart" /> by <a href="https://linkedin.com/in/deveci96">Mehmet Deveci</a></span>
     </div>
   </footer>
 </template>
@@ -62,22 +59,22 @@ const technologies = [
   { id: 28, icon: 'mdiLanguageJava', text: 'Java' },
   { id: 29, icon: 'mdiLanguageCsharp', text: '' },
   { id: 31, icon: 'mdiLanguageCpp', text: '' }
-]
-const technologiesRef = ref(technologies)
-const isActive = ref(false)
+];
+const technologiesRef = ref(technologies);
+const isActive = ref(false);
 
 onMounted(() => {
   const handleScroll = () => {
-    isActive.value = window.scrollY > 1
-  }
+    isActive.value = window.scrollY > 1;
+  };
 
-  window.addEventListener('scroll', handleScroll)
+  window.addEventListener('scroll', handleScroll);
 
   // Cleanup
   onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll)
-  })
-})
+    window.removeEventListener('scroll', handleScroll);
+  });
+});
 </script>
 
 <style lang="scss">
@@ -88,11 +85,7 @@ onMounted(() => {
   padding: 2rem 3rem;
   text-align: center;
   background-color: colors.$darkBlue;
-  background: linear-gradient(
-    to bottom,
-    colors.$navyBlue,
-    colors.$darkBlue 100%
-  );
+  background: linear-gradient(to bottom, colors.$navyBlue, colors.$darkBlue 100%);
 
   a {
     color: colors.$cloudWhite;
@@ -108,7 +101,7 @@ onMounted(() => {
 
   span {
     color: colors.$textGray;
-    margin-top: 1rem;
+    // margin-top: 1rem;
     display: block;
   }
 
@@ -146,8 +139,8 @@ onMounted(() => {
   z-index: 2;
   pointer-events: none;
   padding: 0 2rem;
-  margin-bottom: 1rem;
-  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-top: 5rem;
 
   div {
     font-size: 18px;
@@ -202,5 +195,14 @@ onMounted(() => {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .footer__nav {
+    a {
+      font-size: 1rem;
+      padding: 0.5rem 0.5rem;
+    }
+  }
 }
 </style>

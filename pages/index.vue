@@ -5,7 +5,6 @@
 
     <div id="secondary" :class="{ isActive: isActive }">
       <div class="container">
-        <!-- 10+ years of experience | 6+ industries | 300+ collaborators worldwide. -->
         <h2>
           <em>10+ years of experience in <span class="tooltip bottom" data-tooltip="IT, e-commerce, SaaS, media, real estate, education tech">6 industries</span></em>
           with 150+ collaborators worldwide
@@ -57,7 +56,7 @@ useHead({
     },
     {
       property: 'og:image',
-      content: 'https://volcode.org/assets/imgs/og_image.png'
+      content: 'https://volcode.org/public/assets/imgs/og-image.jpg'
     }
   ]
 });
@@ -94,7 +93,7 @@ onMounted(() => {
   transition: all 0.7s cubic-bezier(0.25, 1.07, 0.6, 0.9);
   margin-bottom: -6rem;
   position: relative;
-  opacity: 0.03;
+  opacity: 0;
 
   &:after {
     content: '';
@@ -121,6 +120,11 @@ onMounted(() => {
     font-size: 1.5rem;
     line-height: 2.25rem;
     margin-bottom: 4rem;
+  }
+
+  h2 {
+    font-weight: 900;
+    font-family: vars.$fontFamilyBold;
   }
 }
 
@@ -212,7 +216,7 @@ h2 {
   }
 
   h2 {
-    font-size: 2.25rem;
+    font-size: 1.75rem;
     line-height: 2.5rem;
     text-align: left;
     padding: 1rem 0;

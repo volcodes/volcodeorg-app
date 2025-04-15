@@ -1,10 +1,5 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import performanceBg from '~/assets/imgs/performance-bg.png';
-import dataBg from '~/assets/imgs/data-bg.png';
-import collaborationBg from '~/assets/imgs/collaboration-bg.jpg';
-import engagementBg from '~/assets/imgs/engagement-bg.png';
-import mentorshipBg from '~/assets/imgs/mentorship-bg.png';
 
 const isMobile = ref(false);
 isMobile.value = window ? window.innerWidth < 1024 : false;
@@ -16,71 +11,77 @@ const achievements = ref([
   {
     label: 'Performance & Optimization',
     hero: 'I built and optimized products to millions worldwide across diverse industries.',
-    image: performanceBg,
+    image: 'performance-bg.jpg',
     accomplishments: [
       {
-        entity: '<b>Built a custom video player</b> for <a href="#tabbiii">a VOD Platform</a> at <a href="#TRT">TRT</a>, enabling accessible streaming on all devices with <u><b>seamless playback for millions of daily users.</b></u>'
+        entity:
+          '<b>Built a high-performance landing page with Vue.js</b> for 2019 Local Elections at <a rel="nofollow noopener noreferrer" target="_blank" href="https://web.archive.org/web/20190421194033/http://secim2019.trthaber.com/">TRT World</a>, <u><b>delivering real-time results in 1300ms.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://web.archive.org/web/20190421194033/http://secim2019.trthaber.com/">*</a>'
       },
       {
-        entity: '<b>Migrated components and pages</b> for the main website at <a href="#Homeday">Homeday</a>, <u><b>improved page speeds by %~30.</b></u>'
+        entity:
+          '<b>Migrated components and pages</b> from Symfony to Vue.js at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>improved page speeds up to %30.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">*</a>'
       },
       {
-        entity: '<b>Implemented integration tests</b> and reduced legacy unit and E2E tests at <a href="#Homeday">Homeday</a>, <u><b>accelerated build times by 25%.</b></u>'
-      },
-      {
-        entity: '<b>Implemented new flows</b> in the <a href="#Homeday\'s internal CMS">Homeday\'s CMS</a>: <u>ensuring qualified buyers</u>, and <u><b>reducing costs for all parties</b>.</u>'
+        entity: '<b>Implemented new user flows</b> in <a rel="nofollow noopener noreferrer" target="_blank" href="https://my.homeday.de">Homeday\'s CMS</a>: ensuring qualified buyers, and <u><b>reducing costs for all parties</b>.</u>'
       }
     ]
   },
   {
-    label: 'Real-Time Data Visualization',
+    label: 'Data Visualization',
     hero: 'I built apps that transform complex information into interactive real-time interfaces.',
-    image: dataBg,
+    image: 'data-bg.jpg',
     accomplishments: [
       {
-        entity: "<b>Built an SVG-based map</b> for Turkey's 2019 elections, <u><b>handling 75+ concurrent users</u></b> with dynamic updates."
+        entity: '<b>Built an embedded SVG-based map with Vue.js</b> for Turkey\'s 2018 General Elections at <a rel="nofollow noopener noreferrer" target="_blank" href="https://trtworld.com/">TRT World</a>, <u><b>handling 75k+ concurrent users</b></u>.'
       },
       {
-        entity: '<b>Designed an advanced search feature</b> for a VOD platform at TRT, <u><b>boosting discoverability & engagement</b></u>.'
+        entity: '<b>Upgraded frontend infrastructure with AWS and GitHub Actions</b>, <u><b>reducing costs by 15% and streamlining deployments.</b></u>'
       }
     ]
   },
   {
     label: 'User Engagement',
     hero: 'I crafted empathetic digital experiences that bridge user needs with technology.',
-    image: engagementBg,
+    image: 'engagement-bg.jpg',
     accomplishments: [
       {
-        entity: "<b>Enhanced Sdui's event module</b>, <u><b>increasing user interaction by 20%</b></u> via better calendar & scheduling features."
+        entity: "<b>Enhanced Sdui's event management system</b>, <u><b>increasing user interaction at least 20%</b></u> via better calendar & scheduling features."
       },
       {
-        entity: '<b>Built video conference functionality</b> for an encrypted chat app at Sdui, <u><b>allowing users to have video calls.</b></u>'
+        entity:
+          '<b>Built an asset management app from scratch</b>, effectively using Node.js, and Vue.js at <a rel="nofollow noopener noreferrer" target="_blank" href="https://trtworld.com/">TRT World</a>, <u><b> reducing search times at least 50% and boosting editor efficiency.</b></u>'
+      },
+      {
+        entity: '<b>Conceptualized and implemented video conference functionality</b> for a chat app at <a rel="nofollow noopener noreferrer" target="_blank" href="https://sdui.com/">Sdui</a>, <u><b>allowing school teachers to set video calls.</b></u>'
       }
     ]
   },
   {
     label: 'Mentorship',
     hero: 'I wrote educational programs that accelerated developer growth across organizations.',
-    image: mentorshipBg,
+    image: 'mentorship-bg.jpg',
     accomplishments: [
       {
-        entity: '<b>Created step-by-step migration guide for Vue 2 → Vue 3</b>, streamlining the process & <u><b>boosting developer productivity at Sdui</b></u>.'
+        entity: '<b>Guided junior devs at Homeday & Sdui</b>, leading to <u><b>two promotions in rapid time</b></u> through mentorship, pair programming sessions & code reviews.'
       },
       {
-        entity: '<b>Guided junior devs at Homeday & Sdui</b>, leading to <u><b>two promotions in rapid time</b></u> through mentorship, pair programming sessions & code reviews.'
+        entity: '<b>Created step-by-step migration guide for Vue 2 → Vue 3</b>, streamlining the process & <u><b>boosting developer productivity at Sdui</b></u>.'
       }
     ]
   },
   {
     label: 'Cross-Functional Collaboration',
     hero: 'I enhanced design systems, improved developer experience and boosted collabration in teams.',
-    image: collaborationBg,
+    image: 'collaboration-bg.jpg',
     accomplishments: [
       {
-        entity: '<b>Optimized test cases, reduced redundancies</b> of core components at Homeday, <u><b>reduced development build times by 20%.</b></u>'
+        entity: '<b>Optimized test cases, reduced redundancies</b> of the Design System at Homeday, <u><b>reduced development build times by ~%20.</b></u>'
       },
       {
         entity: '<b>Modernized an internal CMS at TRT World</b>, <u><b>improved search and creation user flows by 30%.</b></u>'
+      },
+      {
+        entity: '<b>Implemented integration tests</b> and reduced legacy unit and E2E tests at <a href="#Homeday">Homeday</a>, <u><b>accelerated build times by ~%25.</b></u>'
       }
     ]
   }
@@ -119,14 +120,19 @@ onMounted(() => {
 
 <template>
   <div id="hero" class="container">
-    <img src="~/assets/imgs/Frame.svg" alt="Hero Background" class="hero-bg" />
+    <NuxtImg src="/assets/imgs/Frame.svg" alt="Hero Background" class="hero-bg" loading="lazy" width="1200" height="800" format="webp" quality="80" />
     <span>I'm Mehmet;</span>
     <h1>Software Development Specialist</h1>
     <p>Frontend-focused, 10+ years in web, experienced in backend and full stack work.</p>
     <p>I design, build, and optimize digital interfaces, apps, and infrastructures.</p>
     <section id="ctaButtons">
       <button class="btn btn--filled sliding-text--button" @click="isModalOpen = true">Discover My Achievements</button>
-      <button class="btn" @click="isVideoModalOpen = true">Watch My Introduction</button>
+      <button class="btn btn--video" @click="isVideoModalOpen = true">
+        <figure>
+          <NuxtImg src="/assets/imgs/og-image.jpg" alt="Video Icon - Watch Mehmet Deveci's Introduction" loading="lazy" width="270" height="180" format="webp" quality="80" preset="og" sizes="sm:270px md:270px lg:270px" :modifiers="{ fit: 'cover' }" />
+        </figure>
+        Watch My Introduction
+      </button>
     </section>
     <div class="scroll-indicator">
       <div class="scroll-indicator__icon"></div>
@@ -152,11 +158,12 @@ onMounted(() => {
         </template>
 
         <template #content>
-          <div class="hero-sentence" :style="{ backgroundImage: `url(${selectedAchievement.image})` }">
+          <div class="hero-sentence">
+            <NuxtImg :src="`/assets/imgs/${selectedAchievement.image}`" :alt="`${selectedAchievement.label} - ${selectedAchievement.hero}`" loading="lazy" width="800" height="400" format="jpg" quality="80" class="hero-sentence__bg" fit="cover" />
             <p>{{ selectedAchievement.hero }}</p>
           </div>
           <ol>
-            <li v-for="ach in selectedAchievement.accomplishments" v-html="ach.entity"></li>
+            <li v-for="(ach, index) in selectedAchievement.accomplishments" :key="index" v-html="ach.entity"></li>
           </ol>
           <a v-if="hasNextAchievement" rel="nofollow" class="cta cta-custom" @click="handleAchievementChange(selectedAchievementIndex + 1)">
             Explore {{ nextAchievementLabel }} Accomplishments
@@ -171,7 +178,7 @@ onMounted(() => {
 
       <Modal :is-open="isVideoModalOpen" :is-animating="false" :has-sidebar="false" @close="closeVideoModal">
         <template #content>
-          <iframe src="https://www.youtube.com/embed/39n8IZpbfgk?cc_load_policy=1" frameborder="0" width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/1fAYdOZw4EQ?cc_load_policy=1" frameborder="0" width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </template>
       </Modal>
     </Teleport>
@@ -184,13 +191,23 @@ onMounted(() => {
 
 #hero {
   position: relative;
+  min-height: 90vh;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   .hero-bg {
     position: absolute;
     z-index: -1;
     left: 50%;
-    top: -100px;
-    transform: translateX(-50%);
+    top: 0;
+    transform: translateX(-50%) translateY(10%);
+    width: 65%;
+    max-width: 1200px;
+    height: auto;
+    z-index: 9;
+    pointer-events: none;
   }
 
   span {
@@ -264,6 +281,7 @@ onMounted(() => {
   gap: 16px;
   margin-top: 3rem;
   margin-bottom: 3rem;
+  align-items: flex-start;
 
   opacity: 1;
   transform: translateY(0px);
@@ -337,6 +355,9 @@ onMounted(() => {
     flex-direction: column;
     padding: 0 1rem;
     margin-bottom: 0;
+    min-height: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
 
     .hero-bg {
       width: 100%;
@@ -365,7 +386,7 @@ onMounted(() => {
   #hero span {
     font-size: 1.25rem;
     line-height: 2rem;
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
     margin-left: 0;
   }
   #ctaButtons {
@@ -382,6 +403,72 @@ onMounted(() => {
   }
   .scroll-indicator {
     display: none;
+  }
+}
+
+.btn--video {
+  position: relative;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 130px;
+
+  figure {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: calc(100% + 8px);
+    box-sizing: border-box;
+    max-height: 200px;
+    margin: 8px 0 0 0;
+    opacity: 1;
+    z-index: 9;
+    display: none;
+
+    img {
+      padding: 0;
+      overflow: hidden;
+      max-width: 270px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      margin: 0;
+      padding: 0;
+      display: block;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .btn--video {
+    figure {
+      display: block;
+    }
+  }
+}
+
+.hero-sentence {
+  position: relative;
+  overflow: hidden;
+  // border-radius: 8px;
+  margin-bottom: 2rem;
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  p {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 }
 </style>
