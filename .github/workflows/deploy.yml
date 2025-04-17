@@ -48,6 +48,14 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           cd terraform
+          
+          # Initialize and refresh Terraform state
+          echo "Initializing Terraform..."
+          terraform init
+          
+          echo "Applying Terraform configuration..."
+          terraform apply -auto-approve
+          
           if [ "${{ github.ref }}" == "refs/heads/main" ]; then
             DOMAIN="volcode.org"
           else
@@ -56,18 +64,24 @@ jobs:
           
           # First get the raw output and debug it
           echo "Getting CloudFront outputs..."
-          terraform output cloudfront_urls
+          terraform output cloudfront_urls || echo "Failed to get outputs, continuing anyway"
           
           # Get the terraform output in raw json format and save to file to inspect
-          terraform output -json cloudfront_urls > cf_output.json
-          echo "Raw JSON output:"
-          cat cf_output.json
+          terraform output -json cloudfront_urls > cf_output.json || echo "Failed to get JSON outputs"
           
-          # Try to extract the ID - using the _id suffix format
-          ID_KEY="${DOMAIN}_id"
-          DIST_ID=$(cat cf_output.json | jq -r --arg key "$ID_KEY" '.[$key]')
-          echo "Looking for key: $ID_KEY"
-          echo "Extracted distribution ID: $DIST_ID"
+          if [ -f cf_output.json ] && [ -s cf_output.json ]; then
+            echo "Raw JSON output:"
+            cat cf_output.json
+            
+            # Try to extract the ID - using the _id suffix format
+            ID_KEY="${DOMAIN}_id"
+            DIST_ID=$(cat cf_output.json | jq -r --arg key "$ID_KEY" '.[$key]' 2>/dev/null)
+            echo "Looking for key: $ID_KEY"
+            echo "Extracted distribution ID: $DIST_ID"
+          else
+            echo "No output file or empty output file"
+            DIST_ID=""
+          fi
           
           if [ -z "$DIST_ID" ] || [ "$DIST_ID" = "null" ]; then
             echo "No distribution ID found for $DOMAIN, skipping invalidation"
