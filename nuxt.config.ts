@@ -5,8 +5,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/google-fonts', 'nuxt-mdi', '@nuxtjs/robots', '@nuxtjs/sitemap', '@nuxt/image', '@nuxt/test-utils/module'],
   googleFonts: {
     families: {
-      Inter: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-      Poppins: [100, 200, 300, 400, 500, 600, 700, 800, 900]
+      Inter: [100, 200, 300, 400, 500, 600, 700, 800, 900]
     }
   },
   vite: {
@@ -21,6 +20,12 @@ export default defineNuxtConfig({
   devServer: {
     host: '0.0.0.0',
     port: 3000
+  },
+  // Runtime config to handle environment variables
+  runtimeConfig: {
+    public: {
+      isStaging: process.env.NUXT_PUBLIC_IS_STAGING === 'true'
+    }
   },
   app: {
     head: {
@@ -37,7 +42,9 @@ export default defineNuxtConfig({
           content: 'https://volcode.org/public/assets/imgs/og-image.jpg'
         },
         { name: 'msapplication-TileColor', content: '#ffffff' },
-        { name: 'theme-color', content: '#ffffff' }
+        { name: 'theme-color', content: '#ffffff' },
+        // Add noindex tag for staging environment
+        process.env.NUXT_PUBLIC_IS_STAGING === 'true' ? { name: 'robots', content: 'noindex, nofollow' } : {}
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/icons/favicon.ico' },
@@ -48,36 +55,22 @@ export default defineNuxtConfig({
       ]
     }
   },
+  site: {
+    url: 'https://volcode.org'
+  },
+  // Different robots.txt for production and staging
   robots: {
-    UserAgent: '*',
-    Disallow: ['/experience/sdui', '/experience/trt-world', '/experience/homeday'],
-    Allow: '/'
+    configPath: '~/robots.config.js'
   },
   sitemap: {
-    siteUrl: 'https://volcode.org',
+    // Only include production URLs in sitemap
+    urls: process.env.NUXT_PUBLIC_IS_STAGING === 'true' ? [] : ['/', '/experience', '/projects', '/contact'],
+    xslColumns: [
+      { label: 'URL', width: '70%' },
+      { label: 'Last Modified', select: 'lastmod', width: '30%' }
+    ],
     exclude: ['/experience/sdui', '/experience/trt-world', '/experience/homeday'],
-    routes: [
-      {
-        url: '/',
-        changefreq: 'monthly',
-        priority: 1
-      },
-      {
-        url: '/experience',
-        changefreq: 'monthly',
-        priority: 0.8
-      },
-      {
-        url: '/projects',
-        changefreq: 'monthly',
-        priority: 0.8
-      },
-      {
-        url: '/contact',
-        changefreq: 'monthly',
-        priority: 0.7
-      }
-    ]
+    sitemapName: 'sitemap.xml'
   },
   image: {
     quality: 80,
