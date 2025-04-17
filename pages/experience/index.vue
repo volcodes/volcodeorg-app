@@ -439,7 +439,7 @@ onUpdated(() => {
   justify-content: center;
   align-items: flex-start;
   height: 300px;
-  background: url('~/assets/imgs/education.png') no-repeat center center;
+  background: url('~/assets/imgs/education.jpg') no-repeat center center;
   background-size: cover;
   position: relative;
   box-sizing: border-box;
