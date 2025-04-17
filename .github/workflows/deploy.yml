@@ -54,10 +54,20 @@ jobs:
             DOMAIN="staging.volcode.org"
           fi
           
-          # Get the distribution ID from Terraform output
-          DIST_ID=$(terraform output -json cloudfront_urls | jq -r ".[\"$DOMAIN\"].id")
+          # First get the raw output and debug it
+          echo "Getting CloudFront outputs..."
+          terraform output cloudfront_urls
           
-          if [ -z "$DIST_ID" ]; then
+          # Get the terraform output in raw json format and save to file to inspect
+          terraform output -json cloudfront_urls > cf_output.json
+          echo "Raw JSON output:"
+          cat cf_output.json
+          
+          # Try to extract the ID - being explicit about json parsing
+          DIST_ID=$(cat cf_output.json | jq -r --arg domain "$DOMAIN" '.[$domain].id')
+          echo "Extracted distribution ID: $DIST_ID"
+          
+          if [ -z "$DIST_ID" ] || [ "$DIST_ID" = "null" ]; then
             echo "No distribution ID found for $DOMAIN, skipping invalidation"
           else
             echo "Invalidating cache for distribution $DIST_ID"
