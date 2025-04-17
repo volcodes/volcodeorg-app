@@ -74,6 +74,13 @@ resource "aws_cloudfront_distribution" "dist" {
     viewer_protocol_policy = "redirect-to-https"
     allowed_methods        = ["GET","HEAD"]
     cached_methods         = ["GET","HEAD"]
+    
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
   }
 
   viewer_certificate {

@@ -7,13 +7,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.7.0
+          
       - name: Build static site
         run: |
           npm ci
           npm run generate
-      - name: Set bucket name
-        run: |
-          [ "${{ github.ref }}" == "refs/heads/main" ] && echo "volcode.org-bucket" || echo "staging.volcode.org-bucket"
+          
       - name: Sync to S3
         env:
           AWS_REGION: us-east-1
@@ -26,12 +30,14 @@ jobs:
             BUCKET="volcode-staging.volcode.org-default"
           fi
           aws s3 sync ./dist s3://$BUCKET --delete
+          
       - name: Invalidate CloudFront
         env:
           AWS_REGION: us-east-1
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
+          cd terraform
           if [ "${{ github.ref }}" == "refs/heads/main" ]; then
             DIST_ID=$(terraform output -raw cloudfront_urls["volcode.org_id"])
           else
