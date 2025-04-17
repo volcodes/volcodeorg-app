@@ -53,8 +53,8 @@ jobs:
           echo "Initializing Terraform..."
           terraform init
           
-          echo "Applying Terraform configuration..."
-          terraform apply -auto-approve
+          echo "Refreshing Terraform state..."
+          terraform refresh || echo "Terraform refresh failed, continuing anyway"
           
           if [ "${{ github.ref }}" == "refs/heads/main" ]; then
             DOMAIN="volcode.org"
