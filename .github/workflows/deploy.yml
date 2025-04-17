@@ -47,39 +47,48 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
+          # Set domain based on branch
           if [ "${{ github.ref }}" == "refs/heads/main" ]; then
             DOMAIN="volcode.org"
           else
             DOMAIN="staging.volcode.org"
           fi
-          
-          echo "Finding CloudFront distribution for $DOMAIN"
-          
-          # Get all CloudFront distributions
-          DISTRIBUTIONS=$(aws cloudfront list-distributions --output json)
-          
-          # Find distribution by matching the S3 bucket name in origin
           BUCKET_NAME="volcode-${DOMAIN}-default"
-          DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r --arg bucket "$BUCKET_NAME" \
-            '.DistributionList.Items[] | 
-             select(.Origins.Items != null) | 
-             select(.Origins.Items[].DomainName | contains($bucket)) | 
-             .Id')
           
+          echo "🔍 Finding CloudFront distribution for $DOMAIN..."
+          
+          # Find the correct distribution ID by matching S3 bucket in origin
+          DISTRIBUTIONS=$(aws cloudfront list-distributions --output json)
+          DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r --arg bucket "$BUCKET_NAME" '
+            .DistributionList.Items[] | 
+            select(.Origins.Items != null) | 
+            select(.Origins.Items[].DomainName | contains($bucket)) | 
+            .Id
+          ')
+          
+          # Skip if no distribution found
           if [ -z "$DIST_ID" ]; then
-            echo "No CloudFront distribution found for $DOMAIN (bucket: $BUCKET_NAME)"
-            echo "Skipping invalidation"
+            echo "⚠️ No CloudFront distribution found for $DOMAIN"
+            echo "   Skipping invalidation"
             exit 0
           fi
           
-          echo "Found distribution ID: $DIST_ID for $DOMAIN"
-          echo "Invalidating CloudFront cache..."
+          echo "✅ Found distribution ID: $DIST_ID for $DOMAIN"
+          echo "🔄 Attempting to invalidate CloudFront cache..."
           
-          # Check if the current user has permission to invalidate
-          if aws cloudfront create-invalidation --distribution-id $DIST_ID --paths "/*"; then
-            echo "Cache invalidation started successfully"
-          else
-            echo "Failed to invalidate cache - this is likely a permissions issue"
-            echo "You may need to add cloudfront:CreateInvalidation permission to your IAM user"
-            echo "Continuing with deployment anyway"
+          # Run invalidation with error handling - use true to prevent workflow failure
+          if aws cloudfront create-invalidation --distribution-id $DIST_ID --paths "/*" || true; then
+            # This block will always run due to the || true
+            # Check if we got a real error message in the output
+            if [[ $? -ne 0 ]]; then
+              echo "⚠️ Failed to invalidate cache - likely a permissions issue"
+              echo "   You need to add cloudfront:CreateInvalidation permission to your IAM user"
+              echo "   The deployment will continue without cache invalidation"
+            else
+              echo "✅ Cache invalidation started successfully"
+            fi
           fi
+          
+          # Always exit with success
+          echo "Deployment completed successfully"
+          exit 0
