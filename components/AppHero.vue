@@ -120,7 +120,7 @@ onMounted(() => {
 
 <template>
   <div id="hero" class="container">
-    <NuxtImg src="/assets/imgs/Frame.svg" alt="Hero Background" class="hero-bg" loading="lazy" width="1200" height="800" format="webp" quality="80" />
+    <img src="/assets/imgs/Frame.svg" alt="Hero Background" class="hero-bg" loading="lazy" />
     <span>I'm Mehmet;</span>
     <h1>Software Development Specialist</h1>
     <p>Frontend-focused, 10+ years in web, experienced in backend and full stack work.</p>
@@ -202,7 +202,7 @@ onMounted(() => {
     z-index: -1;
     left: 50%;
     top: 0;
-    transform: translateX(-50%) translateY(10%);
+    transform: translateX(-50%) translateY(00%);
     width: 65%;
     max-width: 1200px;
     height: auto;
