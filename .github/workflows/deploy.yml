@@ -49,8 +49,17 @@ jobs:
         run: |
           cd terraform
           if [ "${{ github.ref }}" == "refs/heads/main" ]; then
-            DIST_ID=$(terraform output -raw cloudfront_urls["volcode.org_id"])
+            DOMAIN="volcode.org"
           else
-            DIST_ID=$(terraform output -raw cloudfront_urls["staging.volcode.org_id"])
+            DOMAIN="staging.volcode.org"
           fi
-          aws cloudfront create-invalidation --distribution-id $DIST_ID --paths "/*"
+          
+          # Get the distribution ID from Terraform output
+          DIST_ID=$(terraform output -json cloudfront_urls | jq -r ".[\"$DOMAIN\"].id")
+          
+          if [ -z "$DIST_ID" ]; then
+            echo "No distribution ID found for $DOMAIN, skipping invalidation"
+          else
+            echo "Invalidating cache for distribution $DIST_ID"
+            aws cloudfront create-invalidation --distribution-id $DIST_ID --paths "/*"
+          fi
