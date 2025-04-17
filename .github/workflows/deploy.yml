@@ -60,19 +60,40 @@ jobs:
           
           # Extract distribution ID associated with our domain
           # We're looking for a distribution with an alias that matches our domain
-          DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r --arg domain "$DOMAIN" '.DistributionList.Items[] | select(.Aliases.Items[] | contains($domain)) | .Id')
+          # Handle null Aliases.Items safely
+          DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r --arg domain "$DOMAIN" '.DistributionList.Items[] | select(.Aliases.Items != null) | select(.Aliases.Items[] | contains($domain)) | .Id')
           
           # Fallback: If no match by alias, try matching by origin domain name (S3 bucket)
           if [ -z "$DIST_ID" ]; then
             S3_DOMAIN="volcode-${DOMAIN}-default.s3-website-us-east-1.amazonaws.com"
             echo "Looking for distribution with origin $S3_DOMAIN"
-            DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r --arg origin "$S3_DOMAIN" '.DistributionList.Items[] | select(.Origins.Items[].DomainName | contains($origin)) | .Id')
+            DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r --arg origin "$S3_DOMAIN" '.DistributionList.Items[] | select(.Origins.Items != null) | select(.Origins.Items[].DomainName | contains($origin)) | .Id')
+          fi
+          
+          # Fallback: Try matching by S3 bucket name in the origin path
+          if [ -z "$DIST_ID" ]; then
+            BUCKET_NAME="volcode-${DOMAIN}-default"
+            echo "Looking for distribution with origin bucket $BUCKET_NAME"
+            DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r --arg bucket "$BUCKET_NAME" '.DistributionList.Items[] | select(.Origins.Items != null) | select(.Origins.Items[].DomainName | contains($bucket)) | .Id')
           fi
           
           # If still no match, list distributions for debugging
           if [ -z "$DIST_ID" ]; then
             echo "Could not find distribution for $DOMAIN. Listing all distributions:"
-            echo "$DISTRIBUTIONS" | jq -r '.DistributionList.Items[] | .Id + " - Origins: " + (.Origins.Items[] | .DomainName) + " - Aliases: " + (.Aliases.Items | join(", "))'
+            echo "$DISTRIBUTIONS" | jq -r '.DistributionList.Items[] | 
+              {
+                id: .Id, 
+                origins: (.Origins.Items | if . == null then "null" else (.[].DomainName) end),
+                aliases: (.Aliases.Items | if . == null then "null" else . end | join(", "))
+              } | "ID: \(.id) - Origins: \(.origins) - Aliases: \(.aliases)"'
+            
+            # Fallback to the first distribution as last resort
+            echo "As a fallback, using the first distribution in the list"
+            DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r '.DistributionList.Items[0].Id')
+          fi
+          
+          if [ -z "$DIST_ID" ]; then
+            echo "No CloudFront distributions found at all. Skipping invalidation."
           else
             echo "Found distribution ID: $DIST_ID for domain $DOMAIN"
             echo "Invalidating cache for distribution $DIST_ID"
