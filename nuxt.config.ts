@@ -5,8 +5,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/google-fonts', 'nuxt-mdi', '@nuxtjs/robots', '@nuxtjs/sitemap', '@nuxt/image', '@nuxt/test-utils/module'],
   googleFonts: {
     families: {
-      Inter: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-      Poppins: [100, 200, 300, 400, 500, 600, 700, 800, 900]
+      Inter: [100, 200, 300, 400, 500, 600, 700, 800, 900]
     }
   },
   vite: {
