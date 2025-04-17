@@ -55,64 +55,31 @@ jobs:
           
           echo "Finding CloudFront distribution for $DOMAIN"
           
-          # Get all CloudFront distributions and find the one for our domain
+          # Get all CloudFront distributions
           DISTRIBUTIONS=$(aws cloudfront list-distributions --output json)
           
-          # First, print all distributions with their details for debugging
-          echo "All CloudFront distributions:"
-          echo "$DISTRIBUTIONS" | jq -r '.DistributionList.Items[] | 
-            {
-              id: .Id,
-              domainName: .DomainName,
-              origins: (.Origins.Items | if . == null then "null" else [.[].DomainName] end),
-              aliases: (.Aliases.Items | if . == null then "null" else . end),
-              certArn: (.ViewerCertificate.ACMCertificateArn // .ViewerCertificate.IAMCertificateId // "none")
-            } | "ID: \(.id) - CloudFront Domain: \(.domainName) - Origins: \(.origins | tostring) - Aliases: \(.aliases | tostring) - Cert: \(.certArn)"'
-          
-          # Now try to find our specific distribution
-          # Multiple approaches, from most specific to most general
-          
-          # 1. Try matching by alias
-          DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r --arg domain "$DOMAIN" '.DistributionList.Items[] | select(.Aliases.Items != null) | select(.Aliases.Items[] | contains($domain)) | .Id')
-          if [ -n "$DIST_ID" ]; then
-            echo "Found distribution by alias match: $DIST_ID"
-          fi
-          
-          # 2. Try matching by S3 website endpoint
-          if [ -z "$DIST_ID" ]; then
-            S3_DOMAIN="volcode-${DOMAIN}-default.s3-website-us-east-1.amazonaws.com"
-            echo "Looking for distribution with origin $S3_DOMAIN"
-            DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r --arg origin "$S3_DOMAIN" '.DistributionList.Items[] | select(.Origins.Items != null) | select(.Origins.Items[].DomainName | contains($origin)) | .Id')
-            if [ -n "$DIST_ID" ]; then
-              echo "Found distribution by S3 website endpoint: $DIST_ID"
-            fi
-          fi
-          
-          # 3. Try matching by bucket name in origin
-          if [ -z "$DIST_ID" ]; then
-            BUCKET_NAME="volcode-${DOMAIN}-default"
-            echo "Looking for distribution with origin bucket $BUCKET_NAME"
-            DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r --arg bucket "$BUCKET_NAME" '.DistributionList.Items[] | select(.Origins.Items != null) | select(.Origins.Items[].DomainName | contains($bucket)) | .Id')
-            if [ -n "$DIST_ID" ]; then
-              echo "Found distribution by bucket name in origin: $DIST_ID"
-            fi
-          fi
-          
-          # 4. As a last resort, check if there's only one distribution
-          if [ -z "$DIST_ID" ]; then
-            COUNT=$(echo "$DISTRIBUTIONS" | jq '.DistributionList.Items | length')
-            if [ "$COUNT" = "1" ]; then
-              echo "Only one distribution found, using it"
-              DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r '.DistributionList.Items[0].Id')
-            else
-              echo "Multiple distributions found ($COUNT) but none match criteria"
-            fi
-          fi
+          # Find distribution by matching the S3 bucket name in origin
+          BUCKET_NAME="volcode-${DOMAIN}-default"
+          DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r --arg bucket "$BUCKET_NAME" \
+            '.DistributionList.Items[] | 
+             select(.Origins.Items != null) | 
+             select(.Origins.Items[].DomainName | contains($bucket)) | 
+             .Id')
           
           if [ -z "$DIST_ID" ]; then
-            echo "No CloudFront distributions found that match criteria. Skipping invalidation."
+            echo "No CloudFront distribution found for $DOMAIN (bucket: $BUCKET_NAME)"
+            echo "Skipping invalidation"
+            exit 0
+          fi
+          
+          echo "Found distribution ID: $DIST_ID for $DOMAIN"
+          echo "Invalidating CloudFront cache..."
+          
+          # Check if the current user has permission to invalidate
+          if aws cloudfront create-invalidation --distribution-id $DIST_ID --paths "/*"; then
+            echo "Cache invalidation started successfully"
           else
-            echo "Using distribution ID: $DIST_ID for domain $DOMAIN"
-            echo "Invalidating cache for distribution $DIST_ID"
-            aws cloudfront create-invalidation --distribution-id $DIST_ID --paths "/*"
+            echo "Failed to invalidate cache - this is likely a permissions issue"
+            echo "You may need to add cloudfront:CreateInvalidation permission to your IAM user"
+            echo "Continuing with deployment anyway"
           fi
