@@ -8,12 +8,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
+      - name: Setup environment variables
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            echo "NUXT_PUBLIC_IS_STAGING=false" >> $GITHUB_ENV
+          else
+            echo "NUXT_PUBLIC_IS_STAGING=true" >> $GITHUB_ENV
+          fi
+          
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.7.0
           
       - name: Build static site
+        env:
+          NUXT_PUBLIC_IS_STAGING: ${{ env.NUXT_PUBLIC_IS_STAGING }}
         run: |
           npm ci
           npm run generate
