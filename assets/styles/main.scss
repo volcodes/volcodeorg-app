@@ -3,6 +3,7 @@
 @use 'vars';
 @use 'colors';
 @use 'fonts';
+@import 'fixes';
 
 *:not(.non-antialiased) {
   -webkit-font-smoothing: antialiased;
