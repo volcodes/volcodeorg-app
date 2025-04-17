@@ -63,8 +63,10 @@ jobs:
           echo "Raw JSON output:"
           cat cf_output.json
           
-          # Try to extract the ID - being explicit about json parsing
-          DIST_ID=$(cat cf_output.json | jq -r --arg domain "$DOMAIN" '.[$domain].id')
+          # Try to extract the ID - using the _id suffix format
+          ID_KEY="${DOMAIN}_id"
+          DIST_ID=$(cat cf_output.json | jq -r --arg key "$ID_KEY" '.[$key]')
+          echo "Looking for key: $ID_KEY"
           echo "Extracted distribution ID: $DIST_ID"
           
           if [ -z "$DIST_ID" ] || [ "$DIST_ID" = "null" ]; then
