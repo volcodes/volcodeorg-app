@@ -47,45 +47,34 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          cd terraform
-          
-          # Initialize and refresh Terraform state
-          echo "Initializing Terraform..."
-          terraform init
-          
-          echo "Refreshing Terraform state..."
-          terraform refresh || echo "Terraform refresh failed, continuing anyway"
-          
           if [ "${{ github.ref }}" == "refs/heads/main" ]; then
             DOMAIN="volcode.org"
           else
             DOMAIN="staging.volcode.org"
           fi
           
-          # First get the raw output and debug it
-          echo "Getting CloudFront outputs..."
-          terraform output cloudfront_urls || echo "Failed to get outputs, continuing anyway"
+          echo "Finding CloudFront distribution for $DOMAIN"
           
-          # Get the terraform output in raw json format and save to file to inspect
-          terraform output -json cloudfront_urls > cf_output.json || echo "Failed to get JSON outputs"
+          # Get all CloudFront distributions and find the one for our domain
+          DISTRIBUTIONS=$(aws cloudfront list-distributions --output json)
           
-          if [ -f cf_output.json ] && [ -s cf_output.json ]; then
-            echo "Raw JSON output:"
-            cat cf_output.json
-            
-            # Try to extract the ID - using the _id suffix format
-            ID_KEY="${DOMAIN}_id"
-            DIST_ID=$(cat cf_output.json | jq -r --arg key "$ID_KEY" '.[$key]' 2>/dev/null)
-            echo "Looking for key: $ID_KEY"
-            echo "Extracted distribution ID: $DIST_ID"
-          else
-            echo "No output file or empty output file"
-            DIST_ID=""
+          # Extract distribution ID associated with our domain
+          # We're looking for a distribution with an alias that matches our domain
+          DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r --arg domain "$DOMAIN" '.DistributionList.Items[] | select(.Aliases.Items[] | contains($domain)) | .Id')
+          
+          # Fallback: If no match by alias, try matching by origin domain name (S3 bucket)
+          if [ -z "$DIST_ID" ]; then
+            S3_DOMAIN="volcode-${DOMAIN}-default.s3-website-us-east-1.amazonaws.com"
+            echo "Looking for distribution with origin $S3_DOMAIN"
+            DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r --arg origin "$S3_DOMAIN" '.DistributionList.Items[] | select(.Origins.Items[].DomainName | contains($origin)) | .Id')
           fi
           
-          if [ -z "$DIST_ID" ] || [ "$DIST_ID" = "null" ]; then
-            echo "No distribution ID found for $DOMAIN, skipping invalidation"
+          # If still no match, list distributions for debugging
+          if [ -z "$DIST_ID" ]; then
+            echo "Could not find distribution for $DOMAIN. Listing all distributions:"
+            echo "$DISTRIBUTIONS" | jq -r '.DistributionList.Items[] | .Id + " - Origins: " + (.Origins.Items[] | .DomainName) + " - Aliases: " + (.Aliases.Items | join(", "))'
           else
+            echo "Found distribution ID: $DIST_ID for domain $DOMAIN"
             echo "Invalidating cache for distribution $DIST_ID"
             aws cloudfront create-invalidation --distribution-id $DIST_ID --paths "/*"
           fi
