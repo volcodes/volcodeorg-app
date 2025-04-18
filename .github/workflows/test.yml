@@ -4,6 +4,8 @@ name: Testing
 # It is completely separate from the CI/CD Pipeline that runs on push events
 # They are independent and do not wait for each other
 on:
+  push:
+    branches: [main, staging]
   pull_request:
     branches: [main, staging]
 
