@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    name: Run Tests
+    name: tests are running...
     runs-on: ubuntu-latest
     container: 
       image: node:20
