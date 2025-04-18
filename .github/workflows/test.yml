@@ -1,4 +1,4 @@
-name: PR Tests
+name: Pull Request Tests
 
 on:
   pull_request:
@@ -6,6 +6,7 @@ on:
 
 jobs:
   test:
+    name: Validate PR
     runs-on: ubuntu-latest
     container: 
       image: node:20
