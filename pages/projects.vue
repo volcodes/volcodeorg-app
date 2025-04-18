@@ -79,6 +79,76 @@
       <div class="container">
         <figure class="no-margin">
           <NuxtImg
+            src="/assets/imgs/infra-screenshot.jpg"
+            alt="AWS Infrastructure as Code Screenshot"
+            loading="lazy"
+            sizes="sm:100vw md:650px lg:650px"
+            class="project-image"
+            :modifiers="{
+              fit: 'cover',
+              format: 'webp',
+              quality: 80
+            }"
+            placeholder
+            width="700"
+            height="1000"
+          />
+        </figure>
+        <div class="project-info">
+          <span>Architected a scalable, cost-effective AWS infrastructure using IaC.</span>
+          <p>Designed and implemented a cloud infrastructure with separate staging and production environments using Terraform. (Infrastructure as Code) The solution features CI/CD pipelines with GitHub Actions for automated testing, building, and deployment.</p>
+          <div class="technologies">
+            <span>
+              <MdiIcon icon="mdiTerraform" />
+              <span>Terraform</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiAws" />
+              <span>AWS</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiCloudOutline" />
+              <span>CloudFront</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiDatabaseOutline" />
+              <span>S3</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiShieldAccount" />
+              <span>IAM</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLightningBolt" />
+              <span>Lambda</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiNetworkOutline" />
+              <span>VPC</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiRoutes" />
+              <span>Route53</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiGithub" />
+              <span>GitHub Actions</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiPipe" />
+              <span>CI/CD</span>
+            </span>
+          </div>
+          <div class="project-links">
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcodes/terraform-aws-infra" class="cta">GitHub <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="project">
+      <div class="container">
+        <figure class="no-margin">
+          <NuxtImg
             src="/assets/imgs/betonsa-screenshot.jpg"
             alt="Betonsa Screenshot"
             loading="lazy"
