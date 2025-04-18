@@ -121,9 +121,9 @@ onMounted(() => {
 <template>
   <div>
     <div id="hero" class="container">
-      <div class="boxes">
+      <!-- <div class="boxes">
         <div v-for="i in 70" :key="i"></div>
-      </div>
+      </div> -->
       <!-- <img src="/assets/imgs/Frame.svg" alt="Hero Background" class="hero-bg" loading="lazy" /> -->
       <span>I'm Mehmet;</span>
       <h1>Software Development Specialist</h1>
