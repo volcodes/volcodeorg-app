@@ -1,8 +1,27 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed, nextTick } from 'vue';
 
 const isMobile = ref(false);
-isMobile.value = window ? window.innerWidth < 1024 : false;
+const isBoxesRendered = ref(false);
+
+// Defer mobile detection to client-side only
+onMounted(() => {
+  isMobile.value = window.innerWidth < 1024;
+
+  // Add resize listener with debounce
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      isMobile.value = window.innerWidth < 1024;
+    }, 250);
+  });
+
+  // Render boxes with delay after critical content
+  setTimeout(() => {
+    isBoxesRendered.value = true;
+  }, 1000); // Render boxes after LCP is done
+});
 
 const closeVideoModal = () => {
   isVideoModalOpen.value = false;
@@ -116,72 +135,94 @@ onMounted(() => {
     }
   });
 });
+
+// Lazy-load video modal content
+const isVideoRequested = ref(false);
+const openVideoModal = () => {
+  isVideoRequested.value = true;
+  nextTick(() => {
+    isVideoModalOpen.value = true;
+  });
+};
+
+// Optimized box generation
+const boxCount = computed(() => (isMobile.value ? 24 : 70));
 </script>
 
 <template>
-  <div id="hero" class="container">
-    <NuxtImg src="/assets/imgs/Frame.svg" alt="Hero Background" class="hero-bg" loading="lazy" width="1200" height="800" format="webp" quality="80" />
-    <span>I'm Mehmet;</span>
-    <h1>Software Development Specialist</h1>
-    <p>Frontend-focused, 10+ years in web, experienced in backend and full stack work.</p>
-    <p>I design, build, and optimize digital interfaces, apps, and infrastructures.</p>
-    <section id="ctaButtons">
-      <button class="btn btn--filled sliding-text--button" @click="isModalOpen = true">Discover My Achievements</button>
-      <button class="btn btn--video" @click="isVideoModalOpen = true">
-        <figure>
-          <NuxtImg src="/assets/imgs/og-image.jpg" alt="Video Icon - Watch Mehmet Deveci's Introduction" loading="lazy" width="270" height="180" format="webp" quality="80" preset="og" sizes="sm:270px md:270px lg:270px" :modifiers="{ fit: 'cover' }" />
-        </figure>
-        Watch My Introduction
-      </button>
-    </section>
-    <div class="scroll-indicator">
-      <div class="scroll-indicator__icon"></div>
-      <em>Scroll down to see more</em>
-    </div>
+  <div>
+    <div id="hero" class="container">
+      <!-- Optimized boxes with conditional rendering -->
+      <div v-if="isBoxesRendered" class="boxes">
+        <div v-for="i in boxCount" :key="i"></div>
+      </div>
 
-    <Teleport to="body">
-      <Modal :is-open="isModalOpen" :is-animating="isModalAnimationVisible" :has-sidebar="true" sidebar-title="Key Achievements" @close="closeModal">
-        <template #sidebar>
-          <div v-if="isMobile" class="select-wrapper">
-            <select v-model="selectedAchievementIndex" @change="handleAchievementChange(selectedAchievementIndex)">
-              <option v-for="(item, index) in achievements" :key="index" :value="index">
+      <!-- Critical content - loaded first -->
+      <span>I'm Mehmet;</span>
+      <h1>Software Development Specialist</h1>
+      <p>Frontend-focused, 10+ years in web, experienced in backend and full stack work.</p>
+      <p>I design, build, and optimize digital interfaces, apps, and infrastructures.</p>
+      <section id="ctaButtons">
+        <button class="btn btn--filled sliding-text--button" @click="isModalOpen = true">Discover My Achievements</button>
+        <button class="btn btn--video" @click="openVideoModal">
+          <figure>
+            <!-- Use native lazy loading for images -->
+            <NuxtImg src="/assets/imgs/og-image.jpg" alt="Video Icon - Watch Mehmet Deveci's Introduction" loading="lazy" width="270" height="180" format="webp" quality="80" preset="og" sizes="sm:270px md:270px lg:270px" :modifiers="{ fit: 'cover' }" />
+          </figure>
+          Watch My Introduction
+        </button>
+      </section>
+      <div class="scroll-indicator">
+        <div class="scroll-indicator__icon"></div>
+        <span>Scroll down to see more</span>
+      </div>
+
+      <Teleport to="body">
+        <!-- Achievement modal -->
+        <Modal :is-open="isModalOpen" :is-animating="isModalAnimationVisible" :has-sidebar="true" sidebar-title="Key Achievements" @close="closeModal">
+          <template #sidebar>
+            <div v-if="isMobile" class="select-wrapper">
+              <select v-model="selectedAchievementIndex" @change="handleAchievementChange(selectedAchievementIndex)">
+                <option v-for="(item, index) in achievements" :key="index" :value="index">
+                  {{ item.label }}
+                </option>
+              </select>
+              <div class="select-arrow"></div>
+            </div>
+            <div v-else class="flex-column">
+              <button v-for="(item, index) in achievements" :key="index" class="modal-button" :class="{ active: selectedAchievementIndex === index }" @click="handleAchievementChange(index)">
                 {{ item.label }}
-              </option>
-            </select>
-            <div class="select-arrow"></div>
-          </div>
-          <div v-else class="flex-column">
-            <button v-for="(item, index) in achievements" :key="index" class="modal-button" :class="{ active: selectedAchievementIndex === index }" @click="handleAchievementChange(index)">
-              {{ item.label }}
-            </button>
-          </div>
-        </template>
+              </button>
+            </div>
+          </template>
 
-        <template #content>
-          <div class="hero-sentence">
-            <NuxtImg :src="`/assets/imgs/${selectedAchievement.image}`" :alt="`${selectedAchievement.label} - ${selectedAchievement.hero}`" loading="lazy" width="800" height="400" format="jpg" quality="80" class="hero-sentence__bg" fit="cover" />
-            <p>{{ selectedAchievement.hero }}</p>
-          </div>
-          <ol>
-            <li v-for="(ach, index) in selectedAchievement.accomplishments" :key="index" v-html="ach.entity"></li>
-          </ol>
-          <a v-if="hasNextAchievement" rel="nofollow" class="cta cta-custom" @click="handleAchievementChange(selectedAchievementIndex + 1)">
-            Explore {{ nextAchievementLabel }} Accomplishments
-            <MdiIcon icon="mdiArrowTopRight" />
-          </a>
-          <nuxt-link v-else to="/experience/" class="cta cta-custom">
-            Explore my full experience (tech stack, tools, etc.)
-            <MdiIcon icon="mdiArrowTopRight" />
-          </nuxt-link>
-        </template>
-      </Modal>
+          <template #content>
+            <div class="hero-sentence">
+              <NuxtImg :src="`/assets/imgs/${selectedAchievement.image}`" :alt="`${selectedAchievement.label} - ${selectedAchievement.hero}`" loading="lazy" width="800" height="400" format="jpg" quality="80" class="hero-sentence__bg" fit="cover" />
+              <p>{{ selectedAchievement.hero }}</p>
+            </div>
+            <ol>
+              <li v-for="(ach, index) in selectedAchievement.accomplishments" :key="index" v-html="ach.entity"></li>
+            </ol>
+            <a v-if="hasNextAchievement" rel="nofollow" class="cta cta-custom" @click="handleAchievementChange(selectedAchievementIndex + 1)">
+              Explore {{ nextAchievementLabel }} Accomplishments
+              <MdiIcon icon="mdiArrowTopRight" />
+            </a>
+            <nuxt-link v-else to="/experience/" class="cta cta-custom">
+              Explore my full experience (tech stack, tools, etc.)
+              <MdiIcon icon="mdiArrowTopRight" />
+            </nuxt-link>
+          </template>
+        </Modal>
 
-      <Modal :is-open="isVideoModalOpen" :is-animating="false" :has-sidebar="false" @close="closeVideoModal">
-        <template #content>
-          <iframe src="https://www.youtube.com/embed/1fAYdOZw4EQ?cc_load_policy=1" frameborder="0" width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </template>
-      </Modal>
-    </Teleport>
+        <!-- Lazy-loaded video modal -->
+        <Modal v-if="isVideoRequested" :is-open="isVideoModalOpen" :is-animating="false" :has-sidebar="false" @close="closeVideoModal">
+          <template #content>
+            <iframe src="https://www.youtube.com/embed/1fAYdOZw4EQ?cc_load_policy=1" frameborder="0" width="100%" height="100%" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </template>
+        </Modal>
+      </Teleport>
+    </div>
   </div>
 </template>
 
@@ -196,13 +237,14 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  contain: content; /* Improve paint performance */
 
   .hero-bg {
     position: absolute;
     z-index: -1;
     left: 50%;
     top: 0;
-    transform: translateX(-50%) translateY(10%);
+    transform: translateX(-50%) translateY(00%);
     width: 65%;
     max-width: 1200px;
     height: auto;
@@ -225,6 +267,7 @@ onMounted(() => {
     transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.38, 0.98, 0.6, 0.9);
     transition-delay: 0.3s;
+    will-change: transform, opacity; /* Optimize for animations */
   }
 
   p {
@@ -240,6 +283,7 @@ onMounted(() => {
     transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.38, 0.98, 0.6, 0.9);
     transition-delay: 0.55s;
+    will-change: transform, opacity; /* Optimize for animations */
 
     u {
       text-decoration: none;
@@ -256,6 +300,7 @@ onMounted(() => {
     transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.38, 0.98, 0.6, 0.9);
     transition-delay: 0.5s;
+    will-change: transform, opacity; /* Optimize for animations */
   }
 }
 
@@ -287,6 +332,7 @@ onMounted(() => {
   transform: translateY(0px);
   transition: all 0.4s cubic-bezier(0.38, 0.98, 0.6, 0.9);
   transition-delay: 0.6s;
+  will-change: transform, opacity; /* Optimize for animations */
 }
 
 .page-transition--on #ctaButtons {
@@ -326,15 +372,17 @@ onMounted(() => {
       border-radius: 2px;
       opacity: 0.8;
       animation: scrollDown 1s cubic-bezier(0.25, 1.07, 0.6, 0.9) infinite;
+      will-change: transform, opacity; /* Optimize for animations */
     }
   }
 
-  em {
+  span {
     font-family: 'Inter';
-    font-size: 16px;
+    font-size: 1.25rem;
     font-weight: 400;
     color: colors.$textGray;
     font-style: normal;
+    margin-top: 0 !important;
   }
 }
 
@@ -411,7 +459,6 @@ onMounted(() => {
   flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
-  margin-bottom: 130px;
 
   figure {
     position: absolute;
@@ -469,6 +516,57 @@ onMounted(() => {
     padding: 2rem;
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Optimized boxes with reduced CSS complexity */
+.boxes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-auto-rows: 160px;
+  opacity: 0;
+  animation: fadeIn 0.5s cubic-bezier(0.2, 0.57, 0.76, 0.79) forwards;
+  animation-delay: 0.2s;
+  box-sizing: border-box;
+  z-index: -1;
+  pointer-events: none; /* Ensure doesn't interfere with interactions */
+  contain: layout style paint; /* Improve performance */
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 10px 0px 80px 80px colors.$navyBlue;
+    z-index: 2;
+  }
+
+  > div {
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    box-sizing: border-box;
+    transform: translateZ(0); /* Hardware acceleration */
+
+    &:nth-child(3n) {
+      border-right-width: 1px;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.8; /* Slightly less opaque for better contrast */
   }
 }
 </style>

@@ -101,7 +101,7 @@ onMounted(() => {
 
   span {
     color: colors.$textGray;
-    // margin-top: 1rem;
+    padding: 1rem 0;
     display: block;
   }
 
