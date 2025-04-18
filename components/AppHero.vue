@@ -140,7 +140,7 @@ onMounted(() => {
       </section>
       <div class="scroll-indicator">
         <div class="scroll-indicator__icon"></div>
-        <em>Scroll down to see more</em>
+        <span>Scroll down to see more</span>
       </div>
 
       <Teleport to="body">
@@ -334,12 +334,13 @@ onMounted(() => {
     }
   }
 
-  em {
+  span {
     font-family: 'Inter';
-    font-size: 16px;
+    font-size: 1.25rem;
     font-weight: 400;
     color: colors.$textGray;
     font-style: normal;
+    margin-top: 0 !important;
   }
 }
 
