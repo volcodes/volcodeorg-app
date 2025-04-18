@@ -177,7 +177,7 @@ h2 {
   margin-bottom: 1rem;
   border-radius: vars.$borderRadius;
   display: flex;
-  color: colors.$blueSky;
+  color: colors.$cloudWhite;
   flex-direction: column;
   gap: 1rem;
   justify-content: space-around;
@@ -317,5 +317,9 @@ form {
 button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+.form-success {
+  color: colors.$cta;
 }
 </style>

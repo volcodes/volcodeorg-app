@@ -429,7 +429,7 @@ onUpdated(() => {
 @use '~/assets/styles/components/timeline';
 
 .explanation {
-  color: colors.$blueSky;
+  color: colors.$cloudWhite;
   padding: 0;
 }
 

@@ -1,15 +1,31 @@
-$darkBlue: #0c0f20;
-$modalBg: #0c1439;
-$navyBlue: #020617;
-$cta: #2bcc69;
-$ctaHover: #60f285;
-$greenShadow: #059329;
-$blueSky: #959fbb;
-$cloudWhite: #959fbb;
-$white: #ffffff;
-$textGray: #959fbb;
-$grayShade: #7e80a0;
-$error: #b80000;
+// Primary colors
+$navyBlue: #020617; // Dark background color
+$darkBlue: #0c0f20; // Secondary background color
+$modalBg: #0c1439; // Modal background
 
-// $cta: #0e2eb6;
-// $cta: #212c5b;
+// Accent colors
+$cta: #2bcc69; // Call-to-action/buttons color
+$ctaHover: #60f285; // CTA hover state
+$greenShadow: #059329; // Shadows for buttons/elements
+
+// Text colors
+$white: #ffffff; // Pure white text
+$cloudWhite: #959fbb; // Light blue-ish text
+$textGray: $cloudWhite; // Use cloudWhite for text gray (they were identical)
+$grayShade: #7e80a0; // Darker gray for secondary text
+
+// UI element colors
+$borderColor: #1a1f3c; // Border color for cards, dividers
+$tooltipBg: #1f2131; // Tooltip background
+
+// Button colors
+$redButton: #da7164; // Red UI button
+$yellowButton: #ebc063; // Yellow UI button
+$greenButton: #3fdd78; // Green UI button
+
+// Status colors
+$error: #b80000; // Error state
+
+// Commented out alternative color schemes - keep for reference
+// $cta-alt-blue: #0e2eb6;
+// $cta-alt-dark: #212c5b;

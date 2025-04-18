@@ -1,4 +1,3 @@
-<!-- how to kick start a new component in nuxt 3 -->
 <template>
   <div
     id="technologies"
@@ -18,7 +17,6 @@
         <NuxtLink to="/">Overview</NuxtLink>
         <NuxtLink to="/experience/">Experience</NuxtLink>
         <NuxtLink to="/projects">Projects</NuxtLink>
-        <!-- <NuxtLink to="/blog">Blog</NuxtLink> -->
         <NuxtLink to="/contact">Contact</NuxtLink>
       </div>
       <span>Designed & Built with <MdiIcon icon="mdiHeart" /> by <a href="https://linkedin.com/in/deveci96">Mehmet Deveci</a></span>

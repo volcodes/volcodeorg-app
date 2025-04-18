@@ -125,7 +125,7 @@ const achievementsRef = ref(achievements);
 
   .achievement {
     flex-direction: column;
-    background: #ffffff;
+    background: colors.$white;
     border-radius: 3px;
     box-sizing: border-box;
     padding: 0.6rem 0.6rem;
@@ -145,7 +145,7 @@ const achievementsRef = ref(achievements);
   }
 
   #achievements .achievement span {
-    color: #0c0c0c;
+    color: colors.$darkBlue;
     line-height: 25px;
   }
 }
