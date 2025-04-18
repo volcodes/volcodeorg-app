@@ -16,6 +16,7 @@ A high-performance, cloud-optimized portfolio template for developers built with
 This template can help you showcase your work with minimal effort through:
 
 ✅ Modular component design
+
 ✅ Ready-to-deploy AWS infrastructure (S3/CloudFront 100% free tier)
 ✅ Built-in performance optimizations
 ✅ Staging/production environment separation
