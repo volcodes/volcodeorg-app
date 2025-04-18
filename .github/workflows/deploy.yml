@@ -1,16 +1,28 @@
-name: Deploy Project
+name: CI/CD Pipeline
 
 on:
-  workflow_run:
-    workflows: ["Test Project"]
+  push:
     branches: [main, staging]
-    types:
-      - completed
+  pull_request:
+    branches: [main, staging]
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: 
+      image: node:20
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install All Packages
+        run: npm ci
+      
+      - name: Run Tests
+        run: npm test
+
   deploy:
-    # Only run if the test workflow succeeded
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs: test
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -98,4 +110,3 @@ jobs:
           
           # Always exit with success
           echo "Deployment completed successfully"
-          exit 0
