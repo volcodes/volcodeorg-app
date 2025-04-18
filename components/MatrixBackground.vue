@@ -25,51 +25,64 @@ const matrixWords = [
   'REACT',
   'VITE',
   'WEBPACK',
-  'BABEL',
-  'TYPESCRIPT',
   'JAVASCRIPT',
+  'TYPESCRIPT',
+  'NODE',
+  'REST',
+  'AXIOS',
+  'CYPRESS',
+  'JEST',
+  'PHP',
+  'GIT',
+  'GRAPHQL',
+  'DOCKER',
+  'POSTMAN',
   'HTML',
   'CSS',
   'SCSS',
+  'LESS',
+  'BOOTSTRAP',
   'TAILWIND',
-  'VUEX',
-  'GRAPHQL',
+  'FIGMA',
+  'AGILE',
+  'SCRUM',
+  'KANBAN',
+  'BEM',
+  'GITHUB',
+  'MYSQL',
+  'AWS',
+  'LARAVEL',
+  'SQL',
+  'JQUERY',
+  'UI',
+  'UX',
+  'TERRAFORM',
+  'FIREBASE',
+  'GITHUB-ACTIONS',
 
   // Backend & Servers
-  'NODE',
   'EXPRESS',
   'NEST',
   'SYMFONY',
-  'LARAVEL',
-  'PHP',
   'GO',
   'POSTGRESQL',
-  'MYSQL',
-  'DOCKER',
   'KUBERNETES',
 
   // Cloud & DevOps
-  'AWS',
   'EC2',
   'S3',
   'LAMBDA',
   'CLOUDFRONT',
-  'FIREBASE',
   'NETLIFY',
   'VERCEL',
   'HEROKU',
-  'GITHUB',
   'GITLAB',
   'BITBUCKET',
   'CI/CD',
   'JENKINS',
-  'TERRAFORM',
   'GRAFANA',
 
   // Design & UX
-  'UI',
-  'UX',
-  'FIGMA',
   'SKETCH',
   'ADOBE',
   'PHOTOSHOP',
@@ -87,12 +100,8 @@ const matrixWords = [
   'DEBUG',
   'DEPLOY',
   'RELEASE',
-  'AGILE',
-  'SCRUM',
-  'KANBAN',
   'JIRA',
   'API',
-  'REST',
   'CLEAN',
   'SOLID',
   'PATTERNS',
@@ -169,9 +178,9 @@ const initDrops = () => {
 const startMatrixAnimation = () => {
   if (!matrixCtx || !matrixCanvas) return;
 
-  // More thorough clearing to prevent trails
+  // Partial clearing to maintain some trails but prevent excessive accumulation
   matrixCtx.globalCompositeOperation = 'source-over';
-  matrixCtx.fillStyle = 'rgba(2, 6, 23, 0.15)'; // Increased opacity for better clearing
+  matrixCtx.fillStyle = 'rgba(2, 6, 23, 0.85)'; // Semi-transparent navyBlue
   matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
 
   const fontSize = isMobile.value ? 10 : 14;
@@ -189,7 +198,7 @@ const startMatrixAnimation = () => {
     // Clear compositing to prevent white halos
     matrixCtx.globalCompositeOperation = 'source-over';
     // Use a lighter shade of green with lower opacity
-    matrixCtx.fillStyle = `rgba(120, 230, 160, ${drop.opacity * 0.8})`; // Lighter green with reduced opacity
+    matrixCtx.fillStyle = `rgba(130, 255, 170, ${drop.opacity * 1.2})`; // Brighter green with increased opacity
     matrixCtx.fillText(drop.word, drop.x, drop.y);
 
     // Draw trailing characters
@@ -202,16 +211,16 @@ const startMatrixAnimation = () => {
 
       if (trailY > 0 && trailY < matrixCanvas.height) {
         // Trailing characters have fading opacity and color transition from CTA to white
-        const opacity = (1 - j / drop.length) * drop.opacity * 0.5; // Lower opacity for trails
+        const opacity = (1 - j / drop.length) * drop.opacity * 0.7; // Increased opacity for trails
 
         if (j < 2) {
           // First trailing characters with lighter green
           matrixCtx.globalCompositeOperation = 'source-over';
-          matrixCtx.fillStyle = `rgba(140, 245, 180, ${opacity})`;
+          matrixCtx.fillStyle = `rgba(150, 255, 190, ${opacity * 1.3})`;
         } else {
           // Rest fade to very light cyan
           matrixCtx.globalCompositeOperation = 'source-over';
-          matrixCtx.fillStyle = `rgba(160, 245, 200, ${opacity})`;
+          matrixCtx.fillStyle = `rgba(170, 255, 210, ${opacity})`;
         }
 
         matrixCtx.font = `${fontSize}px monospace`;
@@ -306,8 +315,13 @@ const initMatrixAnimation = () => {
     // Disable text anti-aliasing for sharper text
     matrixCtx.imageSmoothingEnabled = false;
 
-    // Initial full clear of the canvas
-    matrixCtx.fillStyle = 'rgb(2, 6, 23)'; // navyBlue
+    // Create gradient background
+    const gradient = matrixCtx.createLinearGradient(0, 0, 0, matrixCanvas.height);
+    gradient.addColorStop(0, '#01020d');
+    gradient.addColorStop(1, '#03050d');
+
+    // Initial full clear of the canvas with gradient
+    matrixCtx.fillStyle = gradient;
     matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
 
     // Set canvas dimensions to match container
@@ -401,10 +415,10 @@ onBeforeUnmount(() => {
   object-fit: cover;
   transform: translateZ(0); /* Hardware acceleration */
   will-change: transform; /* Optimize for animations */
-  opacity: 0.7; // Slightly reduced opacity
-  filter: contrast(1.05) brightness(1.05); // Reduced filter intensity to minimize trails
+  opacity: 0.9; // Higher opacity for vivid effect
+  filter: contrast(1.08) brightness(1.05) blur(0.3px); // Added slight blur for glow effect
   image-rendering: optimizeSpeed; // Improve rendering performance
-  background-color: rgb(2, 6, 23); // Match canvas background to prevent white flashes
+  background: linear-gradient(to bottom, #01020d, #03050d); // Vertical gradient
 }
 
 @keyframes fadeIn {

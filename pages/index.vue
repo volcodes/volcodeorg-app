@@ -94,18 +94,8 @@ onMounted(() => {
   margin-bottom: -6rem;
   position: relative;
   opacity: 0;
-
-  &:after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: colors.$navyBlue;
-    background: radial-gradient(circle, colors.$navyBlue 0%, rgba(255, 0, 0, 0) 50%, colors.$navyBlue 100%);
-    z-index: 1;
-  }
+  background: #01020d;
+  box-shadow: 0px 0px 40px 60px #01020d;
 
   .grid {
     padding: 3rem 0;

@@ -624,7 +624,7 @@ onBeforeUnmount(() => {
 
 #hero {
   position: relative;
-  min-height: 90vh;
+  min-height: 100vh;
   align-items: center;
   display: flex;
   flex-direction: column;
