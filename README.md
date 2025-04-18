@@ -9,13 +9,13 @@ A high-performance, cloud-optimized portfolio template for developers built with
 - [Development Server](#development-server)
 - [Production](#production)
 
-This template helps developers showcase their work with minimal effort through:
+This template can help you showcase your work with minimal effort through:
 
 ✅ Modular component design
-✅ Ready-to-deploy AWS infrastructure (S3/CloudFront)
+✅ Ready-to-deploy AWS infrastructure (S3/CloudFront 100% free tier)
 ✅ Built-in performance optimizations
 ✅ Staging/production environment separation
-✅ Complete Terraform configuration
+✅ Complete Hands-On Terraform configuration
 ✅ GitHub Actions for CI/CD
 
 ## Features
