@@ -1,9 +1,16 @@
+name: Deploy Project
+
 on:
-  push:
-    branches: [ main, staging ]
+  workflow_run:
+    workflows: ["Test Project"]
+    branches: [main, staging]
+    types:
+      - completed
 
 jobs:
   deploy:
+    # Only run if the test workflow succeeded
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
