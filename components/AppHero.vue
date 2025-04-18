@@ -164,7 +164,6 @@ const boxCount = computed(() => (isMobile.value ? 24 : 70));
         <button class="btn btn--filled sliding-text--button" @click="isModalOpen = true">Discover My Achievements</button>
         <button class="btn btn--video" @click="openVideoModal">
           <figure>
-            <!-- Use native lazy loading for images -->
             <NuxtImg src="/assets/imgs/og-image.jpg" alt="Video Icon - Watch Mehmet Deveci's Introduction" loading="lazy" width="270" height="180" format="webp" quality="80" preset="og" sizes="sm:270px md:270px lg:270px" :modifiers="{ fit: 'cover' }" />
           </figure>
           Watch My Introduction

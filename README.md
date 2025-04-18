@@ -1,13 +1,17 @@
 # Free Developer Portfolio Template
 
-A high-performance, cloud-optimized portfolio template for developers built with Vue 3, Nuxt, and AWS infrastructure. Designed for easy customization and rapid deployment.
+A high-performance, cloud-optimized portfolio template for developers built with Vue 3, Nuxt, and AWS infrastructure. You can deploy it to any custom domain under 30 minutes with AWS for free. Designed for easy customization and rapid deployment.
 
-- [Features](#features)
-- [Customization Guide](#customization-guide)
-- [Explanation for Developers](#explanation-for-developers)
 - [Setup](#setup)
 - [Development Server](#development-server)
 - [Production](#production)
+- [Features](#features)
+- [Customization Guide](#customization-guide)
+- [Infrastructure](#infrastructure)
+- [Deployment](#deployment)
+- [Performance Tips](#performance-tips)
+- [Troubleshooting](#troubleshooting)
+- [License](#license)
 
 This template can help you showcase your work with minimal effort through:
 
@@ -17,6 +21,77 @@ This template can help you showcase your work with minimal effort through:
 ✅ Staging/production environment separation
 ✅ Complete Hands-On Terraform configuration
 ✅ GitHub Actions for CI/CD
+
+
+## Setup
+
+Make sure to install dependencies:
+
+```bash
+# npm
+npm install
+
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
+```
+
+## Development Server
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
+```
+
+## Production
+The production build is automated with GitHub Actions. You can push to the `main` branch and it will automatically deploy to the production environment.
+
+If you want to build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
 
 ## Features
 
@@ -70,76 +145,6 @@ This project is powered by a modern cloud architecture designed for scalability,
 
 📑 [View complete infrastructure documentation](./INFRASTRUCTURE.md)
 
-## Setup
-
-Make sure to install dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
 ## Deployment
 
 ### First-Time Setup
@@ -148,6 +153,25 @@ bun run preview
 2. Configure your domain settings in `terraform/variables.tf`
 3. Initialize Terraform: `cd terraform && terraform init`
 4. Apply infrastructure: `terraform apply`
+
+### AWS Setup
+
+To properly configure your AWS environment for this project:
+
+1. **AWS Account**: Create an AWS account if you don't already have one
+2. **IAM User**: Create an IAM user with programmatic access and appropriate permissions:
+   - S3 full access
+   - CloudFront full access
+   - Route53 access (if using AWS for DNS)
+   - ACM (Certificate Manager) for SSL certificates
+3. **Access Keys**: Generate access keys for the IAM user and securely store them
+4. **GitHub Secrets**: Add your AWS credentials as secrets in your GitHub repository:
+   - `AWS_ACCESS_KEY_ID`
+   - `AWS_SECRET_ACCESS_KEY`
+   - `AWS_REGION`
+
+For detailed instructions on setting up GitHub Actions with these AWS credentials, refer to our comprehensive guide:
+[GitHub Actions AWS Setup Documentation](https://docs.github.com/en/actions/deployment/deploying-to-your-cloud-provider/deploying-to-amazon-elastic-container-service)
 
 ### Ongoing Deployments
 
