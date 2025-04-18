@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: Deployment
 
 # This workflow runs ONLY on direct pushes to main/staging
 # It runs tests and then deploys if tests pass (deploy "waits" for tests via 'needs')

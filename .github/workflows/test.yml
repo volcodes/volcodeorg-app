@@ -1,4 +1,4 @@
-name: Pull Request Tests
+name: Testing
 
 # This workflow runs ONLY on pull requests to validate changes before merging
 # It is completely separate from the CI/CD Pipeline that runs on push events
