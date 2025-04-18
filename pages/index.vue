@@ -148,7 +148,7 @@ onMounted(() => {
   margin-bottom: 1rem;
 
   &__header {
-    border: 1px solid #1a1f3c;
+    border: 1px solid colors.$borderColor;
     border-bottom: none;
     height: 60px;
     display: flex;
@@ -164,15 +164,15 @@ onMounted(() => {
       margin-right: 8px;
 
       &:first-child {
-        background: #da7164;
+        background: colors.$redButton;
       }
 
       &:nth-child(2) {
-        background: #ebc063;
+        background: colors.$yellowButton;
       }
 
       &:nth-child(3) {
-        background: #3fdd78;
+        background: colors.$greenButton;
       }
     }
   }

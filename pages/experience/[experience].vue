@@ -355,12 +355,12 @@ const companies = ref([
           action: 'Implemented new flows in the Homeday CMS.',
           effect: 'Ensured qualified buyers and reduced costs for all parties.',
           technologies: [
+            { icon: 'mdiTestTube', label: 'Testing Library' },
             { icon: 'mdiVuejs', label: 'Vue.js' },
             { icon: 'mdiCheckAll', label: 'Vue Test Utils' },
-            { icon: 'mdiCheckAll', label: 'Jest' },
-            { icon: 'mdiCheckAll', label: 'Testing Library' },
-            { icon: 'mdiCheckAll', label: 'Cypress' },
+            { icon: 'mdiTestTube', label: 'Cypress' },
             { icon: 'mdiLanguageHtml5', label: 'HTML' },
+            { icon: 'mdiTestTube', label: 'Jest' },
             { icon: 'mdiLanguageCss3', label: 'CSS' },
             { icon: 'mdiLanguageJavascript', label: 'Javascript' },
             { icon: 'mdiCheckAll', label: 'Travis CI' },
@@ -379,11 +379,11 @@ const companies = ref([
             { icon: 'mdiGithub', label: 'GitHub Actions' },
             { icon: 'mdiDocker', label: 'Docker' },
             { icon: 'mdiVuejs', label: 'Vue.js' },
-            { icon: 'mdiCheckAll', label: 'Vue Test Utils' },
-            { icon: 'mdiCheckAll', label: 'Jest' },
+            { icon: 'mdiTestTube', label: 'Jest' },
             { icon: 'mdiCheckAll', label: 'Testing Library' },
             { icon: 'mdiLanguageHtml5', label: 'HTML' },
             { icon: 'mdiLanguageCss3', label: 'CSS' },
+            { icon: 'mdiTestTube', label: 'Vue Test Utils' },
             { icon: 'mdiLanguageJavascript', label: 'Javascript' }
           ]
         }

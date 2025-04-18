@@ -183,7 +183,7 @@ const downloadFile = () => {
     position: fixed;
     width: 100%;
     height: 100vh;
-    background: #020617;
+    background: colors.$navyBlue;
     top: 70px;
     left: 0;
     display: flex;
@@ -266,5 +266,15 @@ const downloadFile = () => {
   #logo {
     margin: 1rem 0;
   }
+}
+
+.mobile-menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background: colors.$navyBlue;
 }
 </style>

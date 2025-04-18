@@ -25,6 +25,10 @@
               <span>Javascript</span>
             </span>
             <span>
+              <MdiIcon icon="mdiAws" />
+              <span>AWS</span>
+            </span>
+            <span>
               <MdiIcon icon="mdiTailwind" />
               <span>Tailwind</span>
             </span>
@@ -79,6 +83,14 @@
             <span>
               <MdiIcon icon="mdiGithub" />
               <span>Github Actions</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiAws" />
+              <span>AWS</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiTerraform" />
+              <span>Terraform</span>
             </span>
             <span>
               <MdiIcon icon="mdiEslint" />
