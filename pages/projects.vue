@@ -95,12 +95,17 @@
           />
         </figure>
         <div class="project-info">
+          <strong>FREE TIER</strong>
           <span>Architected a scalable, cost-effective AWS infrastructure using IaC.</span>
-          <p>Designed and implemented a cloud infrastructure with separate staging and production environments using Terraform. (Infrastructure as Code) The solution features CI/CD pipelines with GitHub Actions for automated testing, building, and deployment.</p>
+          <p style="width: 100%">Designed and implemented a cloud infrastructure with separate staging and production environments using Terraform. The solution features CI/CD pipelines with GitHub Actions for automated testing, building, and deployment.</p>
           <div class="technologies">
             <span>
               <MdiIcon icon="mdiTerraform" />
               <span>Terraform</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageTypescript" />
+              <span>Typescript</span>
             </span>
             <span>
               <MdiIcon icon="mdiAws" />
@@ -109,6 +114,10 @@
             <span>
               <MdiIcon icon="mdiCloudOutline" />
               <span>CloudFront</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageJavascript" />
+              <span>Javascript</span>
             </span>
             <span>
               <MdiIcon icon="mdiDatabaseOutline" />
@@ -123,14 +132,6 @@
               <span>Lambda</span>
             </span>
             <span>
-              <MdiIcon icon="mdiNetworkOutline" />
-              <span>VPC</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiRoutes" />
-              <span>Route53</span>
-            </span>
-            <span>
               <MdiIcon icon="mdiGithub" />
               <span>GitHub Actions</span>
             </span>
@@ -140,7 +141,9 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcodes/terraform-aws-infra" class="cta">GitHub <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcodes/volcodeorg-app/tree/main/terraform" class="cta">Source Code <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcodes/volcodeorg-app/actions/runs/14526061723/job/40757705681" class="cta">Pipeline <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://excalidraw.com/#json=6_uYRWfEV1gS90dYX-Ok_,ckFu8EiOcsswRSr_Cs_gWA" class="cta">Diagram <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
           </div>
         </div>
       </div>
