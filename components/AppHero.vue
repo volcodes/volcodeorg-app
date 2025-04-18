@@ -1,8 +1,27 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed, nextTick } from 'vue';
 
 const isMobile = ref(false);
-isMobile.value = window ? window.innerWidth < 1024 : false;
+const isBoxesRendered = ref(false);
+
+// Defer mobile detection to client-side only
+onMounted(() => {
+  isMobile.value = window.innerWidth < 1024;
+
+  // Add resize listener with debounce
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      isMobile.value = window.innerWidth < 1024;
+    }, 250);
+  });
+
+  // Render boxes with delay after critical content
+  setTimeout(() => {
+    isBoxesRendered.value = true;
+  }, 1000); // Render boxes after LCP is done
+});
 
 const closeVideoModal = () => {
   isVideoModalOpen.value = false;
@@ -116,23 +135,38 @@ onMounted(() => {
     }
   });
 });
+
+// Lazy-load video modal content
+const isVideoRequested = ref(false);
+const openVideoModal = () => {
+  isVideoRequested.value = true;
+  nextTick(() => {
+    isVideoModalOpen.value = true;
+  });
+};
+
+// Optimized box generation
+const boxCount = computed(() => (isMobile.value ? 24 : 70));
 </script>
 
 <template>
   <div>
     <div id="hero" class="container">
-      <!-- <div class="boxes">
-        <div v-for="i in 70" :key="i"></div>
-      </div> -->
-      <!-- <img src="/assets/imgs/Frame.svg" alt="Hero Background" class="hero-bg" loading="lazy" /> -->
+      <!-- Optimized boxes with conditional rendering -->
+      <div v-if="isBoxesRendered" class="boxes">
+        <div v-for="i in boxCount" :key="i"></div>
+      </div>
+
+      <!-- Critical content - loaded first -->
       <span>I'm Mehmet;</span>
       <h1>Software Development Specialist</h1>
       <p>Frontend-focused, 10+ years in web, experienced in backend and full stack work.</p>
       <p>I design, build, and optimize digital interfaces, apps, and infrastructures.</p>
       <section id="ctaButtons">
         <button class="btn btn--filled sliding-text--button" @click="isModalOpen = true">Discover My Achievements</button>
-        <button class="btn btn--video" @click="isVideoModalOpen = true">
+        <button class="btn btn--video" @click="openVideoModal">
           <figure>
+            <!-- Use native lazy loading for images -->
             <NuxtImg src="/assets/imgs/og-image.jpg" alt="Video Icon - Watch Mehmet Deveci's Introduction" loading="lazy" width="270" height="180" format="webp" quality="80" preset="og" sizes="sm:270px md:270px lg:270px" :modifiers="{ fit: 'cover' }" />
           </figure>
           Watch My Introduction
@@ -144,6 +178,7 @@ onMounted(() => {
       </div>
 
       <Teleport to="body">
+        <!-- Achievement modal -->
         <Modal :is-open="isModalOpen" :is-animating="isModalAnimationVisible" :has-sidebar="true" sidebar-title="Key Achievements" @close="closeModal">
           <template #sidebar>
             <div v-if="isMobile" class="select-wrapper">
@@ -180,9 +215,10 @@ onMounted(() => {
           </template>
         </Modal>
 
-        <Modal :is-open="isVideoModalOpen" :is-animating="false" :has-sidebar="false" @close="closeVideoModal">
+        <!-- Lazy-loaded video modal -->
+        <Modal v-if="isVideoRequested" :is-open="isVideoModalOpen" :is-animating="false" :has-sidebar="false" @close="closeVideoModal">
           <template #content>
-            <iframe src="https://www.youtube.com/embed/1fAYdOZw4EQ?cc_load_policy=1" frameborder="0" width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/1fAYdOZw4EQ?cc_load_policy=1" frameborder="0" width="100%" height="100%" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </template>
         </Modal>
       </Teleport>
@@ -201,6 +237,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  contain: content; /* Improve paint performance */
 
   .hero-bg {
     position: absolute;
@@ -230,6 +267,7 @@ onMounted(() => {
     transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.38, 0.98, 0.6, 0.9);
     transition-delay: 0.3s;
+    will-change: transform, opacity; /* Optimize for animations */
   }
 
   p {
@@ -245,6 +283,7 @@ onMounted(() => {
     transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.38, 0.98, 0.6, 0.9);
     transition-delay: 0.55s;
+    will-change: transform, opacity; /* Optimize for animations */
 
     u {
       text-decoration: none;
@@ -261,6 +300,7 @@ onMounted(() => {
     transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.38, 0.98, 0.6, 0.9);
     transition-delay: 0.5s;
+    will-change: transform, opacity; /* Optimize for animations */
   }
 }
 
@@ -292,6 +332,7 @@ onMounted(() => {
   transform: translateY(0px);
   transition: all 0.4s cubic-bezier(0.38, 0.98, 0.6, 0.9);
   transition-delay: 0.6s;
+  will-change: transform, opacity; /* Optimize for animations */
 }
 
 .page-transition--on #ctaButtons {
@@ -331,6 +372,7 @@ onMounted(() => {
       border-radius: 2px;
       opacity: 0.8;
       animation: scrollDown 1s cubic-bezier(0.25, 1.07, 0.6, 0.9) infinite;
+      will-change: transform, opacity; /* Optimize for animations */
     }
   }
 
@@ -476,6 +518,8 @@ onMounted(() => {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 }
+
+/* Optimized boxes with reduced CSS complexity */
 .boxes {
   position: absolute;
   top: 0;
@@ -484,13 +528,16 @@ onMounted(() => {
   height: 100%;
   overflow: hidden;
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-auto-rows: 160px;
   opacity: 0;
   animation: fadeIn 0.5s cubic-bezier(0.2, 0.57, 0.76, 0.79) forwards;
-  animation-delay: 2s;
+  animation-delay: 0.2s;
   box-sizing: border-box;
   z-index: -1;
+  pointer-events: none; /* Ensure doesn't interfere with interactions */
+  contain: layout style paint; /* Improve performance */
+
   &:after {
     content: '';
     position: absolute;
@@ -500,36 +547,16 @@ onMounted(() => {
     height: 100%;
     box-shadow: inset 10px 0px 80px 80px colors.$navyBlue;
     z-index: 2;
-    pointer-events: none;
   }
 
   > div {
-    min-width: 160px;
-    height: 160px;
     border-right: 1px solid rgba(255, 255, 255, 0.04);
-    // border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    transition: all 0.3s cubic-bezier(0.2, 0.57, 0.76, 0.79);
-    position: relative;
-    z-index: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     box-sizing: border-box;
+    transform: translateZ(0); /* Hardware acceleration */
+
     &:nth-child(3n) {
-      height: 160px;
-      border-right: none;
-      // background-color: rgba(255, 255, 255, 0.015);
-      border-right: 1px solid rgba(255, 255, 255, 0.04);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    }
-
-    &:nth-child(3n + 1) {
-      height: 160px;
-      border-left: 1px solid rgba(255, 255, 255, 0.04);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    }
-
-    &:nth-child(3n - 1) {
-      height: 160px;
-      border-left: 1px solid rgba(255, 255, 255, 0.04);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      border-right-width: 1px;
     }
   }
 }
@@ -539,7 +566,7 @@ onMounted(() => {
     opacity: 0;
   }
   to {
-    opacity: 1;
+    opacity: 0.8; /* Slightly less opaque for better contrast */
   }
 }
 </style>
