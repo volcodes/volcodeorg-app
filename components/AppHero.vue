@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, computed, nextTick } from 'vue';
+import MatrixBackground from '~/components/MatrixBackground.vue';
 
 const isMobile = ref(false);
 const isBoxesRendered = ref(false);
@@ -549,9 +550,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div>
-    <div v-if="isBoxesRendered" class="matrix-container" :class="{ 'matrix-animation-active': matrixAnimationStarted }">
-      <canvas ref="matrixCanvasRef" class="matrix-canvas"></canvas>
-    </div>
+    <MatrixBackground v-if="isBoxesRendered" />
     <div id="hero" class="container">
       <span>I'm Mehmet;</span>
       <h1>Software Development Specialist</h1>
@@ -854,36 +853,23 @@ onBeforeUnmount(() => {
   justify-content: center;
 
   figure {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: calc(100% + 8px);
+    width: 100%;
     box-sizing: border-box;
-    max-height: 200px;
     margin: 8px 0 0 0;
     opacity: 1;
     z-index: 9;
     display: none;
-
-    img {
-      padding: 0;
-      overflow: hidden;
-      max-width: 270px;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      margin: 0;
-      padding: 0;
-      display: block;
-    }
   }
 }
 
 @media (max-width: 1023px) {
   .btn--video {
+    color: white;
+    border-color: white;
     figure {
       display: block;
+      margin: 0 -24px;
+      transform: translateX(-24px);
     }
   }
 }
@@ -1002,11 +988,11 @@ onBeforeUnmount(() => {
     filter: brightness(1.2);
   }
 }
-#hero {
-  *:not(.boxes > div):not(.boxes):not(.btn) {
-    pointer-events: none;
-  }
-}
+// #hero {
+//   *:not(.boxes > div):not(.boxes):not(.btn):not(.btn--video):not(.modal-button) {
+//     pointer-events: none;
+//   }
+// }
 
 /* Canvas-based Matrix animation for better performance */
 .matrix-container {

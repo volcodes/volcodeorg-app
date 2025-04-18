@@ -5,7 +5,21 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <NuxtImg src="/assets/imgs/betonsa-screenshot.jpg" alt="Betonsa Screenshot" loading="lazy" preset="project" height="1000" width="485" class="project-image" fit="contain" />
+          <NuxtImg
+            src="/assets/imgs/betonsa-screenshot.jpg"
+            alt="Betonsa Screenshot"
+            loading="lazy"
+            sizes="sm:100vw md:485px lg:485px"
+            class="project-image"
+            :modifiers="{
+              fit: 'cover',
+              format: 'webp',
+              quality: 80
+            }"
+            placeholder
+            width="485"
+            height="1000"
+          />
         </figure>
         <div class="project-info">
           <!-- <strong>Anonymous Reporting Tool</strong> -->
@@ -58,7 +72,21 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <NuxtImg src="/assets/imgs/volcodeorg-app.jpg" alt="Mehmet Deveci Portfolio Webapp" loading="lazy" preset="project" height="780" width="700" class="project-image" fit="contain" />
+          <NuxtImg
+            src="/assets/imgs/volcodeorg-app.jpg"
+            alt="Mehmet Deveci Portfolio Webapp"
+            loading="lazy"
+            sizes="sm:100vw md:700px lg:700px"
+            class="project-image"
+            :modifiers="{
+              fit: 'cover',
+              format: 'webp',
+              quality: 80
+            }"
+            placeholder
+            width="700"
+            height="780"
+          />
         </figure>
         <div class="project-info">
           <span>Developed a high-performance, modular portfolio template for devs.</span>
@@ -111,7 +139,21 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <NuxtImg src="/assets/imgs/art-screenshot.jpg" alt="Anonymous Reporting Tool Screenshot" loading="lazy" preset="project" height="567" width="480" class="project-image" fit="contain" />
+          <NuxtImg
+            src="/assets/imgs/art-screenshot.jpg"
+            alt="Anonymous Reporting Tool Screenshot"
+            loading="lazy"
+            sizes="sm:100vw md:480px lg:480px"
+            class="project-image"
+            :modifiers="{
+              fit: 'cover',
+              format: 'webp',
+              quality: 80
+            }"
+            placeholder
+            width="480"
+            height="567"
+          />
         </figure>
         <div class="project-info">
           <span>Engineered a secure, anonymous reporting tool for workplaces.</span>
@@ -148,7 +190,21 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <NuxtImg src="/assets/imgs/localwebsites-app.jpg" alt="Local Websites App Screenshot" loading="lazy" preset="project" height="750" width="680" class="project-image" fit="contain" />
+          <NuxtImg
+            src="/assets/imgs/localwebsites-app.jpg"
+            alt="Local Websites App Screenshot"
+            loading="lazy"
+            sizes="sm:100vw md:680px lg:680px"
+            class="project-image"
+            :modifiers="{
+              fit: 'cover',
+              format: 'webp',
+              quality: 80
+            }"
+            placeholder
+            width="680"
+            height="750"
+          />
         </figure>
         <div class="project-info">
           <span>Developed a localized service finder for easy relocations.</span>
@@ -181,7 +237,21 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <NuxtImg src="/assets/imgs/humanbody-app.jpg" alt="Human Body Input Binder Screenshot" loading="lazy" preset="project" height="750" width="515" class="project-image" fit="contain" />
+          <NuxtImg
+            src="/assets/imgs/humanbody-app.jpg"
+            alt="Human Body Input Binder Screenshot"
+            loading="lazy"
+            sizes="sm:100vw md:515px lg:515px"
+            class="project-image"
+            :modifiers="{
+              fit: 'cover',
+              format: 'webp',
+              quality: 80
+            }"
+            placeholder
+            width="515"
+            height="750"
+          />
         </figure>
         <div class="project-info">
           <!-- <strong>Human Body Input Binder</strong> -->
@@ -422,7 +492,7 @@ const pages = [
     figure {
       max-width: 100% !important;
       width: 100% !important;
-      max-height: 280px !important;
+      max-height: 69vh !important;
     }
     .project-info {
       max-width: 100% !important;

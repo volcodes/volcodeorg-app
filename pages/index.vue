@@ -1,7 +1,6 @@
 <template>
   <div>
     <AppHero />
-    <!-- <AppAchievements /> -->
 
     <div id="secondary" :class="{ isActive: isActive }">
       <div class="container">
@@ -209,6 +208,19 @@ h2 {
     padding-top: 2rem;
     padding-bottom: 2rem;
     margin-bottom: 0;
+    opacity: 1;
+    .grid {
+      margin-top: 0;
+      padding-top: 1rem;
+    }
+
+    h2 {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
 
     p {
       padding-left: 1rem;
