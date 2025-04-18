@@ -1,5 +1,8 @@
 name: Pull Request Tests
 
+# This workflow runs ONLY on pull requests to validate changes before merging
+# It is completely separate from the CI/CD Pipeline that runs on push events
+# They are independent and do not wait for each other
 on:
   pull_request:
     branches: [main, staging]

@@ -1,11 +1,15 @@
 name: CI/CD Pipeline
 
+# This workflow runs ONLY on direct pushes to main/staging
+# It runs tests and then deploys if tests pass (deploy "waits" for tests via 'needs')
+# It is separate from the Pull Request Tests workflow and they do not interact
 on:
   push:
     branches: [main, staging]
 
 jobs:
   test:
+    name: Verify Code
     runs-on: ubuntu-latest
     container: 
       image: node:20
