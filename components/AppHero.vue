@@ -642,4 +642,48 @@ const openVideoModal = () => {
     filter: brightness(1.2);
   }
 }
+
+@keyframes matrixGlow {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+}
+#hero {
+  *:not(.boxes > div):not(.boxes):not(.btn) {
+    pointer-events: none;
+  }
+}
+
+/* Canvas-based Matrix animation for better performance */
+.matrix-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeIn 0.5s cubic-bezier(0.2, 0.57, 0.76, 0.79) forwards;
+  animation-delay: 0.2s;
+  box-sizing: border-box;
+  z-index: -1;
+  contain: layout style paint; /* Improve performance */
+}
+
+.matrix-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(0); /* Hardware acceleration */
+  will-change: transform; /* Optimize for animations */
+  opacity: 0.7; // Slightly reduced opacity
+  filter: contrast(1.05) brightness(1.05); // Reduced filter intensity to minimize trails
+  image-rendering: optimizeSpeed; // Improve rendering performance
+  background-color: rgb(2, 6, 23); // Match canvas background to prevent white flashes
+}
 </style>
