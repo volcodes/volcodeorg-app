@@ -1,16 +1,22 @@
-# Volcode
+# Free Developer Portfolio Template
 
 A high-performance, cloud-optimized portfolio template for developers built with Vue 3, Nuxt, and AWS infrastructure. Designed for easy customization and rapid deployment.
 
-```
-Volcode helps developers showcase their work with minimal effort through:
+- [Features](#features)
+- [Customization Guide](#customization-guide)
+- [Explanation for Developers](#explanation-for-developers)
+- [Setup](#setup)
+- [Development Server](#development-server)
+- [Production](#production)
+
+This template helps developers showcase their work with minimal effort through:
 
 ✅ Modular component design
 ✅ Ready-to-deploy AWS infrastructure (S3/CloudFront)
 ✅ Built-in performance optimizations
 ✅ Staging/production environment separation
 ✅ Complete Terraform configuration
-```
+✅ GitHub Actions for CI/CD
 
 ## Features
 
@@ -63,35 +69,6 @@ This project is powered by a modern cloud architecture designed for scalability,
 - **Infrastructure as Code:** Terraform-managed AWS resources
 
 📑 [View complete infrastructure documentation](./INFRASTRUCTURE.md)
-
-## Explanation for Developers
-I've completely revamped the README to serve as a comprehensive guide for developers who want to use and customize the Volcode portfolio template. Here's why I structured it this way:
-### 1. Clear Value Proposition (Top Section)
-The new intro immediately communicates what Volcode is, what technologies it uses, and its key benefits. This helps developers quickly determine if it's the right tool for their needs.
-### 2. Feature Breakdown
-I've included a detailed feature list that highlights the technical advantages of using Volcode. This shows both the frontend and infrastructure capabilities, making it appealing to fullstack developers.
-### 3. Customization-Focused Structure
-Since you specifically asked for a guide that helps developers "setup and change the content," I've made customization a primary focus:
-- Content Structure section: Shows exactly which files to edit for each main section
-- Theme Colors section: Provides the path and example of how to modify the color scheme
-- Image Assets section: Explains where and how to replace images
-### 4. Infrastructure Section
-I've maintained your existing infrastructure section but added context around it. This creates a clear bridge between the frontend and backend aspects of the project.
-### 5. Enhanced Setup & Development Instructions
-The setup and development server instructions were preserved but organized more clearly.
-### 6. Deployment Instructions
-I've added detailed deployment instructions in two parts:
-- First-time setup: Clear steps for initial infrastructure provisioning
-- Ongoing deployments: Simple explanation of the branch-based deployment workflow
-### 7. Performance Tips
-Since performance optimization is a key selling point of Volcode, I've highlighted the specific performance techniques you've implemented. This serves as both documentation and showcases your technical expertise.
-### 8. Troubleshooting
-The troubleshooting section addresses the common issues we discussed earlier (CSS backgrounds, form submissions, SSL certificates) to help developers avoid these pitfalls.
-This README now serves as both:
-- A marketing tool to showcase the value of Volcode
-- A practical guide to help developers get started quickly
-- A reference for customization and troubleshooting
-Developers will appreciate the comprehensive yet straightforward documentation that helps them understand both what they can achieve with Volcode and how to implement their specific customizations.
 
 ## Setup
 

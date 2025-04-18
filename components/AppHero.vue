@@ -152,12 +152,10 @@ const boxCount = computed(() => (isMobile.value ? 24 : 70));
 <template>
   <div>
     <div id="hero" class="container">
-      <!-- Optimized boxes with conditional rendering -->
       <div v-if="isBoxesRendered" class="boxes">
         <div v-for="i in boxCount" :key="i"></div>
       </div>
 
-      <!-- Critical content - loaded first -->
       <span>I'm Mehmet;</span>
       <h1>Software Development Specialist</h1>
       <p>Frontend-focused, 10+ years in web, experienced in backend and full stack work.</p>
@@ -178,7 +176,6 @@ const boxCount = computed(() => (isMobile.value ? 24 : 70));
       </div>
 
       <Teleport to="body">
-        <!-- Achievement modal -->
         <Modal :is-open="isModalOpen" :is-animating="isModalAnimationVisible" :has-sidebar="true" sidebar-title="Key Achievements" @close="closeModal">
           <template #sidebar>
             <div v-if="isMobile" class="select-wrapper">
