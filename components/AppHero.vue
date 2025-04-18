@@ -650,10 +650,10 @@ onBeforeUnmount(() => {
     line-height: 2rem;
     font-weight: 500;
     text-align: center;
-    margin: 4.5rem auto 0 auto;
     display: block;
     position: relative;
     width: fit-content;
+    margin-top: -76px;
 
     opacity: 1;
     transform: translateY(0);

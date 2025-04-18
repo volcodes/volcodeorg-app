@@ -87,15 +87,27 @@ onMounted(() => {
 
 #secondary {
   padding-top: 10rem;
-  background: url(~/assets/imgs/Frame-2.svg) repeat-x center 350px;
+  background: url(/public/assets/imgs/Frame-2.svg) repeat-x center 350px;
   padding-bottom: 3rem;
   background-size: 100% auto;
   transition: all 0.7s cubic-bezier(0.25, 1.07, 0.6, 0.9);
   margin-bottom: -6rem;
   position: relative;
   opacity: 0;
-  background: #01020d;
+  background-color: #01020d;
   box-shadow: 0px 0px 40px 60px #01020d;
+
+  &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0px 0px 30px 40px #01020d;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
 
   .grid {
     padding: 3rem 0;
@@ -119,6 +131,7 @@ onMounted(() => {
   h2 {
     font-weight: 900;
     font-family: vars.$fontFamilyBold;
+    margin-bottom: 0;
   }
 }
 

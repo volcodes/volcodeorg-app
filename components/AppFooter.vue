@@ -80,7 +80,7 @@ onMounted(() => {
 @use '@/assets/styles/vars';
 
 .footer {
-  padding: 2rem 3rem;
+  padding: 2rem 3rem 6rem 3rem;
   text-align: center;
   background-color: colors.$darkBlue;
   background: linear-gradient(to bottom, colors.$navyBlue, colors.$darkBlue 100%);

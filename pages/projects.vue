@@ -22,12 +22,17 @@
           />
         </figure>
         <div class="project-info">
+          <strong>FREE TIER</strong>
           <span>Architected a scalable, cost-effective AWS infrastructure using IaC.</span>
-          <p>Designed and implemented a cloud infrastructure with separate staging and production environments using Terraform. (Infrastructure as Code) The solution features CI/CD pipelines with GitHub Actions for automated testing, building, and deployment.</p>
+          <p style="width: 100%">Designed and implemented a cloud infrastructure with separate staging and production environments using Terraform. The solution features CI/CD pipelines with GitHub Actions for automated testing, building, and deployment.</p>
           <div class="technologies">
             <span>
               <MdiIcon icon="mdiTerraform" />
               <span>Terraform</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageTypescript" />
+              <span>Typescript</span>
             </span>
             <span>
               <MdiIcon icon="mdiAws" />
@@ -36,6 +41,10 @@
             <span>
               <MdiIcon icon="mdiCloudOutline" />
               <span>CloudFront</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageJavascript" />
+              <span>Javascript</span>
             </span>
             <span>
               <MdiIcon icon="mdiDatabaseOutline" />
@@ -50,14 +59,6 @@
               <span>Lambda</span>
             </span>
             <span>
-              <MdiIcon icon="mdiNetworkOutline" />
-              <span>VPC</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiRoutes" />
-              <span>Route53</span>
-            </span>
-            <span>
               <MdiIcon icon="mdiGithub" />
               <span>GitHub Actions</span>
             </span>
@@ -67,7 +68,9 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcodes/terraform-aws-infra" class="cta">GitHub <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcodes/volcodeorg-app/tree/main/terraform" class="cta">Source Code <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcodes/volcodeorg-app/actions/runs/14526061723/job/40757705681" class="cta">Pipeline <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://excalidraw.com/#json=6_uYRWfEV1gS90dYX-Ok_,ckFu8EiOcsswRSr_Cs_gWA" class="cta">Diagram <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
           </div>
         </div>
       </div>
@@ -97,20 +100,16 @@
           <p>Aligned with stakeholders to gather requirements, prototyped, designed, and built a website that showcases Betonsa's mission, services, and products.</p>
           <div class="technologies">
             <span>
+              <MdiIcon icon="mdiLanguageJavascript" />
+              <span>Javascript</span>
+            </span>
+            <span>
               <MdiIcon icon="mdiVuejs" />
               <span>Vue</span>
             </span>
             <span>
               <MdiIcon icon="mdiNuxt" />
               <span>Nuxt.js</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiLanguageJavascript" />
-              <span>Javascript</span>
-            </span>
-            <span>
-              <MdiIcon icon="mdiAws" />
-              <span>AWS</span>
             </span>
             <span>
               <MdiIcon icon="mdiTailwind" />
@@ -129,12 +128,12 @@
               <span>Prettier</span>
             </span>
             <span>
-              <MdiIcon icon="mdiGithub" />
-              <span>Github Actions</span>
+              <MdiIcon icon="mdiConsole" />
+              <span>SSH</span>
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://betonsa.com.gh" class="cta">Visit betonsa.com.gh <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://betonsa.com.gh" class="cta">Live Site <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
           </div>
         </div>
       </div>
@@ -200,8 +199,8 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcodes/volcodeorg-app" class="cta">Github <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
-            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://volcode.org" class="cta">Demo <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcodes/volcodeorg-app" class="cta">Source Code <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://volcode.org" class="cta">Live Site <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
           </div>
         </div>
       </div>
@@ -251,8 +250,8 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcanioo/anonymous-reporting-tool" class="cta">Github <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
-            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://affectionate-williams-df6f76.netlify.app/" class="cta">Demo <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcanioo/anonymous-reporting-tool" class="cta">Source Code <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://affectionate-williams-df6f76.netlify.app/" class="cta">Live Site <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
           </div>
         </div>
       </div>
@@ -298,8 +297,8 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcanioo/local-websites" class="cta">Github <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
-            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://volcanioo.github.io/local-websites/dist/index.html" class="cta">Demo <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcanioo/local-websites" class="cta">Source Code <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://volcanioo.github.io/local-websites/dist/index.html" class="cta">Live Site <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
           </div>
         </div>
       </div>
@@ -338,8 +337,8 @@
             </span>
           </div>
           <div class="project-links">
-            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcanioo/Human-Body-Rendering-HTML" class="cta">Github <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
-            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://maya-gans.shinyapps.io/human_body_app/" class="cta">Demo <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcanioo/Human-Body-Rendering-HTML" class="cta">Source Code <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://maya-gans.shinyapps.io/human_body_app/" class="cta">Live Site <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
           </div>
         </div>
       </div>
@@ -455,7 +454,7 @@ const pages = [
         font-size: 1.15rem;
         line-height: 2rem;
         font-family: vars.$fontFamilyBold;
-        color: colors.$greenShadow;
+        color: colors.$ctaHover;
         text-transform: uppercase;
         letter-spacing: 0.1rem;
       }
