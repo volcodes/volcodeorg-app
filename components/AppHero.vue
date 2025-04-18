@@ -2,13 +2,6 @@
 import { ref, onMounted, computed, nextTick } from 'vue';
 import MatrixBackground from '~/components/MatrixBackground.vue';
 
-// Import achievement images - add all your achievement images here
-import performanceBg from '~/assets/imgs/performance-bg.jpg';
-import dataBg from '~/assets/imgs/data-bg.jpg';
-import engagementBg from '~/assets/imgs/engagement-bg.jpg';
-import mentorshipBg from '~/assets/imgs/mentorship-bg.jpg';
-import collaborationBg from '~/assets/imgs/collaboration-bg.jpg';
-
 const isMobile = ref(false);
 const isBoxesRendered = ref(false);
 
@@ -642,21 +635,11 @@ const openVideoModal = () => {
     filter: brightness(1.2);
   }
 }
-
-@keyframes matrixGlow {
-  0%,
-  100% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.2);
-  }
-}
-#hero {
-  *:not(.boxes > div):not(.boxes):not(.btn) {
-    pointer-events: none;
-  }
-}
+// #hero {
+//   *:not(.boxes > div):not(.boxes):not(.btn):not(.btn--video):not(.modal-button) {
+//     pointer-events: none;
+//   }
+// }
 
 /* Canvas-based Matrix animation for better performance */
 .matrix-container {
