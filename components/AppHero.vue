@@ -120,10 +120,10 @@ onMounted(() => {
 
 <template>
   <div>
-    <div class="boxes">
-      <div v-for="i in 70" :key="i"></div>
-    </div>
     <div id="hero" class="container">
+      <div class="boxes">
+        <div v-for="i in 70" :key="i"></div>
+      </div>
       <!-- <img src="/assets/imgs/Frame.svg" alt="Hero Background" class="hero-bg" loading="lazy" /> -->
       <span>I'm Mehmet;</span>
       <h1>Software Development Specialist</h1>
@@ -482,13 +482,15 @@ onMounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  max-height: 100vh;
+  overflow: hidden;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   opacity: 0;
   animation: fadeIn 0.5s cubic-bezier(0.2, 0.57, 0.76, 0.79) forwards;
   animation-delay: 2s;
+  box-sizing: border-box;
+  z-index: -1;
   &:after {
     content: '';
     position: absolute;
@@ -496,30 +498,38 @@ onMounted(() => {
     left: 0;
     width: 100%;
     height: 100%;
-    box-shadow: inset 10px 0px 180px 180px colors.$navyBlue;
+    box-shadow: inset 10px 0px 80px 80px colors.$navyBlue;
     z-index: 2;
     pointer-events: none;
   }
 
   > div {
-    width: 160px;
+    min-width: 160px;
     height: 160px;
     border-right: 1px solid rgba(255, 255, 255, 0.04);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    // border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     transition: all 0.3s cubic-bezier(0.2, 0.57, 0.76, 0.79);
     position: relative;
     z-index: 0;
-
+    box-sizing: border-box;
     &:nth-child(3n) {
+      height: 160px;
       border-right: none;
-      background-color: rgba(255, 255, 255, 0.015);
-      border-right: 1px solid rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      // background-color: rgba(255, 255, 255, 0.015);
+      border-right: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
 
-    &:nth-child(2n) {
-      background-color: rgba(255, 255, 255, 0.005);
-      border-left: 1px solid rgba(255, 255, 255, 0.02);
+    &:nth-child(3n + 1) {
+      height: 160px;
+      border-left: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    &:nth-child(3n - 1) {
+      height: 160px;
+      border-left: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
   }
 }

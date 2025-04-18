@@ -3,60 +3,17 @@ Volcode is a high-performance, modular portfolio template for devevelopers.
 
 It improves setup efficiency and simplifies maintenance, helping developers showcase their work with minimal effort.
 
-## Infastructure
-| Layer | Tool(s) | Purpose |
-|-------|---------|---------|
-| Hosting | AWS S3 + CloudFront | Serve static assets securely |
-| Access Control | IAM + CloudFront signed URLs / HTTP Basic Auth | Restrict access to staging |
-| IaC | Terraform | Provision S3, CloudFront, IAM |
-| CI/CD | GitHub Actions | Automate deployment from staging branch |
+## Infrastructure
 
-### High Level Architecture
+This project is powered by a modern cloud architecture designed for scalability, security, and performance. Key features:
 
-#### Diagram
-``` 
-┌───────────────────┐           ┌───────────────────────┐
-│ Namecheap DNS     │           │ AWS Certificate       │
-│ • CNAME records   │◀───┐      │ Manager (ACM public)  │
-└───────────────────┘    │      │ • Certificates for    │
-                         │      │   volcode.org &       │
-                         │      │   staging.volcode.org │
-                         │      └───────────────────────┘
-                         │
-                         │      ┌───────────────────────┐
-                         └─────▶│ Terraform‑provisioned │
-                                │ S3 + CloudFront       │
-                                │ • Private S3 buckets  │
-                                │ • 2 CloudFront distros │
-                                │   (prod + staging)    │
-                                │ • Attach ACM cert     │
-                                └───────────────────────┘
-                                         ▲
-                                         │
-                         ┌───────────────┴───────────────┐
-                         │ GitHub Actions (CI/CD)       │
-                         │ • main → prod S3/CF distro   │
-                         │ • staging → staging S3/CF    │
-                         │ • Cache invalidation         │
-                         └───────────────────────────────┘
-```
+- **Global CDN:** CloudFront distribution for low-latency content delivery
+- **Secure by Default:** HTTPS-only with modern TLS policies
+- **Environment Separation:** Distinct production and staging environments
+- **Automated Deployments:** CI/CD pipeline via GitHub Actions
+- **Infrastructure as Code:** Terraform-managed AWS resources
 
-#### Objectives
-* Deploy `staging` branch to a secure S3 bucket
-* Serve it via CloudFront (for HTTPS + performance)
-* Restrict access (IAM, OAI, or signed URLs)
-* Use Terraform to manage all infra
-* Automate deployments from GitHub Actions
-
-##### Terraform
-Provision the following resources:
-| Resource | Purpose |
-|----------|---------|
-| aws_s3_bucket | Host static website for staging |
-| aws_cloudfront_distribution | Serve via CDN with HTTPS |
-| aws_iam_user + aws_iam_policy | Push permission for CI |
-| aws_s3_bucket_policy | Restrict access via OAI or signed URLs |
-| (Optional) aws_secretsmanager_secret | Store credentials for GitHub Actions |
+📑 [View complete infrastructure documentation](./INFRASTRUCTURE.md)
 
 ## Setup
 

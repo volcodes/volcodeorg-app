@@ -90,6 +90,7 @@ onMounted(() => {
   padding-top: 10rem;
   background: url(~/assets/imgs/Frame-2.svg) repeat-x center 350px;
   padding-bottom: 3rem;
+  background-size: 100% auto;
   transition: all 0.7s cubic-bezier(0.25, 1.07, 0.6, 0.9);
   margin-bottom: -6rem;
   position: relative;
@@ -105,6 +106,10 @@ onMounted(() => {
     background: colors.$navyBlue;
     background: radial-gradient(circle, colors.$navyBlue 0%, rgba(255, 0, 0, 0) 50%, colors.$navyBlue 100%);
     z-index: 1;
+  }
+
+  .grid {
+    padding: 3rem 0;
   }
 
   > * {
