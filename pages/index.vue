@@ -89,7 +89,7 @@ onMounted(() => {
 #secondary {
   padding-top: 10rem;
   background: url(~/assets/imgs/Frame-2.svg) repeat-x center 350px;
-  padding-bottom: 8rem;
+  padding-bottom: 3rem;
   transition: all 0.7s cubic-bezier(0.25, 1.07, 0.6, 0.9);
   margin-bottom: -6rem;
   position: relative;
