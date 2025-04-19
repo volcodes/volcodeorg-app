@@ -288,14 +288,14 @@ const companies = ref([
   {
     slug: 'homeday',
     label: 'Homeday Gmbh',
-    hero: 'Modernized real estate technology by migrating systems, optimizing processes, and mentoring developers at Homeday GmbH.',
+    hero: 'I helped digitize real estate technology by migrating systems, optimizing processes, and mentoring developers at Homeday GmbH.',
     accomplishments: [
       {
         date: '2023',
         entity: {
           team: 'Customer acquisition team of 12 people',
           action: 'Migrated components and pages from a PHP Symfony app to Vue.js Nuxt app.',
-          effect: 'Improved page speeds up to ~%30 and enabled design system to be used in the new app.',
+          effect: 'Improved page speeds up to 30% and enabled design system to be used in the new app.',
           technologies: [
             { icon: 'mdiVuejs' as const, label: 'Vue.js' },
             { icon: 'mdiNuxt' as const, label: 'Nuxt.js' },
@@ -316,7 +316,7 @@ const companies = ref([
         entity: {
           team: 'Design System Team of 28 people',
           action: 'Enhanced and integrated design systems.',
-          effect: 'Reduced code redundancies in the existing design system and improved development efficiency by cutting down the number of unused child components and tests.',
+          effect: 'Reduced code redundancies in the existing design system and improved development efficiency by cutting down the number of unused child components and tests. Attended design system workshops and moderated when needed.',
           technologies: [
             { icon: 'mdiVuejs', label: 'Vue.js' },
             { icon: 'mdiBookAccount', label: 'Storybook' },
@@ -335,7 +335,7 @@ const companies = ref([
         entity: {
           team: 'Internal CMS team of 10 people',
           action: 'Implemented integration tests.',
-          effect: 'Cut pipeline rendering time by 25% and reduced reliance on unit tests.',
+          effect: 'Cut pipeline rendering time at least 20% and reduced reliance on unit tests.',
           technologies: [
             { icon: 'mdiCheckAll', label: 'Cypress' },
             { icon: 'mdiCheckAll', label: 'Jest' },
@@ -373,7 +373,7 @@ const companies = ref([
         entity: {
           team: 'Frontend team of 24 people',
           action: 'Upgraded frontend infrastructure with AWS and GitHub Actions.',
-          effect: 'Reduced costs by 15% and streamlined deployments.',
+          effect: 'Reduced costs and streamlined deployments.',
           technologies: [
             { icon: 'mdiAws', label: 'AWS' },
             { icon: 'mdiGithub', label: 'GitHub Actions' },
@@ -410,8 +410,24 @@ const companies = ref([
   {
     slug: 'trt',
     label: 'TRT World',
-    hero: 'Built and optimized high-traffic election pages and modernized internal tools for journalists at TRT World.',
+    hero: 'I built and optimized high-traffic pages, modernized internal tools, and built an asset management app (AssetHQ) for journalists at TRT World.',
     accomplishments: [
+      {
+        date: '',
+        entity: {
+          team: 'Newsroom team of 9 people',
+          action: 'Built an asset management app from scratch, effectively using Node.js, and Vue.js',
+          effect: 'Reduced content search times at least 50% and boosted efficiency of journalists.',
+          technologies: [
+            { icon: 'mdiVuejs', label: 'Vue.js' },
+            { icon: 'mdiApi', label: 'REST API' },
+            { icon: 'mdiNodejs', label: 'Node.js' },
+            { icon: 'mdiLanguageJavascript', label: 'Javascript' },
+            { icon: 'mdiLanguageCss3', label: 'CSS' },
+            { icon: 'mdiAws', label: 'AWS' }
+          ]
+        }
+      },
       {
         date: '',
         entity: {
@@ -433,7 +449,7 @@ const companies = ref([
         entity: {
           team: 'Software Development team of 18 people',
           action: "Built an SVG-based map for Turkey's 2018 & 2019 elections.",
-          effect: 'Handled 75+ concurrent users with dynamic updates.',
+          effect: 'Dealt with 75k+ concurrent users with dynamic updates.',
           technologies: [
             { icon: 'mdiVuejs' as const, label: 'Vue.js' },
             { icon: 'mdiAws' as const, label: 'AWS' },

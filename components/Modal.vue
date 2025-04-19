@@ -252,7 +252,7 @@ onUnmounted(() => {
 
 .modal ul,
 .modal ol {
-  padding: 3rem 0rem 2rem 5rem;
+  padding: 1rem 0rem 2rem 6rem;
 
   li {
     font-size: 1.75rem;
