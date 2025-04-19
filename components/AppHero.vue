@@ -2,8 +2,24 @@
 import { ref, onMounted, computed, nextTick } from 'vue';
 import MatrixBackground from '~/components/MatrixBackground.vue';
 
+// Import achievement images - add all your achievement images here
+import performanceBg from '~/assets/imgs/performance-bg.jpg';
+import dataBg from '~/assets/imgs/data-bg.jpg';
+import engagementBg from '~/assets/imgs/engagement-bg.jpg';
+import mentorshipBg from '~/assets/imgs/mentorship-bg.jpg';
+import collaborationBg from '~/assets/imgs/collaboration-bg.jpg';
+
 const isMobile = ref(false);
 const isBoxesRendered = ref(false);
+
+// Create a mapping object for images
+const achievementImages = {
+  'performance-bg.jpg': performanceBg,
+  'data-bg.jpg': dataBg,
+  'engagement-bg.jpg': engagementBg,
+  'mentorship-bg.jpg': mentorshipBg,
+  'collaboration-bg.jpg': collaborationBg
+};
 
 // Defer mobile detection to client-side only
 onMounted(() => {
@@ -590,7 +606,17 @@ onBeforeUnmount(() => {
 
           <template #content>
             <div class="hero-sentence">
-              <NuxtImg :src="`/assets/imgs/${selectedAchievement.image}`" :alt="`${selectedAchievement.label} - ${selectedAchievement.hero}`" loading="lazy" width="800" height="400" format="jpg" quality="80" class="hero-sentence__bg" fit="cover" />
+              <NuxtImg
+                :src="achievementImages[selectedAchievement.image] || `/assets/imgs/${selectedAchievement.image}`"
+                :alt="`${selectedAchievement.label} - ${selectedAchievement.hero}`"
+                loading="lazy"
+                width="800"
+                height="400"
+                format="jpg"
+                quality="80"
+                class="hero-sentence__bg"
+                fit="cover"
+              />
               <p>{{ selectedAchievement.hero }}</p>
             </div>
             <ol>
