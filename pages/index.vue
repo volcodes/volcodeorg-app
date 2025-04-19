@@ -94,15 +94,15 @@ onMounted(() => {
   margin-bottom: -6rem;
   position: relative;
   opacity: 0;
-  background-color: #01020d;
-  box-shadow: 0px 0px 40px 60px #01020d;
+  background-color: #0c0f20;
+  box-shadow: 0px 0px 40px 60px #0c0f20;
 
   &:after {
     content: '';
     display: block;
     width: 100%;
     height: 100%;
-    box-shadow: inset 0px 0px 30px 40px #01020d;
+    box-shadow: inset 0px 0px 30px 40px #0c0f20;
     position: absolute;
     top: 0;
     left: 0;
