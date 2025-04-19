@@ -16,6 +16,12 @@ let matrixCanvas = null;
 let matrixCtx = null;
 let resizeTimeout;
 
+// Mouse position for parallax effect
+const mouseX = ref(0);
+const mouseY = ref(0);
+const parallaxOffsetX = ref(0);
+const parallaxOffsetY = ref(0);
+
 // Matrix words
 const matrixWords = [
   // Frontend Frameworks & Libraries
@@ -137,6 +143,70 @@ const matrixWords = [
   'TRACK'
 ];
 
+// Secondary smaller words
+const secondaryWords = [
+  'CODE',
+  'DEVELOP',
+  'RENDER',
+  'STATE',
+  'PROPS',
+  'MODULE',
+  'EXPORT',
+  'IMPORT',
+  'FUNCTION',
+  'METHOD',
+  'ASYNC',
+  'AWAIT',
+  'PROMISE',
+  'CLASS',
+  'INTERFACE',
+  'TYPE',
+  'UNION',
+  'ANY',
+  'NULL',
+  'UNDEFINED',
+  'STRING',
+  'NUMBER',
+  'BOOLEAN',
+  'ARRAY',
+  'OBJECT',
+  'MAP',
+  'SET',
+  'SYMBOL',
+  'DOM',
+  'EVENT',
+  'STORE',
+  'VUEX',
+  'PINIA',
+  'REDUX',
+  'HOOK',
+  'REF',
+  'REACTIVE',
+  'COMPUTED',
+  'WATCH',
+  'EFFECT',
+  'LIFECYCLE',
+  'MOUNTED',
+  'CREATED',
+  'EMIT',
+  'BINDING',
+  'TEMPLATE',
+  'STYLE',
+  'SCOPE',
+  'SHADOW',
+  'SERVER',
+  'CLIENT',
+  'HYBRID',
+  'ISOMORPHIC',
+  'HEADLESS',
+  'STATIC',
+  'DYNAMIC',
+  'NATIVE'
+];
+
+// Combined words list for more variety
+const allWords = [...matrixWords, ...secondaryWords];
+
 // Array to hold falling word objects
 const drops = [];
 
@@ -145,23 +215,31 @@ const initDrops = () => {
   if (!matrixCanvas) return;
 
   // Calculate how many drops to add based on width
-  const fontSize = isMobile.value ? 10 : 14;
-  const columns = Math.floor((matrixCanvas.width / fontSize) * 1.2); // Increase density of columns
+  const baseFontSize = isMobile.value ? 10 : 14;
+  const columns = Math.floor((matrixCanvas.width / baseFontSize) * 1.5); // Increase density further
 
   // Reset drops array
   drops.length = 0;
 
-  // Create initial drops
+  // Create initial drops with different sizes and depths
   for (let i = 0; i < columns; i++) {
+    // Determine size/depth layer (1-3, where 1 is largest, 3 is smallest)
+    const depthLayer = Math.ceil(Math.random() * 3);
+    const fontSize = depthLayer === 1 ? baseFontSize : depthLayer === 2 ? baseFontSize * 0.8 : baseFontSize * 0.6;
+    const wordsList = depthLayer === 1 ? matrixWords : allWords;
+
     // Random starting y position
     drops.push({
-      x: i * fontSize * 2 + Math.random() * fontSize, // Reduce spacing between words
+      x: i * baseFontSize * 1.5 + Math.random() * baseFontSize, // Reduce spacing between words
       y: Math.random() * matrixCanvas.height,
-      speed: 0.5 + Math.random() * 1.5,
-      opacity: 0.03 + Math.random() * 0.15, // Lower overall opacity
-      word: matrixWords[Math.floor(Math.random() * matrixWords.length)],
+      speed: 0.3 + Math.random() * 1.5,
+      opacity: 0.03 + Math.random() * (depthLayer === 1 ? 0.15 : 0.1), // Different opacity per layer
+      word: wordsList[Math.floor(Math.random() * wordsList.length)],
       length: Math.floor(2 + Math.random() * 5), // Fewer trailing characters
-      chars: []
+      chars: [],
+      fontSize, // Store font size with the drop
+      depthLayer, // Store depth layer for parallax effect
+      parallaxFactor: depthLayer === 1 ? 0.05 : depthLayer === 2 ? 0.03 : 0.01 // Different parallax response
     });
 
     // Generate trailing characters for this drop
@@ -183,48 +261,52 @@ const startMatrixAnimation = () => {
   matrixCtx.fillStyle = 'rgba(2, 6, 23, 0.85)'; // Semi-transparent navyBlue
   matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
 
-  const fontSize = isMobile.value ? 10 : 14;
-
-  // Draw each drop
-  drops.forEach((drop, _) => {
+  // Draw each drop with parallax effect
+  drops.forEach((drop) => {
     // Skip drops without proper initialization
     if (!drop || !drop.word || !drop.chars || !Array.isArray(drop.chars)) return;
+
+    // Apply parallax offset based on depth layer
+    const parallaxX = drop.x + parallaxOffsetX.value * drop.parallaxFactor;
+    const parallaxY = drop.y + parallaxOffsetY.value * drop.parallaxFactor;
 
     // Move drop down by its speed
     drop.y += drop.speed;
 
     // Draw the main word at the head of the drop with lighter green
-    matrixCtx.font = `bold ${fontSize}px monospace`;
+    matrixCtx.font = `bold ${drop.fontSize}px monospace`;
     // Clear compositing to prevent white halos
     matrixCtx.globalCompositeOperation = 'source-over';
-    // Use a lighter shade of green with lower opacity
-    matrixCtx.fillStyle = `rgba(130, 255, 170, ${drop.opacity * 1.2})`; // Brighter green with increased opacity
-    matrixCtx.fillText(drop.word, drop.x, drop.y);
 
-    // Draw trailing characters
+    // Use a lighter shade of green with opacity based on depth
+    const opacity = drop.depthLayer === 1 ? drop.opacity * 1.3 : drop.depthLayer === 2 ? drop.opacity * 1.1 : drop.opacity * 0.9;
+    matrixCtx.fillStyle = `rgba(130, 255, 170, ${opacity})`;
+    matrixCtx.fillText(drop.word, parallaxX, parallaxY);
+
+    // Draw trailing characters with parallax
     drop.chars.forEach((charObj, j) => {
       // Skip undefined char objects
       if (!charObj || typeof charObj !== 'object') return;
 
       // Create trailing effect with fading CTA color
-      const trailY = drop.y - (j + 1) * fontSize;
+      const trailY = parallaxY - (j + 1) * drop.fontSize;
 
       if (trailY > 0 && trailY < matrixCanvas.height) {
         // Trailing characters have fading opacity and color transition from CTA to white
-        const opacity = (1 - j / drop.length) * drop.opacity * 0.7; // Increased opacity for trails
+        const trailOpacity = (1 - j / drop.length) * drop.opacity * 0.7; // Increased opacity for trails
 
         if (j < 2) {
           // First trailing characters with lighter green
           matrixCtx.globalCompositeOperation = 'source-over';
-          matrixCtx.fillStyle = `rgba(150, 255, 190, ${opacity * 1.3})`;
+          matrixCtx.fillStyle = `rgba(150, 255, 190, ${trailOpacity * 1.3})`;
         } else {
           // Rest fade to very light cyan
           matrixCtx.globalCompositeOperation = 'source-over';
-          matrixCtx.fillStyle = `rgba(170, 255, 210, ${opacity})`;
+          matrixCtx.fillStyle = `rgba(170, 255, 210, ${trailOpacity})`;
         }
 
-        matrixCtx.font = `${fontSize}px monospace`;
-        matrixCtx.fillText(charObj.char, drop.x + (Math.random() > 0.5 ? fontSize / 4 : 0), trailY);
+        matrixCtx.font = `${drop.fontSize}px monospace`;
+        matrixCtx.fillText(charObj.char, parallaxX + (Math.random() > 0.5 ? drop.fontSize / 4 : 0), trailY);
 
         // Occasionally change character
         if (Math.random() > 0.92) {
@@ -236,12 +318,14 @@ const startMatrixAnimation = () => {
     });
 
     // Reset drop when it goes off screen
-    if (drop.y > matrixCanvas.height + fontSize) {
+    if (drop.y > matrixCanvas.height + drop.fontSize) {
       // Move drop far above viewport to prevent trails
-      drop.y = -fontSize * 4; // Position higher above the viewport
-      drop.speed = 0.5 + Math.random() * 1.5;
-      drop.opacity = 0.03 + Math.random() * 0.15; // Lower overall opacity
-      drop.word = matrixWords[Math.floor(Math.random() * matrixWords.length)];
+      drop.y = -drop.fontSize * 4; // Position higher above the viewport
+      drop.speed = 0.3 + Math.random() * 1.5;
+
+      // Refresh word based on depth layer
+      const wordsList = drop.depthLayer === 1 ? matrixWords : allWords;
+      drop.word = wordsList[Math.floor(Math.random() * wordsList.length)];
 
       // Ensure length is properly set
       if (!drop.length || drop.length < 1) {
@@ -262,24 +346,30 @@ const startMatrixAnimation = () => {
   });
 
   // Occasionally add a new fast "highlight" drop with a full word
-  if (Math.random() > 0.97 && drops.length < matrixCanvas.width / fontSize) {
+  if (Math.random() > 0.97 && drops.length < matrixCanvas.width / 10) {
     // Increased probability and allowed density
-    const x = Math.floor((Math.random() * matrixCanvas.width) / fontSize) * fontSize;
+    const x = Math.floor(Math.random() * matrixCanvas.width);
+    const depthLayer = Math.ceil(Math.random() * 3);
+    const fontSize = depthLayer === 1 ? (isMobile.value ? 10 : 14) : depthLayer === 2 ? (isMobile.value ? 8 : 11) : isMobile.value ? 7 : 9;
+    const wordsList = depthLayer === 1 ? matrixWords : allWords;
 
     // Check if there's already a drop near this x position (with smaller distance check)
-    const existingDropIndex = drops.findIndex((d) => Math.abs(d.x - x) < fontSize * 2);
+    const existingDropIndex = drops.findIndex((d) => Math.abs(d.x - x) < fontSize * 1.5);
 
     if (existingDropIndex === -1) {
       // Add a new bright word drop
-      const newWord = matrixWords[Math.floor(Math.random() * matrixWords.length)];
+      const newWord = wordsList[Math.floor(Math.random() * wordsList.length)];
       const newDrop = {
         x,
         y: -5 * fontSize,
-        speed: 2 + Math.random() * 3,
-        opacity: 0.04 + Math.random() * 0.12, // Much lower opacity
+        speed: 1.5 + Math.random() * 3,
+        opacity: 0.04 + Math.random() * (depthLayer === 1 ? 0.12 : 0.09),
         word: newWord,
         length: Math.floor(2 + Math.random() * 4),
-        chars: []
+        chars: [],
+        fontSize,
+        depthLayer,
+        parallaxFactor: depthLayer === 1 ? 0.05 : depthLayer === 2 ? 0.03 : 0.01
       };
 
       // Generate trailing characters for this drop
@@ -296,6 +386,42 @@ const startMatrixAnimation = () => {
 
   // Continue animation loop
   animationFrameId = requestAnimationFrame(startMatrixAnimation);
+};
+
+// Update parallax values based on mouse position
+const handleMouseMove = (e) => {
+  if (!matrixCanvas) return;
+
+  // Calculate mouse position relative to center of canvas
+  const rect = matrixCanvas.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  // Calculate distance from center (normalized -1 to 1)
+  mouseX.value = (e.clientX - centerX) / (rect.width / 2);
+  mouseY.value = (e.clientY - centerY) / (rect.height / 2);
+
+  // Apply easing for smoother movement
+  parallaxOffsetX.value += (mouseX.value * 20 - parallaxOffsetX.value) * 0.05;
+  parallaxOffsetY.value += (mouseY.value * 20 - parallaxOffsetY.value) * 0.05;
+};
+
+// Gyroscope parallax for mobile
+const handleDeviceOrientation = (e) => {
+  if (!matrixCanvas || !e.gamma || !e.beta) return;
+
+  // Use device orientation data for parallax
+  // gamma is the left-to-right tilt in degrees, beta is front-to-back
+  const gammaRange = 20; // Limit the effect range
+  const betaRange = 20;
+
+  // Normalize and limit value range (-1 to 1)
+  const normalizedGamma = Math.max(Math.min(e.gamma / gammaRange, 1), -1);
+  const normalizedBeta = Math.max(Math.min((e.beta - 45) / betaRange, 1), -1);
+
+  // Apply easing for smoother movement
+  parallaxOffsetX.value += (normalizedGamma * 20 - parallaxOffsetX.value) * 0.05;
+  parallaxOffsetY.value += (normalizedBeta * 20 - parallaxOffsetY.value) * 0.05;
 };
 
 // Initialize the matrix animation
@@ -356,6 +482,13 @@ const initMatrixAnimation = () => {
       }, 250);
     });
 
+    // Add mouse/device movement listeners for parallax
+    if (isMobile.value) {
+      window.addEventListener('deviceorientation', handleDeviceOrientation);
+    } else {
+      window.addEventListener('mousemove', handleMouseMove);
+    }
+
     // Start matrix animation
     initDrops();
     startMatrixAnimation();
@@ -381,6 +514,8 @@ onBeforeUnmount(() => {
 
   // Remove event listeners
   window.removeEventListener('resize', () => {});
+  window.removeEventListener('mousemove', handleMouseMove);
+  window.removeEventListener('deviceorientation', handleDeviceOrientation);
 });
 </script>
 
@@ -406,6 +541,7 @@ onBeforeUnmount(() => {
   box-sizing: border-box;
   z-index: -1;
   contain: layout style paint; /* Improve performance */
+  perspective: 1000px; /* Add perspective for 3D effect */
 }
 
 .matrix-canvas {
@@ -416,9 +552,10 @@ onBeforeUnmount(() => {
   transform: translateZ(0); /* Hardware acceleration */
   will-change: transform; /* Optimize for animations */
   opacity: 0.9; // Higher opacity for vivid effect
-  filter: contrast(1.08) brightness(1.05) blur(0.3px); // Added slight blur for glow effect
+  filter: contrast(1.1) brightness(1.05) blur(0.3px); // Added slight blur for glow effect
   image-rendering: optimizeSpeed; // Improve rendering performance
   background: linear-gradient(to bottom, #01020d, #03050d); // Vertical gradient
+  transition: transform 0.05s ease-out; /* Smooth transition for parallax effect */
 }
 
 @keyframes fadeIn {
