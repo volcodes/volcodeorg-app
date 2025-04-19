@@ -229,7 +229,7 @@ const openVideoModal = () => {
             <ol>
               <li v-for="(ach, index) in selectedAchievement.accomplishments" :key="index" v-html="ach.entity"></li>
             </ol>
-            <a v-if="hasNextAchievement" rel="nofollow" class="cta cta-custom" @click="handleAchievementChange(selectedAchievementIndex + 1)">
+            <a v-if="hasNextAchievement" rel="nofollow" class="cta cta--lightBlue cta-custom" @click="handleAchievementChange(selectedAchievementIndex + 1)">
               Explore {{ nextAchievementLabel }} Accomplishments
               <MdiIcon icon="mdiArrowTopRight" />
             </a>
@@ -367,6 +367,28 @@ const openVideoModal = () => {
 
 .cta {
   margin-left: 4rem;
+}
+
+.cta--lightBlue {
+  color: rgba(123, 199, 255, 0.2);
+  border-bottom: 2px solid rgba(123, 199, 255, 0.2);
+
+  &:after {
+    background-color: colors.$cta;
+  }
+
+  svg {
+    transform: rotate(135deg) translate(0, 0);
+  }
+
+  &:hover {
+    color: black;
+    border-color: colors.$ctaHover;
+
+    svg {
+      transform: rotate(135deg) translate(-0.9rem, -0.75rem);
+    }
+  }
 }
 
 .scroll-indicator {
