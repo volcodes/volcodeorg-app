@@ -1,18 +1,23 @@
-name: Test Project
+name: Testing
 
+# This workflow runs ONLY on pull requests to validate changes before merging
+# It is completely separate from the CI/CD Pipeline that runs on push events
+# They are independent and do not wait for each other
 on:
   pull_request:
-    branches:
-      - main
+    branches: [main, staging]
 
 jobs:
   test:
+    name: tests are running...
     runs-on: ubuntu-latest
     container: 
       image: node:20
     steps:
       - uses: actions/checkout@v3
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npm test
+      
+      - name: Install All Packages
+        run: npm ci
+      
+      - name: Run Tests
+        run: npm test

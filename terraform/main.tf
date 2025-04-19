@@ -31,6 +31,10 @@ resource "aws_s3_bucket_website_configuration" "site" {
   index_document {
     suffix = "index.html"
   }
+
+  error_document {
+    key = "index.html"  # Important: Route all errors to index.html
+  }
 }
 
 # 2) OAI + bucket policy
@@ -72,16 +76,27 @@ resource "aws_cloudfront_distribution" "dist" {
   default_cache_behavior {
     target_origin_id       = "S3-${each.key}"
     viewer_protocol_policy = "redirect-to-https"
-    allowed_methods        = ["GET","HEAD"]
-    cached_methods         = ["GET","HEAD"]
+
+    # Allow all HTTP methods if needed
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
     
+    # Forward headers and cookies if your app needs them
     forwarded_values {
-      query_string = false
+      query_string = true
       cookies {
-        forward = "none"
+        forward = "all"
       }
+      headers = ["Origin", "Access-Control-Request-Headers", "Access-Control-Request-Method"]
     }
+
+    # Optimize caching for SPA
+    min_ttl                = 0
+    default_ttl            = 3600  # 1 hour for default caching
+    max_ttl                = 86400 # 24 hours max
   }
+  
+  aliases = each.key == "volcode.org" ? ["volcode.org", "www.volcode.org"] : ["staging.volcode.org"]
 
   viewer_certificate {
     acm_certificate_arn      = aws_acm_certificate.site.arn
@@ -95,6 +110,18 @@ resource "aws_cloudfront_distribution" "dist" {
     }
   }
 
+  custom_error_response {
+    error_code         = 403
+    response_code      = 200
+    response_page_path = "/index.html"
+  }
+
+  custom_error_response {
+    error_code         = 404
+    response_code      = 200
+    response_page_path = "/index.html"
+  }
+
   tags = { Environment = each.key == "volcode.org" ? "prod" : "staging" }
 
   depends_on = [aws_acm_certificate_validation.site]
@@ -104,9 +131,10 @@ resource "aws_cloudfront_distribution" "dist" {
 resource "aws_acm_certificate" "site" {
   domain_name       = "volcode.org"
   validation_method = "DNS"
-  provider         = aws.us-east-1
+  provider          = aws.us-east-1
 
-  subject_alternative_names = ["staging.volcode.org"]
+  # Ensuring all domains are covered: volcode.org, www.volcode.org, and staging.volcode.org
+  subject_alternative_names = ["www.volcode.org", "staging.volcode.org"]
 
   lifecycle {
     create_before_destroy = true

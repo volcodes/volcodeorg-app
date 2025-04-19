@@ -1,7 +1,6 @@
 <template>
   <div>
     <AppHero />
-    <!-- <AppAchievements /> -->
 
     <div id="secondary" :class="{ isActive: isActive }">
       <div class="container">
@@ -88,23 +87,25 @@ onMounted(() => {
 
 #secondary {
   padding-top: 10rem;
-  background: url(~/assets/imgs/Frame-2.svg) repeat-x center 350px;
+  background: url(/public/assets/imgs/Frame-2.svg) repeat-x center 350px;
   padding-bottom: 3rem;
   background-size: 100% auto;
   transition: all 0.7s cubic-bezier(0.25, 1.07, 0.6, 0.9);
   margin-bottom: -6rem;
   position: relative;
   opacity: 0;
+  background-color: #01020d;
+  box-shadow: 0px 0px 40px 60px #01020d;
 
   &:after {
     content: '';
+    display: block;
     width: 100%;
     height: 100%;
+    box-shadow: inset 0px 0px 30px 40px #01020d;
     position: absolute;
-    left: 0;
     top: 0;
-    background: colors.$navyBlue;
-    background: radial-gradient(circle, colors.$navyBlue 0%, rgba(255, 0, 0, 0) 50%, colors.$navyBlue 100%);
+    left: 0;
     z-index: 1;
   }
 
@@ -130,6 +131,7 @@ onMounted(() => {
   h2 {
     font-weight: 900;
     font-family: vars.$fontFamilyBold;
+    margin-bottom: 0;
   }
 }
 
@@ -209,6 +211,19 @@ h2 {
     padding-top: 2rem;
     padding-bottom: 2rem;
     margin-bottom: 0;
+    opacity: 1;
+    .grid {
+      margin-top: 0;
+      padding-top: 1rem;
+    }
+
+    h2 {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
 
     p {
       padding-left: 1rem;

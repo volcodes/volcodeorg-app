@@ -36,3 +36,4 @@ terraform.tfvars
 aws_credentials
 certificate.txt
 
+.cursor/

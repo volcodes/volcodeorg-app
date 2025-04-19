@@ -136,7 +136,7 @@ const submitForm = async () => {
   submitStatus.value = null;
 
   try {
-    await axios.get('http://betonsa.com.gh/utils/test.php', {
+    await axios.get('https://betonsa.com.gh/utils/test.php', {
       params: {
         name: formData.name,
         email: formData.email,

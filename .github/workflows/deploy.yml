@@ -1,9 +1,15 @@
+name: Deployment
+
+# This workflow runs ONLY on direct pushes to main/staging
+# It runs tests and then deploys if tests pass (deploy "waits" for tests via 'needs')
+# It is separate from the Pull Request Tests workflow and they do not interact
 on:
   push:
-    branches: [ main, staging ]
+    branches: [main, staging]
 
 jobs:
   deploy:
+    name: Deploying...
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -91,4 +97,3 @@ jobs:
           
           # Always exit with success
           echo "Deployment completed successfully"
-          exit 0
