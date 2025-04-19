@@ -1,11 +1,21 @@
 <script setup>
 import { useRoute } from 'vue-router';
 import { useScroll } from '~/composables/useScroll';
-import Resume from '~/assets/files/resume.pdf';
+// Remove direct import and use dynamic import for the PDF
+// import Resume from '~/assets/files/resume.pdf';
 
 const route = useRoute();
 const isMobileMenuActive = ref(false);
 const { isFixed: isHeaderFixed } = useScroll(100);
+const resumeUrl = ref(''); // Store the resume URL after it's loaded
+
+// Preload the resume URL but don't block rendering
+onMounted(() => {
+  // Dynamically import the resume only when needed
+  import('~/assets/files/resume.pdf').then((module) => {
+    resumeUrl.value = module.default;
+  });
+});
 
 // Watch for route changes to close the mobile menu
 watch(
@@ -21,15 +31,28 @@ const toggleMenu = () => {
 
 const downloadFile = () => {
   try {
-    const link = document.createElement('a');
-    link.href = Resume;
-    link.download = 'MehmetDeveciResume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // If resumeUrl is not loaded yet, load it first
+    if (!resumeUrl.value) {
+      import('~/assets/files/resume.pdf').then((module) => {
+        resumeUrl.value = module.default;
+        triggerDownload();
+      });
+    } else {
+      triggerDownload();
+    }
   } catch (error) {
     console.error('Error downloading file:', error);
   }
+};
+
+// Separate function to trigger the download
+const triggerDownload = () => {
+  const link = document.createElement('a');
+  link.href = resumeUrl.value;
+  link.download = 'MehmetDeveciResume.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 };
 </script>
 
@@ -54,7 +77,8 @@ const downloadFile = () => {
         <NuxtLink to="/projects" :class="{ 'router-link-active': route.path.startsWith('/projects') }">Projects</NuxtLink>
         <!-- <NuxtLink to="/blog">Blog</NuxtLink> -->
         <NuxtLink to="/contact" exact>Contact</NuxtLink>
-        <button class="btn" @click="downloadFile">Download Resume</button>
+        <!-- Add loading="lazy" and optimize rendering priority -->
+        <button class="btn" loading="lazy" @click="downloadFile">Download Resume</button>
       </nav>
     </div>
   </header>
@@ -66,7 +90,8 @@ const downloadFile = () => {
 
 #header {
   box-sizing: border-box;
-  box-shadow: 0px 30px 40px colors.$navyBlue;
+  box-shadow: 0px 30px 40px #01020d;
+  background: #01020d;
 }
 
 #header .container {

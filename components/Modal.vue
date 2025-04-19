@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, watch } from 'vue';
+import { onUnmounted, watch } from 'vue';
 
 const props = defineProps({
   isOpen: Boolean,
@@ -83,30 +83,60 @@ onUnmounted(() => {
 @use '@/assets/styles/colors' as colors;
 @use '@/assets/styles/vars';
 
-@keyframes modalExpand {
-  0% {
-    width: 1%;
-    height: 1vh;
+@media (min-width: 512px) {
+  @keyframes modalExpand {
+    0% {
+      width: 1%;
+      height: 1vh;
+    }
+    20% {
+      width: 20%;
+      height: 1vh;
+    }
+    40% {
+      width: 40%;
+      height: 1px;
+    }
+    60% {
+      width: 90%;
+      height: 1vh;
+    }
+    80% {
+      width: 90%;
+      height: 10vh;
+    }
+    100% {
+      width: 90%;
+      height: 90vh;
+    }
   }
-  20% {
-    width: 20%;
-    height: 1vh;
-  }
-  40% {
-    width: 40%;
-    height: 1px;
-  }
-  60% {
-    width: 90%;
-    height: 1vh;
-  }
-  80% {
-    width: 90%;
-    height: 10vh;
-  }
-  100% {
-    width: 90%;
-    height: 90vh;
+}
+@media (max-width: 512px) {
+  @keyframes modalExpand {
+    0% {
+      width: 1%;
+      height: 1vh;
+    }
+    20% {
+      width: 20%;
+      height: 1vh;
+    }
+    40% {
+      width: 40%;
+      height: 1px;
+    }
+    60% {
+      width: 90%;
+      height: 1vh;
+    }
+    80% {
+      width: 100%;
+      height: 250px;
+    }
+    100% {
+      width: 100%;
+      height: 250px;
+    }
   }
 }
 .modal {

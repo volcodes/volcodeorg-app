@@ -30,6 +30,8 @@ This document outlines the cloud infrastructure architecture powering the volcod
                Production                     Staging
 ```
 
+Here is the diagram of the infrastructure: https://excalidraw.com/#json=RpZ0T5JNBBtsP6Rrcn749,Lo8DQ0k6rPyy76kN0QHHUg
+
 ## Core Infrastructure Components
 
 ### Content Delivery Network (CDN)
