@@ -89,7 +89,7 @@ const achievements = ref([
         entity: '<b>Built Infrastructure as Code</b> with Terraform & AWS, <u><b>publishing static apps for no costs.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://github.com/volcodes/volcodeorg-app/tree/main/terraform">*</a>'
       },
       {
-        entity: '<b>Optimized existing testing pipelines</b>, with Testing Library at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>reducing deployment loading times at least 20%</b></u>.'
+        entity: '<b>Optimized CI/CD pipelines</b>, with Testing Library at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>reducing deployment loading times at least 20%</b></u>.'
       }
     ]
   },

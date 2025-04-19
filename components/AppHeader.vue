@@ -2,7 +2,7 @@
 import { useRoute } from 'vue-router';
 import { useScroll } from '~/composables/useScroll';
 // Remove direct import and use dynamic import for the PDF
-// import Resume from '~/assets/files/resume.pdf';
+// import Resume from '~/assets/files/Mehmet_Deveci_Resume.pdf';
 
 const route = useRoute();
 const isMobileMenuActive = ref(false);
@@ -12,7 +12,7 @@ const resumeUrl = ref(''); // Store the resume URL after it's loaded
 // Preload the resume URL but don't block rendering
 onMounted(() => {
   // Dynamically import the resume only when needed
-  import('~/assets/files/resume.pdf').then((module) => {
+  import('~/assets/files/Mehmet_Deveci_Resume.pdf').then((module) => {
     resumeUrl.value = module.default;
   });
 });
@@ -33,7 +33,7 @@ const downloadFile = () => {
   try {
     // If resumeUrl is not loaded yet, load it first
     if (!resumeUrl.value) {
-      import('~/assets/files/resume.pdf').then((module) => {
+      import('~/assets/files/Mehmet_Deveci_Resume.pdf').then((module) => {
         resumeUrl.value = module.default;
         triggerDownload();
       });
@@ -49,7 +49,7 @@ const downloadFile = () => {
 const triggerDownload = () => {
   const link = document.createElement('a');
   link.href = resumeUrl.value;
-  link.download = 'MehmetDeveciResume.pdf';
+  link.download = 'MehmetDeveciMehmet_Deveci_Resume.pdf';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

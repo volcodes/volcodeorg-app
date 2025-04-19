@@ -26,7 +26,7 @@ export default defineNuxtConfig({
       rollupOptions: {
         output: {
           manualChunks: {
-            'pdf-resources': ['assets/files/resume.pdf']
+            'pdf-resources': ['assets/files/Mehmet_Deveci_Resume.pdf']
           }
         }
       }
