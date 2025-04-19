@@ -24,7 +24,7 @@ resource "aws_s3_bucket_public_access_block" "site" {
   restrict_public_buckets = each.key == "staging.volcode.org"
 }
 
-resource "aws_s3_bucket_website_configuration" "website" {
+resource "aws_s3_bucket_website_configuration" "site" {
   for_each = toset(var.domains)
   bucket   = aws_s3_bucket.site[each.key].bucket
 
@@ -110,18 +110,18 @@ resource "aws_cloudfront_distribution" "dist" {
     }
   }
 
-  # Commenting out custom error responses that are causing redirect loops
-  # custom_error_response {
-  #   error_code         = 403
-  #   response_code      = 200
-  #   response_page_path = "/index.html"
-  # }
+  # Uncomment custom error responses - these are necessary for SPA routing
+  custom_error_response {
+    error_code         = 403
+    response_code      = 200
+    response_page_path = "/index.html"
+  }
 
-  # custom_error_response {
-  #   error_code         = 404
-  #   response_code      = 200
-  #   response_page_path = "/index.html"
-  # }
+  custom_error_response {
+    error_code         = 404
+    response_code      = 200
+    response_page_path = "/index.html"
+  }
 
   tags = { Environment = each.key == "volcode.org" ? "prod" : "staging" }
 
