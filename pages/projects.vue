@@ -23,7 +23,7 @@
         </figure>
         <div class="project-info">
           <strong>FREE TIER</strong>
-          <span>Architected a scalable, cost-effective AWS infrastructure using IaC.</span>
+          <span>Architected a scalable, cost-effective AWS infrastructure (IaC)</span>
           <p style="width: 100%">Designed and implemented a cloud infrastructure with separate staging and production environments using Terraform. The solution features CI/CD pipelines with GitHub Actions for automated testing, building, and deployment.</p>
           <div class="technologies">
             <span>
