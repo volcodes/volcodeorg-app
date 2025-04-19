@@ -21,6 +21,16 @@ const achievementImages = {
   'collaboration-bg.jpg': collaborationBg
 };
 
+// Helper function to get the correct image path
+const getImagePath = (imageName) => {
+  // In development mode, use the direct path
+  if (process.env.NODE_ENV === 'development') {
+    return `/assets/imgs/${imageName}`;
+  }
+  // In production mode, use the imported image
+  return achievementImages[imageName];
+};
+
 // Defer mobile detection to client-side only
 onMounted(() => {
   isMobile.value = window.innerWidth < 1024;
@@ -606,17 +616,7 @@ onBeforeUnmount(() => {
 
           <template #content>
             <div class="hero-sentence">
-              <NuxtImg
-                :src="achievementImages[selectedAchievement.image] || `/assets/imgs/${selectedAchievement.image}`"
-                :alt="`${selectedAchievement.label} - ${selectedAchievement.hero}`"
-                loading="lazy"
-                width="800"
-                height="400"
-                format="jpg"
-                quality="80"
-                class="hero-sentence__bg"
-                fit="cover"
-              />
+              <NuxtImg :src="getImagePath(selectedAchievement.image)" :alt="`${selectedAchievement.label} - ${selectedAchievement.hero}`" loading="lazy" width="800" height="400" format="jpg" quality="80" class="hero-sentence__bg" fit="cover" />
               <p>{{ selectedAchievement.hero }}</p>
             </div>
             <ol>
@@ -918,7 +918,7 @@ onBeforeUnmount(() => {
   p {
     position: relative;
     z-index: 1;
-    padding: 2rem;
+    padding: 3rem;
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }

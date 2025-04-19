@@ -1,7 +1,7 @@
 <template>
   <div id="projects">
     <AppPageHeader :title="'Projects'" :pages="pages" />
-    <p class="container explanation">Each project here represents my commitment to leveraging technology to make a positive impact, whether it's empowering employees, or crafting applications that address genuine needs of others.</p>
+    <p class="container explanation">All projects span infrastructure automation, web development, and data tools, built to solve real problems and empower both developers and end-users alike.</p>
     <div class="project">
       <div class="container">
         <figure class="no-margin">
