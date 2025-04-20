@@ -81,8 +81,7 @@ export default defineNuxtConfig({
   },
   // Different robots.txt for production and staging
   robots: {
-    UserAgent: '*',
-    Disallow: process.env.NUXT_PUBLIC_IS_STAGING === 'true' ? '/' : ''
+    disallow: process.env.NUXT_PUBLIC_IS_STAGING === 'true' ? ['/'] : []
   },
   sitemap: {
     // Only include production URLs in sitemap
@@ -144,7 +143,9 @@ export default defineNuxtConfig({
   // Add build optimization
   nitro: {
     prerender: {
-      routes: ['/', '/experience', '/projects', '/contact']
+      failOnError: false,
+      crawlLinks: true,
+      routes: ['/', '/experience', '/projects', '/contact', '/404.html']
     },
     compressPublicAssets: true,
     minify: true
