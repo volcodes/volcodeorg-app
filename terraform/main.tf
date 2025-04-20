@@ -116,20 +116,20 @@ resource "aws_cloudfront_distribution" "dist" {
     }
   }
 
-  # # Custom error responses - these are necessary for SPA routing
-  # custom_error_response {
-  #   error_code         = 403
-  #   response_code      = 200
-  #   response_page_path = "/index.html"
-  #   error_caching_min_ttl = 0
-  # }
+  # Custom error responses - these are necessary for SPA routing
+  custom_error_response {
+    error_code         = 403
+    response_code      = 200
+    response_page_path = "/index.html"
+    error_caching_min_ttl = 0
+  }
 
-  # custom_error_response {
-  #   error_code         = 404
-  #   response_code      = 200
-  #   response_page_path = "/index.html"
-  #   error_caching_min_ttl = 0
-  # }
+  custom_error_response {
+    error_code         = 404
+    response_code      = 200
+    response_page_path = "/index.html"
+    error_caching_min_ttl = 0
+  }
 
   tags = { Environment = each.key == "volcode.org" ? "prod" : "staging" }
 
@@ -275,8 +275,14 @@ resource "aws_cloudfront_function" "rewrite_request" {
 function handler(event) {
   var request = event.request;
   var uri = request.uri;
-   
-  // Explicit handling for main routes - highest priority to prevent redirection
+  
+  // Check if the request is for a file with an extension
+  if (uri.match(/\.[a-zA-Z0-9]+$/)) {
+    // If it's a file request (including images), don't modify it
+    return request;
+  }
+  
+  // Handle main routes
   if (uri === '/projects' || uri === '/projects/') {
     request.uri = '/projects/index.html';
     return request;
@@ -292,23 +298,16 @@ function handler(event) {
     return request;
   }
   
-  // Check if the request is for a file with an extension
-  if (uri.match(/\.[a-zA-Z0-9]+$/)) {
-    // If it's a file request, don't modify it
-    return request;
-  }
-  
   // For root path
   if (uri === '/') {
     request.uri = '/index.html';
     return request;
   }
   
-  // For any other path without extension - let it go to custom error handlers
-  // This is important for client-side routing to work on refresh
+  // For any other path without extension, serve index.html
+  // This handles client-side routing and 404s
   if (!uri.includes('.')) {
-    // Let it pass through as-is, but don't redirect to homepage
-    // For any main paths, we want to keep them as they are
+    request.uri = '/index.html';
     return request;
   }
   
