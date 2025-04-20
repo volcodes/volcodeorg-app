@@ -322,10 +322,15 @@ resource "null_resource" "invalidate_cache" {
   
   triggers = {
     distribution_id = aws_cloudfront_distribution.dist[each.key].id
+    timestamp = timestamp()  # This ensures invalidation happens on every apply
   }
 
   provisioner "local-exec" {
-    command = "aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.dist[each.key].id} --paths '/*'"
+    command = <<-EOT
+      aws cloudfront create-invalidation \
+        --distribution-id ${aws_cloudfront_distribution.dist[each.key].id} \
+        --paths '/*' '/index.html' '/projects/*' '/experience/*' '/contact/*' '/assets/*'
+    EOT
   }
 
   depends_on = [aws_cloudfront_distribution.dist]
