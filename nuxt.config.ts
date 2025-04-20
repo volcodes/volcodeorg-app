@@ -6,7 +6,11 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Inter: [100, 200, 300, 400, 500, 600, 700, 800, 900]
-    }
+    },
+    display: 'swap', // Add font display swap for better performance
+    prefetch: true,
+    preconnect: true,
+    preload: true
   },
   vite: {
     css: {
@@ -15,6 +19,20 @@ export default defineNuxtConfig({
           //   additionalData: '@use "@/assets/styles/_vars.scss" as vars;'
         }
       }
+    },
+    build: {
+      cssCodeSplit: true,
+      // Improve chunk loading
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'pdf-resources': ['assets/files/Mehmet_Deveci_Resume.pdf']
+          }
+        }
+      }
+    },
+    optimizeDeps: {
+      include: ['vue', 'vue-router']
     }
   },
   devServer: {
@@ -44,7 +62,7 @@ export default defineNuxtConfig({
         { name: 'msapplication-TileColor', content: '#ffffff' },
         { name: 'theme-color', content: '#ffffff' },
         // Add noindex tag for staging environment
-        process.env.NUXT_PUBLIC_IS_STAGING === 'true' ? { name: 'robots', content: 'noindex, nofollow' } : {}
+        ...(process.env.NUXT_PUBLIC_IS_STAGING === 'true' ? [{ name: 'robots', content: 'noindex, nofollow' }] : [])
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/icons/favicon.ico' },
@@ -53,14 +71,18 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon.png' },
         { rel: 'manifest', href: '/icons/site.webmanifest' }
       ]
-    }
+    },
+    // Add performance optimizations for faster LCP
+    pageTransition: { name: 'page', mode: 'out-in' },
+    layoutTransition: { name: 'layout', mode: 'out-in' }
   },
   site: {
     url: 'https://volcode.org'
   },
   // Different robots.txt for production and staging
   robots: {
-    configPath: '~/robots.config.js'
+    UserAgent: '*',
+    Disallow: process.env.NUXT_PUBLIC_IS_STAGING === 'true' ? '/' : ''
   },
   sitemap: {
     // Only include production URLs in sitemap
@@ -110,5 +132,21 @@ export default defineNuxtConfig({
     ipx: {
       maxAge: 60 * 60 * 24 * 7 // 7 days
     }
+  },
+  // Add render performance optimizations
+  experimental: {
+    payloadExtraction: true,
+    renderJsonPayloads: true,
+    viewTransition: true,
+    asyncContext: true
+    // Remove unsupported option
+  },
+  // Add build optimization
+  nitro: {
+    prerender: {
+      routes: ['/', '/experience', '/projects', '/contact']
+    },
+    compressPublicAssets: true,
+    minify: true
   }
 });

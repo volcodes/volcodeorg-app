@@ -61,27 +61,35 @@ const achievements = ref([
     accomplishments: [
       {
         entity:
-          '<b>Built a high-performance landing page with Vue.js</b> for 2019 Local Elections at <a rel="nofollow noopener noreferrer" target="_blank" href="https://web.archive.org/web/20190421194033/http://secim2019.trthaber.com/">TRT World</a>, <u><b>delivering real-time results in 1300ms.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://web.archive.org/web/20190421194033/http://secim2019.trthaber.com/">*</a>'
+          '<b>Built a high-performance landing page</b> with Vue.js for 2019 Local Elections at <a rel="nofollow noopener noreferrer" target="_blank" href="https://web.archive.org/web/20190421194033/http://secim2019.trthaber.com/">TRT World</a>, <u><b>delivering real-time results in 1300ms.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://web.archive.org/web/20190421194033/http://secim2019.trthaber.com/">*</a>'
       },
       {
         entity:
-          '<b>Migrated components and pages</b> from Symfony to Vue.js at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>improved page speeds up to %30.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">*</a>'
+          '<b>Migrated components and pages</b> from PHP to Vue.js at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>improved page speeds up to 30%.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">*</a>'
       },
       {
-        entity: '<b>Implemented new user flows</b> in <a rel="nofollow noopener noreferrer" target="_blank" href="https://my.homeday.de">Homeday\'s CMS</a>: ensuring qualified buyers, and <u><b>reducing costs for all parties</b>.</u>'
+        entity:
+          '<b>Built an embedded SVG-based map</b> with Vue.js for Turkey\'s 2018 General Elections at <a rel="nofollow noopener noreferrer" target="_blank" href="https://trtworld.com/">TRT World</a>, <u><b>handling 75k+ concurrent users with 100% uptime</b></u>.<a rel="nofollow noopener noreferrer" target="_blank" href="https://www.trt.global/world">*</a>'
+      },
+      {
+        entity:
+          '<b>Implemented new user flows</b> in <a rel="nofollow noopener noreferrer" target="_blank" href="https://my.homeday.de">Homeday\'s CMS</a> with Vue.js, ensuring users to be qualified, <u><b>reducing costs for all parties</b>.<a rel="nofollow noopener noreferrer" target="_blank" href="https://my.homeday.de">*</a></u>'
       }
     ]
   },
   {
-    label: 'Data Visualization',
-    hero: 'I built apps that transform complex information into interactive real-time interfaces.',
+    label: 'Development Infrastructure',
+    hero: 'I built, optimized CI/CD pipelines and infrastructure to streamline development workflows.',
     image: 'data-bg.jpg',
     accomplishments: [
       {
-        entity: '<b>Built an embedded SVG-based map with Vue.js</b> for Turkey\'s 2018 General Elections at <a rel="nofollow noopener noreferrer" target="_blank" href="https://trtworld.com/">TRT World</a>, <u><b>handling 75k+ concurrent users</b></u>.'
+        entity: '<b>Developed frontend infrastructure</b> with AWS and GitHub Actions at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>reducing costs by 15% and streamlining deployments</b></u>.'
       },
       {
-        entity: '<b>Upgraded frontend infrastructure with AWS and GitHub Actions</b>, <u><b>reducing costs by 15% and streamlining deployments.</b></u>'
+        entity: '<b>Built Infrastructure as Code</b> with Terraform & AWS, <u><b>publishing static apps for no costs.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://github.com/volcodes/volcodeorg-app/tree/main/terraform">*</a>'
+      },
+      {
+        entity: '<b>Optimized CI/CD pipelines</b>, with Testing Library at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>reducing deployment loading times at least 20%</b></u>.'
       }
     ]
   },
@@ -91,14 +99,14 @@ const achievements = ref([
     image: 'engagement-bg.jpg',
     accomplishments: [
       {
-        entity: "<b>Enhanced Sdui's event management system</b>, <u><b>increasing user interaction at least 20%</b></u> via better calendar & scheduling features."
+        entity: '<b>Enhanced the event management system</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://sdui.de/">Sdui</a>, <u><b>increasing user interaction at least 20%</b></u> via better calendar & scheduling features.'
       },
       {
         entity:
           '<b>Built an asset management app from scratch</b>, effectively using Node.js, and Vue.js at <a rel="nofollow noopener noreferrer" target="_blank" href="https://trtworld.com/">TRT World</a>, <u><b> reducing search times at least 50% and boosting editor efficiency.</b></u>'
       },
       {
-        entity: '<b>Conceptualized and implemented video conference functionality</b> for a chat app at <a rel="nofollow noopener noreferrer" target="_blank" href="https://sdui.com/">Sdui</a>, <u><b>allowing school teachers to set video calls.</b></u>'
+        entity: '<b>Conceptualized and implemented video conference features</b> for a chat app at <a rel="nofollow noopener noreferrer" target="_blank" href="https://sdui.com/">Sdui</a>, <u><b>allowing school teachers to set video calls.</b></u>'
       }
     ]
   },
@@ -121,13 +129,13 @@ const achievements = ref([
     image: 'collaboration-bg.jpg',
     accomplishments: [
       {
-        entity: '<b>Optimized test cases, reduced redundancies</b> of the Design System at Homeday, <u><b>reduced development build times by ~%20.</b></u>'
+        entity: '<b>Optimized test cases, reduced redundancies</b> of the Design System at Homeday, <u><b>reduced development build times.</b></u>'
       },
       {
-        entity: '<b>Modernized an internal CMS at TRT World</b>, <u><b>improved search and creation user flows by 30%.</b></u>'
+        entity: '<b>Implemented integration tests</b> and reduced legacy unit and E2E tests at <a href="#Homeday">Homeday</a>, <u><b>accelerated build times.</b></u>'
       },
       {
-        entity: '<b>Implemented integration tests</b> and reduced legacy unit and E2E tests at <a href="#Homeday">Homeday</a>, <u><b>accelerated build times by ~%25.</b></u>'
+        entity: '<b>Moderated design system, D&I, and engineering workshops</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>improving collaboration and design quality.</b></u>'
       }
     ]
   }
@@ -171,407 +179,6 @@ const openVideoModal = () => {
     isVideoModalOpen.value = true;
   });
 };
-
-// Canvas-based matrix animation
-const matrixCanvasRef = ref(null);
-const matrixAnimationStarted = ref(false);
-let animationFrameId = null;
-let matrixCanvas = null;
-let matrixCtx = null;
-
-// Matrix character set
-const matrixChars = '01'.split('');
-
-// Matrix character set
-const matrixWords = [
-  // Frontend Frameworks & Libraries
-  'VUE',
-  'NUXT',
-  'NEXT',
-  'REACT',
-  'VITE',
-  'WEBPACK',
-  'BABEL',
-  'TYPESCRIPT',
-  'JAVASCRIPT',
-  'HTML',
-  'CSS',
-  'SCSS',
-  'TAILWIND',
-  'VUEX',
-  'GRAPHQL',
-
-  // Backend & Servers
-  'NODE',
-  'EXPRESS',
-  'NEST',
-  'SYMFONY',
-  'LARAVEL',
-  'PHP',
-  'GO',
-  'POSTGRESQL',
-  'MYSQL',
-  'DOCKER',
-  'KUBERNETES',
-
-  // Cloud & DevOps
-  'AWS',
-  'EC2',
-  'S3',
-  'LAMBDA',
-  'CLOUDFRONT',
-  'FIREBASE',
-  'NETLIFY',
-  'VERCEL',
-  'HEROKU',
-  'GITHUB',
-  'GITLAB',
-  'BITBUCKET',
-  'CI/CD',
-  'JENKINS',
-  'TERRAFORM',
-  'GRAFANA',
-
-  // Design & UX
-  'UI',
-  'UX',
-  'FIGMA',
-  'SKETCH',
-  'ADOBE',
-  'PHOTOSHOP',
-  'WIREFRAME',
-  'PROTOTYPE',
-  'ACCESSIBILITY',
-  'A11Y',
-  'RESPONSIVE',
-  'MOBILE',
-
-  // General Programming
-  'STAGING',
-  'BUILD',
-  'TEST',
-  'DEBUG',
-  'DEPLOY',
-  'RELEASE',
-  'AGILE',
-  'SCRUM',
-  'KANBAN',
-  'JIRA',
-  'API',
-  'REST',
-  'CLEAN',
-  'SOLID',
-  'PATTERNS',
-  'ALGORITHMS',
-  'DATA',
-
-  // Performance & Optimization
-  'OPTIMIZE',
-  'CACHE',
-  'LAZY',
-  'BUNDLE',
-  'MINIFY',
-  'COMPRESS',
-  'PERFORMANCE',
-  'METRICS',
-  'LIGHTHOUSE',
-  'WEBVITALS',
-  'LCP',
-  'FID',
-  'CLS',
-  'SEO',
-  'PWA',
-
-  // Data & Analytics
-  'ANALYTICS',
-  'AI',
-  'VISUALIZATION',
-  'D3',
-  'CHART',
-  'DASHBOARD',
-  'LOGGING',
-  'MONITOR',
-  'TRACK'
-];
-const drops = [];
-
-// Initialize the drops
-const initDrops = () => {
-  if (!matrixCanvas) return;
-
-  // Calculate how many drops to add based on width
-  const fontSize = isMobile.value ? 10 : 14;
-  const columns = Math.floor((matrixCanvas.width / fontSize) * 1.2); // Increase density of columns
-
-  // Reset drops array
-  drops.length = 0;
-
-  // Create initial drops
-  for (let i = 0; i < columns; i++) {
-    // Random starting y position
-    drops.push({
-      x: i * fontSize * 2 + Math.random() * fontSize, // Reduce spacing between words
-      y: Math.random() * matrixCanvas.height,
-      speed: 0.5 + Math.random() * 1.5,
-      opacity: 0.03 + Math.random() * 0.15, // Lower overall opacity
-      word: matrixWords[Math.floor(Math.random() * matrixWords.length)],
-      length: Math.floor(2 + Math.random() * 5), // Fewer trailing characters
-      chars: []
-    });
-
-    // Generate trailing characters for this drop
-    for (let j = 0; j < drops[i].length; j++) {
-      drops[i].chars.push({
-        char: drops[i].word[Math.floor(Math.random() * drops[i].word.length)],
-        opacity: j === 0 ? 0.9 : (1 - j / drops[i].length) * 0.7
-      });
-    }
-  }
-};
-
-// The animation loop
-const startMatrixAnimation = () => {
-  if (!matrixCtx || !matrixCanvas) return;
-
-  // More thorough clearing to prevent trails
-  matrixCtx.globalCompositeOperation = 'source-over';
-  matrixCtx.fillStyle = 'rgba(2, 6, 23, 0.15)'; // Increased opacity for better clearing
-  matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-
-  const fontSize = isMobile.value ? 10 : 14;
-
-  // Draw each drop
-  drops.forEach((drop, _) => {
-    // Skip drops without proper initialization
-    if (!drop || !drop.word || !drop.chars || !Array.isArray(drop.chars)) return;
-
-    // Move drop down by its speed
-    drop.y += drop.speed;
-
-    // Draw the main word at the head of the drop with lighter green
-    matrixCtx.font = `bold ${fontSize}px monospace`;
-    // Clear compositing to prevent white halos
-    matrixCtx.globalCompositeOperation = 'source-over';
-    // Use a lighter shade of green with lower opacity
-    matrixCtx.fillStyle = `rgba(120, 230, 160, ${drop.opacity * 0.8})`; // Lighter green with reduced opacity
-    matrixCtx.fillText(drop.word, drop.x, drop.y);
-
-    // Draw trailing characters
-    drop.chars.forEach((charObj, j) => {
-      // Skip undefined char objects
-      if (!charObj || typeof charObj !== 'object') return;
-
-      // Create trailing effect with fading CTA color
-      const trailY = drop.y - (j + 1) * fontSize;
-
-      if (trailY > 0 && trailY < matrixCanvas.height) {
-        // Trailing characters have fading opacity and color transition from CTA to white
-        const opacity = (1 - j / drop.length) * drop.opacity * 0.5; // Lower opacity for trails
-
-        if (j < 2) {
-          // First trailing characters with lighter green
-          matrixCtx.globalCompositeOperation = 'source-over';
-          matrixCtx.fillStyle = `rgba(140, 245, 180, ${opacity})`;
-        } else {
-          // Rest fade to very light cyan
-          matrixCtx.globalCompositeOperation = 'source-over';
-          matrixCtx.fillStyle = `rgba(160, 245, 200, ${opacity})`;
-        }
-
-        matrixCtx.font = `${fontSize}px monospace`;
-        matrixCtx.fillText(charObj.char, drop.x + (Math.random() > 0.5 ? fontSize / 4 : 0), trailY);
-
-        // Occasionally change character
-        if (Math.random() > 0.92) {
-          if (drop.word && drop.word.length > 0) {
-            charObj.char = drop.word[Math.floor(Math.random() * drop.word.length)];
-          }
-        }
-      }
-    });
-
-    // Reset drop when it goes off screen
-    if (drop.y > matrixCanvas.height + fontSize) {
-      // Move drop far above viewport to prevent trails
-      drop.y = -fontSize * 4; // Position higher above the viewport
-      drop.speed = 0.5 + Math.random() * 1.5;
-      drop.opacity = 0.03 + Math.random() * 0.15; // Lower overall opacity
-      drop.word = matrixWords[Math.floor(Math.random() * matrixWords.length)];
-
-      // Ensure length is properly set
-      if (!drop.length || drop.length < 1) {
-        drop.length = Math.floor(2 + Math.random() * 5);
-      }
-
-      // Clear and regenerate trailing characters
-      drop.chars = [];
-      for (let j = 0; j < drop.length; j++) {
-        if (drop.word && drop.word.length > 0) {
-          drop.chars.push({
-            char: drop.word[Math.floor(Math.random() * drop.word.length)],
-            opacity: j === 0 ? 0.9 : (1 - j / drop.length) * 0.7
-          });
-        }
-      }
-    }
-  });
-
-  // Occasionally add a new fast "highlight" drop
-  if (Math.random() > 0.99 && drops.length < (matrixCanvas.width / fontSize) * 1.2) {
-    const fontSize = isMobile.value ? 10 : 14;
-    const x = Math.floor((Math.random() * matrixCanvas.width) / fontSize) * fontSize;
-
-    // Check if there's already a drop at this x position
-    const existingDropIndex = drops.findIndex((d) => d.x === x);
-
-    if (existingDropIndex === -1) {
-      // Add a new bright drop
-      const newDrop = {
-        x,
-        y: -5 * fontSize,
-        speed: 2 + Math.random() * 3,
-        opacity: 0.7 + Math.random() * 0.3,
-        length: Math.floor(4 + Math.random() * 8),
-        chars: []
-      };
-
-      // Generate characters for this drop
-      for (let j = 0; j < newDrop.length; j++) {
-        newDrop.chars.push({
-          char: matrixChars[Math.floor(Math.random() * matrixChars.length)],
-          opacity: j === 0 ? 1 : (1 - j / newDrop.length) * 0.9
-        });
-      }
-
-      drops.push(newDrop);
-    }
-  }
-
-  // Occasionally add a new fast "highlight" drop with a full word
-  if (Math.random() > 0.97 && drops.length < matrixCanvas.width / fontSize) {
-    // Increased probability and allowed density
-    const x = Math.floor((Math.random() * matrixCanvas.width) / fontSize) * fontSize;
-
-    // Check if there's already a drop near this x position (with smaller distance check)
-    const existingDropIndex = drops.findIndex((d) => Math.abs(d.x - x) < fontSize * 2);
-
-    if (existingDropIndex === -1) {
-      // Add a new bright word drop
-      const newWord = matrixWords[Math.floor(Math.random() * matrixWords.length)];
-      const newDrop = {
-        x,
-        y: -5 * fontSize,
-        speed: 2 + Math.random() * 3,
-        opacity: 0.04 + Math.random() * 0.12, // Much lower opacity
-        word: newWord,
-        length: Math.floor(2 + Math.random() * 4),
-        chars: []
-      };
-
-      // Generate trailing characters for this drop
-      for (let j = 0; j < newDrop.length; j++) {
-        newDrop.chars.push({
-          char: newWord[Math.floor(Math.random() * newWord.length)],
-          opacity: j === 0 ? 1 : (1 - j / newDrop.length) * 0.9
-        });
-      }
-
-      drops.push(newDrop);
-    }
-  }
-
-  // Continue animation loop
-  animationFrameId = requestAnimationFrame(startMatrixAnimation);
-};
-
-// Matrix digital rain effect setup
-onMounted(() => {
-  // Render boxes after LCP is done
-  setTimeout(() => {
-    isBoxesRendered.value = true;
-  }, 1000);
-
-  // Initialize matrix animation after boxes are rendered
-  setTimeout(() => {
-    matrixAnimationStarted.value = true;
-    initMatrixAnimation();
-  }, 1500);
-
-  // Keyboard event listeners
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isModalOpen.value) {
-      closeModal();
-    }
-  });
-});
-
-// Initialize the matrix animation
-const initMatrixAnimation = () => {
-  if (!isBoxesRendered.value) return;
-
-  // Only set up canvas once
-  nextTick(() => {
-    matrixCanvas = matrixCanvasRef.value;
-    if (!matrixCanvas) return;
-
-    // Create canvas context with settings to prevent white background artifacts
-    matrixCtx = matrixCanvas.getContext('2d', {
-      alpha: false,
-      willReadFrequently: false,
-      desynchronized: true
-    });
-
-    // Disable text anti-aliasing for sharper text
-    matrixCtx.imageSmoothingEnabled = false;
-
-    // Initial full clear of the canvas
-    matrixCtx.fillStyle = 'rgb(2, 6, 23)'; // navyBlue
-    matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-
-    // Set canvas dimensions to match container
-    const hero = document.getElementById('hero');
-    if (hero) {
-      matrixCanvas.width = hero.offsetWidth;
-      matrixCanvas.height = hero.offsetHeight;
-    } else {
-      matrixCanvas.width = window.innerWidth;
-      matrixCanvas.height = window.innerHeight;
-    }
-
-    // Add resize listener
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        isMobile.value = window.innerWidth < 1024;
-
-        // Resize canvas
-        if (matrixCanvas) {
-          if (hero) {
-            matrixCanvas.width = hero.offsetWidth;
-            matrixCanvas.height = hero.offsetHeight;
-          } else {
-            matrixCanvas.width = window.innerWidth;
-            matrixCanvas.height = window.innerHeight;
-          }
-
-          // Reset drops when resizing
-          initDrops();
-        }
-      }, 250);
-    });
-
-    // Start matrix animation
-    initDrops();
-    startMatrixAnimation();
-  });
-};
-
-// Clean up animation on component unmount
-onBeforeUnmount(() => {
-  if (animationFrameId !== null) {
-    cancelAnimationFrame(animationFrameId);
-  }
-});
 </script>
 
 <template>
@@ -622,7 +229,7 @@ onBeforeUnmount(() => {
             <ol>
               <li v-for="(ach, index) in selectedAchievement.accomplishments" :key="index" v-html="ach.entity"></li>
             </ol>
-            <a v-if="hasNextAchievement" rel="nofollow" class="cta cta-custom" @click="handleAchievementChange(selectedAchievementIndex + 1)">
+            <a v-if="hasNextAchievement" rel="nofollow" class="cta cta--lightBlue cta-custom" @click="handleAchievementChange(selectedAchievementIndex + 1)">
               Explore {{ nextAchievementLabel }} Accomplishments
               <MdiIcon icon="mdiArrowTopRight" />
             </a>
@@ -760,6 +367,28 @@ onBeforeUnmount(() => {
 
 .cta {
   margin-left: 4rem;
+}
+
+.cta--lightBlue {
+  color: rgba(123, 199, 255, 0.2);
+  border-bottom: 2px solid rgba(123, 199, 255, 0.2);
+
+  &:after {
+    background-color: colors.$cta;
+  }
+
+  svg {
+    transform: rotate(135deg) translate(0, 0);
+  }
+
+  &:hover {
+    color: black;
+    border-color: colors.$ctaHover;
+
+    svg {
+      transform: rotate(135deg) translate(-0.9rem, -0.75rem);
+    }
+  }
 }
 
 .scroll-indicator {
@@ -903,7 +532,6 @@ onBeforeUnmount(() => {
 .hero-sentence {
   position: relative;
   overflow: hidden;
-  // border-radius: 8px;
   margin-bottom: 2rem;
 
   &__bg {
@@ -918,7 +546,7 @@ onBeforeUnmount(() => {
   p {
     position: relative;
     z-index: 1;
-    padding: 3rem;
+    padding: 4rem;
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
@@ -1013,39 +641,5 @@ onBeforeUnmount(() => {
   50% {
     filter: brightness(1.2);
   }
-}
-// #hero {
-//   *:not(.boxes > div):not(.boxes):not(.btn):not(.btn--video):not(.modal-button) {
-//     pointer-events: none;
-//   }
-// }
-
-/* Canvas-based Matrix animation for better performance */
-.matrix-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  opacity: 0;
-  animation: fadeIn 0.5s cubic-bezier(0.2, 0.57, 0.76, 0.79) forwards;
-  animation-delay: 0.2s;
-  box-sizing: border-box;
-  z-index: -1;
-  contain: layout style paint; /* Improve performance */
-}
-
-.matrix-canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: translateZ(0); /* Hardware acceleration */
-  will-change: transform; /* Optimize for animations */
-  opacity: 0.7; // Slightly reduced opacity
-  filter: contrast(1.05) brightness(1.05); // Reduced filter intensity to minimize trails
-  image-rendering: optimizeSpeed; // Improve rendering performance
-  background-color: rgb(2, 6, 23); // Match canvas background to prevent white flashes
 }
 </style>
