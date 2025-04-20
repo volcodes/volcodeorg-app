@@ -143,6 +143,9 @@ export default defineNuxtConfig({
   },
   // Add build optimization
   nitro: {
+    prerender: {
+      routes: ['/', '/experience', '/projects', '/contact']
+    },
     compressPublicAssets: true,
     minify: true
   }

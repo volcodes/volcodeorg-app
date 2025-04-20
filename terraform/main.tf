@@ -24,16 +24,16 @@ resource "aws_s3_bucket_public_access_block" "site" {
   restrict_public_buckets = each.key == "staging.volcode.org"
 }
 
-resource "aws_s3_bucket_website_configuration" "site" {
-  for_each = aws_s3_bucket.site
-  bucket   = each.value.id
+resource "aws_s3_bucket_website_configuration" "website" {
+  for_each = toset(var.domains)
+  bucket   = aws_s3_bucket.site[each.key].bucket
 
   index_document {
     suffix = "index.html"
   }
 
   error_document {
-    key = "index.html"  # Important: Route all errors to index.html
+    key = "index.html"  # This ensures that all routes in your SPA are properly handled
   }
 }
 
@@ -96,7 +96,7 @@ resource "aws_cloudfront_distribution" "dist" {
     max_ttl                = 86400 # 24 hours max
   }
   
-  aliases = each.key == "volcode.org" ? ["volcode.org", "www.volcode.org"] : ["staging.volcode.org"]
+  aliases = each.key == "volcode.org" ? ["www.volcode.org"] : ["staging.volcode.org"]
 
   viewer_certificate {
     acm_certificate_arn      = aws_acm_certificate.site.arn
@@ -110,17 +110,18 @@ resource "aws_cloudfront_distribution" "dist" {
     }
   }
 
-  custom_error_response {
-    error_code         = 403
-    response_code      = 200
-    response_page_path = "/index.html"
-  }
+  # Commenting out custom error responses that are causing redirect loops
+  # custom_error_response {
+  #   error_code         = 403
+  #   response_code      = 200
+  #   response_page_path = "/index.html"
+  # }
 
-  custom_error_response {
-    error_code         = 404
-    response_code      = 200
-    response_page_path = "/index.html"
-  }
+  # custom_error_response {
+  #   error_code         = 404
+  #   response_code      = 200
+  #   response_page_path = "/index.html"
+  # }
 
   tags = { Environment = each.key == "volcode.org" ? "prod" : "staging" }
 
@@ -147,3 +148,110 @@ resource "aws_acm_certificate_validation" "site" {
   validation_record_fqdns = [for record in aws_acm_certificate.site.domain_validation_options : record.resource_record_name]
   provider               = aws.us-east-1
 }
+
+# Add Root Domain Redirect Resources
+# 1. S3 bucket for root domain
+resource "aws_s3_bucket" "root_redirect" {
+  bucket = "volcode.org"
+}
+
+# 2. Configure website redirect
+resource "aws_s3_bucket_website_configuration" "root_redirect" {
+  bucket = aws_s3_bucket.root_redirect.id
+  
+  redirect_all_requests_to {
+    host_name = "www.volcode.org"
+    protocol  = "https"
+  }
+}
+
+# 3. Make bucket public for website access
+resource "aws_s3_bucket_public_access_block" "root_redirect" {
+  bucket = aws_s3_bucket.root_redirect.id
+  
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+# 4. Add bucket policy that allows public read
+resource "aws_s3_bucket_policy" "root_redirect" {
+  bucket = aws_s3_bucket.root_redirect.id
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Action    = "s3:GetObject"
+      Effect    = "Allow"
+      Resource  = "${aws_s3_bucket.root_redirect.arn}/*"
+      Principal = "*"
+    }]
+  })
+}
+
+# 5. CloudFront distribution for root domain
+resource "aws_cloudfront_distribution" "root_redirect" {
+  enabled             = true
+  is_ipv6_enabled     = true
+  comment             = "Root domain redirect to www"
+  price_class         = "PriceClass_100" # Use cheapest option since it's just for redirect
+  
+  # Origin configuration for S3 website
+  origin {
+    domain_name = "${aws_s3_bucket.root_redirect.bucket}.s3-website-${data.aws_region.current.name}.amazonaws.com"
+    origin_id   = "S3-Website-Redirect"
+    
+    # Required for S3 website origins
+    custom_origin_config {
+      http_port              = 80
+      https_port             = 443
+      origin_protocol_policy = "http-only"  # S3 websites only support HTTP
+      origin_ssl_protocols   = ["TLSv1.2"]
+    }
+  }
+  
+  # Default cache behavior
+  default_cache_behavior {
+    target_origin_id       = "S3-Website-Redirect"
+    viewer_protocol_policy = "redirect-to-https"  # Force HTTPS
+
+    # Basic settings
+    allowed_methods  = ["GET", "HEAD"]
+    cached_methods   = ["GET", "HEAD"]
+    
+    # Cache settings - short TTL since it's just a redirect
+    min_ttl                = 0
+    default_ttl            = 3600  # 1 hour
+    max_ttl                = 86400 # 24 hours
+    
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+  
+  # Custom domain
+  aliases = ["volcode.org"]
+
+  # SSL certificate
+  viewer_certificate {
+    acm_certificate_arn      = aws_acm_certificate.site.arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
+  }
+  
+  # Geographic restrictions
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+  
+  # Dependencies
+  depends_on = [aws_acm_certificate_validation.site]
+}
+
+# Get current region for S3 website endpoint
+data "aws_region" "current" {}

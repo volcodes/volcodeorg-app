@@ -33,7 +33,18 @@ jobs:
         run: |
           npm ci
           npm run generate
-          
+
+      - name: Prepare S3 uploads
+        run: |
+          # Ensure the dist directory exists
+          if [ -d "dist" ]; then
+            # Copy index.html to each route directory
+            mkdir -p dist/experience dist/projects dist/contact
+            cp dist/index.html dist/experience/index.html
+            cp dist/index.html dist/projects/index.html  
+            cp dist/index.html dist/contact/index.html
+          fi
+
       - name: Sync to S3
         env:
           AWS_REGION: us-east-1
