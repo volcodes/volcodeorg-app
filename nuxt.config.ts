@@ -145,7 +145,7 @@ export default defineNuxtConfig({
     prerender: {
       failOnError: false,
       crawlLinks: true,
-      routes: ['/', '/experience', '/projects', '/contact', '/404.html']
+      routes: ['/', '/experience', '/projects', '/contact', '/404.html', '/error.html']
     },
     compressPublicAssets: true,
     minify: true
