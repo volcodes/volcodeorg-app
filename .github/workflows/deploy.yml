@@ -40,9 +40,16 @@ jobs:
           if [ -d "dist" ]; then
             # Copy index.html to each route directory
             mkdir -p dist/experience dist/projects dist/contact
-            cp dist/index.html dist/experience/index.html
-            cp dist/index.html dist/projects/index.html  
-            cp dist/index.html dist/contact/index.html
+            
+            # Make sure each route gets its correct dedicated file or fallback to index.html
+            cp dist/experience/index.html dist/experience/index.html || cp dist/index.html dist/experience/index.html
+            cp dist/projects/index.html dist/projects/index.html || cp dist/index.html dist/projects/index.html
+            cp dist/contact/index.html dist/contact/index.html || cp dist/index.html dist/contact/index.html
+            
+            # Ensure pages exist and aren't redirected
+            touch dist/projects/.nojekyll
+            touch dist/experience/.nojekyll
+            touch dist/contact/.nojekyll
           fi
 
       - name: Sync to S3

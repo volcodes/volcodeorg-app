@@ -33,7 +33,7 @@ resource "aws_s3_bucket_website_configuration" "site" {
   }
 
   error_document {
-    key = "error.html"  # Use a dedicated error page instead of index.html
+    key = "index.html"  # Use index.html to properly handle SPA routes
   }
 }
 
@@ -120,13 +120,15 @@ resource "aws_cloudfront_distribution" "dist" {
   custom_error_response {
     error_code         = 403
     response_code      = 200
-    response_page_path = "/error.html?code=403"
+    response_page_path = "/index.html"
+    error_caching_min_ttl = 0
   }
 
   custom_error_response {
     error_code         = 404
     response_code      = 200
-    response_page_path = "/error.html?code=404"
+    response_page_path = "/index.html"
+    error_caching_min_ttl = 0
   }
 
   tags = { Environment = each.key == "volcode.org" ? "prod" : "staging" }
@@ -273,10 +275,20 @@ resource "aws_cloudfront_function" "rewrite_request" {
 function handler(event) {
   var request = event.request;
   var uri = request.uri;
+   
+  // Explicit handling for main routes - highest priority to prevent redirection
+  if (uri === '/projects' || uri === '/projects/') {
+    request.uri = '/projects/index.html';
+    return request;
+  }
   
-  // Specific route handling for SPA
-  if (uri === '/experience' || uri === '/projects' || uri === '/contact') {
-    request.uri = uri + '/index.html';
+  if (uri === '/experience' || uri === '/experience/') {
+    request.uri = '/experience/index.html';
+    return request;
+  }
+  
+  if (uri === '/contact' || uri === '/contact/') {
+    request.uri = '/contact/index.html';
     return request;
   }
   
@@ -286,14 +298,18 @@ function handler(event) {
     return request;
   }
   
-  // Check if requesting a directory (ends with /)
-  if (uri.endsWith('/')) {
-    request.uri += 'index.html';
-  } 
-  // Handle other routes without trailing slashes
-  else if (!uri.includes('.')) {
-    var dirUri = uri + '/index.html';
-    request.uri = dirUri;
+  // For root path
+  if (uri === '/') {
+    request.uri = '/index.html';
+    return request;
+  }
+  
+  // For any other path without extension - let it go to custom error handlers
+  // This is important for client-side routing to work on refresh
+  if (!uri.includes('.')) {
+    // Let it pass through as-is, but don't redirect to homepage
+    // For any main paths, we want to keep them as they are
+    return request;
   }
   
   return request;
