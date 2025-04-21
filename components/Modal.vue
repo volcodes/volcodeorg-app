@@ -3,7 +3,13 @@
     <button class="modal__close" @click="$emit('close')">
       <MdiIcon icon="mdiClose" />
     </button>
-    <div class="modal" @click.stop>
+    <div
+      class="modal"
+      :class="{
+        'modal--full': hasSidebar
+      }"
+      @click.stop
+    >
       <div class="modal-inner">
         <aside v-if="hasSidebar" class="modal-sidebar">
           <strong>{{ sidebarTitle }}</strong>
@@ -83,7 +89,7 @@ onUnmounted(() => {
 @use '@/assets/styles/colors' as colors;
 @use '@/assets/styles/vars';
 
-@media (min-width: 512px) {
+@media (min-width: 912px) {
   @keyframes modalExpand {
     0% {
       width: 1%;
@@ -111,7 +117,61 @@ onUnmounted(() => {
     }
   }
 }
-@media (max-width: 512px) {
+@media (max-width: 912px) and (min-width: 430px) {
+  @keyframes modalExpand {
+    0% {
+      width: 1%;
+      height: 1vh;
+    }
+    20% {
+      width: 20%;
+      height: 1vh;
+    }
+    40% {
+      width: 40%;
+      height: 1px;
+    }
+    60% {
+      width: 90%;
+      height: 1vh;
+    }
+    80% {
+      width: 85%;
+      height: 300px;
+    }
+    100% {
+      width: 85%;
+      height: 350px;
+    }
+  }
+}
+@keyframes modalExpandFull {
+  0% {
+    width: 1%;
+    height: 1vh;
+  }
+  20% {
+    width: 20%;
+    height: 1vh;
+  }
+  40% {
+    width: 40%;
+    height: 1px;
+  }
+  60% {
+    width: 90%;
+    height: 1vh;
+  }
+  80% {
+    width: 100%;
+    height: 85vh;
+  }
+  100% {
+    width: 100%;
+    height: 85vh;
+  }
+}
+@media (max-width: 430px) {
   @keyframes modalExpand {
     0% {
       width: 1%;
@@ -138,6 +198,9 @@ onUnmounted(() => {
       height: 250px;
     }
   }
+  .modal-wrapper--full {
+    max-height: 260px;
+  }
 }
 .modal {
   width: 0%;
@@ -152,6 +215,10 @@ onUnmounted(() => {
   animation: modalExpand 0.7s cubic-bezier(0.15, 0.74, 1, 1) forwards;
   transform-origin: center;
   display: flex;
+
+  &.modal--full {
+    animation: modalExpandFull 0.7s cubic-bezier(0.15, 0.74, 1, 1) forwards;
+  }
 
   .modal-button {
     padding: 0.75rem 1rem;
@@ -383,7 +450,7 @@ onUnmounted(() => {
     flex-direction: column !important;
   }
   .modal .modal-inner p {
-    padding: 2rem;
+    padding: 2rem !important;
     font-size: 1.5rem !important;
     line-height: 1.85rem !important;
     letter-spacing: 0;
@@ -401,13 +468,13 @@ onUnmounted(() => {
     margin: 0 !important;
     position: fixed;
     bottom: 0px;
-    width: 90%;
+    width: 100%;
     font-size: 1rem !important;
     background: #020617;
     padding: 1rem;
     border-radius: 0 0 0 0;
     box-sizing: border-box;
-    padding: 1rem 2rem 1rem 1em;
+    padding: 0.8rem 1.2rem;
     border-bottom: 0;
     background: white;
     color: black;
@@ -416,8 +483,7 @@ onUnmounted(() => {
     justify-content: space-between;
     transform: translateX(-50%);
     left: 50%;
-    bottom: 18px;
-    box-shadow: 0px 0px 0px 20px colors.$modalBg;
+    box-shadow: 0px 0px 0px 20px #0c1439;
     .cta svg {
       transform: rotate(45deg) !important;
     }
