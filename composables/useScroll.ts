@@ -1,26 +1,17 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
-export const useScroll = (threshold = 100) => {
-  const isScrollingUp = ref(false);
-  const isFixed = ref(false);
-  let lastScrollTop = 0;
+export function useScroll() {
+  const isScrolled = ref(false);
+  const scrollPosition = ref(0);
 
   const handleScroll = () => {
-    const currentScrollTop = window.scrollY;
-    const isScrollingDown = currentScrollTop > lastScrollTop;
-
-    if (!isScrollingDown) {
-      isFixed.value = !isScrollingDown && currentScrollTop > threshold;
-      isScrollingUp.value = true;
-    } else {
-      isScrollingUp.value = false;
-    }
-
-    lastScrollTop = currentScrollTop;
+    scrollPosition.value = window.scrollY;
+    isScrolled.value = scrollPosition.value > 50;
   };
 
   onMounted(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
   });
 
   onUnmounted(() => {
@@ -28,7 +19,7 @@ export const useScroll = (threshold = 100) => {
   });
 
   return {
-    isScrollingUp,
-    isFixed
+    isScrolled,
+    scrollPosition
   };
-};
+}

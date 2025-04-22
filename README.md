@@ -1,217 +1,141 @@
-# Free Developer Portfolio Template
+# My Developer Portfolio App
 
-A high-performance, cloud-optimized portfolio template for developers built with Vue 3, Nuxt, and AWS infrastructure. You can deploy it to any custom domain under 30 minutes with AWS for free. Designed for easy customization and rapid deployment.
+A modern, semantic, and maintainable website built with Nuxt 3 and TypeScript.
 
-- [Setup](#setup)
-- [Development Server](#development-server)
-- [Production](#production)
-- [Features](#features)
-- [Customization Guide](#customization-guide)
-- [Infrastructure](#infrastructure)
-- [Deployment](#deployment)
-- [Performance Tips](#performance-tips)
-- [Troubleshooting](#troubleshooting)
-- [License](#license)
+- [Architecture](#architecture)
+   - [Directory Structure](#directory-structure)
+   - [Key Features](#key-features)
+   - [Component Organization](#component-organization)
+   - [TypeScript Integration](#typescript-integration)
+   - [State Management](#state-management)
+   - [Styling](#styling)
+- [Development](#development)
+   - [Prerequisites](#prerequisites)
+   - [Setup](#setup)
+   - [Deployment](#deployment)
+- [Best Practices](#best-practices)
+- [Contributing](#contributing)
 
-This template can help you showcase your work with minimal effort through:
+## Architecture
 
-✅ Modular component design
+### Directory Structure
 
-✅ Ready-to-deploy AWS infrastructure (S3/CloudFront 100% free tier)
-
-✅ Built-in performance optimizations
-
-✅ Staging/production environment separation
-
-✅ Complete Hands-On Terraform configuration
-
-✅ GitHub Actions for CI/CD
-
-## Setup
-
-Make sure to install dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+```
+├── components/
+│   ├── layout/         # Layout components (Header, Footer, etc.)
+│   ├── ui/            # Reusable UI components
+│   ├── features/      # Feature-specific components
+│   └── shared/        # Shared components
+├── composables/       # Vue composables for shared logic
+├── types/            # TypeScript type definitions
+├── pages/            # Page components
+├── public/           # Static assets
+└── assets/           # Processed assets
 ```
 
-## Development Server
-Start the development server on `http://localhost:3000`:
+### Key Features
 
-```bash
-# npm
-npm run dev
+- **TypeScript Support**: Full type safety throughout the application
+- **Semantic HTML**: Proper use of HTML5 semantic elements
+- **Component Architecture**: Well-organized, reusable components
+- **Composables**: Shared logic using Vue composables
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Performance**: Optimized for fast loading and smooth interactions
 
-# pnpm
-pnpm dev
+### Component Organization
 
-# yarn
-yarn dev
+Components are organized into four main categories:
 
-# bun
-bun run dev
-```
+1. **Layout Components**: Components that define the overall structure of the application (Header, Footer, etc.)
 
-## Production
-The production build is automated with GitHub Actions. You can push to the `main` branch and it will automatically deploy to the production environment.
+2. **UI Components**: Reusable UI elements (Button, Card, Modal, etc.)
 
-If you want to build the application for production:
+3. **Feature Components**: Components specific to certain features (ProjectCard, ExperienceTimeline, ContactForm, etc.)
 
-```bash
-# npm
-npm run build
+4. **Shared Components**: Components used across multiple features (Icon, LoadingSpinner, etc.)
 
-# pnpm
-pnpm build
+### TypeScript Integration
 
-# yarn
-yarn build
+The application uses TypeScript for:
 
-# bun
-bun run build
-```
+- Component props and emits
+- API responses
+- State management
+- Utility functions
 
-Locally preview production build:
+### State Management
 
-```bash
-# npm
-npm run preview
+State is managed using:
 
-# pnpm
-pnpm preview
+- Vue's Composition API
+- Custom composables for shared logic
+- Props and events for component communication
 
-# yarn
-yarn preview
+### Styling
 
-# bun
-bun run preview
-```
+- Tailwind CSS for utility-first styling
+- Custom components for complex UI elements
+- Responsive design patterns
 
-## Features
+## Development
 
-- **Modern Stack**: Vue 3, Nuxt, TypeScript, and SCSS
-- **Performance-First**: Optimized for Google Core Web Vitals
-- **Cloud-Ready**: AWS S3 and CloudFront architecture with Terraform
-- **Multi-Environment**: Separate staging and production setups
-- **CI/CD Pipeline**: GitHub Actions for automated deployments
-- **Responsive Design**: Works seamlessly across all devices
-- **Customizable Sections**: Easy-to-modify content structure
-- **SEO Optimized**: Built-in meta tags and sitemap configuration
+### Prerequisites
 
-## Customization Guide
+- Node.js 16.x or later
+- npm or yarn
 
-Volcode is designed to be easily customized without deep Vue knowledge:
+### Setup
 
-### 1. Content Structure
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-- **Hero Section**: Edit `components/AppHero.vue`
-- **Projects**: Modify `pages/projects.vue`
-- **Experience**: Update `pages/experience.vue`
-- **Achievements**: Manage `components/AppAchievements.vue`
+2. Start development server:
+   ```bash
+   npm run dev
+   ```
 
-### 2. Theme Colors
-
-Update the color scheme in `assets/styles/colors.scss`:
-
-```scss
-$darkBlue: #0c0f20;
-$navyBlue: #020617;
-$cta: #2bcc69;
-// More color variables...
-```
-
-### 3. Image Assets
-
-Replace images in the `public/assets/imgs/` directory. Important images include:
-- `og-image.jpg` - Open Graph preview image
-- `performance-bg.jpg` - Achievement background
-- Other project-specific images
-
-## Infrastructure
-
-This project is powered by a modern cloud architecture designed for scalability, security, and performance. Key features:
-
-- **Global CDN:** CloudFront distribution for low-latency content delivery
-- **Secure by Default:** HTTPS-only with modern TLS policies
-- **Environment Separation:** Distinct production and staging environments
-- **Automated Deployments:** CI/CD pipeline via GitHub Actions
-- **Infrastructure as Code:** Terraform-managed AWS resources
-
-📑 [View complete infrastructure documentation](./INFRASTRUCTURE.md)
+3. Build for production:
+   ```bash
+   npm run build
+   ```
 
 ## Deployment
 
-### First-Time Setup
+The application is deployed using:
 
-1. Set up AWS credentials locally or in your CI/CD environment
-2. Configure your domain settings in `terraform/variables.tf`
-3. Initialize Terraform: `cd terraform && terraform init`
-4. Apply infrastructure: `terraform apply`
+- AWS S3 for static file hosting
+- CloudFront for CDN and caching
+- Route 53 for DNS management
 
-### AWS Setup
+## Best Practices
 
-To properly configure your AWS environment for this project:
+1. **Component Design**
+   - Keep components small and focused
+   - Use TypeScript for type safety
+   - Follow Vue 3 Composition API patterns
 
-1. **AWS Account**: Create an AWS account if you don't already have one
-2. **IAM User**: Create an IAM user with programmatic access and appropriate permissions:
-   - S3 full access
-   - CloudFront full access
-   - Route53 access (if using AWS for DNS)
-   - ACM (Certificate Manager) for SSL certificates
-3. **Access Keys**: Generate access keys for the IAM user and securely store them
-4. **GitHub Secrets**: Add your AWS credentials as secrets in your GitHub repository:
-   - `AWS_ACCESS_KEY_ID`
-   - `AWS_SECRET_ACCESS_KEY`
-   - `AWS_REGION`
+2. **Code Organization**
+   - Group related components together
+   - Use clear, descriptive names
+   - Document complex logic
 
-For detailed instructions on setting up GitHub Actions with these AWS credentials, refer to our comprehensive guide:
-[GitHub Actions AWS Setup Documentation](https://docs.github.com/en/actions/deployment/deploying-to-your-cloud-provider/deploying-to-amazon-elastic-container-service)
+3. **Performance**
+   - Lazy load components when possible
+   - Optimize images and assets
+   - Use proper caching strategies
 
-### Ongoing Deployments
+4. **Accessibility**
+   - Use semantic HTML
+   - Include proper ARIA attributes
+   - Ensure keyboard navigation
 
-Push to the appropriate branch:
-- `main` → Production (volcode.org)
-- `staging` → Staging (staging.volcode.org)
+## Contributing
 
-GitHub Actions will automatically build and deploy to the correct environment.
-
-## Performance Tips
-
-Volcode includes several performance optimizations:
-
-1. **Delayed Box Rendering**: Background elements load after critical content
-2. **Lazy-Loaded Modals**: Content-heavy modals only render when needed
-3. **Image Optimization**: All images use modern formats and proper sizing
-4. **CSS Containment**: Layout optimizations reduce paint operations
-5. **Will-Change Properties**: Smooth animations with GPU acceleration
-
-## Troubleshooting
-
-### Common Issues
-
-- **CSS Background Images Not Working**: Ensure paths use `@/assets/` format
-- **Form Submissions on Static Hosting**: Implement a serverless function endpoint
-- **SSL Certificate Issues**: Follow ACM validation steps in the infrastructure docs
-
-### Getting Help
-
-If you encounter issues, please [open an issue](https://github.com/your-username/volcode/issues) with:
-
-1. A clear description of the problem
-2. Steps to reproduce
-3. Expected behavior
-4. Environment details (browser, device, etc.)
-
-## License
-
-MIT
+1. Fork the repository
+2. Create a feature branch
+3. Mail me for the `.env` file (deveci2024@gmail.com)
+4. Commit your changes
+5. Push to the branch
+6. Create a Pull Request
