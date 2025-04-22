@@ -1,21 +1,11 @@
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <AppHeader
-      class="page-transition"
-      :class="{
-        'page-transition--on': isPageTransitionOff
-      }"
-    />
+    <AppHeader class="page-transition" />
     <NuxtLoadingIndicator />
     <div style="color: white; min-height: 500px">
       <NuxtLayout>
-        <NuxtPage
-          class="page-transition"
-          :class="{
-            'page-transition--on': isPageTransitionOff
-          }"
-        />
+        <NuxtPage />
       </NuxtLayout>
     </div>
     <AppFooter />
@@ -27,40 +17,45 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
+const isPageTransitionVisible = ref(false);
 
-const isPageTransitionOff = ref(true);
-
-onMounted(() => {
-  // First make sure all content is visible
-  document.documentElement.classList.add('content-visible');
-
-  // Force content to be visible after a delay, regardless of transition state
-  setTimeout(() => {
-    isPageTransitionOff.value = false;
-    document.documentElement.classList.add('transitions-ready');
-
-    // Try to re-trigger animations after a delay
-    setTimeout(() => {
-      const elements = document.querySelectorAll('.page-transition');
-      elements.forEach((el) => {
-        el.style.opacity = '0';
-        setTimeout(() => {
-          el.style.opacity = '1';
-        }, 50);
-      });
-    }, 500);
-  }, 200);
-});
-
+// Add navigation guard
 router.beforeEach((_to, _from, next) => {
-  isPageTransitionOff.value = true;
+  isPageTransitionVisible.value = false;
   next();
 });
+
 router.afterEach(() => {
-  setTimeout(() => {
-    isPageTransitionOff.value = false;
-  }, 200);
+  isPageTransitionVisible.value = true;
 });
+
+onMounted(() => {
+  setTimeout(() => {
+    isPageTransitionVisible.value = true;
+  }, 200);
+  // // First make sure all content is visible
+  // document.documentElement.classList.add('content-visible');
+  // // Force content to be visible after a delay, regardless of transition state
+  // setTimeout(() => {
+  //   isPageTransitionOff.value = false;
+  //   document.documentElement.classList.add('transitions-ready');
+  //   // Try to re-trigger animations after a delay
+  //   setTimeout(() => {
+  //     const elements = document.querySelectorAll('.page-transition');
+  //     elements.forEach((el) => {
+  //       el.style.opacity = '0 !important';
+  //       setTimeout(() => {
+  //         el.style.opacity = '1';
+  //       }, 50);
+  //     });
+  //   }, 500);
+  // }, 200);
+});
+// router.afterEach(() => {
+//   setTimeout(() => {
+//     isPageTransitionOff.value = false;
+//   }, 200);
+// });
 </script>
 
 <style lang="scss">
@@ -74,13 +69,14 @@ html.transitions-ready .page {
 
 .page-transition {
   position: relative;
-  transition: all 0.4s cubic-bezier(0.38, 0.98, 0.6, 0.9);
+  transition: all 0.8s cubic-bezier(0.38, 0.98, 0.6, 0.9);
   transition-delay: 0.1s;
-  opacity: 1; /* Ensure content is visible by default */
+  opacity: 0;
+  transform: translateX(0px);
 
-  &--on {
-    opacity: 0;
-    transform: translateY(10px);
+  &--finished {
+    opacity: 1;
+    transform: scale(1) translateX(40px);
   }
 }
 </style>

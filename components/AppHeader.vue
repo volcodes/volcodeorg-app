@@ -1,8 +1,34 @@
+<template>
+  <header id="header" :class="{ 'header--fixed': isHeaderFixed }">
+    <div class="container">
+      <NuxtLink id="logo" to="/">
+        <span>M</span>
+      </NuxtLink>
+      <button class="mobile-menu-btn">
+        <MdiIcon v-if="!isMobileMenuActive" icon="mdiMenu" @click="toggleMenu" />
+        <MdiIcon v-else icon="mdiCloseThick" @click="toggleMenu" />
+      </button>
+      <nav
+        id="nav"
+        :class="{
+          active: isMobileMenuActive
+        }"
+      >
+        <NuxtLink to="/" exact>Overview</NuxtLink>
+        <NuxtLink to="/experience" :class="{ 'router-link-active': route.path.startsWith('/experience') }">Experience</NuxtLink>
+        <NuxtLink to="/projects" :class="{ 'router-link-active': route.path.startsWith('/projects') }">Projects</NuxtLink>
+        <!-- <NuxtLink to="/blog">Blog</NuxtLink> -->
+        <NuxtLink to="/contact" exact>Contact</NuxtLink>
+        <!-- Add loading="lazy" and optimize rendering priority -->
+        <button class="btn" loading="lazy" @click="downloadFile">Download Resume</button>
+      </nav>
+    </div>
+  </header>
+</template>
+
 <script setup>
 import { useRoute } from 'vue-router';
 import { useScroll } from '~/composables/useScroll';
-// Remove direct import and use dynamic import for the PDF
-// import Resume from '~/assets/files/Mehmet_Deveci_Resume.pdf';
 
 const route = useRoute();
 const isMobileMenuActive = ref(false);
@@ -49,40 +75,12 @@ const downloadFile = () => {
 const triggerDownload = () => {
   const link = document.createElement('a');
   link.href = resumeUrl.value;
-  link.download = 'MehmetDeveciMehmet_Deveci_Resume.pdf';
+  link.download = 'Mehmet_Deveci_Resume_2025.pdf';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 };
 </script>
-
-<template>
-  <header id="header" :class="{ 'header--fixed': isHeaderFixed }">
-    <div class="container">
-      <NuxtLink id="logo" to="/">
-        <span>M</span>
-      </NuxtLink>
-      <button class="mobile-menu-btn">
-        <MdiIcon v-if="!isMobileMenuActive" icon="mdiMenu" @click="toggleMenu" />
-        <MdiIcon v-else icon="mdiCloseThick" @click="toggleMenu" />
-      </button>
-      <nav
-        id="nav"
-        :class="{
-          active: isMobileMenuActive
-        }"
-      >
-        <NuxtLink to="/" exact>Overview</NuxtLink>
-        <NuxtLink to="/experience" :class="{ 'router-link-active': route.path.startsWith('/experience') }">Experience</NuxtLink>
-        <NuxtLink to="/projects" :class="{ 'router-link-active': route.path.startsWith('/projects') }">Projects</NuxtLink>
-        <!-- <NuxtLink to="/blog">Blog</NuxtLink> -->
-        <NuxtLink to="/contact" exact>Contact</NuxtLink>
-        <!-- Add loading="lazy" and optimize rendering priority -->
-        <button class="btn" loading="lazy" @click="downloadFile">Download Resume</button>
-      </nav>
-    </div>
-  </header>
-</template>
 
 <style lang="scss">
 @use '@/assets/styles/colors' as colors;
@@ -179,16 +177,16 @@ const triggerDownload = () => {
   }
 }
 
-.page-transition#header {
+#header {
   opacity: 1;
-  transform: translateY(0);
   transition: all 0.2s cubic-bezier(0.38, 0.98, 0.6, 0.9);
 }
 
-.page-transition--on#header {
-  opacity: 0;
-  transform: translateY(-12px);
-}
+// .page-transition--visible {
+//   transform: translateY(-12px);
+//   opacity: 1;
+//   transition: all 0.2s cubic-bezier(0.38, 0.98, 0.6, 0.9);
+// }
 
 .mobile-menu-btn {
   display: none;

@@ -4,10 +4,10 @@
     <p v-if="currentCompany" class="container explanation">
       {{ currentCompany.hero }}
     </p>
+    <div v-if="currentCompanyIndex >= 0" class="go-back container">
+      <NuxtLink :to="`/experience?cI=${currentCompanyIndex ?? currentCompanyIndex + 1}`"><MdiIcon icon="mdiArrowLeft" /> Go Back</NuxtLink>
+    </div>
     <div v-if="currentCompany" id="timeline" class="container">
-      <div v-if="currentCompanyIndex >= 0" class="go-back">
-        <NuxtLink :to="`/experience?cI=${currentCompanyIndex ?? currentCompanyIndex + 1}`"><MdiIcon icon="mdiArrowLeft" /> Go Back</NuxtLink>
-      </div>
       <article v-for="(accomplishment, index) in currentCompany.accomplishments" :key="accomplishment.date" :class="{ right: index % 2 === 1 }">
         <span class="date-extended">{{ accomplishment.entity.team }}</span>
         <span class="date">{{ accomplishment.date }}</span>
@@ -27,8 +27,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, computed, onMounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 const pages = [
   { name: 'Overview', link: '/' },
@@ -46,6 +46,19 @@ useHead({
       content: route.params.experience === 'sdui' || route.params.experience === 'trt-world' || route.params.experience === 'homeday' ? 'noindex, nofollow' : 'index, follow'
     }
   ]
+});
+
+// Add navigation guard
+const router = useRouter();
+router.afterEach((query) => {
+  setTimeout(() => {
+    const cI = query.query.cI;
+    if (!cI) return;
+    const lastArticle = document.querySelector(`#timeline article:nth-child(${parseInt(cI as string) + 2})`);
+    if (lastArticle) {
+      lastArticle.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, 400);
 });
 
 const companies = ref([
@@ -545,6 +558,15 @@ const currentCompanyIndex = computed(() => {
 
   svg {
     margin-right: 0.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .go-back {
+    position: fixed !important;
+    top: 4px !important;
+    left: 0 !important;
+    padding: 0 !important;
   }
 }
 

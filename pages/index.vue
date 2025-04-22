@@ -81,12 +81,12 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use '~/assets/styles/colors' as colors;
 @use '~/assets/styles/vars';
 
 #secondary {
-  padding-top: 10rem;
+  padding-top: 0rem;
   background: url(/public/assets/imgs/Frame-2.svg) repeat-x center 350px;
   padding-bottom: 3rem;
   background-size: 100% auto;

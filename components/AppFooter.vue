@@ -1,11 +1,5 @@
 <template>
-  <div
-    id="technologies"
-    class="container page-transition"
-    :class="{
-      'page-transition--on': !isActive
-    }"
-  >
+  <div id="technologies" class="container">
     <div v-for="technology in technologiesRef" :key="technology.id">
       <MdiIcon :icon="technology.icon" />
       <span>{{ technology.text }}</span>

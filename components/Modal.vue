@@ -163,11 +163,11 @@ onUnmounted(() => {
     height: 1vh;
   }
   80% {
-    width: 100%;
+    width: 90%;
     height: 85vh;
   }
   100% {
-    width: 100%;
+    width: 90%;
     height: 85vh;
   }
 }
