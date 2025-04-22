@@ -111,8 +111,8 @@ export default defineNuxtConfig({
   },
   image: {
     quality: 80,
-    format: ['webp', 'jpg', 'png'],
-    dir: 'public/assets/imgs'
+    format: ['webp', 'jpg', 'png']
+    // dir: 'public/assets/imgs'
   },
   // Add render performance optimizations
   experimental: {
