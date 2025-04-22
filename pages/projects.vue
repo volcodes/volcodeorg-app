@@ -5,7 +5,7 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img src="public/assets/imgs/infastructure-planning.jpg" alt="Cloud Infrastructure Screenshot" />
+          <img src="assets/imgs/infastructure-planning.jpg" alt="Cloud Infrastructure Screenshot" />
           <!-- <NuxtImg src="assets/imgs/infastructure-planning.jpg" alt="Cloud Infrastructure Screenshot" class="project-image" width="485" height="1000" :modifiers="{ format: 'webp', quality: '80' }" style="max-width: 485px; width: 100%; height: auto" /> -->
         </figure>
         <div class="project-info">
