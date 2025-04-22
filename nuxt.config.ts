@@ -111,38 +111,7 @@ export default defineNuxtConfig({
   },
   image: {
     quality: 80,
-    format: ['webp', 'jpg'],
-    screens: {
-      xs: 320,
-      sm: 640,
-      md: 768,
-      lg: 1024,
-      xl: 1280,
-      xxl: 1536,
-      '2xl': 1536
-    },
-    presets: {
-      avatar: {
-        modifiers: {
-          format: 'webp',
-          quality: '80'
-        }
-      },
-      project: {
-        modifiers: {
-          format: 'webp',
-          quality: '80'
-        }
-      },
-      og: {
-        modifiers: {
-          format: 'webp',
-          quality: '80',
-          width: 1200,
-          height: 630
-        }
-      }
-    },
+    format: ['webp', 'jpg', 'png'],
     dir: 'public/assets/imgs'
   },
   // Add render performance optimizations

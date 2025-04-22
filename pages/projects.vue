@@ -2,10 +2,10 @@
   <div id="projects">
     <AppPageHeader :title="'Projects'" :pages="pages" />
     <p class="container explanation">My projects span infrastructure automation, web development, data tools, built to solve real problems and empower both developers and end-users alike.</p>
-    <div class="project">
+    <!-- <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img :src="infraScreenshot" alt="AWS Infrastructure as Code Screenshot" loading="lazy" class="project-image" width="700" height="1000" />
+          <NuxtImg src="~/public/assets/imgs/infra-screenshot.jpg" alt="AWS Infrastructure as Code Screenshot" loading="lazy" class="project-image" width="700" height="1000" :modifiers="{ format: 'webp', quality: '80' }" />
         </figure>
         <div class="project-info">
           <strong>FREE TIER</strong>
@@ -60,11 +60,56 @@
           </div>
         </div>
       </div>
+    </div> -->
+    <div class="project">
+      <div class="container">
+        <figure class="no-margin">
+          <img src="/assets/imgs/infra.jpg" alt="Cloud Infrastructure Screenshot" />
+        </figure>
+        <div class="project-info">
+          <!-- <strong>Anonymous Reporting Tool</strong> -->
+          <span>Architected a scalable, cost-effective AWS infrastructure (IaC)</span>
+          <p>Designed and implemented a cloud infrastructure with separate staging and production environments using Terraform. The solution features CI/CD pipelines with GitHub Actions for automated testing, building, and deployment.</p>
+          <div class="technologies">
+            <span>
+              <MdiIcon icon="mdiTerraform" />
+              <span>Terraform</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageTypescript" />
+              <span>Typescript</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiAws" />
+              <span>AWS</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiCloudOutline" />
+              <span>CloudFront</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageJavascript" />
+              <span>Javascript</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiGithub" />
+              <span>GitHub Actions</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiConsole" />
+              <span>SSH</span>
+            </span>
+          </div>
+          <div class="project-links">
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://betonsa.com.gh" class="cta">Live Site <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img :src="betonsaScreenshot" alt="Betonsa Screenshot" loading="lazy" class="project-image" width="485" height="1000" />
+          <NuxtImg src="/assets/imgs/betonsa-screenshot.jpg" alt="Betonsa Screenshot" loading="lazy" class="project-image" width="485" height="1000" :modifiers="{ format: 'webp', quality: '80' }" />
         </figure>
         <div class="project-info">
           <!-- <strong>Anonymous Reporting Tool</strong> -->
@@ -113,7 +158,7 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img :src="volcodeorgApp" alt="Mehmet Deveci Portfolio Webapp" loading="lazy" class="project-image" width="700" height="780" />
+          <NuxtImg src="/assets/imgs/volcodeorg-app.jpg" alt="Mehmet Deveci Portfolio Webapp" loading="lazy" class="project-image" width="700" height="780" :modifiers="{ format: 'webp', quality: '80' }" />
         </figure>
         <div class="project-info">
           <span>Developed a high-performance, modular portfolio template for devs.</span>
@@ -166,7 +211,7 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img :src="artScreenshot" alt="Anonymous Reporting Tool Screenshot" loading="lazy" class="project-image" width="480" height="567" />
+          <NuxtImg src="/assets/imgs/art-screenshot.jpg" alt="Anonymous Reporting Tool Screenshot" loading="lazy" class="project-image" width="480" height="567" :modifiers="{ format: 'webp', quality: '80' }" />
         </figure>
         <div class="project-info">
           <span>Engineered a secure, anonymous reporting tool for workplaces.</span>
@@ -203,7 +248,7 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img :src="localwebsitesApp" alt="Local Websites App Screenshot" loading="lazy" class="project-image" width="680" height="750" />
+          <NuxtImg src="/assets/imgs/localwebsites-app.jpg" alt="Local Websites App Screenshot" loading="lazy" class="project-image" width="680" height="750" :modifiers="{ format: 'webp', quality: '80' }" />
         </figure>
         <div class="project-info">
           <span>Developed a localized service finder for easy relocations.</span>
@@ -236,7 +281,7 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
-          <img :src="humanbodyApp" alt="Human Body Input Binder Screenshot" loading="lazy" class="project-image" width="515" height="750" />
+          <NuxtImg src="/assets/imgs/humanbody-app.jpg" alt="Human Body Input Binder Screenshot" loading="lazy" class="project-image" width="515" height="750" :modifiers="{ format: 'webp', quality: '80' }" />
         </figure>
         <div class="project-info">
           <!-- <strong>Human Body Input Binder</strong> -->
@@ -263,13 +308,6 @@
 </template>
 
 <script setup lang="ts">
-import infraScreenshot from 'public/assets/imgs/infra-screenshot.jpg';
-import betonsaScreenshot from 'public/assets/imgs/betonsa-screenshot.jpg';
-import volcodeorgApp from 'public/assets/imgs/volcodeorg-app.jpg';
-import artScreenshot from 'public/assets/imgs/art-screenshot.jpg';
-import localwebsitesApp from 'public/assets/imgs/localwebsites-app.jpg';
-import humanbodyApp from 'public/assets/imgs/humanbody-app.jpg';
-
 useHead({
   title: 'Projects - Mehmet Deveci',
   meta: [
