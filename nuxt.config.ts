@@ -73,7 +73,7 @@ export default defineNuxtConfig({
         },
         {
           property: 'og:image',
-          content: 'https://volcode.org/public/assets/imgs/og-image.jpg'
+          content: 'https://volcode.org/assets/imgs/og-image.jpg'
         },
         { name: 'msapplication-TileColor', content: '#ffffff' },
         { name: 'theme-color', content: '#ffffff' },

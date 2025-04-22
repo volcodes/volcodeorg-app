@@ -630,6 +630,7 @@ const currentCompanyIndex = computed(() => {
     position: fixed !important;
     top: -6px !important;
     left: 1rem !important;
+    width: 50%;
   }
 
   .go-back a {

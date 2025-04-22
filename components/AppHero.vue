@@ -188,7 +188,7 @@ const openVideoModal = () => {
         <button class="btn btn--filled sliding-text--button" @click="isModalOpen = true">Discover My Achievements</button>
         <button class="btn btn--video" @click="openVideoModal">
           <figure>
-            <img :src="ogImage" alt="Video Icon - Watch Mehmet Deveci's Introduction" loading="lazy" width="270" height="180" />
+            <img :src="ogImage" alt="Video Icon - Watch Mehmet Deveci's Introduction" loading="lazy" width="270" height="auto" style="display: block" />
           </figure>
           Watch My Introduction
         </button>
