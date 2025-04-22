@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   },
   router: {
     options: {
-      hashMode: true
+      hashMode: false
     }
   },
   compatibilityDate: '2024-11-01',
