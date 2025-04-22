@@ -143,10 +143,7 @@ export default defineNuxtConfig({
         }
       }
     },
-    provider: 'ipx',
-    ipx: {
-      maxAge: 60 * 60 * 24 * 7 // 7 days
-    }
+    dir: 'public/assets/imgs'
   },
   // Add render performance optimizations
   experimental: {

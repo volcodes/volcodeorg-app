@@ -1,13 +1,13 @@
 <script setup>
 import { ref, onMounted, computed, nextTick } from 'vue';
-import MatrixBackground from '~/components/MatrixBackground.vue';
+import ogImage from 'public/assets/imgs/og-image.jpg';
 
 // Import achievement images - add all your achievement images here
-import performanceBg from '~/assets/imgs/performance-bg.jpg';
-import dataBg from '~/assets/imgs/data-bg.jpg';
-import engagementBg from '~/assets/imgs/engagement-bg.jpg';
-import mentorshipBg from '~/assets/imgs/mentorship-bg.jpg';
-import collaborationBg from '~/assets/imgs/collaboration-bg.jpg';
+import performanceBg from 'public/assets/imgs/performance-bg.jpg';
+import dataBg from 'public/assets/imgs/data-bg.jpg';
+import engagementBg from 'public/assets/imgs/engagement-bg.jpg';
+import mentorshipBg from 'public/assets/imgs/mentorship-bg.jpg';
+import collaborationBg from 'public/assets/imgs/collaboration-bg.jpg';
 
 const isMobile = ref(false);
 const isBoxesRendered = ref(false);
@@ -23,11 +23,6 @@ const achievementImages = {
 
 // Helper function to get the correct image path
 const getImagePath = (imageName) => {
-  // In development mode, use the direct path
-  if (process.env.NODE_ENV === 'development') {
-    return `/assets/imgs/${imageName}`;
-  }
-  // In production mode, use the imported image
   return achievementImages[imageName];
 };
 
@@ -193,7 +188,7 @@ const openVideoModal = () => {
         <button class="btn btn--filled sliding-text--button" @click="isModalOpen = true">Discover My Achievements</button>
         <button class="btn btn--video" @click="openVideoModal">
           <figure>
-            <NuxtImg src="/assets/imgs/og-image.jpg" alt="Video Icon - Watch Mehmet Deveci's Introduction" loading="lazy" width="270" height="180" format="webp" quality="80" preset="og" sizes="sm:270px md:270px lg:270px" :modifiers="{ fit: 'cover' }" />
+            <img :src="ogImage" alt="Video Icon - Watch Mehmet Deveci's Introduction" loading="lazy" width="270" height="180" />
           </figure>
           Watch My Introduction
         </button>
@@ -223,7 +218,7 @@ const openVideoModal = () => {
 
           <template #content>
             <div class="hero-sentence">
-              <NuxtImg :src="getImagePath(selectedAchievement.image)" :alt="`${selectedAchievement.label} - ${selectedAchievement.hero}`" loading="lazy" width="800" height="400" format="jpg" quality="80" class="hero-sentence__bg" fit="cover" />
+              <img :src="getImagePath(selectedAchievement.image)" :alt="`${selectedAchievement.label} - ${selectedAchievement.hero}`" loading="lazy" width="800" height="400" class="hero-sentence__bg" />
               <p>{{ selectedAchievement.hero }}</p>
             </div>
             <ol>
@@ -370,8 +365,8 @@ const openVideoModal = () => {
 }
 
 .cta--lightBlue {
-  color: rgba(123, 199, 255, 0.2);
-  border-bottom: 2px solid rgba(123, 199, 255, 0.2);
+  color: colors.$cloudWhite;
+  border-color: colors.$cloudWhite;
 
   &:after {
     background-color: colors.$cta;
