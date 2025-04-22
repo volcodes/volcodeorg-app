@@ -33,7 +33,7 @@ resource "aws_s3_bucket_website_configuration" "site" {
   }
 
   error_document {
-    key = "index.html"  # Use index.html to properly handle SPA routes
+    key = "index.html"  # This ensures that all routes in your SPA are properly handled
   }
 }
 
@@ -94,12 +94,6 @@ resource "aws_cloudfront_distribution" "dist" {
     min_ttl                = 0
     default_ttl            = 3600  # 1 hour for default caching
     max_ttl                = 86400 # 24 hours max
-    
-    # Add default function association for SPA path handling
-    function_association {
-      event_type   = "viewer-request"
-      function_arn = aws_cloudfront_function.rewrite_request[each.key].arn
-    }
   }
   
   aliases = each.key == "volcode.org" ? ["www.volcode.org"] : ["staging.volcode.org"]
@@ -116,20 +110,18 @@ resource "aws_cloudfront_distribution" "dist" {
     }
   }
 
-  # Custom error responses - these are necessary for SPA routing
+  # Uncomment custom error responses - these are necessary for SPA routing
   custom_error_response {
     error_code         = 403
     response_code      = 200
     response_page_path = "/index.html"
-    error_caching_min_ttl = 0
   }
 
-  custom_error_response {
-    error_code         = 404
-    response_code      = 200
-    response_page_path = "/index.html"
-    error_caching_min_ttl = 0
-  }
+  # custom_error_response {
+  #   error_code         = 404
+  #   response_code      = 200
+  #   response_page_path = "/index.html"
+  # }
 
   tags = { Environment = each.key == "volcode.org" ? "prod" : "staging" }
 
@@ -263,75 +255,3 @@ resource "aws_cloudfront_distribution" "root_redirect" {
 
 # Get current region for S3 website endpoint
 data "aws_region" "current" {}
-
-# CloudFront function for SPA routing
-resource "aws_cloudfront_function" "rewrite_request" {
-  for_each = toset(var.domains)
-  name    = each.key == "volcode.org" ? "rewrite-request-volcode-prod" : "rewrite-request-volcode-staging"
-  runtime = "cloudfront-js-1.0"
-  comment = "Handle SPA routing for ${each.key}"
-  publish = true
-  code    = <<-EOT
-function handler(event) {
-  var request = event.request;
-  var uri = request.uri;
-  
-  // Check if the request is for a file with an extension
-  if (uri.match(/\.[a-zA-Z0-9]+$/)) {
-    // If it's a file request (including images), don't modify it
-    return request;
-  }
-  
-  // Handle main routes
-  if (uri === '/projects' || uri === '/projects/') {
-    request.uri = '/projects/index.html';
-    return request;
-  }
-  
-  if (uri === '/experience' || uri === '/experience/') {
-    request.uri = '/experience/index.html';
-    return request;
-  }
-  
-  if (uri === '/contact' || uri === '/contact/') {
-    request.uri = '/contact/index.html';
-    return request;
-  }
-  
-  // For root path
-  if (uri === '/') {
-    request.uri = '/index.html';
-    return request;
-  }
-  
-  // For any other path without extension, serve index.html
-  // This handles client-side routing and 404s
-  if (!uri.includes('.')) {
-    request.uri = '/index.html';
-    return request;
-  }
-  
-  return request;
-}
-EOT
-}
-
-# CloudFront invalidation after deployment
-resource "null_resource" "invalidate_cache" {
-  for_each = toset(var.domains)
-  
-  triggers = {
-    distribution_id = aws_cloudfront_distribution.dist[each.key].id
-    timestamp = timestamp()  # This ensures invalidation happens on every apply
-  }
-
-  provisioner "local-exec" {
-    command = <<-EOT
-      aws cloudfront create-invalidation \
-        --distribution-id ${aws_cloudfront_distribution.dist[each.key].id} \
-        --paths '/*' '/index.html' '/projects/*' '/experience/*' '/contact/*' '/assets/*'
-    EOT
-  }
-
-  depends_on = [aws_cloudfront_distribution.dist]
-}

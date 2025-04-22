@@ -1,5 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
+  nitro: {
+    static: true,
+    prerender: {
+      failOnError: false,
+      crawlLinks: true,
+      routes: ['/', '/experience', '/projects', '/contact']
+    },
+    compressPublicAssets: true,
+    minify: true
+  },
+  router: {
+    options: {
+      hashMode: true
+    }
+  },
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   modules: ['@nuxtjs/google-fonts', 'nuxt-mdi', '@nuxtjs/robots', '@nuxtjs/sitemap', '@nuxt/image', '@nuxt/test-utils/module'],
@@ -139,21 +155,5 @@ export default defineNuxtConfig({
     viewTransition: true,
     asyncContext: true
     // Remove unsupported option
-  },
-  // Add build optimization
-  nitro: {
-    prerender: {
-      failOnError: false,
-      crawlLinks: true,
-      routes: ['/', '/experience', '/projects', '/contact', '/404.html', '/error.html'],
-      ignore: [
-        // Ensure no redirects for main routes
-        '/projects',
-        '/experience',
-        '/contact'
-      ]
-    },
-    compressPublicAssets: true,
-    minify: true
   }
 });
