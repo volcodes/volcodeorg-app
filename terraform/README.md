@@ -16,8 +16,11 @@ This document outlines the cloud infrastructure architecture powering the [volco
 ## Setup Guide
 
 ### Prerequisites
-- AWS CLI configured with appropriate credentials
-- Terraform v1.0.0 or later
+- AWS CLI configured with appropriate credentials on your local machine.
+  - See [AWS CLI Installation Guide](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+  - See [AWS CLI Configuration Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+  - See [AWS Toolkit Extension for VS Code](https://aws.amazon.com/visualstudiocode/)
+- Terraform `v1.0.0` or later
 - AWS account with necessary permissions for:
   - S3
   - CloudFront
