@@ -1,5 +1,20 @@
 # Infrastructure Architecture - volcode.org
 
+## Overview
+
+This document outlines the cloud infrastructure architecture powering the [volcode.org](https://www.volcode.org) platform. The system is designed with a focus on scalability, security, and maintainable deployment processes.
+
+## Table of Contents
+
+- [Setup Guide](#setup-guide)
+  - [Prerequisites](#prerequisites)
+  - [Initial Setup](#initial-setup)
+  - [Environment Variables](#environment-variables)
+  - [Important Notes](#important-notes)
+- [Architecture Diagram](#architecture-diagram)
+- [Core Infrastructure Components](#core-infrastructure-components)
+- [CI/CD Pipeline](#ci/cd-pipeline)
+
 ## Setup Guide
 
 ### Prerequisites
