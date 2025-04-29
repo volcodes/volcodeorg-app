@@ -6,29 +6,7 @@ This document outlines the cloud infrastructure architecture powering the volcod
 
 ## Architecture Diagram
 
-```
-                          ┌───────────────┐
-                          │   DNS Provider│
-                          │  (Namecheap)  │
-                          └───────┬───────┘
-                                  │
-                                  │ CNAME Records
-                                  ▼
-┌─────────────────┐      ┌───────────────┐     ┌────────────────┐
-│ ACM Certificate │◄─────│   CloudFront  │────►│ S3 Bucket      │
-│ (SSL/TLS)       │      │ Distribution  │     │ (Static Files) │
-└─────────────────┘      └───────────────┘     └────────────────┘
-                                  ▲
-                                  │
-                                  │
-                   ┌──────────────┴──────────────┐
-                   │                             │
-           ┌───────────────┐             ┌───────────────┐
-           │  volcode.org  │             │staging.volcode│
-           │ www.volcode.org│             │    .org      │
-           └───────────────┘             └───────────────┘
-               Production                     Staging
-```
+<img src="https://www.mermaidchart.com/raw/c92150a0-4cb3-4701-a571-41ad750491e8?theme=light&version=v0.1&format=svg" />
 
 Here is the diagram of the infrastructure: https://excalidraw.com/#json=RpZ0T5JNBBtsP6Rrcn749,Lo8DQ0k6rPyy76kN0QHHUg
 
