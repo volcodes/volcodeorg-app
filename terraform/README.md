@@ -26,6 +26,7 @@ This document outlines the cloud infrastructure architecture powering the [volco
   - CloudFront
   - ACM (Certificate Manager)
   - IAM
+You can reach out to me on [LinkedIn](https://www.linkedin.com/in/deveci96/) if you need help setting up your AWS CLI or permissions. I can provide a list of permissions that you can use to setup your AWS CLI.
 
 ### Initial Setup
 1. Clone the repository:
@@ -204,7 +205,7 @@ Planned infrastructure improvements:
 
 ## Technologies Used
 
-- **AWS Services:** CloudFront, S3, ACM, Route 53 (optional)
+- **AWS Services:** CloudFront, S3, ACM
 - **CI/CD:** GitHub Actions
 - **Frontend:** Nuxt.js, Vue.js
 - **Build Tools:** Vite, Webpack
