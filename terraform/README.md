@@ -2,13 +2,11 @@
 
 ## Overview
 
-This document outlines the cloud infrastructure architecture powering the volcode.org platform. The system is designed with a focus on scalability, security, and maintainable deployment processes.
+This document outlines the cloud infrastructure architecture powering the [volcode.org](https://www.volcode.org) platform. The system is designed with a focus on scalability, security, and maintainable deployment processes.
 
 ## Architecture Diagram
 
-<img src="https://www.mermaidchart.com/raw/c92150a0-4cb3-4701-a571-41ad750491e8?theme=light&version=v0.1&format=svg" />
-
-Here is the diagram of the infrastructure: https://excalidraw.com/#json=RpZ0T5JNBBtsP6Rrcn749,Lo8DQ0k6rPyy76kN0QHHUg
+<img src="https://www.mermaidchart.com/raw/c92150a0-4cb3-4701-a571-41ad750491e8?theme=light&version=v0.1&format=svg" width="80%" />
 
 ## Core Infrastructure Components
 
@@ -85,8 +83,8 @@ jobs:
 ```
 
 - **Environment Detection:**
-  - Production: Triggered by main branch
-  - Staging: Triggered by staging branch
+  - Production: Triggered by `main` branch
+  - Staging: Triggered by `staging` branch
 - **Build Process:**
   - Environment-specific configurations
   - Optimized assets
