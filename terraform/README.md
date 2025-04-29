@@ -1,5 +1,50 @@
 # Infrastructure Architecture - volcode.org
 
+## Setup Guide
+
+### Prerequisites
+- AWS CLI configured with appropriate credentials
+- Terraform v1.0.0 or later
+- AWS account with necessary permissions for:
+  - S3
+  - CloudFront
+  - ACM (Certificate Manager)
+  - IAM
+
+### Initial Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-org/volcodeorg-app.git
+   cd volcodeorg-app/terraform
+   ```
+
+2. Initialize Terraform:
+   ```bash
+   terraform init
+   ```
+
+3. Create a workspace (optional, defaults to 'default'):
+   ```bash
+   terraform workspace new staging  # For staging environment
+   terraform workspace new prod     # For production environment
+   ```
+
+4. Review and apply the configuration:
+   ```bash
+   terraform plan
+   terraform apply
+   ```
+
+### Environment Variables
+The following variables are used in the configuration:
+- `domains`: List of domains to be configured (default: ["volcode.org", "staging.volcode.org"])
+
+### Important Notes
+- The infrastructure uses AWS ACM for SSL certificates, which requires DNS validation
+- CloudFront distributions are created in us-east-1 region
+- S3 buckets are created in your default region
+- Root domain (volcode.org) automatically redirects to www.volcode.org
+
 ## Overview
 
 This document outlines the cloud infrastructure architecture powering the [volcode.org](https://www.volcode.org) platform. The system is designed with a focus on scalability, security, and maintainable deployment processes.
