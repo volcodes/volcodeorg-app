@@ -4,8 +4,6 @@
 
 This document outlines the cloud infrastructure architecture powering the [volcode.org](https://www.volcode.org) platform. The system is designed with a focus on scalability, security, and maintainable deployment processes.
 
-## Table of Contents
-
 - [Setup Guide](#setup-guide)
   - [Prerequisites](#prerequisites)
   - [Initial Setup](#initial-setup)
@@ -55,14 +53,10 @@ The following variables are used in the configuration:
 - `domains`: List of domains to be configured (default: ["volcode.org", "staging.volcode.org"])
 
 ### Important Notes
-- The infrastructure uses AWS ACM for SSL certificates, which requires DNS validation
-- CloudFront distributions are created in us-east-1 region
-- S3 buckets are created in your default region
-- Root domain (volcode.org) automatically redirects to www.volcode.org
-
-## Overview
-
-This document outlines the cloud infrastructure architecture powering the [volcode.org](https://www.volcode.org) platform. The system is designed with a focus on scalability, security, and maintainable deployment processes.
+- The infrastructure uses AWS ACM for SSL certificates, which requires DNS validation.
+- CloudFront distributions are created in us-east-1 region as required by AWS Certificate Manager for SSL certificate validation.
+- S3 buckets are created in your default region.  
+- Root domain (volcode.org) automatically redirects to `www.volcode.org`.
 
 ## Architecture Diagram
 
@@ -72,24 +66,33 @@ This document outlines the cloud infrastructure architecture powering the [volco
 
 ### Content Delivery Network (CDN)
 
-**Amazon CloudFront** is used as the CDN to deliver content with low latency across global edge locations:
+**Amazon CloudFront** is used as the CDN to deliver content with low latency across global edge locations.
 
-- **Configuration Highlights:**
-  - Custom security policy (TLSv1.2_2021)
-  - HTTP/2 and HTTP/3 support
-  - Default root object: index.html
-  - Custom origins for staging and production environments
+<details>
+<summary><strong>Configuration Highlights</strong></summary>
+
+- Custom security policy (TLSv1.2_2021)
+- HTTP/2 and HTTP/3 support
+- Default root object: index.html
+- Custom origins for staging and production environments
+
+</details>
 
 ### SSL/TLS Security
 
-**AWS Certificate Manager (ACM)** provides SSL/TLS certificates:
+**AWS Certificate Manager (ACM)** provides SSL/TLS certificates.
 
-- Single certificate covering multiple domains:
-  - volcode.org
-  - www.volcode.org
-  - staging.volcode.org
-- DNS validation method
-- Automatic renewal
+<details>
+<summary><strong>Configuration Highlights</strong></summary>
+
+  - Single certificate covering multiple domains:
+    - volcode.org
+    - www.volcode.org
+    - staging.volcode.org
+  - DNS validation method
+  - Automatic renewal
+
+</details>
 
 ### Domain Management
 
@@ -106,11 +109,16 @@ External DNS provider (Namecheap) with the following configuration:
 
 ### Content Storage
 
-**Amazon S3** for static content hosting:
+**Amazon S3** for static content hosting.
+
+<details>
+<summary><strong>Configuration Highlights</strong></summary>
 
 - Private buckets with CloudFront Origin Access Identity (OAI)
 - Versioned objects for rollback capability
 - Structured content organization
+
+</details>
 
 ## CI/CD Pipeline
 
