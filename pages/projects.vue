@@ -45,7 +45,7 @@
           <div class="project-links">
             <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcodes/volcodeorg-app/tree/main/terraform" class="cta">Source Code <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
             <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcodes/volcodeorg-app/actions/runs/14526061723/job/40757705681" class="cta">Pipeline <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
-            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://excalidraw.com/#json=6_uYRWfEV1gS90dYX-Ok_,ckFu8EiOcsswRSr_Cs_gWA" class="cta">Diagram <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
+            <NuxtLink rel="noopener noreferrer" target="_blank" to="https://github.com/volcodes/volcodeorg-app/tree/main/terraform#architecture-diagram" class="cta">Diagram <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
           </div>
         </div>
       </div>
