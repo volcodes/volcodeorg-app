@@ -1,5 +1,74 @@
+<template>
+  <div>
+    <MatrixBackground v-if="isBoxesRendered" />
+    <div id="hero" class="container">
+      <span>I'm Mehmet;</span>
+      <h1>Software Development Specialist</h1>
+      <p>Frontend-focused, 10+ years in web, experienced in backend and full stack work.</p>
+      <p>I design, build, and optimize digital interfaces, apps, and infrastructures.</p>
+      <section id="ctaButtons">
+        <button class="btn btn--filled sliding-text--button" @click="isModalOpen = true">Discover My Achievements</button>
+        <button class="btn btn--video" @click="openVideoModal">
+          <figure>
+            <img :src="ogImage" alt="Video Icon - Watch Mehmet Deveci's Introduction" loading="lazy" width="270" height="auto" style="display: block" />
+          </figure>
+          Watch My Introduction
+        </button>
+      </section>
+      <div class="scroll-indicator">
+        <div class="scroll-indicator__icon"></div>
+        <span>Scroll down to see more</span>
+      </div>
+
+      <Teleport to="body">
+        <Modal :is-open="isModalOpen" :is-animating="isModalAnimationVisible" :has-sidebar="true" sidebar-title="Key Achievements" @close="closeModal">
+          <template #sidebar>
+            <div v-if="isMobile" class="select-wrapper">
+              <select v-model="selectedAchievementIndex" @change="handleAchievementChange(selectedAchievementIndex)">
+                <option v-for="(item, index) in achievements" :key="index" :value="index">
+                  {{ item.label }}
+                </option>
+              </select>
+              <div class="select-arrow"></div>
+            </div>
+            <div v-else class="flex-column">
+              <button v-for="(item, index) in achievements" :key="index" class="modal-button" :class="{ active: selectedAchievementIndex === index }" @click="handleAchievementChange(index)">
+                {{ item.label }}
+              </button>
+            </div>
+          </template>
+
+          <template #content>
+            <div class="hero-sentence">
+              <img :src="getImagePath(selectedAchievement.image)" :alt="`${selectedAchievement.label} - ${selectedAchievement.hero}`" loading="lazy" width="800" height="400" class="hero-sentence__bg" />
+              <p>{{ selectedAchievement.hero }}</p>
+            </div>
+            <ol>
+              <li v-for="(ach, index) in selectedAchievement.accomplishments" :key="index" v-html="ach.entity"></li>
+            </ol>
+            <a v-if="hasNextAchievement" rel="nofollow" class="cta cta--lightBlue cta-custom" @click="handleAchievementChange(selectedAchievementIndex + 1)">
+              Explore {{ nextAchievementLabel }} Accomplishments
+              <MdiIcon icon="mdiArrowTopRight" />
+            </a>
+            <nuxt-link v-else to="/experience/" class="cta cta-custom">
+              Explore my full experience (tech stack, tools, etc.)
+              <MdiIcon icon="mdiArrowTopRight" />
+            </nuxt-link>
+          </template>
+        </Modal>
+
+        <!-- Lazy-loaded video modal -->
+        <Modal v-if="isVideoRequested" :is-open="isVideoModalOpen" :is-animating="false" :has-sidebar="false" @close="closeVideoModal">
+          <template #content>
+            <iframe src="https://www.youtube.com/embed/1fAYdOZw4EQ?cc_load_policy=1" frameborder="0" width="100%" height="100%" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </template>
+        </Modal>
+      </Teleport>
+    </div>
+  </div>
+</template>
+
 <script setup>
-import { ref, onMounted, computed, nextTick } from 'vue';
 import ogImage from 'public/assets/imgs/og-image.jpg';
 
 // Import achievement images - add all your achievement images here
@@ -11,6 +80,7 @@ import collaborationBg from 'public/assets/imgs/collaboration-bg.jpg';
 
 const isMobile = ref(false);
 const isBoxesRendered = ref(false);
+const route = useRoute();
 
 // Create a mapping object for images
 const achievementImages = {
@@ -39,6 +109,11 @@ onMounted(() => {
     }, 250);
   });
 
+  if (route.query.my_achievements) {
+    setTimeout(() => {
+      isModalOpen.value = true;
+    }, 150);
+  }
   // Render boxes with delay after critical content
   setTimeout(() => {
     isBoxesRendered.value = true;
@@ -175,76 +250,6 @@ const openVideoModal = () => {
   });
 };
 </script>
-
-<template>
-  <div>
-    <MatrixBackground v-if="isBoxesRendered" />
-    <div id="hero" class="container">
-      <span>I'm Mehmet;</span>
-      <h1>Software Development Specialist</h1>
-      <p>Frontend-focused, 10+ years in web, experienced in backend and full stack work.</p>
-      <p>I design, build, and optimize digital interfaces, apps, and infrastructures.</p>
-      <section id="ctaButtons">
-        <button class="btn btn--filled sliding-text--button" @click="isModalOpen = true">Discover My Achievements</button>
-        <button class="btn btn--video" @click="openVideoModal">
-          <figure>
-            <img :src="ogImage" alt="Video Icon - Watch Mehmet Deveci's Introduction" loading="lazy" width="270" height="auto" style="display: block" />
-          </figure>
-          Watch My Introduction
-        </button>
-      </section>
-      <div class="scroll-indicator">
-        <div class="scroll-indicator__icon"></div>
-        <span>Scroll down to see more</span>
-      </div>
-
-      <Teleport to="body">
-        <Modal :is-open="isModalOpen" :is-animating="isModalAnimationVisible" :has-sidebar="true" sidebar-title="Key Achievements" @close="closeModal">
-          <template #sidebar>
-            <div v-if="isMobile" class="select-wrapper">
-              <select v-model="selectedAchievementIndex" @change="handleAchievementChange(selectedAchievementIndex)">
-                <option v-for="(item, index) in achievements" :key="index" :value="index">
-                  {{ item.label }}
-                </option>
-              </select>
-              <div class="select-arrow"></div>
-            </div>
-            <div v-else class="flex-column">
-              <button v-for="(item, index) in achievements" :key="index" class="modal-button" :class="{ active: selectedAchievementIndex === index }" @click="handleAchievementChange(index)">
-                {{ item.label }}
-              </button>
-            </div>
-          </template>
-
-          <template #content>
-            <div class="hero-sentence">
-              <img :src="getImagePath(selectedAchievement.image)" :alt="`${selectedAchievement.label} - ${selectedAchievement.hero}`" loading="lazy" width="800" height="400" class="hero-sentence__bg" />
-              <p>{{ selectedAchievement.hero }}</p>
-            </div>
-            <ol>
-              <li v-for="(ach, index) in selectedAchievement.accomplishments" :key="index" v-html="ach.entity"></li>
-            </ol>
-            <a v-if="hasNextAchievement" rel="nofollow" class="cta cta--lightBlue cta-custom" @click="handleAchievementChange(selectedAchievementIndex + 1)">
-              Explore {{ nextAchievementLabel }} Accomplishments
-              <MdiIcon icon="mdiArrowTopRight" />
-            </a>
-            <nuxt-link v-else to="/experience/" class="cta cta-custom">
-              Explore my full experience (tech stack, tools, etc.)
-              <MdiIcon icon="mdiArrowTopRight" />
-            </nuxt-link>
-          </template>
-        </Modal>
-
-        <!-- Lazy-loaded video modal -->
-        <Modal v-if="isVideoRequested" :is-open="isVideoModalOpen" :is-animating="false" :has-sidebar="false" @close="closeVideoModal">
-          <template #content>
-            <iframe src="https://www.youtube.com/embed/1fAYdOZw4EQ?cc_load_policy=1" frameborder="0" width="100%" height="100%" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </template>
-        </Modal>
-      </Teleport>
-    </div>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 @use '@/assets/styles/colors' as colors;
