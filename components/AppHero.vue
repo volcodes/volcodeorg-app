@@ -175,7 +175,7 @@ const achievements = ref([
     image: 'engagement-bg.jpg',
     accomplishments: [
       {
-        entity: '<b>Conceptualized and delivered video conferencing features</b> in React/Electrong app at <a rel="nofollow noopener noreferrer" target="_blank" href="https://sdui.com/">Sdui</a>, <u><b>enabling 200+ school admins to schedule and launch virtual meetings.</b></u>'
+        entity: '<b>Conceptualized and delivered video conferencing features</b> in React/Electron app at <a rel="nofollow noopener noreferrer" target="_blank" href="https://sdui.com/">Sdui</a>, <u><b>enabling 200+ school admins to schedule and launch virtual meetings.</b></u>'
       },
       {
         entity: '<b>Designed a drag-and-drop feature</b> with Vue.js at <a rel="nofollow noopener noreferrer" target="_blank" href="https://trtworld.com/">TRT World</a>, improved UX, <u><b>cutting content creation time by 30% for 200+ editorial staff</b>.</u>'
