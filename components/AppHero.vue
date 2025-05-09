@@ -131,19 +131,19 @@ const achievements = ref([
     accomplishments: [
       {
         entity:
-          '<b>Built a high-performance landing page</b> with Vue.js for 2019 Local Elections at <a rel="nofollow noopener noreferrer" target="_blank" href="https://web.archive.org/web/20190421194033/http://secim2019.trthaber.com/">TRT World</a>, <u><b>delivering real-time results in 1300ms.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://web.archive.org/web/20190421194033/http://secim2019.trthaber.com/">*</a>'
+          '<b>Successfully delivered election result landing pages</b> with Vue.js in 2018 & 2019 at <a rel="nofollow noopener noreferrer" target="_blank" href="https://web.archive.org/web/20190421194033/http://secim2019.trthaber.com/">TRT World</a>, for over <u><b>3M+ monthly visitors.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://web.archive.org/web/20190421194033/http://secim2019.trthaber.com/">*</a>'
       },
       {
         entity:
-          '<b>Migrated components and pages</b> from PHP to Vue.js at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>improved page speeds up to 30%.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">*</a>'
+          '<b>Integrated i18n</b> in React/Next.js app at <a rel="nofollow noopener noreferrer" target="_blank" href="https://aimanager360.com/">AIManager360</a>, <u><b>expanded market reach by 25%.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://aimanager360.com/">*</a>'
       },
       {
         entity:
-          '<b>Built an embedded SVG-based map</b> with Vue.js for Turkey\'s 2018 General Elections at <a rel="nofollow noopener noreferrer" target="_blank" href="https://trtworld.com/">TRT World</a>, <u><b>handling 75k+ concurrent users with 100% uptime</b></u>.<a rel="nofollow noopener noreferrer" target="_blank" href="https://www.trt.global/world">*</a>'
+          '<b>Built dynamic election result maps</b> with Vue.js at <a rel="nofollow noopener noreferrer" target="_blank" href="https://trtworld.com/">TRT World</a>, <u><b>used by 75k+ concurrent users across 50+ online platforms</b></u>.<a rel="nofollow noopener noreferrer" target="_blank" href="https://www.trt.global/world">*</a>'
       },
       {
         entity:
-          '<b>Implemented new user flows</b> in <a rel="nofollow noopener noreferrer" target="_blank" href="https://my.homeday.de">Homeday\'s CMS</a> with Vue.js, ensuring users to be qualified, <u><b>reducing costs for all parties</b>.<a rel="nofollow noopener noreferrer" target="_blank" href="https://my.homeday.de">*</a></u>'
+          '<b>Integrated Grafana and InfluxDB</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://my.homeday.de">Homeday</a> to monitor web performance and strengthen observability.<a rel="nofollow noopener noreferrer" target="_blank" href="https://my.homeday.de">*</a>'
       }
     ]
   },
@@ -153,13 +153,19 @@ const achievements = ref([
     image: 'data-bg.jpg',
     accomplishments: [
       {
-        entity: '<b>Developed frontend infrastructure</b> with AWS and GitHub Actions at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>reducing costs by 15% and streamlining deployments</b></u>.'
+        entity: '<b>Developed frontend infrastructure</b> with AWS/GitHub Actions at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>trimming costs by 15%</b></u>.'
+      },
+      {
+        entity: '<b>Automated local environment</b> through Docker at <a rel="nofollow noopener noreferrer" target="_blank" href="https://aimanager360.com/">AIManager360</a>, <u><b>cutting dev onboarding by 50%</b></u>.'
       },
       {
         entity: '<b>Built Infrastructure as Code</b> with Terraform & AWS, <u><b>publishing static apps for no costs.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://github.com/volcodes/volcodeorg-app/tree/main/terraform">*</a>'
       },
       {
-        entity: '<b>Optimized CI/CD pipelines</b>, with Testing Library at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>reducing deployment loading times at least 20%</b></u>.'
+        entity: '<b>Conceptualized and integrated CI services</b> with Node.js for CI/CD, asset management, and image optimization.'
+      },
+      {
+        entity: '<b>Automated local environment with Docker</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://aimanager360.com/">AIManager360</a>, <u><b>cutting dev onboarding by 50%</b></u>.'
       }
     ]
   },
@@ -169,14 +175,16 @@ const achievements = ref([
     image: 'engagement-bg.jpg',
     accomplishments: [
       {
-        entity: '<b>Enhanced the event management system</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://sdui.de/">Sdui</a>, <u><b>increasing user interaction at least 20%</b></u> via better calendar & scheduling features.'
+        entity: '<b>Conceptualized and delivered video conferencing features</b> in React/Electrong app at <a rel="nofollow noopener noreferrer" target="_blank" href="https://sdui.com/">Sdui</a>, <u><b>enabling 200+ school admins to schedule and launch virtual meetings.</b></u>'
       },
       {
-        entity:
-          '<b>Built an asset management app from scratch</b>, effectively using Node.js, and Vue.js at <a rel="nofollow noopener noreferrer" target="_blank" href="https://trtworld.com/">TRT World</a>, <u><b> reducing search times at least 50% and boosting editor efficiency.</b></u>'
+        entity: '<b>Designed a drag-and-drop feature</b> with Vue.js at <a rel="nofollow noopener noreferrer" target="_blank" href="https://trtworld.com/">TRT World</a>, improved UX, <u><b>cutting content creation time by 30% for 200+ editorial staff</b>.</u>'
       },
       {
-        entity: '<b>Conceptualized and implemented video conference features</b> for a chat app at <a rel="nofollow noopener noreferrer" target="_blank" href="https://sdui.com/">Sdui</a>, <u><b>allowing school teachers to set video calls.</b></u>'
+        entity: '<b>Revamped event listing/editing features</b> using Vue/Vuex at <a rel="nofollow noopener noreferrer" target="_blank" href="https://sdui.de/">Sdui</a>, <u><b>driving user engagement by 20%</b></u>.'
+      },
+      {
+        entity: '<b>Implemented debounce, search algorithms</b>, using Vue/Vuex at <a rel="nofollow noopener noreferrer" target="_blank" href="https://trt.global/">TRT World</a>, <u><b>accelerated workflows by 50%</b></u>.'
       }
     ]
   },
@@ -189,7 +197,10 @@ const achievements = ref([
         entity: '<b>Guided junior devs at Homeday & Sdui</b>, leading to <u><b>two promotions in rapid time</b></u> through mentorship, pair programming sessions & code reviews.'
       },
       {
-        entity: '<b>Created step-by-step migration guide for Vue 2 → Vue 3</b>, streamlining the process & <u><b>boosting developer productivity at Sdui</b></u>.'
+        entity: '<b>Led presentations on frontend topics</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de/">Homeday</a>, contributing to team knowledge and fostering knowledge sharing.'
+      },
+      {
+        entity: '<b>Launched structured mentorship programs</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de/">Homeday</a>, empowering career switchers through 1v1 sessions.'
       }
     ]
   },
@@ -199,10 +210,14 @@ const achievements = ref([
     image: 'collaboration-bg.jpg',
     accomplishments: [
       {
-        entity: '<b>Optimized test cases, reduced redundancies</b> of the Design System at Homeday, <u><b>reduced development build times.</b></u>'
+        entity: '<b>Enhanced design systems with Storybook</b> at Homeday, minimizing bugs and <u><b>increasing test coverage to 74%</b></u>.'
       },
       {
-        entity: '<b>Implemented integration tests</b> and reduced legacy unit and E2E tests at <a href="#Homeday">Homeday</a>, <u><b>accelerated build times.</b></u>'
+        entity:
+          '<b>Migrated 20+ layouts</b> from PHP to Vue.js at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>improved page speeds by 20%.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">*</a>'
+      },
+      {
+        entity: '<b>Applied snapshot, E2E, unit and integration tests</b> when appropriate in six different codebases at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a></u>.'
       },
       {
         entity: '<b>Moderated design system, D&I, and engineering workshops</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>improving collaboration and design quality.</b></u>'
