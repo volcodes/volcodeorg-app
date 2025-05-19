@@ -162,10 +162,7 @@ const achievements = ref([
         entity: '<b>Built Infrastructure as Code</b> with Terraform & AWS, <u><b>publishing static apps for no costs.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://github.com/volcodes/volcodeorg-app/tree/main/terraform">*</a>'
       },
       {
-        entity: '<b>Conceptualized and integrated CI services</b> with Node.js for CI/CD, asset management, and image optimization.'
-      },
-      {
-        entity: '<b>Automated local environment with Docker</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://aimanager360.com/">AIManager360</a>, <u><b>cutting dev onboarding by 50%</b></u>.'
+        entity: '<b>Conceptualized and integrated CI services</b> utilized Node.js on asset management, and image optimization for improved bundling.'
       }
     ]
   },
