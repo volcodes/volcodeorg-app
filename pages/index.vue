@@ -27,23 +27,23 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'Mehmet Deveci - Software Development Specialist',
+  title: 'Mehmet Deveci - Software Engineer',
   meta: [
     {
       name: 'description',
-      content: 'Software Development Specialist with 10+ years of experience in frontend development, specializing in Vue.js, Javascript, and modern web technologies.'
+      content: 'Software Engineer with 10+ years of experience in frontend development, specializing in Vue.js, Javascript, and modern web technologies.'
     },
     {
       name: 'keywords',
-      content: 'Software Development Specialist, Frontend Developer, Vue.js, Web Development, JavaScript, TypeScript'
+      content: 'Software Engineer, Software Development Specialist, Frontend Developer, Vue.js, Web Development, JavaScript, TypeScript'
     },
     {
       property: 'og:title',
-      content: 'Mehmet Deveci - Software Development Specialist'
+      content: 'Mehmet Deveci - Software Engineer'
     },
     {
       property: 'og:description',
-      content: 'Software Development Specialist with 10+ years of experience in frontend development, specializing in Vue.js, Javascript, and modern web technologies.'
+      content: 'Software Engineer with 10+ years of experience in frontend development, specializing in Vue.js, Javascript, and modern web technologies.'
     },
     {
       property: 'og:type',
