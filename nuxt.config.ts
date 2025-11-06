@@ -63,13 +63,13 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Mehmet Deveci - Software Development Specialist',
+      title: 'Mehmet Deveci - Software Engineer',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'description',
-          content: 'Software Development Specialist with 10+ years of experience in frontend development, specializing in Vue.js, Javascript, and modern web technologies.'
+          content: 'Software Engineer with 10+ years of experience in frontend development, specializing in Vue.js, Javascript, and modern web technologies.'
         },
         {
           property: 'og:image',

@@ -3,7 +3,7 @@
     <MatrixBackground v-if="isBoxesRendered" />
     <div id="hero" class="container">
       <span>I'm Mehmet;</span>
-      <h1>Software Development Specialist</h1>
+      <h1>Software Engineer</h1>
       <p>Frontend-focused, 10+ years in web, experienced in backend and full stack work.</p>
       <p>I design, build, and optimize digital interfaces, apps, and infrastructures.</p>
       <section id="ctaButtons">

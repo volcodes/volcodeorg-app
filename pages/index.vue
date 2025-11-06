@@ -35,7 +35,7 @@ useHead({
     },
     {
       name: 'keywords',
-      content: 'Software Engineer, Software Development Specialist, Frontend Developer, Vue.js, Web Development, JavaScript, TypeScript'
+      content: 'Software Engineer, Software Engineer, Frontend Developer, Vue.js, Web Development, JavaScript, TypeScript'
     },
     {
       property: 'og:title',

@@ -53,11 +53,11 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Get in touch with me, a Software Development Specialist, for collaboration opportunities, project inquiries, or professional networking.'
+      content: 'Get in touch with me, a Software Engineer, for collaboration opportunities, project inquiries, or professional networking.'
     },
     {
       name: 'keywords',
-      content: 'Contact Software Development Specialist, Frontend Developer, Collaboration, Project Inquiries'
+      content: 'Contact Software Engineer, Frontend Developer, Collaboration, Project Inquiries'
     },
     {
       property: 'og:title',
@@ -65,7 +65,7 @@ useHead({
     },
     {
       property: 'og:description',
-      content: 'Get in touch with me, a Software Development Specialist, for collaboration opportunities, project inquiries, or professional networking.'
+      content: 'Get in touch with me, a Software Engineer, for collaboration opportunities, project inquiries, or professional networking.'
     },
     {
       property: 'og:type',

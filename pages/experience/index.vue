@@ -378,11 +378,11 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Explore my professional journey as a Software Development Specialist, including roles at leading tech companies and contributions to various industries.'
+      content: 'Explore my professional journey as a Software Engineer, including roles at leading tech companies and contributions to various industries.'
     },
     {
       name: 'keywords',
-      content: 'Software Development Specialist, Frontend Developer Experience, Professional Journey, Tech Career'
+      content: 'Software Engineer, Frontend Developer Experience, Professional Journey, Tech Career'
     },
     {
       property: 'og:title',
@@ -390,7 +390,7 @@ useHead({
     },
     {
       property: 'og:description',
-      content: 'Explore my professional journey as a Software Development Specialist, including roles at leading tech companies and contributions to various industries.'
+      content: 'Explore my professional journey as a Software Engineer, including roles at leading tech companies and contributions to various industries.'
     },
     {
       property: 'og:type',

@@ -262,11 +262,11 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Explore my portfolio of frontend development projects as a Software Development Specialist, including open-source contributions and professional work.'
+      content: 'Explore my portfolio of frontend development projects as a Software Engineer, including open-source contributions and professional work.'
     },
     {
       name: 'keywords',
-      content: 'Software Development Specialist, Frontend Projects, Portfolio, Open Source, Vue.js Projects'
+      content: 'Software Engineer, Frontend Projects, Portfolio, Open Source, Vue.js Projects'
     },
     {
       property: 'og:title',
@@ -274,7 +274,7 @@ useHead({
     },
     {
       property: 'og:description',
-      content: 'Explore my portfolio of frontend development projects as a Software Development Specialist, including open-source contributions and professional work.'
+      content: 'Explore my portfolio of frontend development projects as a Software Engineer, including open-source contributions and professional work.'
     },
     {
       property: 'og:type',
