@@ -4,6 +4,54 @@
     <p class="container explanation">I specialize in transforming concepts into modern, scalable, and impactful applications. Here is my journey in programming and web technologies across 6 industries over 10 years.</p>
     <div id="timeline" class="container">
       <article>
+        <span class="date">2025</span>
+        <span class="date-extended">July 2025 - Present, Germany</span>
+        <div class="card">
+          <strong>Software Engineer</strong>
+          <span>CONROO Gmbh</span>
+          <ul>
+            <li>Maintaining and enhancing a Vue 3 App for terminal staff</li>
+            <li>Migrating the main app from Vue 3 to Nuxt 4</li>
+            <li>Resolved ~100 failing tests, raising overall coverage to 88%</li>
+          </ul>
+          <div class="technologies">
+            <span>
+              <MdiIcon icon="mdiLanguageJavascript" />
+              <span>JavaScript</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiVuejs" />
+              <span>Vue.js</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageTypescript" />
+              <span>TypeScript</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageHtml5" />
+              <span>HTML</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageCss3" />
+              <span>CSS</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiCheckDecagram" />
+              <span>Cypress</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiSass" />
+              <span>Sass</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiCheckAll" />
+              <span>Jest</span>
+            </span>
+          </div>
+<!--          <NuxtLink class="cta" rel="nofollow" to="/experience/sdui">Explore my highlights <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>-->
+        </div>
+      </article>
+      <article class="right">
         <span class="date">2023</span>
         <span class="date-extended">February 2023 - July 2024, Germany</span>
         <div class="card">
@@ -63,7 +111,7 @@
           <NuxtLink class="cta" rel="nofollow" to="/experience/sdui">Explore my highlights <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
         </div>
       </article>
-      <article class="right">
+      <article>
         <span class="date">2020</span>
         <span class="date-extended">March 2020 - December 2022, Germany</span>
         <div class="card">
@@ -131,7 +179,7 @@
           <NuxtLink class="cta" rel="nofollow" to="/experience/homeday">Explore my highlights <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
         </div>
       </article>
-      <article>
+      <article class="right">
         <span class="date">2018</span>
         <span class="date-extended">April 2018 - March 2020, Turkey</span>
         <div class="card">
@@ -183,7 +231,7 @@
           <NuxtLink class="cta" rel="nofollow" to="/experience/trt">Explore my highlights <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>
         </div>
       </article>
-      <article class="right">
+      <article>
         <span class="date">2014</span>
         <span class="date-extended">July 2014 - December 2017, Turkey</span>
         <div class="card">
@@ -229,7 +277,7 @@
           </div>
         </div>
       </article>
-      <article>
+      <article class="right">
         <span class="date">2013</span>
         <span class="date-extended">May 2013 - July 2014, Turkey</span>
         <div class="card">
@@ -258,7 +306,7 @@
           </div>
         </div>
       </article>
-      <article class="right">
+      <article>
         <span class="date">2012</span>
         <span class="date-extended">May 2012 - September 2012, Turkey</span>
         <div class="card">
