@@ -11,13 +11,13 @@ jobs:
   test:
     name: tests are running...
     runs-on: ubuntu-latest
-    container: 
+    container:
       image: node:20
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Install All Packages
         run: npm ci
-      
+
       - name: Run Tests
         run: npm test

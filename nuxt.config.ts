@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/google-fonts', 'nuxt-mdi', '@nuxtjs/robots', '@nuxtjs/sitemap', '@nuxt/image', '@nuxt/test-utils/module'],
+  modules: ['@nuxtjs/google-fonts', 'nuxt-mdi', '@nuxtjs/robots', '@nuxtjs/sitemap', '@nuxt/image', '@nuxt/test-utils/module', '@nuxt/eslint'],
   googleFonts: {
     families: {
       Inter: [100, 200, 300, 400, 500, 600, 700, 800, 900]
@@ -37,18 +37,7 @@ export default defineNuxtConfig({
       }
     },
     build: {
-      cssCodeSplit: true,
-      // Improve chunk loading
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            'pdf-resources': ['assets/files/Mehmet_Deveci_Resume.pdf']
-          }
-        }
-      }
-    },
-    optimizeDeps: {
-      include: ['vue', 'vue-router']
+      cssCodeSplit: true
     }
   },
   devServer: {
@@ -69,7 +58,7 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'description',
-          content: 'Software Engineer with 10+ years of experience in frontend development, specializing in Vue.js, Javascript, and modern web technologies.'
+          content: 'Product Engineer with 10+ years of experience in full-stack development and AI integration, specializing in Vue.js, Java Spring Boot, and modern web technologies.'
         },
         {
           property: 'og:image',
@@ -119,7 +108,8 @@ export default defineNuxtConfig({
     payloadExtraction: true,
     renderJsonPayloads: true,
     viewTransition: true,
-    asyncContext: true
-    // Remove unsupported option
+    asyncContext: true,
+    // Workaround for Nuxt 3.21.8 bug with ssr:false (https://github.com/nuxt/nuxt/issues/35033)
+    viteEnvironmentApi: true
   }
 });

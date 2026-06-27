@@ -48,9 +48,12 @@ const technologies = [
   { id: 26, icon: 'mdiNpm', text: 'NPM' },
   { id: 27, icon: 'mdiWordpress', text: 'WordPress' },
   { id: 30, icon: 'mdiLanguageC', text: '' },
-  { id: 28, icon: 'mdiLanguageJava', text: 'Java' },
+  { id: 28, icon: 'mdiLanguageJava', text: 'Java / Spring Boot' },
   { id: 29, icon: 'mdiLanguageCsharp', text: '' },
-  { id: 31, icon: 'mdiLanguageCpp', text: '' }
+  { id: 31, icon: 'mdiLanguageCpp', text: '' },
+  { id: 32, icon: 'mdiDatabaseSearch', text: 'PostgreSQL' },
+  { id: 33, icon: 'mdiTerraform', text: 'Terraform' },
+  { id: 34, icon: 'mdiCloudOutline', text: 'Cloudflare' }
 ];
 const technologiesRef = ref(technologies);
 const isActive = ref(false);

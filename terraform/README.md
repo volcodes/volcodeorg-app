@@ -16,6 +16,7 @@ This document outlines the cloud infrastructure architecture powering the [volco
 ## Setup Guide
 
 ### Prerequisites
+
 - AWS CLI configured with appropriate credentials on your local machine.
   - See [AWS CLI Installation Guide](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
   - See [AWS CLI Configuration Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
@@ -26,21 +27,25 @@ This document outlines the cloud infrastructure architecture powering the [volco
   - CloudFront
   - ACM (Certificate Manager)
   - IAM
-You can reach out to me on [LinkedIn](https://www.linkedin.com/in/deveci96/) if you need help setting up your AWS CLI or permissions. I can provide a list of permissions that you can use to setup your AWS CLI.
+    You can reach out to me on [LinkedIn](https://www.linkedin.com/in/deveci96/) if you need help setting up your AWS CLI or permissions. I can provide a list of permissions that you can use to setup your AWS CLI.
 
 ### Initial Setup
+
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/your-org/volcodeorg-app.git
    cd volcodeorg-app/terraform
    ```
 
 2. Initialize Terraform:
+
    ```bash
    terraform init
    ```
 
 3. Create a workspace (optional, defaults to 'default'):
+
    ```bash
    terraform workspace new staging  # For staging environment
    terraform workspace new prod     # For production environment
@@ -53,13 +58,16 @@ You can reach out to me on [LinkedIn](https://www.linkedin.com/in/deveci96/) if 
    ```
 
 ### Environment Variables
+
 The following variables are used in the configuration:
+
 - `domains`: List of domains to be configured (default: ["volcode.org", "staging.volcode.org"])
 
 ### Important Notes
+
 - The infrastructure uses AWS ACM for SSL certificates, which requires DNS validation.
 - CloudFront distributions are created in us-east-1 region as required by AWS Certificate Manager for SSL certificate validation.
-- S3 buckets are created in your default region.  
+- S3 buckets are created in your default region.
 - Root domain (volcode.org) automatically redirects to `www.volcode.org`.
 
 ## Architecture Diagram
@@ -89,12 +97,12 @@ The following variables are used in the configuration:
 <details>
 <summary><strong>Configuration Highlights</strong></summary>
 
-  - Single certificate covering multiple domains:
-    - volcode.org
-    - www.volcode.org
-    - staging.volcode.org
-  - DNS validation method
-  - Automatic renewal
+- Single certificate covering multiple domains:
+  - volcode.org
+  - www.volcode.org
+  - staging.volcode.org
+- DNS validation method
+- Automatic renewal
 
 </details>
 
@@ -150,7 +158,7 @@ jobs:
           else
             echo "NUXT_PUBLIC_IS_STAGING=true" >> $GITHUB_ENV
           fi
-      
+
       # Build and deployment steps follow...
 ```
 
@@ -209,4 +217,4 @@ Planned infrastructure improvements:
 - **CI/CD:** GitHub Actions
 - **Frontend:** Nuxt.js, Vue.js
 - **Build Tools:** Vite, Webpack
-- **Infrastructure as Code:** Terraform 
+- **Infrastructure as Code:** Terraform

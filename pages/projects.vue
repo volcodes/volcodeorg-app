@@ -5,6 +5,142 @@
     <div class="project">
       <div class="container">
         <figure class="no-margin">
+          <img src="assets/imgs/edtech-admin-screenshot.jpg" alt="EdTech Admin Platform Screenshot" />
+        </figure>
+        <div class="project-info">
+          <strong>EDTECH</strong>
+          <span>Built a full-stack education management platform</span>
+          <p style="width: 100%">Admin panel with Nuxt 4 + Firebase. Role-based access (Admin > Teacher > Student), multi-language support (TR/EN), PostgreSQL with Drizzle ORM, deployed on Cloudflare Pages.</p>
+          <div class="technologies">
+            <span>
+              <MdiIcon icon="mdiNuxt" />
+              <span>Nuxt 4</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiFirebase" />
+              <span>Firebase</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiDatabaseSearch" />
+              <span>PostgreSQL</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageTypescript" />
+              <span>TypeScript</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiCloudOutline" />
+              <span>Cloudflare</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiTranslate" />
+              <span>i18n</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="project">
+      <div class="container">
+        <figure class="no-margin">
+          <img src="assets/imgs/voice-clone-screenshot.jpg" alt="AI Voice Clone Tool Screenshot" />
+        </figure>
+        <div class="project-info">
+          <strong>EDTECH</strong>
+          <span>Built an AI-powered text-to-audio tool with voice cloning</span>
+          <p style="width: 100%">Converts educational text content into natural-sounding audio using AI voice cloning. Designed to produce multilingual audiobook-quality narration for student reading materials.</p>
+          <div class="technologies">
+            <span>
+              <MdiIcon icon="mdiLanguagePython" />
+              <span>Python</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiRobot" />
+              <span>AI / ML</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiMicrophone" />
+              <span>Voice Cloning</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiGoogleCloud" />
+              <span>GCP</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="project">
+      <div class="container">
+        <figure class="no-margin">
+          <img src="assets/imgs/student-reading-screenshot.jpg" alt="Student Reading Experience Screenshot" />
+        </figure>
+        <div class="project-info">
+          <strong>EDTECH</strong>
+          <span>Crafted a gamified reading experience with progress tracking</span>
+          <p style="width: 100%">Glass-morphism UI with Material Design 3, per-page reading progress, quiz system with scoring, reading streaks, and fully responsive design.</p>
+          <div class="technologies">
+            <span>
+              <MdiIcon icon="mdiNuxt" />
+              <span>Nuxt 3</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiVuejs" />
+              <span>Vue.js</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageTypescript" />
+              <span>TypeScript</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiPalette" />
+              <span>Material Design 3</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiFirebase" />
+              <span>Firebase</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="project">
+      <div class="container">
+        <figure class="no-margin">
+          <img src="assets/imgs/edtech-infra-screenshot.jpg" alt="EdTech Cloud Infrastructure Screenshot" />
+        </figure>
+        <div class="project-info">
+          <strong>EDTECH</strong>
+          <span>Designed cloud infrastructure hosting 3 Nuxt apps on Cloudflare's free tier</span>
+          <p style="width: 100%">Terraform IaC managing GCP and Cloudflare services: Cloudflare Pages, Workers (auth middleware with HMAC cookies), R2 (CDN with CORS), DNS, and WAF. Hosts 3 apps under one domain with basic auth protection.</p>
+          <div class="technologies">
+            <span>
+              <MdiIcon icon="mdiTerraform" />
+              <span>Terraform</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiGoogleCloud" />
+              <span>GCP</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiCloudOutline" />
+              <span>Cloudflare</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageJavascript" />
+              <span>JavaScript (Workers)</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiServerNetwork" />
+              <span>DNS / Networking</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="project">
+      <div class="container">
+        <figure class="no-margin">
           <img src="assets/imgs/infastructure-planning.jpg" alt="Cloud Infrastructure Screenshot" />
           <!-- <NuxtImg src="assets/imgs/infastructure-planning.jpg" alt="Cloud Infrastructure Screenshot" class="project-image" width="485" height="1000" :modifiers="{ format: 'webp', quality: '80' }" style="max-width: 485px; width: 100%; height: auto" /> -->
         </figure>
@@ -262,11 +398,11 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Explore my portfolio of frontend development projects as a Software Engineer, including open-source contributions and professional work.'
+      content: 'Explore my portfolio of full-stack development projects as a Product Engineer, including AI integration, education technology, and open-source contributions.'
     },
     {
       name: 'keywords',
-      content: 'Software Engineer, Frontend Projects, Portfolio, Open Source, Vue.js Projects'
+      content: 'Software Engineer, Full-Stack Projects, AI, Education Technology, Portfolio, Open Source, Vue.js Projects'
     },
     {
       property: 'og:title',
@@ -274,7 +410,7 @@ useHead({
     },
     {
       property: 'og:description',
-      content: 'Explore my portfolio of frontend development projects as a Software Engineer, including open-source contributions and professional work.'
+      content: 'Explore my portfolio of full-stack development projects as a Product Engineer, including AI integration, education technology, and open-source contributions.'
     },
     {
       property: 'og:type',

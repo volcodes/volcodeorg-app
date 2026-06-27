@@ -3,16 +3,16 @@
 A modern, semantic, and maintainable website built with Nuxt 3 and TypeScript.
 
 - [Architecture](#architecture)
-   - [Directory Structure](#directory-structure)
-   - [Key Features](#key-features)
-   - [Component Organization](#component-organization)
-   - [TypeScript Integration](#typescript-integration)
-   - [State Management](#state-management)
-   - [Styling](#styling)
+  - [Directory Structure](#directory-structure)
+  - [Key Features](#key-features)
+  - [Component Organization](#component-organization)
+  - [TypeScript Integration](#typescript-integration)
+  - [State Management](#state-management)
+  - [Styling](#styling)
 - [Development](#development)
-   - [Prerequisites](#prerequisites)
-   - [Setup](#setup)
-   - [Deployment](#deployment)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+  - [Deployment](#deployment)
 - [Best Practices](#best-practices)
 - [Contributing](#contributing)
 
@@ -87,11 +87,13 @@ State is managed using:
 ### Setup
 
 1. Install dependencies:
+
    ```bash
    npm install
    ```
 
 2. Start development server:
+
    ```bash
    npm run dev
    ```

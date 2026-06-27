@@ -4,7 +4,7 @@
     <div id="hero" class="container">
       <span>I'm Mehmet;</span>
       <h1>Software Engineer</h1>
-      <p>Frontend-focused, 10+ years in web, experienced in backend and full stack work.</p>
+      <p>Product engineer, 10+ years in web, from frontend architecture to backend microservices and AI.</p>
       <p>I design, build, and optimize digital interfaces, apps, and infrastructures.</p>
       <section id="ctaButtons">
         <button class="btn btn--filled sliding-text--button" @click="isModalOpen = true">Discover My Achievements</button>
@@ -130,6 +130,9 @@ const achievements = ref([
     image: 'performance-bg.jpg',
     accomplishments: [
       {
+        entity: '<b>Integrated Datadog structured logging and distributed tracing</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://conroo.com">CONROO</a>, <u><b>enabling end-to-end production observability</b></u>.'
+      },
+      {
         entity:
           '<b>Successfully delivered election result landing pages</b> with Vue.js in 2018 & 2019 at <a rel="nofollow noopener noreferrer" target="_blank" href="https://web.archive.org/web/20190421194033/http://secim2019.trthaber.com/">TRT World</a>, for over <u><b>3M+ monthly visitors.</b></u><a rel="nofollow noopener noreferrer" target="_blank" href="https://web.archive.org/web/20190421194033/http://secim2019.trthaber.com/">*</a>'
       },
@@ -144,6 +147,9 @@ const achievements = ref([
       {
         entity:
           '<b>Integrated Grafana and InfluxDB</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://my.homeday.de">Homeday</a> to monitor web performance and strengthen observability.<a rel="nofollow noopener noreferrer" target="_blank" href="https://my.homeday.de">*</a>'
+      },
+      {
+        entity: '<b>Resolved ~100 failing tests</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://conroo.com">CONROO</a>, <u><b>raising overall test coverage to 88%</b></u>.'
       }
     ]
   },
@@ -152,6 +158,12 @@ const achievements = ref([
     hero: 'I built, optimized CI/CD pipelines and infrastructure to streamline development workflows.',
     image: 'data-bg.jpg',
     accomplishments: [
+      {
+        entity: '<b>Authored Vue 3 → Nuxt 4 DDD migration RFC</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://conroo.com">CONROO</a>, <u><b>restructuring the codebase into 5 domain layers across 123+ branches</b></u>.'
+      },
+      {
+        entity: '<b>Introduced AI-assisted engineering</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://conroo.com">CONROO</a>, evaluating 5 AI tools and <u><b>writing company-wide adoption guidelines</b></u>.'
+      },
       {
         entity: '<b>Developed frontend infrastructure</b> with AWS/GitHub Actions at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>trimming costs by 15%</b></u>.'
       },
@@ -163,6 +175,12 @@ const achievements = ref([
       },
       {
         entity: '<b>Conceptualized and integrated CI services</b> utilized Node.js on asset management, and image optimization for improved bundling.'
+      },
+      {
+        entity: '<b>Architected a multi-layer Nuxt 4 migration</b>, organizing the codebase into <u><b>5 distinct business domain layers</b></u>.'
+      },
+      {
+        entity: "<b>Designed Terraform infrastructure</b> on Cloudflare's free tier, <u><b>hosting 3 Nuxt apps with Workers-based auth and R2 CDN</b></u>."
       }
     ]
   },
@@ -171,6 +189,9 @@ const achievements = ref([
     hero: 'I crafted empathetic digital experiences that bridge user needs with technology.',
     image: 'engagement-bg.jpg',
     accomplishments: [
+      {
+        entity: '<b>Built VoIP/WebRTC call system</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://conroo.com">CONROO</a>, <u><b>enabling real-time call support, cancel, reject, and heartbeat monitoring for terminal staff</b></u>.'
+      },
       {
         entity: '<b>Conceptualized and delivered video conferencing features</b> in React/Electron app at <a rel="nofollow noopener noreferrer" target="_blank" href="https://sdui.com/">Sdui</a>, <u><b>enabling 200+ school admins to schedule and launch virtual meetings.</b></u>'
       },
@@ -182,6 +203,9 @@ const achievements = ref([
       },
       {
         entity: '<b>Implemented debounce, search algorithms</b>, using Vue/Vuex at <a rel="nofollow noopener noreferrer" target="_blank" href="https://trt.global/">TRT World</a>, <u><b>accelerated workflows by 50%</b></u>.'
+      },
+      {
+        entity: '<b>Designed a gamified reading experience</b> with <u><b>per-page progress tracking, quizzes, and reading streaks</b></u>.'
       }
     ]
   },
@@ -190,6 +214,10 @@ const achievements = ref([
     hero: 'I wrote educational programs that accelerated developer growth across organizations.',
     image: 'mentorship-bg.jpg',
     accomplishments: [
+      {
+        entity:
+          '<b>Authored 10+ technical RFCs</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://conroo.com">CONROO</a> covering testing guidelines, endpoint naming, and trunk-based development, <u><b>standardizing engineering practices across the team</b></u>.'
+      },
       {
         entity: '<b>Guided junior devs at Homeday & Sdui</b>, leading to <u><b>two promotions in rapid time</b></u> through mentorship, pair programming sessions & code reviews.'
       },
@@ -207,6 +235,9 @@ const achievements = ref([
     image: 'collaboration-bg.jpg',
     accomplishments: [
       {
+        entity: '<b>Investigated and resolved OIDC code challenge vulnerabilities</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://conroo.com">CONROO</a>, <u><b>securing the authentication flow</b></u>.'
+      },
+      {
         entity: '<b>Enhanced design systems with Storybook</b> at Homeday, minimizing bugs and <u><b>increasing test coverage to 74%</b></u>.'
       },
       {
@@ -218,6 +249,9 @@ const achievements = ref([
       },
       {
         entity: '<b>Moderated design system, D&I, and engineering workshops</b> at <a rel="nofollow noopener noreferrer" target="_blank" href="https://homeday.de">Homeday</a>, <u><b>improving collaboration and design quality.</b></u>'
+      },
+      {
+        entity: '<b>Implemented stale tour cleanup job</b> with distributed locking in Java Spring Boot microservices, <u><b>ensuring data consistency</b></u>.'
       }
     ]
   }

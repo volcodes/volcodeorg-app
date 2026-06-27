@@ -11,32 +11,32 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import { useRoute } from 'vue-router';
 
 defineProps<{
-  title: string
+  title: string;
   pages: {
-    name: string
-    link: string
-  }[]
-}>()
+    name: string;
+    link: string;
+  }[];
+}>();
 
-const route = useRoute()
+const route = useRoute();
 const breadcrumbs = computed(() => {
-  const paths = route.path.split('/').filter(Boolean)
-  const crumbs = [{ name: 'Overview', link: '/' }]
+  const paths = route.path.split('/').filter(Boolean);
+  const crumbs = [{ name: 'Overview', link: '/' }];
 
   if (paths.length) {
     paths.forEach((path) => {
       crumbs.push({
         name: path.charAt(0).toUpperCase() + path.slice(1),
         link: path === paths[paths.length - 1] ? '' : `/${path}`
-      })
-    })
+      });
+    });
   }
 
-  return crumbs
-})
+  return crumbs;
+});
 </script>
 
 <style lang="scss">

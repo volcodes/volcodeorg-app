@@ -10,9 +10,13 @@
           <strong>Software Engineer</strong>
           <span>CONROO Gmbh</span>
           <ul>
-            <li>Maintaining and enhancing a Vue 3 App for terminal staff</li>
-            <li>Migrating the main app from Vue 3 to Nuxt 4</li>
-            <li>Resolved ~100 failing tests, raising overall coverage to 88%</li>
+            <li>Authored and led Vue 3 → Nuxt 4 DDD migration across 5 business domain layers (123+ branches)</li>
+            <li>Built VoIP/WebRTC features: real-time call support, cancel, reject, and heartbeat monitoring for terminal operations</li>
+            <li>Implemented backend services with Java Spring Boot: stale tour cleanup with distributed locking, mobile booking endpoints, API gateway</li>
+            <li>Resolved ~100 failing tests and authored testing guidelines RFC, raising coverage to 88%</li>
+            <li>Introduced AI-assisted engineering: evaluated 5 AI tools (Claude Code, Gemini, Copilot) and wrote company-wide adoption guidelines</li>
+            <li>Integrated Datadog structured logging and distributed tracing for production observability</li>
+            <li>Authored 10+ RFCs including endpoint naming conventions, trunk-based development, feature flags, and API migration strategy</li>
           </ul>
           <div class="technologies">
             <span>
@@ -44,11 +48,27 @@
               <span>Sass</span>
             </span>
             <span>
+              <MdiIcon icon="mdiNuxt" />
+              <span>Nuxt 4</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiLanguageJava" />
+              <span>Java</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiGoogleCloud" />
+              <span>GCP</span>
+            </span>
+            <span>
               <MdiIcon icon="mdiCheckAll" />
-              <span>Jest</span>
+              <span>Vitest</span>
+            </span>
+            <span>
+              <MdiIcon icon="mdiChartLine" />
+              <span>Datadog</span>
             </span>
           </div>
-<!--          <NuxtLink class="cta" rel="nofollow" to="/experience/sdui">Explore my highlights <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>-->
+          <!--          <NuxtLink class="cta" rel="nofollow" to="/experience/sdui">Explore my highlights <MdiIcon icon="mdiArrowTopRight" /></NuxtLink>-->
         </div>
       </article>
       <article class="right">

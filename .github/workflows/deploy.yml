@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup environment variables
         run: |
           if [ "${{ github.ref }}" == "refs/heads/main" ]; then
@@ -21,12 +21,12 @@ jobs:
           else
             echo "NUXT_PUBLIC_IS_STAGING=true" >> $GITHUB_ENV
           fi
-          
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.7.0
-          
+
       - name: Build static site
         env:
           NUXT_PUBLIC_IS_STAGING: ${{ env.NUXT_PUBLIC_IS_STAGING }}
@@ -64,7 +64,7 @@ jobs:
             BUCKET="volcode-staging.volcode.org-default"
           fi
           aws s3 sync ./dist s3://$BUCKET --delete
-          
+
       - name: Invalidate CloudFront
         env:
           AWS_REGION: us-east-1
@@ -78,9 +78,9 @@ jobs:
             DOMAIN="staging.volcode.org"
           fi
           BUCKET_NAME="volcode-${DOMAIN}-default"
-          
+
           echo "🔍 Finding CloudFront distribution for $DOMAIN..."
-          
+
           # Find the correct distribution ID by matching S3 bucket in origin
           DISTRIBUTIONS=$(aws cloudfront list-distributions --output json)
           DIST_ID=$(echo "$DISTRIBUTIONS" | jq -r --arg bucket "$BUCKET_NAME" '
@@ -89,17 +89,17 @@ jobs:
             select(.Origins.Items[].DomainName | contains($bucket)) | 
             .Id
           ')
-          
+
           # Skip if no distribution found
           if [ -z "$DIST_ID" ]; then
             echo "⚠️ No CloudFront distribution found for $DOMAIN"
             echo "   Skipping invalidation"
             exit 0
           fi
-          
+
           echo "✅ Found distribution ID: $DIST_ID for $DOMAIN"
           echo "🔄 Attempting to invalidate CloudFront cache..."
-          
+
           # Run invalidation with error handling - use true to prevent workflow failure
           if aws cloudfront create-invalidation --distribution-id $DIST_ID --paths "/*" || true; then
             # This block will always run due to the || true
@@ -112,6 +112,6 @@ jobs:
               echo "✅ Cache invalidation started successfully"
             fi
           fi
-          
+
           # Always exit with success
           echo "Deployment completed successfully"

@@ -1,6 +1,7 @@
 # Application Diagrams
 
 ## 1. Application Architecture
+
 ```mermaid
 graph TD
     A[Client Browser] --> B[Nuxt.js Frontend]
@@ -14,6 +15,7 @@ graph TD
 ```
 
 ## 2. Infrastructure Setup
+
 ```mermaid
 graph TD
     A[CloudFront CDN] --> B[Route 53]
@@ -26,6 +28,7 @@ graph TD
 ```
 
 ## 3. CI/CD Pipeline
+
 ```mermaid
 graph LR
     A[GitHub] --> B[GitHub Actions]
@@ -38,13 +41,14 @@ graph LR
 ```
 
 ## 4. Data Flow
+
 ```mermaid
 sequenceDiagram
     participant Client
     participant Frontend
     participant API
     participant Database
-    
+
     Client->>Frontend: User Action
     Frontend->>API: API Request
     API->>Database: Query
@@ -54,6 +58,7 @@ sequenceDiagram
 ```
 
 ## 5. Component Structure
+
 ```mermaid
 graph TD
     A[App.vue] --> B[AppHeader]
@@ -67,13 +72,14 @@ graph TD
 ```
 
 ## 6. Authentication Flow
+
 ```mermaid
 sequenceDiagram
     participant User
     participant Frontend
     participant Auth Service
     participant Backend
-    
+
     User->>Frontend: Login Request
     Frontend->>Auth Service: Authenticate
     Auth Service->>Backend: Verify Credentials
@@ -83,6 +89,7 @@ sequenceDiagram
 ```
 
 ## 7. API Integration
+
 ```mermaid
 graph LR
     A[Frontend] --> B[API Routes]
@@ -95,6 +102,7 @@ graph LR
 ```
 
 ## 8. State Management
+
 ```mermaid
 graph TD
     A[Pinia Store] --> B[User State]
@@ -109,6 +117,7 @@ graph TD
 ```
 
 ## 9. Deployment Process
+
 ```mermaid
 graph TD
     A[Local Development] --> B[Staging Environment]
@@ -122,6 +131,7 @@ graph TD
 ```
 
 ## 10. Monitoring and Logging
+
 ```mermaid
 graph TD
     A[Application] --> B[CloudWatch Logs]
@@ -142,6 +152,7 @@ Note: These diagrams are created using Mermaid.js syntax and can be rendered in 
 # Infrastructure Diagrams
 
 ## 1. CloudFront & S3 Static Hosting Setup
+
 ```
                           ┌───────────────┐
                           │   Route 53    │
@@ -167,6 +178,7 @@ Note: These diagrams are created using Mermaid.js syntax and can be rendered in 
 ```
 
 ## 2. Error Handling & Redirects
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                    CloudFront Distribution               │
@@ -193,6 +205,7 @@ Note: These diagrams are created using Mermaid.js syntax and can be rendered in 
 ```
 
 ## 3. Security & WAF Configuration
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                    Web Application Firewall (WAF)        │
@@ -219,6 +232,7 @@ Note: These diagrams are created using Mermaid.js syntax and can be rendered in 
 ```
 
 ## 4. CI/CD Pipeline with GitHub Actions
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                    GitHub Repository                     │
@@ -245,6 +259,7 @@ Note: These diagrams are created using Mermaid.js syntax and can be rendered in 
 ```
 
 ## 5. Monitoring & Logging Architecture
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                    CloudWatch Logs                       │
@@ -271,10 +286,11 @@ Note: These diagrams are created using Mermaid.js syntax and can be rendered in 
 ```
 
 These diagrams provide a detailed view of your infrastructure setup, focusing on:
+
 1. The core CloudFront and S3 static hosting configuration
 2. Error handling and redirects setup
 3. Security and WAF configuration
 4. CI/CD pipeline implementation
 5. Monitoring and logging architecture
 
-Each diagram uses ASCII art to clearly show the relationships between different components and services. The diagrams are particularly focused on infrastructure aspects like error handling (404/403), security configurations, and deployment processes. 
+Each diagram uses ASCII art to clearly show the relationships between different components and services. The diagrams are particularly focused on infrastructure aspects like error handling (404/403), security configurations, and deployment processes.
