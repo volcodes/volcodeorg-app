@@ -22,6 +22,8 @@
         </section>
       </div>
     </div>
+
+    <FreelanceTeaser />
   </div>
 </template>
 

@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Preflight is disabled in tailwind.config.ts so existing SCSS pages keep
+   their styling. The new (Tailwind) routes opt into a clean baseline via the
+   `.tw` wrapper applied at the page root. */
+.tw *,
+.tw *::before,
+.tw *::after {
+  box-sizing: border-box;
+}
+
+.tw {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.tw h1,
+.tw h2,
+.tw h3,
+.tw h4,
+.tw p,
+.tw ul,
+.tw ol,
+.tw figure {
+  margin: 0;
+  padding: 0;
+}
+
+.tw ul,
+.tw ol {
+  list-style: none;
+}
+
+.tw a {
+  text-decoration: none;
+  color: inherit;
+}

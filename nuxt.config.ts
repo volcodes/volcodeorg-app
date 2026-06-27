@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     prerender: {
       failOnError: false,
       crawlLinks: true,
-      routes: ['/', '/experience', '/projects', '/contact']
+      routes: ['/', '/experience', '/projects', '/contact', '/freelance']
     },
     compressPublicAssets: true,
     minify: true
@@ -18,7 +18,14 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/google-fonts', 'nuxt-mdi', '@nuxtjs/robots', '@nuxtjs/sitemap', '@nuxt/image', '@nuxt/test-utils/module', '@nuxt/eslint'],
+  modules: ['@nuxtjs/google-fonts', 'nuxt-mdi', '@nuxtjs/robots', '@nuxtjs/sitemap', '@nuxt/image', '@nuxt/test-utils/module', '@nuxt/eslint', '@nuxtjs/tailwindcss'],
+  // Tailwind powers the new (rebranded) routes only; preflight is disabled in
+  // tailwind.config.ts so the existing bespoke SCSS pages are untouched.
+  tailwindcss: {
+    cssPath: '~/assets/css/tailwind.css',
+    configPath: '~/tailwind.config.ts',
+    viewer: false
+  },
   googleFonts: {
     families: {
       Inter: [100, 200, 300, 400, 500, 600, 700, 800, 900]
@@ -90,7 +97,7 @@ export default defineNuxtConfig({
   },
   sitemap: {
     // Only include production URLs in sitemap
-    urls: process.env.NUXT_PUBLIC_IS_STAGING === 'true' ? [] : ['/', '/experience', '/projects', '/contact'],
+    urls: process.env.NUXT_PUBLIC_IS_STAGING === 'true' ? [] : ['/', '/experience', '/projects', '/contact', '/freelance'],
     xslColumns: [
       { label: 'URL', width: '70%' },
       { label: 'Last Modified', select: 'lastmod', width: '30%' }

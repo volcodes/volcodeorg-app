@@ -17,6 +17,7 @@
         <NuxtLink to="/" exact>Overview</NuxtLink>
         <NuxtLink to="/experience" :class="{ 'router-link-active': route.path.startsWith('/experience') }">Experience</NuxtLink>
         <NuxtLink to="/projects" :class="{ 'router-link-active': route.path.startsWith('/projects') }">Projects</NuxtLink>
+        <NuxtLink to="/freelance" :class="{ 'router-link-active': route.path.startsWith('/freelance') }">Freelance</NuxtLink>
         <!-- <NuxtLink to="/blog">Blog</NuxtLink> -->
         <NuxtLink to="/contact" exact>Contact</NuxtLink>
         <!-- Add loading="lazy" and optimize rendering priority -->
